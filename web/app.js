@@ -1,15 +1,16 @@
 /* ===========================================================
-   HydroPression Québec — logique applicative (corrigée)
+   HydroPression Québec — logique applicative
    =========================================================== */
 
 const STATE = {
   data: null,
-  mode: "actuelle",
+  mode: "actuelle", // "actuelle" | "etiage"
   map: null,
   markers: new Map(),
   selected: null,
 };
 
+/* ---- Couleurs & catégories ---- */
 const CATEG = {
   critique:    { color: "#a32424", label: "Critique" },
   eleve:       { color: "#d97a4a", label: "Élevée" },
@@ -33,6 +34,7 @@ const fmt = {
   },
 };
 
+/* ---- Init ---- */
 async function init() {
   try {
     const res = await fetch("data/etat_pression.json", { cache: "no-store" });
@@ -50,6 +52,7 @@ async function init() {
   initInteractions();
 }
 
+/* ---- KPI ---- */
 function initKPI() {
   const d = STATE.data;
   document.getElementById("kpi-total").textContent = d.n_stations;
@@ -60,6 +63,7 @@ function initKPI() {
   document.getElementById("foot-updated").textContent = `Données générées le ${generated}`;
 }
 
+/* ---- Carte ---- */
 function initMap() {
   const m = L.map("map", {
     zoomControl: true,
@@ -74,6 +78,7 @@ function initMap() {
     maxZoom: 19,
   }).addTo(m);
 
+  // Couche des labels par-dessus pour mieux distinguer
   L.tileLayer("https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png", {
     subdomains: "abcd",
     maxZoom: 19,
@@ -103,20 +108,35 @@ function refreshMarkers() {
       weight: 2,
       fillOpacity: 0.92,
       className: "station-marker",
-      bubblingMouseEvents: false,
     }).addTo(m);
 
-    mk.bindTooltip(s.plan_deau ?? s.nom, { direction: "top", offset: [0, -6], sticky: true });
-
-    mk.on("click", function(e) {
-      L.DomEvent.stopPropagation(e);
-      openDetail(s);
-    });
+    // Tooltip désactivé pour éviter l'effet de yoyo au survol
+    // mk.bindTooltip(s.nom, { direction: "top", offset: [0, -6] });
+    mk.bindPopup(buildPopup(s, mode));
+    mk.on("click", () => openDetail(s));
 
     STATE.markers.set(s.code, mk);
   }
 }
 
+function buildPopup(s, mode) {
+  const pctActuelle = fmt.pct(s.pression_observe_pct);
+  const pctEtiage = fmt.pct(s.pression_etiage_pct);
+  return `
+    <div class="popup-name">${s.plan_deau ?? s.nom}</div>
+    <div class="popup-sub">Station ${s.code}</div>
+    <div class="popup-stat"><span>Pression actuelle</span><span>${pctActuelle}</span></div>
+    <div class="popup-stat"><span>Pression en étiage</span><span>${pctEtiage}</span></div>
+    <div class="popup-cta" onclick="openDetailByCode('${s.code}')">→ Voir le détail</div>
+  `;
+}
+
+window.openDetailByCode = (code) => {
+  const s = STATE.data.stations.find(x => x.code === code);
+  if (s) openDetail(s);
+};
+
+/* ---- TOP 10 ---- */
 function renderTop() {
   const list = document.getElementById("top-list");
   const mode = STATE.mode;
@@ -153,14 +173,13 @@ function renderTop() {
     `;
     li.onclick = () => {
       openDetail(s);
-      if (s.lat && s.lon) {
-        STATE.map.setView([s.lat, s.lon], 9, { animate: false });
-      }
+      if (s.lat && s.lon) STATE.map.flyTo([s.lat, s.lon], 9, { duration: 0.8 });
     };
     list.appendChild(li);
   });
 }
 
+/* ---- Détail ---- */
 function openDetail(s) {
   STATE.selected = s;
 
@@ -173,6 +192,7 @@ function openDetail(s) {
   ].filter(Boolean);
   document.getElementById("detail-sub").textContent = subParts.join(" · ");
 
+  // Métriques principales
   const setMetric = (valId, footId, pct, footMsg) => {
     const cat = pct === null ? "inconnu" : (
       pct >= 50 ? "critique" :
@@ -185,8 +205,10 @@ function openDetail(s) {
     el.style.color = pct === null ? "" : CATEG[cat].color;
     document.getElementById(footId).textContent = footMsg + " · " + (CATEG[cat]?.label ?? "—");
   };
-  setMetric("m-actuelle", "m-actuelle-foot", s.pression_observe_pct, "du débit naturel ponctionné");
-  setMetric("m-etiage", "m-etiage-foot", s.pression_etiage_pct, "si la rivière atteignait son Q2,7");
+  setMetric("m-actuelle", "m-actuelle-foot",
+    s.pression_observe_pct, "du débit naturel ponctionné");
+  setMetric("m-etiage", "m-etiage-foot",
+    s.pression_etiage_pct, "si la rivière atteignait son Q2,7");
 
   document.getElementById("m-debit-obs").textContent = fmt.m3s(s.debit_obs_m3s);
   document.getElementById("m-debit-prel").textContent = fmt.m3s(s.debit_preleve_m3s);
@@ -194,6 +216,7 @@ function openDetail(s) {
   document.getElementById("m-sites").textContent = fmt.int(s.n_sites_amont);
   document.getElementById("m-sup").textContent = fmt.km2(s.superficie_km2);
 
+  // Vue technique — formules numériques
   const p = s.debit_preleve_m3s;
   const o = s.debit_obs_m3s;
   const q = s.q27_ete_m3s;
@@ -206,6 +229,7 @@ function openDetail(s) {
   document.getElementById("f-result").textContent = fmt.pct(s.pression_observe_pct);
   document.getElementById("f-result-q").textContent = fmt.pct(s.pression_etiage_pct);
 
+  // Lien vers la station CEHQ
   const lk = document.getElementById("link-cehq");
   if (s.url_cehq) {
     lk.href = s.url_cehq;
@@ -214,22 +238,45 @@ function openDetail(s) {
     lk.style.display = "none";
   }
 
+  // Intervenants
   const tech = document.getElementById("tech-intervenants");
   if (s.intervenants && s.intervenants.length > 0) {
-    let html = '<table class="tech-table"><thead><tr><th>Intervenant</th><th>Secteur</th><th class="right">Débit (m³/s)</th></tr></thead><tbody>';
-    for (const it of s.intervenants.slice(0, 15)) {
-      html += `<tr>
-        <td>${it.nom_intervenant ?? "—"}</td>
+    let html = '<table class="tech-table"><thead><tr>';
+    html += '<th class="rank-col">#</th>';
+    html += '<th>Intervenant</th>';
+    html += '<th>Secteur</th>';
+    html += '<th>Municipalité</th>';
+    html += '<th class="right">Débit estival<br><span class="th-sub">m³/s</span></th>';
+    html += '<th class="right">Volume an.<br><span class="th-sub">Mm³</span></th>';
+    html += '<th class="right">Période<br><span class="th-sub">déclarations</span></th>';
+    html += '</tr></thead><tbody>';
+
+    for (const it of s.intervenants) {
+      const isAggregate = (it.num_site === null || it.num_site === undefined || it.num_site === "");
+      const debit = it.debit_estival_m3s ?? 0;
+      const vol = it.volume_annuel_moyen_Mm3;
+      const periode = (it.premiere_annee && it.derniere_annee)
+        ? `${it.premiere_annee}–${it.derniere_annee}`
+        : "—";
+
+      const cls = isAggregate ? ' class="aggregate-row"' : "";
+      html += `<tr${cls}>
+        <td class="rank-col mono">${it.rang ?? ""}</td>
+        <td class="intervenant-cell">${it.nom_intervenant ?? "—"}</td>
         <td>${it.secteur_scian ?? "—"}</td>
-        <td class="right mono">${(it.debit_jour_m3s ?? 0).toFixed(4)}</td>
+        <td>${it.municipalite ?? "—"}</td>
+        <td class="right mono">${debit.toFixed(4)}</td>
+        <td class="right mono">${vol !== null && vol !== undefined ? vol.toFixed(2) : "—"}</td>
+        <td class="right mono small">${periode}</td>
       </tr>`;
     }
     html += "</tbody></table>";
     tech.innerHTML = html;
   } else {
-    tech.innerHTML = '<p class="tech-empty">Le détail des intervenants n\'est pas inclus dans cette version pilote. Pour l\'analyse interne, croiser le bassin avec le fichier RDPE.</p>';
+    tech.innerHTML = '<p class="tech-empty">Aucun préleveur de surface identifié en amont sur la période 2020–2024.</p>';
   }
 
+  // Reset toggle
   document.getElementById("detail-tech").hidden = true;
   document.getElementById("toggle-tech").textContent = "+ Vue technique pour analystes";
 
@@ -241,6 +288,7 @@ function closeDetail() {
   STATE.selected = null;
 }
 
+/* ---- Modes (actuelle / étiage) ---- */
 function setMode(mode) {
   STATE.mode = mode;
   document.querySelectorAll(".nav-btn[data-mode]").forEach(b => {
@@ -250,10 +298,12 @@ function setMode(mode) {
   renderTop();
 }
 
+/* ---- Render orchestrator ---- */
 function renderAll() {
   renderTop();
 }
 
+/* ---- Init interactions ---- */
 function initInteractions() {
   document.querySelectorAll(".nav-btn[data-mode]").forEach(b => {
     b.addEventListener("click", () => setMode(b.dataset.mode));
@@ -271,6 +321,7 @@ function initInteractions() {
     btn.textContent = t.hidden ? "+ Vue technique pour analystes" : "− Masquer la vue technique";
   });
 
+  // Lien à propos (pour version sans page séparée)
   document.querySelector("[data-route='apropos']").addEventListener("click", () => {
     location.href = "apropos.html";
   });
