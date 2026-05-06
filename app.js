@@ -66,7 +66,7 @@ function initMap() {
     attributionControl: true,
     minZoom: 5,
     maxZoom: 12,
-  }).setView([47.5, -72.5], 6);
+  }).setView([4.5, -72.5], 6);
 
   L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://openstreetmap.org">OSM</a>',
@@ -94,7 +94,7 @@ function refreshMarkers() {
     const cat = mode === "actuelle" ? s.categorie_observe : s.categorie_etiage;
     const pct = mode === "actuelle" ? s.pression_observe_pct : s.pression_etiage_pct;
     const color = CATEG[cat]?.color ?? CATEG.inconnu.color;
-    const r = 7;
+    const r = 6;
 
     const mk = L.circleMarker([s.lat, s.lon], {
       radius: r,
