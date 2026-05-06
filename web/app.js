@@ -28,9 +28,24 @@ const fmt = {
   date: (iso) => {
     if (!iso) return "—";
     try {
-      const d = new Date(iso);
-      return d.toLocaleString("fr-CA", { dateStyle: "long", timeStyle: "short" });
-    } catch { return iso; }
+      let value = String(iso);
+
+      // L’API fournit une date UTC. Si le fuseau n’est pas explicite,
+      // on ajoute Z pour forcer l’interprétation en UTC.
+      if (!/[zZ]|[+-]\d{2}:\d{2}$/.test(value)) {
+        value += "Z";
+      }
+
+      const d = new Date(value);
+
+      return d.toLocaleString("fr-CA", {
+        dateStyle: "long",
+        timeStyle: "short",
+        timeZone: "America/Toronto"
+      });
+    } catch {
+      return iso;
+    }
   },
 };
 
