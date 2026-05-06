@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HydroPression Québec — Pression des prélèvements sur les rivières du Québec</title>
+  <meta name="description" content="Visualisation publique de la pression des prélèvements d'eau déclarés sur les rivières du Québec, croisée avec les débits temps réel des stations hydrométriques du CEHQ.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <div>
+        <h1 class="brand-name">HydroPression</h1>
+        <p class="brand-sub">Québec</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn nav-btn--active" data-mode="actuelle">État actuel</button>
+      <button class="nav-btn" data-mode="etiage">Risque en étiage</button>
+      <button class="nav-btn nav-btn--ghost" data-route="apropos">À propos</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO + KPI -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Tableau de bord</p>
+      <h2 class="hero-title">
+        Quelle est la <em>pression</em> des prélèvements<br>
+        sur les rivières du Québec&nbsp;?
+      </h2>
+      <p class="hero-lede">
+        Pour chaque station hydrométrique, nous comparons les volumes d'eau déclarés
+        en amont aux débits naturels reconstitués. Plus la part ponctionnée est élevée,
+        plus le cours d'eau est sous pression — particulièrement en période d'étiage.
+      </p>
+    </div>
+    <aside class="kpi-stack">
+      <div class="kpi">
+        <span class="kpi-label">Stations suivies</span>
+        <span class="kpi-value" id="kpi-total">—</span>
+      </div>
+      <div class="kpi kpi--alert">
+        <span class="kpi-label">Critiques en étiage</span>
+        <span class="kpi-value" id="kpi-critique">—</span>
+        <span class="kpi-foot">≥&nbsp;50&nbsp;% du débit naturel ponctionné</span>
+      </div>
+      <div class="kpi kpi--warn">
+        <span class="kpi-label">Sous tension élevée</span>
+        <span class="kpi-value" id="kpi-eleve">—</span>
+        <span class="kpi-foot">30&nbsp;% à 50&nbsp;% en étiage</span>
+      </div>
+      <p class="kpi-meta" id="kpi-meta">Chargement…</p>
+    </aside>
+  </section>
+
+  <!-- CARTE + TOP -->
+  <section class="dashboard">
+    <div class="map-card">
+      <div class="map-head">
+        <div>
+          <h3 class="map-title">Carte des stations</h3>
+          <p class="map-sub" id="map-sub">État actuel — pression sur le débit observé</p>
+        </div>
+        <div class="legend" aria-label="Légende des couleurs">
+          <span class="legend-item"><i style="background:#1a4a3a"></i>Négligeable</span>
+          <span class="legend-item"><i style="background:#7eb693"></i>Faible</span>
+          <span class="legend-item"><i style="background:#e6c14a"></i>Modérée</span>
+          <span class="legend-item"><i style="background:#d97a4a"></i>Élevée</span>
+          <span class="legend-item"><i style="background:#a32424"></i>Critique</span>
+        </div>
+      </div>
+      <div id="map"></div>
+    </div>
+
+    <aside class="top-card">
+      <h3 class="top-title">Top 10</h3>
+      <p class="top-sub" id="top-sub">Les rivières les plus sous pression</p>
+      <ol class="top-list" id="top-list">
+        <li class="top-empty">Chargement…</li>
+      </ol>
+    </aside>
+  </section>
+
+  <!-- DETAIL STATION (panneau qui apparaît au clic) -->
+  <section class="detail" id="detail" hidden>
+    <div class="detail-inner">
+      <button class="detail-close" id="detail-close" aria-label="Fermer">×</button>
+
+      <header class="detail-head">
+        <p class="detail-eyebrow" id="detail-bv">—</p>
+        <h2 class="detail-title" id="detail-title">—</h2>
+        <p class="detail-sub" id="detail-sub">—</p>
+      </header>
+
+      <!-- Vue grand public -->
+      <div class="detail-grid" id="detail-public">
+        <article class="metric metric--big">
+          <p class="metric-label">État actuel</p>
+          <p class="metric-value" id="m-actuelle">—</p>
+          <p class="metric-foot" id="m-actuelle-foot">—</p>
+        </article>
+        <article class="metric metric--big metric--accent">
+          <p class="metric-label">Risque en étiage</p>
+          <p class="metric-value" id="m-etiage">—</p>
+          <p class="metric-foot" id="m-etiage-foot">—</p>
+        </article>
+        <article class="metric">
+          <p class="metric-label">Débit observé</p>
+          <p class="metric-value-sm" id="m-debit-obs">—</p>
+          <p class="metric-foot">m³/s — mesuré par CEHQ</p>
+        </article>
+        <article class="metric">
+          <p class="metric-label">Débit prélevé estimé</p>
+          <p class="metric-value-sm" id="m-debit-prel">—</p>
+          <p class="metric-foot">m³/s — moyenne déclarée</p>
+        </article>
+        <article class="metric">
+          <p class="metric-label">Débit Q2,7 estival</p>
+          <p class="metric-value-sm" id="m-q27">—</p>
+          <p class="metric-foot">m³/s — étiage récurrent CEHQ</p>
+        </article>
+        <article class="metric">
+          <p class="metric-label">Sites de prélèvement amont</p>
+          <p class="metric-value-sm" id="m-sites">—</p>
+          <p class="metric-foot">superficie : <span id="m-sup">—</span> km²</p>
+        </article>
+      </div>
+
+      <!-- Toggle vue technique -->
+      <div class="detail-toggle">
+        <button id="toggle-tech" class="link-btn">+ Vue technique pour analystes</button>
+      </div>
+
+      <!-- Vue technique -->
+      <div class="detail-tech" id="detail-tech" hidden>
+        <h3 class="tech-title">Méthodologie de calcul</h3>
+        <div class="tech-formula">
+          <p class="formula-label">Pression observée</p>
+          <p class="formula"><span id="f-prel">—</span> ÷ (<span id="f-obs">—</span> + <span id="f-prel2">—</span>) × 100 = <span id="f-result">—</span>&nbsp;%</p>
+          <p class="formula-help">prélèvement amont divisé par débit naturel reconstitué (observé + prélevé)</p>
+        </div>
+        <div class="tech-formula">
+          <p class="formula-label">Pression en étiage Q2,7</p>
+          <p class="formula"><span id="f-prel3">—</span> ÷ (<span id="f-q27">—</span> + <span id="f-prel4">—</span>) × 100 = <span id="f-result-q">—</span>&nbsp;%</p>
+          <p class="formula-help">remplace le débit observé par le Q2,7 — débit minimum sur 7 jours, récurrence 2 ans</p>
+        </div>
+
+        <h3 class="tech-title">Top intervenants amont</h3>
+        <div id="tech-intervenants" class="tech-intervenants">
+          <p class="tech-empty">Donnée non disponible dans cette version pilote.</p>
+        </div>
+
+        <h3 class="tech-title">Liens utiles</h3>
+        <ul class="tech-links">
+          <li><a id="link-cehq" href="#" target="_blank" rel="noopener">→ Voir la station sur le site du CEHQ</a></li>
+          <li><a href="apropos.html#methode" >→ Limitations méthodologiques</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <p class="foot-line">
+      Données : Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs (MELCCFP) — Centre d'expertise hydrique du Québec (CEHQ) — Déclarations RDPE/RREUE.
+    </p>
+    <p class="foot-line">
+      Calculs : pression&nbsp;=&nbsp;prélèvement&nbsp;÷&nbsp;(débit&nbsp;+&nbsp;prélèvement). Indicateurs basés sur le Q2,7 estival officiel.
+    </p>
+    <p class="foot-line foot-meta">
+      <a href="apropos.html">À propos · Méthodologie · Limitations</a>
+      &nbsp;·&nbsp;
+      <span id="foot-updated">—</span>
+    </p>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="app.js"></script>
+</body>
+</html>

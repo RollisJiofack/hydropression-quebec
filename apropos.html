@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>À propos — HydroPression Québec</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .doc {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 28px 120px;
+    }
+    .doc h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+    .doc .lead {
+      font-size: 17px;
+      color: var(--ink-soft);
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
+    .doc h2 {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin: 48px 0 16px;
+    }
+    .doc h3 {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 28px 0 8px;
+    }
+    .doc p {
+      font-size: 16.5px;
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .doc ul {
+      margin: 8px 0 24px 24px;
+    }
+    .doc li {
+      font-size: 16px;
+      line-height: 1.65;
+      margin-bottom: 8px;
+    }
+    .doc .formula-box {
+      font-family: var(--mono);
+      background: var(--paper-deep);
+      border: 1px solid var(--line);
+      border-radius: var(--rad);
+      padding: 16px 20px;
+      font-size: 14px;
+      margin: 16px 0;
+    }
+    .doc .quote {
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+      margin: 24px 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--ink-soft);
+    }
+    .doc a { color: var(--navy); }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand" style="text-decoration:none;color:inherit;">
+      <span class="brand-mark"></span>
+      <div>
+        <h1 class="brand-name">HydroPression</h1>
+        <p class="brand-sub">Québec</p>
+      </div>
+    </a>
+    <nav class="nav">
+      <a class="nav-btn" href="index.html">← Retour au tableau de bord</a>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+
+  <p class="hero-eyebrow" style="color:var(--accent);font-weight:600;letter-spacing:0.22em;">À propos</p>
+  <h1>Méthodologie et limitations</h1>
+  <p class="lead">
+    Cet outil croise les déclarations de prélèvements d'eau du Règlement sur la
+    déclaration des prélèvements d'eau (RDPE/RREUE) avec les débits temps réel des
+    stations hydrométriques du Centre d'expertise hydrique du Québec. Voici comment
+    nous calculons la pression, et les limites qu'il faut connaître pour l'interpréter.
+  </p>
+
+  <h2 id="formule">Comment la pression est-elle calculée&nbsp;?</h2>
+  <p>
+    Pour chaque station, nous identifions les sites de prélèvement situés dans son
+    bassin amont, puis nous calculons deux indicateurs complémentaires.
+  </p>
+
+  <h3>Pression actuelle</h3>
+  <div class="formula-box">
+    pression&nbsp;=&nbsp;prélèvement&nbsp;÷&nbsp;(débit_observé&nbsp;+&nbsp;prélèvement)&nbsp;×&nbsp;100
+  </div>
+  <p>
+    Le débit observé à la station est <em>déjà amputé</em> des prélèvements amont.
+    En l'ajoutant au volume prélevé, on reconstitue le débit naturel qu'aurait la
+    rivière sans ces ponctions. La pression représente alors la part de ce débit
+    naturel qui est aujourd'hui ponctionnée.
+  </p>
+
+  <h3>Pression en étiage Q2,7</h3>
+  <div class="formula-box">
+    pression&nbsp;=&nbsp;prélèvement&nbsp;÷&nbsp;(Q2,7_estival&nbsp;+&nbsp;prélèvement)&nbsp;×&nbsp;100
+  </div>
+  <p>
+    Le Q2,7 estival est le débit minimum sur 7 jours consécutifs avec une récurrence
+    de 2 ans. C'est le seuil officiel utilisé par le MELCCFP pour l'allocation des
+    prélèvements. En remplaçant le débit actuel par cette valeur seuil, on obtient
+    une lecture de risque structurel : <em>« si la rivière atteignait son étiage
+    récurrent, quelle part de son débit serait ponctionnée par les prélèvements
+    déclarés&nbsp;? »</em>
+  </p>
+
+  <h2 id="methode">Comment les préleveurs sont-ils rattachés à une station&nbsp;?</h2>
+  <p>
+    Pour chaque site de prélèvement déclaré, nous appliquons deux filtres successifs
+    pour ne le compter que pour les stations véritablement en aval&nbsp;:
+  </p>
+  <ul>
+    <li>
+      <strong>Filtre du bassin primaire</strong>&nbsp;: le site doit appartenir au même
+      bassin versant primaire que la station. Cela exclut par exemple les pompages
+      municipaux dans le fleuve Saint-Laurent quand on étudie une petite rivière voisine.
+    </li>
+    <li>
+      <strong>Filtre amont/aval</strong>&nbsp;: la superficie du bassin drainé jusqu'au
+      site doit être inférieure ou égale à celle drainée jusqu'à la station. Cela
+      garantit qu'on ne compte pas un préleveur situé en aval.
+    </li>
+  </ul>
+
+  <h2 id="limitations">Ce que cet outil <em>ne fait pas</em></h2>
+  <p>
+    Cette première version est volontairement simple. Plusieurs limitations sont
+    importantes à garder à l'esprit&nbsp;:
+  </p>
+
+  <h3>Eaux souterraines exclues</h3>
+  <p>
+    Seuls les prélèvements en eau de surface sont comptabilisés. Les puits captant
+    une nappe phréatique ne ponctionnent pas directement le cours d'eau, même s'ils
+    peuvent à terme affecter son débit de base. Cette dimension fera l'objet d'un
+    traitement séparé dans une prochaine version.
+  </p>
+
+  <h3>Prélèvements via aqueducs comptés à la source</h3>
+  <p>
+    Les usagers en aval d'un aqueduc municipal qui déclarent leur consommation comme
+    «&nbsp;Aqueduc&nbsp;» sont exclus pour éviter le double comptage&nbsp;: c'est la
+    municipalité qui déclare déjà le pompage en amont (généralement une prise de
+    surface, parfois un puits).
+  </p>
+
+  <h3>Pas un vrai parcours de bassin versant</h3>
+  <p>
+    Notre méthode utilise les attributs <code>BV_PRIM</code> (bassin primaire) et
+    <code>SUPERFI</code> (superficie drainée) du réseau hydrographique de l'Atlas
+    hydroclimatique du Québec comme proxy d'un bassin amont. Cette approche
+    pragmatique élimine 95&nbsp;% des faux positifs sans la complexité d'un parcours
+    de graphe sur le réseau hydrographique. Elle reste néanmoins une approximation.
+  </p>
+
+  <h3>Stations sans tronçon réseau</h3>
+  <p>
+    Sur les 203 stations actives en temps réel du CEHQ, 130 sont incluses dans cette
+    analyse. Les autres ne figurent pas dans le réseau hydrographique de l'Atlas
+    (millésime 2018-2020) et seront couvertes dans une mise à jour ultérieure.
+  </p>
+
+  <h3>Volumes mensuels lissés en débit journalier</h3>
+  <p>
+    Les déclarations sont mensuelles avec un nombre de jours actifs déclaré.
+    Nous calculons un débit moyen quotidien&nbsp;:
+    volume_mensuel&nbsp;÷&nbsp;jours_actifs. Cela suppose un pompage constant pendant
+    les jours actifs, ce qui est une approximation. Pour des préleveurs qui pompent
+    par à-coups (industries, irrigation), la pression instantanée réelle peut être
+    significativement plus élevée.
+  </p>
+
+  <h2 id="sources">Sources de données</h2>
+  <ul>
+    <li>
+      <strong>Prélèvements&nbsp;:</strong> données ouvertes RDPE/RREUE publiées par le
+      MELCCFP sur <a href="https://www.donneesquebec.ca/" target="_blank" rel="noopener">Données Québec</a>.
+    </li>
+    <li>
+      <strong>Stations hydrométriques temps réel&nbsp;:</strong> service WFS public du
+      Ministère de la Sécurité publique
+      (<a href="https://geoegl.msp.gouv.qc.ca" target="_blank" rel="noopener">geoegl.msp.gouv.qc.ca</a>),
+      alimenté par les fournisseurs CEHQ, Environnement Canada, Hydro Météo, Cobaric, MSP.
+    </li>
+    <li>
+      <strong>Débits d'étiage Q2,7 / Q5,30 / Q10,7&nbsp;:</strong>
+      <a href="https://www.cehq.gouv.qc.ca/debit-etiage/" target="_blank" rel="noopener">Centre
+      d'expertise hydrique du Québec</a>, mise à jour avril 2024.
+    </li>
+    <li>
+      <strong>Réseau hydrographique avec bassins primaires&nbsp;:</strong>
+      <a href="https://www.cehq.gouv.qc.ca/atlas-hydroclimatique/" target="_blank" rel="noopener">Atlas
+      hydroclimatique du Québec</a>, version 2020-2022.
+    </li>
+  </ul>
+
+  <h2 id="contact">Avis et corrections</h2>
+  <p>
+    Cet outil est en version pilote. Si vous identifiez une station mal classée, un
+    bassin amont mal défini, ou une donnée qui semble incohérente, signalez-le. Les
+    données affichées sont publiques et reproductibles, mais leur croisement
+    introduit des choix méthodologiques qui méritent d'être discutés.
+  </p>
+
+  <p class="quote">
+    «&nbsp;Les modèles sont tous faux, mais certains sont utiles.&nbsp;» —&nbsp;George E. P. Box
+  </p>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <p class="foot-line">
+      Données : MELCCFP — CEHQ — Déclarations RDPE/RREUE.
+    </p>
+    <p class="foot-meta">
+      <a href="index.html">← Retour au tableau de bord</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
