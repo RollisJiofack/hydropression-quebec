@@ -288,14 +288,13 @@ body {
 
 /* Pastilles personnalisées sur la carte */
 .station-marker {
-  border-radius: 50%;
-  border: 2px solid var(--paper);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   cursor: pointer;
-  transition: transform .15s ease;
+  transition: stroke-width .15s ease, fill-opacity .15s ease;
 }
-.station-marker:hover { transform: scale(1.3); }
-
+.station-marker:hover {
+  stroke-width: 4 !important;
+  fill-opacity: 1 !important;
+}
 /* Popup Leaflet */
 .leaflet-popup-content-wrapper {
   border-radius: var(--rad);
