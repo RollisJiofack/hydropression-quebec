@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>À propos — HydroPression Québec</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -77,6 +78,52 @@
       color: var(--ink-soft);
     }
     .doc a { color: var(--navy); }
+
+    .seuils-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 32px;
+      font-size: 14.5px;
+    }
+    .seuils-table th, .seuils-table td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .seuils-table th {
+      font-size: 11.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 600;
+      border-bottom: 1.5px solid var(--ink-soft);
+    }
+    .seuils-table td.cat {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .seuils-table td.range {
+      font-family: var(--mono);
+      font-size: 13px;
+      white-space: nowrap;
+      color: var(--ink-soft);
+    }
+    .seuils-table .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .seuils-table tr.highlight td {
+      background: rgba(230, 193, 74, 0.10);
+    }
+    .seuils-table tr.highlight td.cat::after {
+      content: " ★";
+      color: var(--warn-deep);
+    }
   </style>
 </head>
 <body>
@@ -101,16 +148,17 @@
   <p class="hero-eyebrow" style="color:var(--accent);font-weight:600;letter-spacing:0.22em;">À propos</p>
   <h1>Méthodologie et limitations</h1>
   <p class="lead">
-    Cet outil croise les déclarations de prélèvements d'eau du Règlement sur la
-    déclaration des prélèvements d'eau (RDPE/RREUE) avec les débits temps réel des
-    stations hydrométriques du Centre d'expertise hydrique du Québec. Voici comment
-    nous calculons la pression, et les limites qu'il faut connaître pour l'interpréter.
+    Cet outil croise les déclarations annuelles de prélèvements d'eau (RDPE/RREUE) avec les
+    débits temps réel des stations hydrométriques publiés par le Ministère de l'Environnement.
+    Voici comment la pression est calculée, quels seuils sont utilisés, et les limites
+    qu'il faut connaître pour interpréter correctement les résultats.
   </p>
 
   <h2 id="formule">Comment la pression est-elle calculée&nbsp;?</h2>
   <p>
-    Pour chaque station, nous identifions les sites de prélèvement situés dans son
-    bassin amont, puis nous calculons deux indicateurs complémentaires.
+    Pour chaque station, on identifie les sites de prélèvement situés dans son bassin amont,
+    on agrège leurs volumes en débit journalier moyen, puis on calcule deux indicateurs
+    complémentaires.
   </p>
 
   <h3>Pression actuelle</h3>
@@ -118,29 +166,114 @@
     pression&nbsp;=&nbsp;prélèvement&nbsp;÷&nbsp;(débit_observé&nbsp;+&nbsp;prélèvement)&nbsp;×&nbsp;100
   </div>
   <p>
-    Le débit observé à la station est <em>déjà amputé</em> des prélèvements amont.
-    En l'ajoutant au volume prélevé, on reconstitue le débit naturel qu'aurait la
-    rivière sans ces ponctions. La pression représente alors la part de ce débit
-    naturel qui est aujourd'hui ponctionnée.
+    Le débit observé à la station est <em>déjà amputé</em> des prélèvements amont. En l'additionnant
+    au volume prélevé, on reconstitue le débit naturel qu'aurait la rivière sans ces ponctions.
+    La pression représente alors la part de ce débit naturel qui est aujourd'hui ponctionnée.
+    L'indicateur est borné entre 0 et 100 %.
   </p>
 
-  <h3>Pression en étiage Q2,7</h3>
+  <h3>Pression en étiage</h3>
   <div class="formula-box">
     pression&nbsp;=&nbsp;prélèvement&nbsp;÷&nbsp;(Q2,7_estival&nbsp;+&nbsp;prélèvement)&nbsp;×&nbsp;100
   </div>
   <p>
-    Le Q2,7 estival est le débit minimum sur 7 jours consécutifs avec une récurrence
-    de 2 ans. C'est le seuil officiel utilisé par le MELCCFP pour l'allocation des
-    prélèvements. En remplaçant le débit actuel par cette valeur seuil, on obtient
-    une lecture de risque structurel : <em>« si la rivière atteignait son étiage
-    récurrent, quelle part de son débit serait ponctionnée par les prélèvements
-    déclarés&nbsp;? »</em>
+    Le Q2,7 estival est le débit minimum sur 7 jours consécutifs avec une période de retour
+    de 2 ans, calculé par le Centre d'expertise hydrique du Québec. C'est la valeur de
+    référence utilisée pour caractériser le débit d'étiage d'un cours d'eau. En remplaçant le
+    débit actuel par cette valeur seuil, on obtient une lecture de risque structurel&nbsp;:
+    <em>« si la rivière atteignait son étiage récurrent, quelle part de son débit serait
+    ponctionnée par les prélèvements déclarés&nbsp;? »</em>
+  </p>
+
+  <h2 id="seuils">Seuils d'interprétation</h2>
+  <p>
+    La pression calculée est classée en cinq catégories visuelles. Le seuil de 15 %
+    correspond au seuil de référence en analyse&nbsp;: une pression dépassant ce niveau
+    appelle une attention particulière à l'échelle du bassin.
+  </p>
+
+  <table class="seuils-table">
+    <thead>
+      <tr>
+        <th>Catégorie</th>
+        <th>Plage</th>
+        <th>Lecture</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cat"><span class="dot" style="background:#1a4a3a;"></span>Négligeable</td>
+        <td class="range">&lt; 5 %</td>
+        <td>Pression imperceptible sur la ressource</td>
+      </tr>
+      <tr>
+        <td class="cat"><span class="dot" style="background:#7eb693;"></span>Faible</td>
+        <td class="range">5 – 15 %</td>
+        <td>Présence mesurable mais sans enjeu particulier</td>
+      </tr>
+      <tr class="highlight">
+        <td class="cat"><span class="dot" style="background:#e6c14a;"></span>Modérée</td>
+        <td class="range">15 – 30 %</td>
+        <td>Seuil de référence en analyse&nbsp;: pression notable à examiner</td>
+      </tr>
+      <tr>
+        <td class="cat"><span class="dot" style="background:#d97a4a;"></span>Élevée</td>
+        <td class="range">30 – 50 %</td>
+        <td>Pression marquée, vigilance recommandée</td>
+      </tr>
+      <tr>
+        <td class="cat"><span class="dot" style="background:#a32424;"></span>Critique</td>
+        <td class="range">≥ 50 %</td>
+        <td>Le débit prélevé approche ou dépasse le débit naturel restant</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Les bornes 5 %, 30 % et 50 % sont définies pour offrir une lecture progressive et lisible.
+    Le seuil de 15 % est celui couramment utilisé en analyse de dossiers à l'échelle d'un bassin
+    versant.
+  </p>
+
+  <h2 id="periode">Période et fréquence des données</h2>
+
+  <h3>Prélèvements&nbsp;: moyenne sur 5 ans</h3>
+  <p>
+    Les volumes prélevés affichés ne sont pas ceux d'une seule année, mais la moyenne des
+    déclarations sur les cinq dernières années (2020 à 2024). Pour chaque site, on calcule
+    la moyenne du débit journalier mois par mois, puis on en déduit un débit moyen estival.
+  </p>
+  <p>
+    Cette approche est plus représentative du comportement actuel des préleveurs qu'une
+    photo annuelle. Par exemple, un grand industriel qui aurait considérablement réduit
+    ses prélèvements grâce à des améliorations de procédés serait moins bien représenté
+    par une moyenne sur la période 2012-2024 que par une moyenne sur les 5 dernières
+    années.
+  </p>
+  <p>
+    Les sites n'ayant aucune déclaration sur 2020-2024 sont exclus du calcul (sites
+    inactifs).
+  </p>
+
+  <h3>Période estivale juin – octobre</h3>
+  <p>
+    Le calcul est centré sur la saison où la pression hydrique est la plus marquée
+    au Québec. Les volumes prélevés en hiver sont exclus, en cohérence avec l'usage du
+    Q2,7 estival comme référence d'étiage.
+  </p>
+
+  <h3>Débits actuels&nbsp;: temps réel</h3>
+  <p>
+    Les débits observés affichés sur la carte proviennent de l'API publique du
+    Ministère, mise à jour à intervalles réguliers par les stations hydrométriques
+    télémétriques. Les valeurs reflètent la dernière mesure disponible au moment de
+    la génération du tableau de bord.
   </p>
 
   <h2 id="methode">Comment les préleveurs sont-ils rattachés à une station&nbsp;?</h2>
   <p>
-    Pour chaque site de prélèvement déclaré, nous appliquons deux filtres successifs
-    pour ne le compter que pour les stations véritablement en aval&nbsp;:
+    Pour chaque site de prélèvement déclaré, on applique deux filtres successifs afin
+    de ne le compter que pour les stations véritablement en aval&nbsp;:
   </p>
   <ul>
     <li>
@@ -150,16 +283,12 @@
     </li>
     <li>
       <strong>Filtre amont/aval</strong>&nbsp;: la superficie du bassin drainé jusqu'au
-      site doit être inférieure ou égale à celle drainée jusqu'à la station. Cela
-      garantit qu'on ne compte pas un préleveur situé en aval.
+      site doit être inférieure ou égale à celle drainée jusqu'à la station. Cela garantit
+      qu'on ne compte pas un préleveur situé en aval.
     </li>
   </ul>
 
   <h2 id="limitations">Ce que cet outil <em>ne fait pas</em></h2>
-  <p>
-    Cette première version est volontairement simple. Plusieurs limitations sont
-    importantes à garder à l'esprit&nbsp;:
-  </p>
 
   <h3>Eaux souterraines exclues</h3>
   <p>
@@ -177,30 +306,32 @@
     surface, parfois un puits).
   </p>
 
-  <h3>Pas un vrai parcours de bassin versant</h3>
+  <h3>Approche pragmatique du bassin amont</h3>
   <p>
-    Notre méthode utilise les attributs <code>BV_PRIM</code> (bassin primaire) et
+    La méthode utilise les attributs <code>BV_PRIM</code> (bassin primaire) et
     <code>SUPERFI</code> (superficie drainée) du réseau hydrographique de l'Atlas
-    hydroclimatique du Québec comme proxy d'un bassin amont. Cette approche
-    pragmatique élimine 95&nbsp;% des faux positifs sans la complexité d'un parcours
-    de graphe sur le réseau hydrographique. Elle reste néanmoins une approximation.
-  </p>
-
-  <h3>Stations sans tronçon réseau</h3>
-  <p>
-    Sur les 203 stations actives en temps réel du CEHQ, 130 sont incluses dans cette
-    analyse. Les autres ne figurent pas dans le réseau hydrographique de l'Atlas
-    (millésime 2018-2020) et seront couvertes dans une mise à jour ultérieure.
+    hydroclimatique du Québec comme proxy d'un bassin amont. Cette approche élimine
+    l'essentiel des faux positifs sans la complexité d'un parcours de graphe sur le
+    réseau hydrographique. Elle reste néanmoins une approximation par rapport à un
+    vrai parcours hydrologique.
   </p>
 
   <h3>Volumes mensuels lissés en débit journalier</h3>
   <p>
     Les déclarations sont mensuelles avec un nombre de jours actifs déclaré.
-    Nous calculons un débit moyen quotidien&nbsp;:
-    volume_mensuel&nbsp;÷&nbsp;jours_actifs. Cela suppose un pompage constant pendant
-    les jours actifs, ce qui est une approximation. Pour des préleveurs qui pompent
-    par à-coups (industries, irrigation), la pression instantanée réelle peut être
-    significativement plus élevée.
+    On calcule un débit moyen quotidien&nbsp;: volume_mensuel&nbsp;÷&nbsp;jours_actifs.
+    Cela suppose un pompage constant pendant les jours actifs, ce qui est une
+    approximation. Pour des préleveurs qui pompent par à-coups (industries, irrigation),
+    la pression instantanée réelle peut être significativement plus élevée que la
+    valeur affichée.
+  </p>
+
+  <h3>Couverture des stations</h3>
+  <p>
+    Cette première version couvre les stations hydrométriques actives en temps réel
+    qui sont à la fois&nbsp;: présentes dans le réseau hydrographique de l'Atlas
+    (millésime 2020-2022), et disposant d'un Q2,7 calculé. Les stations plus récentes
+    ou sur de très petits cours d'eau ne sont pas encore couvertes.
   </p>
 
   <h2 id="sources">Sources de données</h2>
@@ -210,29 +341,28 @@
       MELCCFP sur <a href="https://www.donneesquebec.ca/" target="_blank" rel="noopener">Données Québec</a>.
     </li>
     <li>
-      <strong>Stations hydrométriques temps réel&nbsp;:</strong> service WFS public du
-      Ministère de la Sécurité publique
+      <strong>Stations hydrométriques temps réel&nbsp;:</strong> service WFS public
       (<a href="https://geoegl.msp.gouv.qc.ca" target="_blank" rel="noopener">geoegl.msp.gouv.qc.ca</a>),
-      alimenté par les fournisseurs CEHQ, Environnement Canada, Hydro Météo, Cobaric, MSP.
+      alimenté par le Centre d'expertise hydrique du Québec (CEHQ).
     </li>
     <li>
       <strong>Débits d'étiage Q2,7 / Q5,30 / Q10,7&nbsp;:</strong>
       <a href="https://www.cehq.gouv.qc.ca/debit-etiage/" target="_blank" rel="noopener">Centre
-      d'expertise hydrique du Québec</a>, mise à jour avril 2024.
+      d'expertise hydrique du Québec</a>.
     </li>
     <li>
       <strong>Réseau hydrographique avec bassins primaires&nbsp;:</strong>
       <a href="https://www.cehq.gouv.qc.ca/atlas-hydroclimatique/" target="_blank" rel="noopener">Atlas
-      hydroclimatique du Québec</a>, version 2020-2022.
+      hydroclimatique du Québec</a>.
     </li>
   </ul>
 
   <h2 id="contact">Avis et corrections</h2>
   <p>
     Cet outil est en version pilote. Si vous identifiez une station mal classée, un
-    bassin amont mal défini, ou une donnée qui semble incohérente, signalez-le. Les
-    données affichées sont publiques et reproductibles, mais leur croisement
-    introduit des choix méthodologiques qui méritent d'être discutés.
+    bassin amont mal défini, ou une donnée qui semble incohérente, vos retours sont
+    bienvenus. Les seuils et la méthodologie pourront être ajustés à partir des
+    retours d'experts du domaine.
   </p>
 
   <p class="quote">
@@ -244,10 +374,12 @@
 <footer class="foot">
   <div class="foot-inner">
     <p class="foot-line">
-      Données : MELCCFP — CEHQ — Déclarations RDPE/RREUE.
+      Données&nbsp;: MELCCFP — CEHQ — Déclarations RDPE/RREUE.
     </p>
     <p class="foot-meta">
       <a href="index.html">← Retour au tableau de bord</a>
+      &nbsp;·&nbsp;
+      Initiative DEPESS — MELCCFP · Développement&nbsp;: Rollis&nbsp;Jiofack
     </p>
   </div>
 </footer>

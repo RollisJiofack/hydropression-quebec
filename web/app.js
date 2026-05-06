@@ -30,8 +30,8 @@ const fmt = {
     try {
       let value = String(iso);
 
-      // L’API fournit une date UTC. Si le fuseau n’est pas explicite,
-      // on ajoute Z pour forcer l’interprétation en UTC.
+      // L'API fournit une date UTC. Si le fuseau n'est pas explicite,
+      // on ajoute Z pour forcer l'interprétation en UTC.
       if (!/[zZ]|[+-]\d{2}:\d{2}$/.test(value)) {
         value += "Z";
       }
@@ -230,19 +230,6 @@ function openDetail(s) {
   document.getElementById("m-q27").textContent = fmt.m3s(s.q27_ete_m3s);
   document.getElementById("m-sites").textContent = fmt.int(s.n_sites_amont);
   document.getElementById("m-sup").textContent = fmt.km2(s.superficie_km2);
-
-  // Vue technique — formules numériques
-  const p = s.debit_preleve_m3s;
-  const o = s.debit_obs_m3s;
-  const q = s.q27_ete_m3s;
-  document.getElementById("f-prel").textContent = fmt.m3s(p);
-  document.getElementById("f-prel2").textContent = fmt.m3s(p);
-  document.getElementById("f-prel3").textContent = fmt.m3s(p);
-  document.getElementById("f-prel4").textContent = fmt.m3s(p);
-  document.getElementById("f-obs").textContent = fmt.m3s(o);
-  document.getElementById("f-q27").textContent = fmt.m3s(q);
-  document.getElementById("f-result").textContent = fmt.pct(s.pression_observe_pct);
-  document.getElementById("f-result-q").textContent = fmt.pct(s.pression_etiage_pct);
 
   // Lien vers la station CEHQ
   const lk = document.getElementById("link-cehq");

@@ -6,6 +6,8 @@
   <title>HydroPression Québec — Pression des prélèvements sur les rivières du Québec</title>
   <meta name="description" content="Visualisation publique de la pression des prélèvements d'eau déclarés sur les rivières du Québec, croisée avec les débits temps réel des stations hydrométriques du CEHQ.">
 
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -148,18 +150,6 @@
 
       <!-- Vue technique -->
       <div class="detail-tech" id="detail-tech" hidden>
-        <h3 class="tech-title">Méthodologie de calcul</h3>
-        <div class="tech-formula">
-          <p class="formula-label">Pression observée</p>
-          <p class="formula"><span id="f-prel">—</span> ÷ (<span id="f-obs">—</span> + <span id="f-prel2">—</span>) × 100 = <span id="f-result">—</span>&nbsp;%</p>
-          <p class="formula-help">prélèvement amont divisé par débit naturel reconstitué (observé + prélevé)</p>
-        </div>
-        <div class="tech-formula">
-          <p class="formula-label">Pression en étiage Q2,7</p>
-          <p class="formula"><span id="f-prel3">—</span> ÷ (<span id="f-q27">—</span> + <span id="f-prel4">—</span>) × 100 = <span id="f-result-q">—</span>&nbsp;%</p>
-          <p class="formula-help">remplace le débit observé par le Q2,7 — débit minimum sur 7 jours, récurrence 2 ans</p>
-        </div>
-
         <h3 class="tech-title">Top intervenants amont</h3>
         <div id="tech-intervenants" class="tech-intervenants">
           <p class="tech-empty">Donnée non disponible dans cette version pilote.</p>
@@ -168,7 +158,9 @@
         <h3 class="tech-title">Liens utiles</h3>
         <ul class="tech-links">
           <li><a id="link-cehq" href="#" target="_blank" rel="noopener">→ Voir la station sur le site du CEHQ</a></li>
-          <li><a href="apropos.html#methode" >→ Limitations méthodologiques</a></li>
+          <li><a href="apropos.html#methode">→ Méthodologie complète</a></li>
+          <li><a href="apropos.html#seuils">→ Seuils d'interprétation</a></li>
+          <li><a href="apropos.html#limitations">→ Limitations méthodologiques</a></li>
         </ul>
       </div>
 
@@ -183,12 +175,14 @@
       Données : Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs (MELCCFP) — Centre d'expertise hydrique du Québec (CEHQ) — Déclarations RDPE/RREUE.
     </p>
     <p class="foot-line">
-      Calculs : pression&nbsp;=&nbsp;prélèvement&nbsp;÷&nbsp;(débit&nbsp;+&nbsp;prélèvement). Indicateurs basés sur le Q2,7 estival officiel.
+      Calculs basés sur la moyenne des prélèvements de surface 2020–2024 (saison estivale juin – octobre). Indicateurs comparés au Q2,7 estival officiel.
     </p>
     <p class="foot-line foot-meta">
-      <a href="apropos.html">À propos · Méthodologie · Limitations</a>
+      <a href="apropos.html">À propos · Méthodologie · Seuils · Limitations</a>
       &nbsp;·&nbsp;
       <span id="foot-updated">—</span>
+      &nbsp;·&nbsp;
+      Initiative DEPESS — MELCCFP · Développement&nbsp;: Rollis&nbsp;Jiofack
     </p>
   </div>
 </footer>
