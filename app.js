@@ -94,7 +94,7 @@ function refreshMarkers() {
     const cat = mode === "actuelle" ? s.categorie_observe : s.categorie_etiage;
     const pct = mode === "actuelle" ? s.pression_observe_pct : s.pression_etiage_pct;
     const color = CATEG[cat]?.color ?? CATEG.inconnu.color;
-    const r = 6;
+    const r = 7;
 
     const mk = L.circleMarker([s.lat, s.lon], {
       radius: r,
