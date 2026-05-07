@@ -237,29 +237,47 @@
 
   <h2 id="periode">Période et fréquence des données</h2>
 
-  <h3>Prélèvements&nbsp;: moyenne sur 5 ans</h3>
+  <h3>Prélèvements&nbsp;: profil mensuel sur 5 ans</h3>
   <p>
-    Les volumes prélevés affichés ne sont pas ceux d'une seule année, mais la moyenne des
-    déclarations sur les cinq dernières années (2020 à 2024). Pour chaque site, on calcule
-    la moyenne du débit journalier mois par mois, puis on en déduit un débit moyen estival.
+    Pour chaque préleveur, on calcule un débit moyen <strong>pour chaque mois de
+    l'année</strong>, basé sur les déclarations des cinq dernières années (2020 à 2024).
+    Concrètement&nbsp;: pour le mois de mai par exemple, on prend les déclarations de
+    mai des 5 années où le préleveur a effectivement déclaré, on divise chaque volume
+    mensuel par le nombre de jours actifs déclarés ce mois-là, puis on fait la moyenne
+    arithmétique des débits journaliers obtenus.
   </p>
   <p>
-    Cette approche est plus représentative du comportement actuel des préleveurs qu'une
-    photo annuelle. Par exemple, un grand industriel qui aurait considérablement réduit
-    ses prélèvements grâce à des améliorations de procédés serait moins bien représenté
-    par une moyenne sur la période 2012-2024 que par une moyenne sur les 5 dernières
-    années.
+    Cette approche capture la <em>saisonnalité</em> de chaque préleveur. Un agriculteur
+    qui n'irrigue qu'en juillet et août apparaîtra avec un débit nul de novembre à mai
+    et un débit élevé en plein été. À l'inverse, une usine qui pompe à débit constant
+    toute l'année aura un profil quasi-plat. Les sites n'ayant aucune déclaration sur
+    2020-2024 sont exclus du calcul (sites inactifs).
   </p>
   <p>
-    Les sites n'ayant aucune déclaration sur 2020-2024 sont exclus du calcul (sites
-    inactifs).
+    L'avantage principal&nbsp;: la pression actuelle affichée sur le tableau de bord
+    correspond à ce qui est réellement prélevé au mois en cours. Quand on consulte le
+    site en mai, on voit la pression de mai. Quand on revient en août, on voit la
+    pression d'août. Tout bascule automatiquement.
   </p>
 
-  <h3>Période estivale juin – octobre</h3>
+  <h3>Pression d'étiage&nbsp;: maximum juillet ou août</h3>
   <p>
-    Le calcul est centré sur la saison où la pression hydrique est la plus marquée
-    au Québec. Les volumes prélevés en hiver sont exclus, en cohérence avec l'usage du
-    Q2,7 estival comme référence d'étiage.
+    Pour la pression d'étiage estival, on prend pour chaque préleveur le
+    <strong>maximum</strong> entre son débit moyen de juillet et son débit moyen d'août.
+    L'idée&nbsp;: capturer le débit que ce préleveur impose au moment où la rivière est
+    typiquement au plus bas.
+  </p>
+  <p>
+    Le choix du maximum entre les deux mois (plutôt qu'un seul) reflète le fait que les
+    préleveurs n'ont pas tous le même calendrier&nbsp;: certains pompent davantage en
+    juillet (cultures de légumes, pommes de terre), d'autres en août (cultures de noix
+    et fruits, récoltes tardives). En prenant le maximum, on capture le pic d'activité
+    de chaque préleveur, indépendamment de son secteur.
+  </p>
+  <p>
+    Les préleveurs n'ayant aucune déclaration en juillet ni en août sur 2020-2024 sont
+    exclus uniquement de la pression d'étiage (ils restent comptabilisés dans la
+    pression actuelle au mois où ils déclarent).
   </p>
 
   <h3>Débits actuels&nbsp;: temps réel</h3>
@@ -344,7 +362,7 @@
       et non les volumes autorisés par les certificats.
     </li>
     <li>
-      <strong>Stations hydrométriques temps réel&nbsp;:</strong> application Vigilance -
+      <strong>Stations hydrométriques temps réel&nbsp;:</strong> application Vigilance —
       Surveillance de la crue des eaux du Ministère de la Sécurité publique
       (<a href="https://vigilance.geo.msp.gouv.qc.ca/" target="_blank" rel="noopener">vigilance.geo.msp.gouv.qc.ca</a>).
       Les données proviennent du Centre d'expertise hydrique du Québec (CEHQ), du
@@ -371,7 +389,7 @@
     Cet outil est en version pilote. Si vous identifiez une station mal classée, un
     bassin amont mal défini, ou une donnée qui semble incohérente, vos retours sont
     bienvenus. Les seuils et la méthodologie pourront être ajustés à partir des
-    retours d'utilisateurs.
+    retours d'experts du domaine.
   </p>
 
   <p class="quote">
@@ -383,12 +401,12 @@
 <footer class="foot">
   <div class="foot-inner">
     <p class="foot-line">
-      Données&nbsp;: MELCCFP - CEHQ - Déclarations RDPE/RREUE.
+      Données&nbsp;: MELCCFP — CEHQ — Déclarations RDPE/RREUE.
     </p>
     <p class="foot-meta">
       <a href="index.html">← Retour au tableau de bord</a>
       &nbsp;·&nbsp;
-      Initiative DEPESS - MELCCFP · Développement&nbsp;: Rollis&nbsp;Jiofack
+      Initiative DEPESS — MELCCFP · Développement&nbsp;: R.&nbsp;Jiofack
     </p>
   </div>
 </footer>

@@ -1,5 +1,5 @@
 /* ===========================================================
-   HydroPression Québec — logique applicative
+   HydroPression Québec — logique applicative (v2)
    =========================================================== */
 
 const STATE = {
@@ -29,15 +29,10 @@ const fmt = {
     if (!iso) return "—";
     try {
       let value = String(iso);
-
-      // L'API fournit une date UTC. Si le fuseau n'est pas explicite,
-      // on ajoute Z pour forcer l'interprétation en UTC.
       if (!/[zZ]|[+-]\d{2}:\d{2}$/.test(value)) {
         value += "Z";
       }
-
       const d = new Date(value);
-
       return d.toLocaleString("fr-CA", {
         dateStyle: "long",
         timeStyle: "short",
@@ -93,7 +88,6 @@ function initMap() {
     maxZoom: 19,
   }).addTo(m);
 
-  // Couche des labels par-dessus pour mieux distinguer
   L.tileLayer("https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png", {
     subdomains: "abcd",
     maxZoom: 19,
@@ -112,12 +106,10 @@ function refreshMarkers() {
   for (const s of STATE.data.stations) {
     if (s.lat === null || s.lon === null) continue;
     const cat = mode === "actuelle" ? s.categorie_observe : s.categorie_etiage;
-    const pct = mode === "actuelle" ? s.pression_observe_pct : s.pression_etiage_pct;
     const color = CATEG[cat]?.color ?? CATEG.inconnu.color;
-    const r = 6;
 
     const mk = L.circleMarker([s.lat, s.lon], {
-      radius: r,
+      radius: 6,
       fillColor: color,
       color: "#f4f1ec",
       weight: 2,
@@ -125,8 +117,6 @@ function refreshMarkers() {
       className: "station-marker",
     }).addTo(m);
 
-    // Tooltip désactivé pour éviter l'effet de yoyo au survol
-    // mk.bindTooltip(s.nom, { direction: "top", offset: [0, -6] });
     mk.bindPopup(buildPopup(s, mode));
     mk.on("click", () => openDetail(s));
 
@@ -137,10 +127,11 @@ function refreshMarkers() {
 function buildPopup(s, mode) {
   const pctActuelle = fmt.pct(s.pression_observe_pct);
   const pctEtiage = fmt.pct(s.pression_etiage_pct);
+  const moisNom = STATE.data.mois_courant_nom;
   return `
     <div class="popup-name">${s.plan_deau ?? s.nom}</div>
     <div class="popup-sub">Station ${s.code}</div>
-    <div class="popup-stat"><span>Pression actuelle</span><span>${pctActuelle}</span></div>
+    <div class="popup-stat"><span>Pression en ${moisNom}</span><span>${pctActuelle}</span></div>
     <div class="popup-stat"><span>Pression en étiage</span><span>${pctEtiage}</span></div>
     <div class="popup-cta" onclick="openDetailByCode('${s.code}')">→ Voir le détail</div>
   `;
@@ -155,13 +146,14 @@ window.openDetailByCode = (code) => {
 function renderTop() {
   const list = document.getElementById("top-list");
   const mode = STATE.mode;
+  const moisNom = STATE.data.mois_courant_nom;
   const key = mode === "actuelle" ? "pression_observe_pct" : "pression_etiage_pct";
   const sub = mode === "actuelle"
-    ? "Pression sur le débit actuel"
+    ? `Pression du mois courant (${moisNom})`
     : "Pression sur le débit Q2,7 d'étiage";
   document.getElementById("top-sub").textContent = sub;
   document.getElementById("map-sub").textContent = mode === "actuelle"
-    ? "État actuel — pression sur le débit observé"
+    ? `État en ${moisNom} — pression sur le débit observé`
     : "Risque en étiage — pression sur le débit Q2,7";
 
   const sorted = [...STATE.data.stations]
@@ -197,6 +189,7 @@ function renderTop() {
 /* ---- Détail ---- */
 function openDetail(s) {
   STATE.selected = s;
+  const moisNom = STATE.data.mois_courant_nom;
 
   document.getElementById("detail-bv").textContent = s.bv_prim ?? "—";
   document.getElementById("detail-title").textContent = s.plan_deau ?? s.nom;
@@ -220,6 +213,13 @@ function openDetail(s) {
     el.style.color = pct === null ? "" : CATEG[cat].color;
     document.getElementById(footId).textContent = footMsg + " · " + (CATEG[cat]?.label ?? "—");
   };
+
+  // Mise à jour des libellés des cartes principales
+  const labelActuelle = document.querySelector(".metric--big .metric-label");
+  if (labelActuelle) {
+    labelActuelle.textContent = `État en ${moisNom}`;
+  }
+
   setMetric("m-actuelle", "m-actuelle-foot",
     s.pression_observe_pct, "du débit naturel ponctionné");
   setMetric("m-etiage", "m-etiage-foot",
@@ -231,6 +231,12 @@ function openDetail(s) {
   document.getElementById("m-sites").textContent = fmt.int(s.n_sites_amont);
   document.getElementById("m-sup").textContent = fmt.km2(s.superficie_km2);
 
+  // Sous-titre du débit prélevé pour expliciter le mois
+  const footPrel = document.querySelector("#m-debit-prel + .metric-foot");
+  if (footPrel) {
+    footPrel.textContent = `m³/s — moyenne en ${moisNom} (5 ans)`;
+  }
+
   // Lien vers la station CEHQ
   const lk = document.getElementById("link-cehq");
   if (s.url_cehq) {
@@ -240,30 +246,37 @@ function openDetail(s) {
     lk.style.display = "none";
   }
 
-  // Intervenants
+  // Intervenants — uniquement ceux avec débit > 0 ce mois
   const tech = document.getElementById("tech-intervenants");
-  if (s.intervenants && s.intervenants.length > 0) {
-    let html = '<table class="tech-table"><thead><tr>';
+  const intervenantsActifs = (s.intervenants || []).filter(it => {
+    const isAggregate = (it.num_site === null || it.num_site === undefined || it.num_site === "");
+    return !isAggregate;  // les vrais préleveurs
+  });
+  const aggregateRow = (s.intervenants || []).find(it =>
+    it.num_site === null || it.num_site === undefined || it.num_site === ""
+  );
+
+  if (intervenantsActifs.length > 0) {
+    let html = `<p class="tech-intro">Préleveurs avec déclaration en <strong>${moisNom}</strong>, triés par débit moyen :</p>`;
+    html += '<table class="tech-table"><thead><tr>';
     html += '<th class="rank-col">#</th>';
     html += '<th>Intervenant</th>';
     html += '<th>Secteur</th>';
     html += '<th>Municipalité</th>';
-    html += '<th class="right">Débit estival<br><span class="th-sub">m³/s</span></th>';
+    html += `<th class="right">Débit ${moisNom}<br><span class="th-sub">m³/s</span></th>`;
     html += '<th class="right">Volume an.<br><span class="th-sub">Mm³</span></th>';
     html += '<th class="right">Période<br><span class="th-sub">déclarations</span></th>';
     html += '</tr></thead><tbody>';
 
-    for (const it of s.intervenants) {
-      const isAggregate = (it.num_site === null || it.num_site === undefined || it.num_site === "");
-      const debit = it.debit_estival_m3s ?? 0;
+    intervenantsActifs.forEach((it, idx) => {
+      const debit = it.debit_mois_courant_m3s ?? 0;
       const vol = it.volume_annuel_moyen_Mm3;
       const periode = (it.premiere_annee && it.derniere_annee)
         ? `${it.premiere_annee}–${it.derniere_annee}`
         : "—";
 
-      const cls = isAggregate ? ' class="aggregate-row"' : "";
-      html += `<tr${cls}>
-        <td class="rank-col mono">${it.rang ?? ""}</td>
+      html += `<tr>
+        <td class="rank-col mono">${idx + 1}</td>
         <td class="intervenant-cell">${it.nom_intervenant ?? "—"}</td>
         <td>${it.secteur_scian ?? "—"}</td>
         <td>${it.municipalite ?? "—"}</td>
@@ -271,11 +284,34 @@ function openDetail(s) {
         <td class="right mono">${vol !== null && vol !== undefined ? vol.toFixed(2) : "—"}</td>
         <td class="right mono small">${periode}</td>
       </tr>`;
+    });
+
+    // Ligne agrégée si présente
+    if (aggregateRow && aggregateRow.debit_mois_courant_m3s > 0) {
+      const debit = aggregateRow.debit_mois_courant_m3s;
+      html += `<tr class="aggregate-row">
+        <td class="rank-col mono">…</td>
+        <td class="intervenant-cell" colspan="3">${aggregateRow.nom_intervenant}</td>
+        <td class="right mono">${debit.toFixed(4)}</td>
+        <td class="right mono">—</td>
+        <td class="right mono small">—</td>
+      </tr>`;
     }
+
     html += "</tbody></table>";
+
+    // Mention des préleveurs sans déclaration au mois courant
+    if (s.n_sites_inactifs_mois && s.n_sites_inactifs_mois > 0) {
+      html += `<p class="tech-note">+ ${s.n_sites_inactifs_mois} préleveur${s.n_sites_inactifs_mois > 1 ? "s" : ""} amont sans déclaration en ${moisNom} (non comptabilisé${s.n_sites_inactifs_mois > 1 ? "s" : ""} dans la pression actuelle).</p>`;
+    }
+
     tech.innerHTML = html;
   } else {
-    tech.innerHTML = '<p class="tech-empty">Aucun préleveur de surface identifié en amont sur la période 2020–2024.</p>';
+    let html = `<p class="tech-empty">Aucun préleveur avec déclaration en ${moisNom} dans le bassin amont.</p>`;
+    if (s.n_sites_amont > 0) {
+      html += `<p class="tech-note">${s.n_sites_amont} préleveur${s.n_sites_amont > 1 ? "s" : ""} amont identifié${s.n_sites_amont > 1 ? "s" : ""}, mais aucun n'a déclaré en ${moisNom} sur 2020–2024.</p>`;
+    }
+    tech.innerHTML = html;
   }
 
   // Reset toggle
@@ -323,7 +359,6 @@ function initInteractions() {
     btn.textContent = t.hidden ? "+ Vue technique pour analystes" : "− Masquer la vue technique";
   });
 
-  // Lien à propos (pour version sans page séparée)
   document.querySelector("[data-route='apropos']").addEventListener("click", () => {
     location.href = "apropos.html";
   });

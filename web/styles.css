@@ -542,6 +542,27 @@ body {
 }
 .tech-empty { font-size: 13px; color: var(--ink-faint); }
 
+.tech-intro {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.tech-intro strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.tech-note {
+  font-size: 12px;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  line-height: 1.5;
+}
+
 .tech-table {
   width: 100%;
   border-collapse: collapse;
@@ -666,19 +687,4 @@ body {
   .hero-title { font-size: 32px; }
   .kpi-value { font-size: 36px; }
   .metric-value { font-size: 36px; }
-}
-
-
-/* Correction : stabilise les points Leaflet au survol */
-.leaflet-interactive.station-marker {
-  cursor: pointer;
-  pointer-events: auto;
-  transition: none !important;
-  transform: none !important;
-}
-
-.leaflet-interactive.station-marker:hover {
-  transform: none !important;
-  filter: none !important;
-  stroke-width: 2 !important;
 }
