@@ -2,7 +2,7 @@ name: Update HydroPression state
 
 on:
   schedule:
-    - cron: "7,22,37,52 * * * *"     # toutes les heures, à h:05 UTC
+    - cron: "13 * * * *"     # toutes les heures, à h:05 UTC
   workflow_dispatch:
 
 permissions:
