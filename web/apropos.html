@@ -148,10 +148,11 @@
   <p class="hero-eyebrow" style="color:var(--accent);font-weight:600;letter-spacing:0.22em;">À propos</p>
   <h1>Méthodologie et limitations</h1>
   <p class="lead">
-    Cet outil croise les déclarations annuelles de prélèvements d'eau (RDPE/RREUE) avec les
-    débits temps réel des stations hydrométriques publiés par le Ministère de l'Environnement.
-    Voici comment la pression est calculée, quels seuils sont utilisés, et les limites
-    qu'il faut connaître pour interpréter correctement les résultats.
+    Cet outil croise les déclarations annuelles de prélèvements et de consommation d'eau
+    (RDPE/RREUE) avec les débits temps réel des stations hydrométriques publiés par le
+    Ministère de l'Environnement. Voici comment la pression est calculée à partir du
+    volume <em>consommé</em> (et non simplement prélevé), quels seuils sont utilisés,
+    et les limites qu'il faut connaître pour interpréter correctement les résultats.
   </p>
 
   <h2 id="formule">Comment la pression est-elle calculée&nbsp;?</h2>
@@ -163,18 +164,20 @@
 
   <h3>Pression actuelle</h3>
   <div class="formula-box">
-    pression&nbsp;=&nbsp;prélèvement&nbsp;÷&nbsp;(débit_observé&nbsp;+&nbsp;prélèvement)&nbsp;×&nbsp;100
+    pression&nbsp;=&nbsp;consommation&nbsp;÷&nbsp;(débit_observé&nbsp;+&nbsp;consommation)&nbsp;×&nbsp;100
   </div>
   <p>
-    Le débit observé à la station est <em>déjà amputé</em> des prélèvements amont. En l'additionnant
-    au volume prélevé, on reconstitue le débit naturel qu'aurait la rivière sans ces ponctions.
-    La pression représente alors la part de ce débit naturel qui est aujourd'hui ponctionnée.
+    Le débit observé à la station représente déjà ce qui reste dans la rivière après
+    consommation par les préleveurs amont. En l'additionnant au volume consommé,
+    on reconstitue le débit naturel qu'aurait la rivière sans ces ponctions nettes.
+    La pression représente alors la part de ce débit naturel qui est aujourd'hui
+    perdue par évaporation, intégration aux produits ou autre cause non restitutive.
     L'indicateur est borné entre 0 et 100 %.
   </p>
 
   <h3>Pression en étiage</h3>
   <div class="formula-box">
-    pression&nbsp;=&nbsp;prélèvement&nbsp;÷&nbsp;(Q2,7_estival&nbsp;+&nbsp;prélèvement)&nbsp;×&nbsp;100
+    pression&nbsp;=&nbsp;consommation&nbsp;÷&nbsp;(Q2,7_estival&nbsp;+&nbsp;consommation)&nbsp;×&nbsp;100
   </div>
   <p>
     Le Q2,7 estival est le débit minimum sur 7 jours consécutifs avec une période de retour
@@ -182,7 +185,78 @@
     référence utilisée pour caractériser le débit d'étiage d'un cours d'eau. En remplaçant le
     débit actuel par cette valeur seuil, on obtient une lecture de risque structurel&nbsp;:
     <em>« si la rivière atteignait son étiage récurrent, quelle part de son débit serait
-    ponctionnée par les prélèvements déclarés&nbsp;? »</em>
+    perdue par la consommation déclarée&nbsp;? »</em>
+  </p>
+
+  <h2 id="consommation">Pourquoi la consommation et non le prélèvement&nbsp;?</h2>
+  <p>
+    Cet outil utilise le volume <strong>consommé</strong> et non le volume <strong>prélevé</strong>
+    pour calculer la pression sur le cours d'eau. La différence est fondamentale&nbsp;:
+  </p>
+  <ul>
+    <li>
+      <strong>Volume prélevé</strong>&nbsp;: ce qui est pompé dans la rivière à un site
+      donné. Une partie peut être restituée plus loin (eaux usées traitées, eau de
+      refroidissement industrielle, eau de procédé recyclée).
+    </li>
+    <li>
+      <strong>Volume consommé</strong>&nbsp;: ce qui est <em>réellement perdu</em> pour
+      le cours d'eau, par évaporation, intégration aux produits, ou autre raison
+      non restitutive. C'est cette portion qui exerce une pression nette sur le débit.
+    </li>
+  </ul>
+  <p>
+    Une usine de papier qui pompe 10&nbsp;m³/s mais en restitue 95&nbsp;% n'a pas le même
+    impact qu'un irrigant qui pompe 1&nbsp;m³/s mais en évapore 90&nbsp;%. Les deux
+    pompent dans la rivière, mais seule l'évaporation par les cultures représente une
+    perte nette. En passant du prélèvement à la consommation, on capture la pression
+    réelle sur la ressource.
+  </p>
+
+  <h3>Comment la consommation est-elle déterminée&nbsp;?</h3>
+  <p>
+    Pour chaque préleveur et chaque mois, on applique une méthode hybride à quatre
+    niveaux, par ordre de priorité&nbsp;:
+  </p>
+  <ol style="margin: 8px 0 24px 24px;">
+    <li style="margin-bottom: 8px;">
+      <strong>Donnée déclarée</strong>&nbsp;: si le préleveur a déclaré directement son
+      volume consommé dans le formulaire RDPE, on utilise cette valeur. (~33&nbsp;%
+      des déclarations 2020-2024.)
+    </li>
+    <li style="margin-bottom: 8px;">
+      <strong>Coefficient officiel du Tableau 3 du Guide du préleveur</strong>&nbsp;:
+      pour les secteurs explicitement couverts par la réglementation
+      (aqueducs municipaux 15&nbsp;%, irrigation et terrains de golf 90&nbsp;%, élevage
+      80&nbsp;%, aquaculture 0&nbsp;%). (~30&nbsp;% des déclarations.)
+    </li>
+    <li style="margin-bottom: 8px;">
+      <strong>Médiane empirique par SCIAN</strong>&nbsp;: pour les secteurs non couverts
+      par le Tableau 3, on utilise la médiane historique des ratios consommation/prélèvement
+      observés pour ce SCIAN dans la base RDPE 2020-2024 (calculée uniquement quand
+      au moins 5 observations sont disponibles). (~21&nbsp;% des déclarations.)
+    </li>
+    <li>
+      <strong>Coefficient par défaut</strong>&nbsp;: pour les SCIAN sans aucune
+      donnée historique, on suppose une consommation égale au prélèvement
+      (coefficient&nbsp;=&nbsp;1,0). Choix conservateur. (~16&nbsp;% des déclarations.)
+    </li>
+  </ol>
+
+  <h3>Cas des lieux à plusieurs sites de prélèvement</h3>
+  <p>
+    Un préleveur peut exploiter plusieurs sites de prélèvement à un même lieu (par
+    exemple plusieurs prises d'eau ou plusieurs puits). Le volume consommé est
+    déclaré au niveau du lieu × secteur SCIAN × mois, pas du site individuel.
+  </p>
+  <p>
+    Pour répartir cette consommation entre les sites du même lieu, nous appliquons
+    une <strong>répartition proportionnelle au volume prélevé</strong>. Si un site
+    représente 70&nbsp;% du volume total prélevé d'un lieu pour un mois donné, on lui
+    attribue 70&nbsp;% de la consommation déclarée pour ce lieu. C'est la seule
+    répartition physiquement défendable&nbsp;: un site qui pompe davantage est
+    proportionnellement responsable d'une part plus importante de la consommation
+    finale.
   </p>
 
   <h2 id="seuils">Seuils d'interprétation</h2>
@@ -237,25 +311,27 @@
 
   <h2 id="periode">Période et fréquence des données</h2>
 
-  <h3>Prélèvements&nbsp;: profil mensuel sur 5 ans</h3>
+  <h3>Consommation&nbsp;: profil mensuel sur 5 ans</h3>
   <p>
-    Pour chaque préleveur, on calcule un débit moyen <strong>pour chaque mois de
-    l'année</strong>, basé sur les déclarations des cinq dernières années (2020 à 2024).
+    Pour chaque préleveur, on calcule un débit consommé moyen <strong>pour chaque mois
+    de l'année</strong>, basé sur les déclarations des cinq dernières années (2020 à 2024).
     Concrètement&nbsp;: pour le mois de mai par exemple, on prend les déclarations de
-    mai des 5 années où le préleveur a effectivement déclaré, on divise chaque volume
-    mensuel par le nombre de jours actifs déclarés ce mois-là, puis on fait la moyenne
-    arithmétique des débits journaliers obtenus.
+    mai des 5 années où le préleveur a effectivement déclaré, on détermine le volume
+    consommé selon la méthode hybride à quatre niveaux décrite plus haut, on divise
+    chaque volume mensuel par le nombre de jours actifs déclarés ce mois-là, puis on
+    fait la moyenne arithmétique des débits journaliers obtenus.
   </p>
   <p>
     Cette approche capture la <em>saisonnalité</em> de chaque préleveur. Un agriculteur
     qui n'irrigue qu'en juillet et août apparaîtra avec un débit nul de novembre à mai
-    et un débit élevé en plein été. À l'inverse, une usine qui pompe à débit constant
-    toute l'année aura un profil quasi-plat. Les sites n'ayant aucune déclaration sur
+    et un débit consommé élevé en plein été (90&nbsp;% du prélèvement à cette période).
+    À l'inverse, une usine qui pompe à débit constant toute l'année avec faible
+    consommation aura un profil quasi-plat. Les sites n'ayant aucune déclaration sur
     2020-2024 sont exclus du calcul (sites inactifs).
   </p>
   <p>
     L'avantage principal&nbsp;: la pression actuelle affichée sur le tableau de bord
-    correspond à ce qui est réellement prélevé au mois en cours. Quand on consulte le
+    correspond à ce qui est réellement consommé au mois en cours. Quand on consulte le
     site en mai, on voit la pression de mai. Quand on revient en août, on voit la
     pression d'août. Tout bascule automatiquement.
   </p>
@@ -263,9 +339,9 @@
   <h3>Pression d'étiage&nbsp;: maximum juillet ou août</h3>
   <p>
     Pour la pression d'étiage estival, on prend pour chaque préleveur le
-    <strong>maximum</strong> entre son débit moyen de juillet et son débit moyen d'août.
-    L'idée&nbsp;: capturer le débit que ce préleveur impose au moment où la rivière est
-    typiquement au plus bas.
+    <strong>maximum</strong> entre son débit consommé moyen de juillet et son débit
+    consommé moyen d'août. L'idée&nbsp;: capturer la consommation que ce préleveur
+    impose au moment où la rivière est typiquement au plus bas.
   </p>
   <p>
     Le choix du maximum entre les deux mois (plutôt qu'un seul) reflète le fait que les
@@ -393,7 +469,7 @@
   </p>
 
   <p class="quote">
-    «&nbsp;Les modèles sont tous faux, mais certains sont utiles.&nbsp;» &nbsp;George E. P. Box
+    «&nbsp;Les modèles sont tous faux, mais certains sont utiles.&nbsp;» —&nbsp;George E. P. Box
   </p>
 
 </main>
@@ -401,12 +477,12 @@
 <footer class="foot">
   <div class="foot-inner">
     <p class="foot-line">
-      Données&nbsp;: MELCCFP - CEHQ - Déclarations RDPE/RREUE.
+      Données&nbsp;: MELCCFP — CEHQ — Déclarations RDPE/RREUE.
     </p>
     <p class="foot-meta">
       <a href="index.html">← Retour au tableau de bord</a>
       &nbsp;·&nbsp;
-      Initiative DEPESS - MELCCFP · Développement&nbsp;: Rollis&nbsp;Jiofack
+      Initiative DEPESS — MELCCFP · Développement&nbsp;: Rollis&nbsp;Jiofack
     </p>
   </div>
 </footer>

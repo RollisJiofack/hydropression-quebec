@@ -221,7 +221,7 @@ function openDetail(s) {
   }
 
   setMetric("m-actuelle", "m-actuelle-foot",
-    s.pression_observe_pct, "du débit naturel ponctionné");
+    s.pression_observe_pct, "du débit naturel consommé");
   setMetric("m-etiage", "m-etiage-foot",
     s.pression_etiage_pct, "si la rivière atteignait son Q2,7");
 
@@ -257,14 +257,14 @@ function openDetail(s) {
   );
 
   if (intervenantsActifs.length > 0) {
-    let html = `<p class="tech-intro">Préleveurs avec déclaration en <strong>${moisNom}</strong>, triés par débit moyen :</p>`;
+    let html = `<p class="tech-intro">Préleveurs avec déclaration en <strong>${moisNom}</strong>, triés par débit consommé moyen :</p>`;
     html += '<table class="tech-table"><thead><tr>';
     html += '<th class="rank-col">#</th>';
     html += '<th>Intervenant</th>';
     html += '<th>Secteur</th>';
     html += '<th>Municipalité</th>';
-    html += `<th class="right">Débit ${moisNom}<br><span class="th-sub">m³/s</span></th>`;
-    html += '<th class="right">Volume an.<br><span class="th-sub">Mm³</span></th>';
+    html += `<th class="right">Débit consommé<br><span class="th-sub">${moisNom}, m³/s</span></th>`;
+    html += '<th class="right">Volume an.<br><span class="th-sub">consommé, Mm³</span></th>';
     html += '<th class="right">Période<br><span class="th-sub">déclarations</span></th>';
     html += '</tr></thead><tbody>';
 
