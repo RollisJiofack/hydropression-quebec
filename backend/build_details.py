@@ -68,8 +68,8 @@ from shapely.geometry import Point
 # CONFIGURATION — à adapter selon ton installation
 # ============================================================
 
-CHEMIN_EXCEL = Path(r"C:\Données\prelevements-eau-declares-depuis-2012.xlsx")
-CHEMIN_RESEAU = Path(r"C:\chemin\vers\Atlas de l'eau\AtlasH2020_EA_HP.shp")
+CHEMIN_EXCEL = Path(r"C:\Users\jioro01\Desktop\pression-eau-quebec\prelevements-eau-declares-depuis-2012.xlsx")
+CHEMIN_RESEAU = Path(r"C:\Users\jioro01\Desktop\pression-eau-quebec\Atlas de l'eau\AtlasH2020_EA_HP.shp")
 
 ROOT = Path(__file__).resolve().parent
 CHEMIN_ETIAGES = ROOT / "data" / "debits_etiage_cehq.csv"
