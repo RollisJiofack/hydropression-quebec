@@ -689,19 +689,16 @@ body {
   .metric-value { font-size: 36px; }
 }
 
-/* Correction permanente : stabilise les marqueurs Leaflet au survol
-   - évite l’effet "yoyo" causé par transform: scale() sur les pastilles SVG
-   - conserve un rayon fixe et un comportement de clic stable */
-.leaflet-interactive.station-marker,
-.station-marker {
+
+/* Correction permanente : stabilise les marqueurs Leaflet au survol */
+.leaflet-interactive.station-marker {
   cursor: pointer;
   pointer-events: auto;
   transition: none !important;
   transform: none !important;
 }
 
-.leaflet-interactive.station-marker:hover,
-.station-marker:hover {
+.leaflet-interactive.station-marker:hover {
   transform: none !important;
   filter: none !important;
   stroke-width: 2 !important;
