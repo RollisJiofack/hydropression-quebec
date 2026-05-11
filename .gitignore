@@ -1,0 +1,3 @@
+# Données GRHQ lourdes utilisées localement seulement
+backend/data/grhq_filtre.gpkg
+backend/data/*.gpkg
