@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-build_details.py — HydroPression Québec (v3 — consommation)
+build_details.py — HydroPression Québec (BV_PRIM+SUPERFI — consommation)
 
 Reconstruit deux fichiers à partir du fichier Excel des déclarations :
 
@@ -9,51 +9,44 @@ Reconstruit deux fichiers à partir du fichier Excel des déclarations :
 2. details_intervenants.csv       — détail des préleveurs avec 12 valeurs
                                     mensuelles de débit consommé par préleveur
 
-CHANGEMENT MAJEUR vs v2 :
-- On calcule désormais la pression sur la base de la CONSOMMATION nette
-  (volume consommé) et non plus sur la base du PRÉLÈVEMENT brut.
-- La consommation est plus pertinente hydrologiquement : elle représente
-  le volume effectivement perdu pour le cours d'eau (évaporation, intégration
-  au produit, etc.), tandis que le reste est restitué à l'environnement.
+Méthode de calcul de la pression :
+- Pression sur la base de la CONSOMMATION nette, pas du prélèvement brut.
+- La consommation représente le volume effectivement perdu pour le cours d'eau
+  (évaporation, intégration au produit), le reste étant restitué.
 
 Méthode hybride à 4 niveaux pour déterminer la consommation :
-  Niveau 1 : si la colonne "Volume consommé par lieu par scian (L)" est
-             renseignée et > 0 dans la déclaration, on l'utilise directement.
-             Cette donnée vient soit du préleveur lui-même, soit d'un calcul
-             automatique du système PES-GPE basé sur le Tableau 3 du Guide
-             du préleveur.
-             → ~56 % des déclarations (couverture observée 2020-2024).
-
-  Niveau 2 : si le SCIAN du préleveur correspond à une des 14 catégories
-             officielles du Tableau 3 du Guide (aqueducs 2213, cultures
-             1111-1119, golfs 71391, élevage 1121-1129, aquaculture 1125/1141),
-             on applique le coefficient officiel.
-
-  Niveau 3 : sinon, si le SCIAN précis (5-6 chiffres) a au moins 5 observations
-             historiques avec ratio calculable dans RDPE 2020-2024,
-             on utilise la médiane empirique de ce SCIAN.
-
-  Niveau 4 : sinon, coefficient = 1.0 (consommation = prélèvement).
-             Choix conservateur, défendable et incite à enrichir le tableau.
+  Niveau 1 : colonne "Volume consommé par lieu par scian (L)" si > 0
+  Niveau 2 : coefficient officiel Tableau 3 du Guide du préleveur
+             (aqueducs 2213 → 15%, cultures 1111-1119 → 90%, golfs 71391 → 90%,
+              élevage 1121-1129 → 80%, aquaculture 1125/1141 → 0%)
+  Niveau 3 : médiane empirique par SCIAN précis (≥5 observations RDPE 2020-2024)
+  Niveau 4 : par défaut 1.0 (conservateur)
 
 Répartition multi-sites :
-  Quand un lieu a plusieurs sites de prélèvement, la consommation déclarée
-  est au niveau du lieu × scian × mois. On la répartit proportionnellement
-  au volume prélevé par chaque site (un site qui représente 70 % du volume
-  porte 70 % de la consommation).
+  Consommation au niveau lieu × scian × mois → répartie proportionnellement
+  au volume prélevé par chaque site.
 
-Filtre Surface uniquement (souterrain et aqueduc exclus).
+Méthode d'association préleveurs <-> stations :
+  Filtre BV_PRIM (même bassin primaire) + SUPERFI (surface drainée ≤ celle
+  de la station). Approche pragmatique, documentée comme une approximation.
+
+Profil mensuel sur 5 ans (2020-2024) :
+  Pour chaque mois (1-12) et chaque site : moyenne arithmétique du débit
+  journalier consommé sur les années où le site a déclaré ce mois-là.
+
+Pression d'étiage estival :
+  MAX(juillet, août) par site pour le débit consommé, comparé au Q2,7 estival.
+  Sites sans déclaration en juillet ni en août sur 5 ans → exclus de l'étiage.
 
 Cas particuliers :
 - volume = 0, jours > 0 : débit = 0
-- volume > 0, jours = 0 : ligne ignorée
+- volume > 0, jours = 0 : ligne ignorée (donnée erronée)
 
 Usage :
     cd backend
     python build_details.py
 """
 
-import re
 import sys
 import time
 from pathlib import Path
@@ -61,7 +54,6 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import geopandas as gpd
-from shapely.geometry import Point
 
 
 # ============================================================
@@ -117,7 +109,7 @@ def scian_str(v):
 
 
 # ============================================================
-# Coefficients de consommation
+# Coefficients de consommation (hybride 4 niveaux)
 # ============================================================
 
 def charger_coefficients():
@@ -128,7 +120,6 @@ def charger_coefficients():
     coefs = pd.read_csv(CHEMIN_COEFFICIENTS, encoding="utf-8-sig")
     coefs["prefixe_scian"] = coefs["prefixe_scian"].astype(str)
 
-    # Séparer en deux dictionnaires : officiels (par préfixe) et empiriques (par SCIAN exact)
     officiels = {}
     empiriques = {}
     for _, r in coefs.iterrows():
@@ -149,16 +140,13 @@ def coefficient_pour_scian(scian, officiels, empiriques):
     if not s:
         return 1.0, "non renseigne"
 
-    # Niveau 2 : préfixe officiel (4 ou 5 chiffres)
     for prefixe, coef in officiels.items():
         if s.startswith(prefixe):
             return coef, f"officiel_{prefixe}"
 
-    # Niveau 3 : médiane empirique sur SCIAN exact
     if s in empiriques:
         return empiriques[s], f"empirique_{s}"
 
-    # Niveau 4 : par défaut
     return 1.0, "defaut"
 
 
@@ -230,20 +218,12 @@ def calculer_consommation(df, officiels, empiriques):
     """
     Pour chaque ligne (lieu × site × scian × mois × année), détermine le
     volume consommé selon la stratégie hybride à 4 niveaux.
-
-    Retourne le DataFrame avec deux colonnes ajoutées :
-    - vol_consomme_L : volume consommé pour cette ligne (en L)
-    - source_consommation : niveau qui a fourni la valeur (1, 2, 3 ou 4)
     """
     print("\n" + "=" * 68)
     print("ÉTAPE 1b — Calcul de la consommation (méthode hybride 4 niveaux)")
     print("=" * 68)
 
-    # NIVEAU 1 : la colonne consommation est renseignée et > 0
-    # ATTENTION : la valeur est au niveau du LIEU × SCIAN × MOIS, pas du SITE.
-    # Pour un lieu avec plusieurs sites, on doit la répartir proportionnellement.
-
-    # Étape 1a : agréger volumes prélevés par lieu × scian × mois × année
+    # Agréger volumes prélevés par lieu × scian × mois × année
     vol_par_lieu = df.groupby([
         "Numéro du lieu", "Code SCIAN par site par mois", "Année", "Mois"
     ])["Volume ventilé par code SCIAN par site (L)"].sum().reset_index()
@@ -255,14 +235,12 @@ def calculer_consommation(df, officiels, empiriques):
         "Numéro du lieu", "Code SCIAN par site par mois", "Année", "Mois"
     ], how="left")
 
-    # Étape 1b : part du site dans le total du lieu × scian × mois
     df["_part_site"] = np.where(
         df["_vol_lieu_total"] > 0,
         df["Volume ventilé par code SCIAN par site (L)"] / df["_vol_lieu_total"],
         0.0
     )
 
-    # Étape 1c : la consommation N1 = colonne Volume consommé × part du site
     df["vol_consomme_L"] = np.nan
     df["source_consommation"] = "non_calcule"
 
@@ -315,9 +293,7 @@ def calculer_consommation(df, officiels, empiriques):
     )
     df["debit_consomme_jour_m3s"] = df["debit_consomme_jour_m3s"].fillna(0)
 
-    # On nettoie les colonnes temporaires
     df = df.drop(columns=["_vol_lieu_total", "_part_site"])
-
     return df
 
 
@@ -334,17 +310,14 @@ def calculer_profil_mensuel(df_decl):
     print("ÉTAPE 2 — Profil mensuel de consommation par site (moyenne 5 ans)")
     print("=" * 68)
 
-    # Agréger par (site × mois × année) : un débit consommé par mois × année
     par_an = df_decl.groupby(
         ["Numéro du prélèvement", "Mois", "Année"]
     )["debit_consomme_jour_m3s"].mean().reset_index()
 
-    # Moyenne sur les années pour chaque (site × mois)
     profil = par_an.groupby(
         ["Numéro du prélèvement", "Mois"]
     )["debit_consomme_jour_m3s"].mean().reset_index()
 
-    # Pivoter pour avoir 12 colonnes (1 par mois)
     pivot = profil.pivot(
         index="Numéro du prélèvement",
         columns="Mois",
@@ -377,7 +350,6 @@ def calculer_profil_mensuel(df_decl):
         derniere_annee=("Année", "max"),
     )
 
-    # Volume annuel moyen consommé sur les années actives
     df_vol_an = df_decl.groupby(["Numéro du prélèvement", "Année"])[
         "vol_consomme_L"
     ].sum().reset_index()
@@ -422,7 +394,7 @@ def charger_reseau_et_stations():
         gdf.set_crs("EPSG:32198", inplace=True)
     elif gdf.crs.to_epsg() != 32198:
         gdf = gdf.to_crs("EPSG:32198")
-    print(f"  Réseau : {len(gdf):,} tronçons")
+    print(f"  Réseau Atlas : {len(gdf):,} tronçons")
 
     etiages = pd.read_csv(CHEMIN_ETIAGES, encoding="utf-8-sig")
     etiages["station_norm"] = etiages["station"].astype(str).str.split("_").str[0].apply(normalize_code)
@@ -444,7 +416,7 @@ def construire_stations(gdf_reseau, df_etiages):
         for code in s.replace(" ", "").split(","):
             if code and code != "-":
                 tronc_par_station[normalize_code(code)] = idx
-    print(f"  Stations dans le réseau : {len(tronc_par_station)}")
+    print(f"  Stations dans le réseau Atlas : {len(tronc_par_station)}")
 
     rows = []
     for _, et in df_etiages.iterrows():
@@ -479,7 +451,7 @@ def construire_stations(gdf_reseau, df_etiages):
 
 def snap_sites_sur_reseau(df_sites, gdf_reseau):
     print("\n" + "=" * 68)
-    print("ÉTAPE 5 — Snap des sites sur le réseau (1-3 min)")
+    print("ÉTAPE 5 — Snap des sites sur le réseau Atlas")
     print("=" * 68)
 
     gdf_sites = gpd.GeoDataFrame(
@@ -505,21 +477,24 @@ def snap_sites_sur_reseau(df_sites, gdf_reseau):
 
 
 # ============================================================
-# ÉTAPE 6 — Calcul de la pression et détails
+# ÉTAPE 6 — Calcul de la pression et détails (BV_PRIM + SUPERFI)
 # ============================================================
 
 def calculer_pression_et_details(df_stations, df_sites_snapes):
     print("\n" + "=" * 68)
-    print("ÉTAPE 6 — Pression par station et détails par préleveur")
+    print("ÉTAPE 6 — Pression par station (BV_PRIM + SUPERFI)")
     print("=" * 68)
 
     pression_rows = []
     details_rows = []
 
     for _, st in df_stations.iterrows():
+        # Filtre 1 : même bassin primaire
         sites_bv = df_sites_snapes[df_sites_snapes["BV_PRIM"] == st["bv_prim"]]
+        # Filtre 2 : SUPERFI plus petite (= en amont)
         sites_amont = sites_bv[sites_bv["SUPERFI"] <= st["superficie_km2"]].copy()
 
+        # Pour pression d'étiage : seulement sites avec activité juillet/août
         sites_etiage = sites_amont[sites_amont["debit_etiage_m3s"] > 0].copy()
         debit_etiage_total = sites_etiage["debit_etiage_m3s"].sum()
         q27 = st["q27_ete_m3s"]
@@ -528,6 +503,7 @@ def calculer_pression_et_details(df_stations, df_sites_snapes):
             if (q27 + debit_etiage_total) > 0 else None
         )
 
+        # Pour chaque mois : somme des débits amont
         debits_mensuels_station = {}
         for mois in range(1, 13):
             col = f"debit_mois_{mois:02d}_m3s"
@@ -550,6 +526,7 @@ def calculer_pression_et_details(df_stations, df_sites_snapes):
             row[f"debit_preleve_mois_{mois:02d}_m3s"] = debits_mensuels_station[mois]
         pression_rows.append(row)
 
+        # Détails : top N préleveurs amont
         sorted_amont = sites_amont.sort_values("debit_etiage_m3s", ascending=False)
         top_n = sorted_amont.head(TOP_N_INTERVENANTS)
         n_autres = len(sorted_amont) - len(top_n)
@@ -604,11 +581,11 @@ def calculer_pression_et_details(df_stations, df_sites_snapes):
 
 def main():
     t_start = time.time()
-    print("\n🌊 HydroPression Québec — Reconstruction des données (v3)")
+    print("\n🌊 HydroPression Québec — Reconstruction des données")
     print("   Méthode : consommation hybride 4 niveaux + profil mensuel 5 ans")
-    print("            + MAX(juillet, août) pour étiage\n")
+    print("            + MAX(juillet, août) pour étiage")
+    print("            + filtre amont par BV_PRIM + SUPERFI (Atlas)\n")
 
-    # Charger les coefficients
     print("Chargement des coefficients de consommation...")
     officiels, empiriques = charger_coefficients()
     print(f"  {len(officiels)} coefficients officiels (Tableau 3 RDPE)")
@@ -636,7 +613,8 @@ def main():
     print("Prochaines étapes :")
     print("  1. python enrich_csv_with_coords.py")
     print("  2. python generate_state.py")
-    print("  3. Recharger l'app web")
+    print("  3. Vérifier le rendu en local")
+    print("  4. Push sur GitHub")
 
 
 if __name__ == "__main__":

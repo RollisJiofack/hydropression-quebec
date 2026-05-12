@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_state.py — HydroPression Québec (v2)
+generate_state.py — HydroPression Québec
 
 Génère etat_pression.json consommé par la web app.
 
@@ -12,13 +12,12 @@ Sources :
 
 Logique de calcul de la pression actuelle :
 - On détermine le MOIS COURANT (selon la date du jour, fuseau Toronto).
-- Pour chaque station, on prend le débit prélevé du mois courant
-  (debit_preleve_mois_XX_m3s).
+- Pour chaque station, on prend le débit consommé du mois courant.
 - On calcule en live :
-    pression_actuelle = prélèvement_mois / (débit_observé_live + prélèvement_mois) × 100
+    pression_actuelle = consommation_mois / (débit_observé_live + consommation_mois) × 100
 
 Logique pour la pression d'étiage :
-- Toujours basée sur le débit MAX(juillet, août) calculé statiquement.
+- Toujours basée sur le débit consommé MAX(juillet, août) calculé statiquement.
 - Comparaison au Q2,7 estival.
 
 Usage :
@@ -27,6 +26,7 @@ Usage :
 
 import argparse
 import json
+import math
 import sys
 import time
 from datetime import datetime, timezone
@@ -153,6 +153,22 @@ def determiner_mois_courant(forcer_mois=None) -> int:
     return datetime.now(ZoneInfo("America/Toronto")).month
 
 
+def _clean_for_json(x):
+    """Convertit NaN / Inf en None pour produire un JSON valide côté navigateur."""
+    if isinstance(x, float):
+        if math.isnan(x) or math.isinf(x):
+            return None
+        return x
+
+    if isinstance(x, dict):
+        return {k: _clean_for_json(v) for k, v in x.items()}
+
+    if isinstance(x, list):
+        return [_clean_for_json(v) for v in x]
+
+    return x
+
+
 # --- Calcul de l'état -----------------------------------------------------
 
 def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant: int) -> dict:
@@ -177,10 +193,10 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
         else:
             n_updated += 1
 
-        # Débit prélevé du mois courant
+        # Débit consommé du mois courant
         debit_preleve_mois = safe_num(row.get(col_mois)) or 0.0
 
-        # Pression actuelle = prélèvement_mois / (observé + prélèvement_mois)
+        # Pression actuelle = consommation_mois / (observé + consommation_mois)
         if debit_obs is not None and debit_preleve_mois is not None:
             debit_naturel = float(debit_obs) + float(debit_preleve_mois)
             pression_obs = (
@@ -196,7 +212,7 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
         debit_etiage = safe_num(row.get("debit_preleve_etiage_m3s"))
         q27 = safe_num(row.get("q27_ete_m3s"))
 
-        # Construire le tableau des 12 valeurs mensuelles (pour le frontend)
+        # Construire le tableau des 12 valeurs mensuelles
         debits_mensuels = {}
         for m in range(1, 13):
             v = safe_num(row.get(f"debit_preleve_mois_{m:02d}_m3s"))
@@ -204,8 +220,6 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
 
         # Détails intervenants pour cette station
         intervenants_raw = details.get(code, [])
-        # Filtrer pour le mois courant : ne garder que les préleveurs avec débit > 0
-        # mais garder l'agrégat "+N autres" toujours s'il est non nul
         intervenants_mois = []
         n_zero = 0
         col_mois_int = f"debit_mois_{mois_courant:02d}_m3s"
@@ -213,10 +227,8 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
             d = it.get(col_mois_int, 0) or 0
             is_aggregate = (it.get("num_site") is None or pd.isna(it.get("num_site")) or it.get("num_site") == "")
             if d > 0 or is_aggregate:
-                # Construire la version "frontend" avec le débit du mois
                 it_out = dict(it)
                 it_out["debit_mois_courant_m3s"] = float(d) if not pd.isna(d) else 0.0
-                # Nettoyer les NaN pour JSON
                 for k, v in list(it_out.items()):
                     if isinstance(v, float) and pd.isna(v):
                         it_out[k] = None
@@ -224,7 +236,6 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
             else:
                 n_zero += 1
 
-        # Trier par débit du mois courant décroissant
         intervenants_mois.sort(
             key=lambda x: x.get("debit_mois_courant_m3s", 0) or 0,
             reverse=True
@@ -244,20 +255,16 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
             "date_mesure": live_data.get("date_mesure"),
             "etat_cehq": live_data.get("etat"),
             "url_cehq": live_data.get("url_cehq"),
-            # Pression actuelle (mois courant + débit live)
             "debit_obs_m3s": safe_num(debit_obs),
             "debit_preleve_m3s": safe_num(debit_preleve_mois),
             "debit_naturel_m3s": safe_num(debit_naturel),
             "pression_observe_pct": safe_num(pression_obs),
             "categorie_observe": categoriser(pression_obs),
-            # Pression d'étiage (statique, MAX juillet-août vs Q2,7)
             "q27_ete_m3s": q27,
             "debit_preleve_etiage_m3s": debit_etiage,
             "pression_etiage_pct": pression_etiage,
             "categorie_etiage": categoriser(pression_etiage),
-            # Pour le frontend : débits mensuels complets
             "debits_mensuels_m3s": debits_mensuels,
-            # Détails intervenants
             "intervenants": intervenants_mois,
         }
         stations_out.append(station_data)
@@ -291,7 +298,7 @@ def main():
     args = parser.parse_args()
 
     print("=" * 60)
-    print("HydroPression Québec — Génération de l'état (v2)")
+    print("HydroPression Québec — Génération de l'état")
     print("=" * 60)
 
     mois_courant = determiner_mois_courant(args.mois)
@@ -310,10 +317,11 @@ def main():
         live = {}
 
     state = compute_state(static, live, details, mois_courant)
+    state = _clean_for_json(state)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(state, f, ensure_ascii=False, indent=2)
+        json.dump(state, f, ensure_ascii=False, indent=2, allow_nan=False)
 
     size_kb = OUTPUT_PATH.stat().st_size / 1024
     print(f"\n✅ {OUTPUT_PATH.relative_to(ROOT.parent)} ({size_kb:.1f} KB)")

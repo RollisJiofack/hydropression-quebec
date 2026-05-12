@@ -1,3 +1,7 @@
 # Données GRHQ lourdes utilisées localement seulement
 backend/data/grhq_filtre.gpkg
-backend/data/*.gpkg
+backend/data/*.gpkgbackend/data/stations_cehq/ 
+backend/data/grhq_*.gpkg 
+backend/data/appariement_preleveurs_stations.csv 
+backend/data/diagnostic_*.csv 
+backend/data/preleveurs_non_rattachables.csv 
