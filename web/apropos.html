@@ -382,6 +382,63 @@
     </li>
   </ul>
 
+  <h2 id="stations">Identification et coordonnées des stations</h2>
+
+  <h3>Stations composites (fusionnées)</h3>
+  <p>
+    Certaines stations affichées portent un code à suffixes, par exemple
+    <code>011204_01</code> ou <code>030345_41_34</code>. Il s'agit de
+    <strong>stations composites</strong> au sens officiel du Centre d'expertise hydrique
+    du Québec&nbsp;: les statistiques hydrologiques (Q2,7, débits historiques) ont été
+    calculées en fusionnant les enregistrements de plusieurs stations physiques
+    successives sur la même rivière.
+  </p>
+  <p class="quote">
+    «&nbsp;Au fil du temps, de nouvelles stations hydrométriques sont ouvertes et
+    d'autres sont fermées. Il arrive qu'une station soit fermée et remplacée par une
+    nouvelle&nbsp;[…]. Il est alors possible de fusionner les données enregistrées à
+    ces stations afin d'en obtenir une seule série.&nbsp;»
+    <span style="display:block; font-style: normal; font-size:13px; margin-top: 8px; opacity:0.7;">
+      — Centre d'expertise hydrique du Québec
+    </span>
+  </p>
+  <p>
+    Par exemple, <code>011204_01</code> désigne la station 011204 (la plus récente)
+    fusionnée avec la 011201. <code>030345_41_34</code> désigne la fusion des stations
+    030345, 030341 et 030334. Cette méthode officielle permet de disposer d'une longue
+    série historique cohérente sur une rivière donnée, même lorsque le point de mesure
+    physique a légèrement bougé au fil des décennies.
+  </p>
+  <p>
+    Sur la carte, la station composite est positionnée aux coordonnées de la station
+    la plus récente (le premier code). Les caractéristiques du bassin versant (surface
+    drainée, Q2,7) correspondent à la série fusionnée publiée par le CEHQ.
+  </p>
+
+  <h3>Sources des coordonnées</h3>
+  <p>
+    Les coordonnées affichées sur la carte sont récupérées en cascade selon trois
+    sources officielles, par ordre de priorité&nbsp;:
+  </p>
+  <ol style="margin: 8px 0 24px 24px;">
+    <li style="margin-bottom: 8px;">
+      <strong>Application Vigilance</strong>&nbsp;: coordonnées exactes du limnimètre
+      pour les stations en service avec télémétrie.
+    </li>
+    <li style="margin-bottom: 8px;">
+      <strong>Données Québec — stations fermées</strong>&nbsp;: coordonnées exactes
+      des stations historiques désactivées, telles que publiées dans le jeu de
+      données officiel du CEHQ.
+    </li>
+    <li>
+      <strong>Données Québec — bassins versants des stations ouvertes</strong>&nbsp;:
+      pour quelques stations en service non diffusées par l'API temps réel, on
+      utilise comme approximation le centroïde du polygone de bassin versant
+      officiel publié par le CEHQ. Cette source est minoritaire et permet
+      d'assurer qu'aucune station n'est exclue de la carte.
+    </li>
+  </ol>
+
   <h2 id="limitations">Ce que cet outil <em>ne fait pas</em></h2>
 
   <h3>Eaux souterraines exclues</h3>
@@ -407,7 +464,11 @@
     hydroclimatique du Québec comme proxy d'un bassin amont. Cette approche élimine
     l'essentiel des faux positifs sans la complexité d'un parcours de graphe sur le
     réseau hydrographique. Elle reste néanmoins une approximation par rapport à un
-    vrai parcours hydrologique.
+    vrai parcours hydrologique&nbsp;: un préleveur peut occasionnellement être compté
+    pour une station alors qu'il se trouve en réalité dans un sous-bassin parallèle.
+    L'intégration d'un vrai parcours amont sur la Géobase du réseau hydrographique
+    du Québec (GRHQ) est prévue dans une version ultérieure, en attente du service
+    web GRHQ-HR annoncé pour 2026.
   </p>
 
   <h3>Volumes mensuels lissés en débit journalier</h3>
@@ -422,10 +483,10 @@
 
   <h3>Couverture des stations</h3>
   <p>
-    Cette première version couvre les stations hydrométriques actives en temps réel
-    qui sont à la fois&nbsp;: présentes dans le réseau hydrographique de l'Atlas
-    (millésime 2020-2022), et disposant d'un Q2,7 calculé. Les stations plus récentes
-    ou sur de très petits cours d'eau ne sont pas encore couvertes.
+    Cette version couvre les stations hydrométriques qui sont à la fois&nbsp;:
+    présentes dans le réseau hydrographique de l'Atlas (millésime 2020-2022) et
+    disposant d'un Q2,7 calculé publié par le CEHQ. Les stations plus récentes ou
+    sur de très petits cours d'eau ne sont pas encore couvertes.
   </p>
 
   <h2 id="sources">Sources de données</h2>
@@ -448,10 +509,19 @@
       <a href="https://www.donneesquebec.ca/recherche/dataset/station-et-bassin-debit-niveau-grand-public" target="_blank" rel="noopener">Données Québec</a>.
     </li>
     <li>
+      <strong>Coordonnées des stations historiques&nbsp;:</strong>
+      <a href="https://www.donneesquebec.ca/recherche/dataset/stations-hydrometriques" target="_blank" rel="noopener">Jeu
+      de données «&nbsp;Stations hydrométriques&nbsp;»</a> publié sur Données Québec
+      (bassins versants des stations ouvertes et coordonnées exactes des stations
+      fermées).
+    </li>
+    <li>
       <strong>Débits d'étiage Q2,7 / Q5,30 / Q10,7&nbsp;:</strong>
       <a href="https://www.cehq.gouv.qc.ca/debit-etiage/tableau-debits-etiage-stations-hydrometriques.pdf" target="_blank" rel="noopener">Tableau
       des débits d'étiage aux stations hydrométriques</a> publié par le Centre
-      d'expertise hydrique du Québec.
+      d'expertise hydrique du Québec. La documentation officielle sur les
+      <a href="https://www.cehq.gouv.qc.ca/debits-crues/stations-hydrometriques.htm" target="_blank" rel="noopener">stations
+      fusionnées</a> y est également décrite.
     </li>
     <li>
       <strong>Réseau hydrographique avec bassins primaires&nbsp;:</strong>
