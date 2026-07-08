@@ -326,6 +326,14 @@ def main():
 
     try:
         live = fetch_stations_with_retries()
+        # Vérifier qu'on a un nombre minimal de stations live avec debit_obs
+        n_live_with_debit = sum(1 for v in live.values() if safe_num(v.get("debit_obs_m3s")) is not None)
+        n_static = len(static)
+        min_required = max(5, int(0.1 * n_static))
+        print(f"  {n_live_with_debit} stations avec débit live; exigence minimale: {min_required}")
+        if n_live_with_debit < min_required:
+            print("  ❌ Trop peu de stations live récupérées — échec pour alerter via CI.")
+            sys.exit(2)
     except Exception as e:
         print(f"  ⚠️  Échec API CEHQ : {e}")
         print(f"     On continue avec les valeurs du CSV.")
@@ -346,4 +354,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
