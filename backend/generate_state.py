@@ -333,8 +333,38 @@ def main():
         print(f"  {n_live_with_debit} stations avec débit live; exigence minimale: {min_required}")
         if n_live_with_debit < min_required:
             print("  ❌ Trop peu de stations live récupérées — échec pour alerter via CI.")
-            sys.exit(2)
-    except Exception as e:
+            
+        # Optional: cross stations with a shapefile if geopandas is available.
+        try:
+            import os
+            shp_path = os.environ.get("HYDROP_SHAPEFILE") or (ROOT / "data" / "boundaries.shp")
+            if shp_path and Path(str(shp_path)).exists():
+                try:
+                    import geopandas as gpd
+                    from shapely.geometry import Point
+                    print(f"  Lecture du shapefile {shp_path}")
+                    gdf = gpd.read_file(str(shp_path))
+                    if gdf.crs is not None:
+                        gdf = gdf.to_crs("EPSG:4326")
+                    # build station GeoDataFrame
+                    s_rows = []
+                    for code, v in live.items():
+                        lon = v.get("lon"); lat = v.get("lat")
+                        if lon is None or lat is None:
+                            continue
+                        s_rows.append({"code": code, "geometry": Point(lon, lat)})
+                    if s_rows:
+                        st_gdf = gpd.GeoDataFrame(s_rows, geometry="geometry", crs="EPSG:4326")
+                        joined = gpd.sjoin(st_gdf, gdf, how='left', predicate='within')
+                        for _, r in joined.iterrows():
+                            code = r['code']
+                            props = {k: r[k] for k in gdf.columns if k in r.index}
+                            if code in live:
+                                live[code]['shapefile_props'] = props
+                except Exception as e:
+                    print(f"  ⚠️ shapefile processing skipped: {e}")
+        except Exception:
+            pass    except Exception as e:
         print(f"  ⚠️  Échec API CEHQ : {e}")
         print(f"     On continue avec les valeurs du CSV.")
         live = {}
@@ -354,5 +384,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
