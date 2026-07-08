@@ -291,6 +291,21 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
 
 # --- Main ------------------------------------------------------------------
 
+def fetch_stations_with_retries(max_attempts=4, backoff_factor=2):
+    """
+    Wrapper around fetch_stations() adding retries with exponential backoff.
+    Returns {} on total failure.
+    """
+    for attempt in range(1, max_attempts + 1):
+        try:
+            return fetch_stations()
+        except Exception as e:
+            wait = backoff_factor ** (attempt - 1)
+            print(f"  ⚠️  Tentative {attempt}/{max_attempts} échouée: {e} — attente {wait}s")
+            time.sleep(wait)
+    print("  ❌ Toutes les tentatives pour contacter l'API CEHQ ont échoué. On continue avec les valeurs CSV.")
+    return {}
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--mois", type=int, default=None,
@@ -310,7 +325,7 @@ def main():
     details = load_intervenants_detail()
 
     try:
-        live = fetch_stations()
+        live = fetch_stations_with_retries()
     except Exception as e:
         print(f"  ⚠️  Échec API CEHQ : {e}")
         print(f"     On continue avec les valeurs du CSV.")
@@ -331,3 +346,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
