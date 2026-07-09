@@ -34,7 +34,10 @@ jobs:
           python-version: "3.12"
 
       - name: Install Python dependencies
-        run: pip install requests pandas pyproj tzdata
+        run: pip install requests pandas pyproj tzdata playwright
+
+      - name: Install Playwright browser
+        run: python -m playwright install --with-deps chromium
 
       - name: Generate state
         run: cd backend && python generate_state.py
