@@ -74,12 +74,20 @@ function renderFreshnessBanner() {
   const header = document.querySelector("header.topbar");
   if (!header) return;
 
-  const measure = d.latest_live_measure_utc
+  const latestLive = d.latest_live_measure_utc
     ? fmt.date(d.latest_live_measure_utc)
-    : (d.generated_at ? fmt.date(d.generated_at) : null);
-  const detail = measure
-    ? `Les débits affichés datent du ${measure} et ne reflètent pas la situation en temps réel.`
-    : `La source de débits en temps réel est momentanément indisponible.`;
+    : null;
+
+  const previousCount = d.n_stations_debit_precedent ?? 0;
+
+  let detail;
+  if (latestLive) {
+    detail = `La mesure live la plus récente date du ${latestLive}; les débits peuvent être périmés.`;
+  } else if (previousCount > 0) {
+    detail = `La source de débits en temps réel est momentanément indisponible; certaines valeurs affichées proviennent du dernier état connu.`;
+  } else {
+    detail = `La source de débits en temps réel est momentanément indisponible.`;
+  }
 
   const banner = document.createElement("div");
   banner.id = "freshness-banner";
