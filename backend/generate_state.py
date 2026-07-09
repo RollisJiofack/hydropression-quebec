@@ -8,7 +8,7 @@ Sources :
 1. CSV statique :
    - resultats_pression_phase2.csv (12 colonnes mensuelles + étiage)
    - details_intervenants.csv (12 valeurs mensuelles par préleveur)
-2. API publique CEHQ : débits actuels.
+2. API publique MSP / Vigilance (débits actuels agrégés du CEHQ, EC, etc.).
 
 Logique de calcul de la pression actuelle :
 - On détermine le MOIS COURANT (selon la date du jour, fuseau Toronto).
@@ -20,16 +20,39 @@ Logique pour la pression d'étiage :
 - Toujours basée sur le débit consommé MAX(juillet, août) calculé statiquement.
 - Comparaison au Q2,7 estival.
 
+--- CORRECTIFS 2026-07 -------------------------------------------------------
+Le service geoegl.msp.gouv.qc.ca a placé un challenge anti-bot devant l'API.
+Un User-Agent non-navigateur (ancien "HydroPression-Quebec/2.0") reçoit une
+page HTML "Please enable JavaScript" au lieu du GeoJSON ; r.json() levait alors
+une exception avalée silencieusement par le try/except, ce qui figeait le site
+sur les dernières valeurs connues (n_stations_debit_live = 0) sans le signaler.
+
+Ce module :
+  * envoie des en-têtes de navigateur réalistes ;
+  * réessaie avec back-off ;
+  * DÉTECTE une réponse de type challenge/HTML et échoue avec un message clair ;
+  * expose fetch_status + data_stale + latest_live_measure_utc dans le JSON de
+    sortie, pour que le front puisse afficher un bandeau "données non à jour"
+    plutôt que de servir du gelé en silence ;
+  * détecte la PÉREMPTION de la source : si même la mesure live la plus récente
+    dépasse HP_STALE_AFTER_HOURS heures, data_stale=True.
+
 Usage :
     python generate_state.py [--mois N]   (--mois pour forcer un mois précis, debug)
+
+Variables d'environnement (optionnelles) :
+    HP_STALE_AFTER_HOURS   seuil de péremption en heures        (défaut 6)
+    HP_FETCH_RETRIES       nombre de tentatives réseau           (défaut 3)
+    HP_FETCH_TIMEOUT       timeout par tentative en secondes     (défaut 60)
 """
 
 import argparse
 import json
 import math
+import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -55,11 +78,32 @@ API_URL = (
     "&typename=stations_igo2_public&outputformat=geojson"
 )
 
+# En-têtes de navigateur : un User-Agent applicatif custom déclenche le
+# challenge anti-bot du serveur MSP. On se présente comme un navigateur réel.
+BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+    ),
+    "Accept": "application/json, application/geo+json, text/plain, */*",
+    "Accept-Language": "fr-CA,fr;q=0.9,en;q=0.8",
+    "Referer": "https://vigilance.geo.msp.gouv.qc.ca/",
+    "Connection": "keep-alive",
+}
+
+STALE_AFTER_HOURS = float(os.environ.get("HP_STALE_AFTER_HOURS", "6"))
+FETCH_RETRIES = int(os.environ.get("HP_FETCH_RETRIES", "3"))
+FETCH_TIMEOUT = int(os.environ.get("HP_FETCH_TIMEOUT", "60"))
+
 NOMS_MOIS = {
     1: "janvier", 2: "février", 3: "mars", 4: "avril",
     5: "mai", 6: "juin", 7: "juillet", 8: "août",
     9: "septembre", 10: "octobre", 11: "novembre", 12: "décembre",
 }
+
+
+class ChallengeDetected(RuntimeError):
+    """La réponse ressemble à une page anti-bot / HTML, pas à du GeoJSON."""
 
 
 # --- Utilitaires ----------------------------------------------------------
@@ -70,24 +114,114 @@ def normalize_code(code) -> str:
     return str(code).strip().lstrip("0")
 
 
-def fetch_stations() -> dict:
-    print(f"[{datetime.now():%H:%M:%S}] Appel API CEHQ...")
-    t0 = time.time()
-    r = requests.get(
-        API_URL,
-        timeout=60,
-        headers={"User-Agent": "HydroPression-Quebec/2.0"},
+def _looks_like_html(text: str) -> bool:
+    """Détecte une page de challenge / HTML renvoyée à la place du GeoJSON."""
+    head = text.lstrip()[:600].lower()
+    signaux = (
+        "<!doctype html",
+        "<html",
+        "enable javascript",
+        "please enable",
+        "captcha",
+        "incapsula",
+        "cf-browser-verification",
+        "challenge-platform",
     )
-    r.raise_for_status()
-    data = r.json()
+    return any(s in head for s in signaux)
+
+
+def _parse_utc(value):
+    """Parse un horodatage ISO en datetime UTC (gère offsets, 'Z', fractions)."""
+    if not value:
+        return None
+    txt = str(value).strip()
+    # 1) fromisoformat gère 'T', les offsets (+00:00) et 'Z' (Python 3.11+).
+    try:
+        dt = datetime.fromisoformat(txt.replace("Z", "+00:00"))
+        return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+    except ValueError:
+        pass
+    # 2) Repli : formats sans offset.
+    base = txt.replace("Z", "").split("+")[0].split(".")[0]
+    for fmt in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%dT%H:%M", "%Y-%m-%d %H:%M:%S"):
+        try:
+            return datetime.strptime(base, fmt).replace(tzinfo=timezone.utc)
+        except ValueError:
+            continue
+    return None
+
+
+def fetch_stations() -> tuple[dict, dict]:
+    """
+    Interroge l'API MSP/Vigilance et retourne (stations, meta).
+
+    meta = {
+        "ok": bool, "error": str|None, "n_features": int,
+        "n_avec_debit": int, "latest_measure_utc": str|None,
+        "source": str, "fetched_at": str,
+    }
+    """
+    meta = {
+        "ok": False,
+        "error": None,
+        "n_features": 0,
+        "n_avec_debit": 0,
+        "latest_measure_utc": None,
+        "source": "geoegl.msp.gouv.qc.ca/mapserver-vigilance",
+        "fetched_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+    last_exc = None
+    data = None
+    for tentative in range(1, FETCH_RETRIES + 1):
+        print(f"[{datetime.now():%H:%M:%S}] Appel API MSP/Vigilance "
+              f"(tentative {tentative}/{FETCH_RETRIES})...")
+        t0 = time.time()
+        try:
+            r = requests.get(API_URL, timeout=FETCH_TIMEOUT, headers=BROWSER_HEADERS)
+            r.raise_for_status()
+
+            ctype = r.headers.get("Content-Type", "").lower()
+            body = r.text
+
+            # Le serveur peut renvoyer 200 + HTML (page de challenge anti-bot).
+            if "html" in ctype or _looks_like_html(body):
+                raise ChallengeDetected(
+                    f"réponse HTML/challenge (Content-Type={ctype or 'inconnu'}). "
+                    "Le serveur bloque probablement le client (User-Agent ou IP)."
+                )
+
+            data = r.json()
+            print(f"  Réponse reçue en {time.time()-t0:.1f}s")
+            break
+
+        except ChallengeDetected as e:
+            last_exc = e
+            print(f"  ⚠️  {e}")
+        except (requests.RequestException, ValueError) as e:
+            last_exc = e
+            print(f"  ⚠️  Échec réseau/parse : {e}")
+
+        if tentative < FETCH_RETRIES:
+            attente = 2 ** tentative
+            print(f"     Nouvelle tentative dans {attente}s...")
+            time.sleep(attente)
+
+    if data is None:
+        meta["error"] = f"{type(last_exc).__name__}: {last_exc}"
+        return {}, meta
+
     features = data.get("features", [])
-    print(f"  {len(features)} stations reçues en {time.time()-t0:.1f}s")
+    meta["n_features"] = len(features)
     if not features:
-        raise RuntimeError("API CEHQ sans station exploitable")
+        meta["error"] = "API sans station exploitable (0 feature)"
+        return {}, meta
 
     transformer = Transformer.from_crs("EPSG:32198", "EPSG:4326", always_xy=True)
 
     out = {}
+    latest = None
+    n_avec_debit = 0
     for f in features:
         p = f["properties"]
         code = normalize_code(p.get("station"))
@@ -97,16 +231,36 @@ def fetch_stations() -> dict:
         lon = lat = None
         if coords and len(coords) >= 2:
             lon, lat = transformer.transform(coords[0], coords[1])
+
+        debit = p.get("dern_valeur_deb")
+        if debit is not None:
+            n_avec_debit += 1
+
+        date_mesure = p.get("dern_date_prise_valeur_utc")
+        dt = _parse_utc(date_mesure)
+        if dt is not None and (latest is None or dt > latest):
+            latest = dt
+
         out[code] = {
-            "debit_obs_m3s": p.get("dern_valeur_deb"),
+            "debit_obs_m3s": debit,
             "niveau_m": p.get("dern_valeur_niv"),
-            "date_mesure": p.get("dern_date_prise_valeur_utc"),
+            "date_mesure": date_mesure,
             "etat": p.get("etat"),
             "url_cehq": p.get("fournisseur_url"),
             "lon": lon,
             "lat": lat,
         }
-    return out
+
+    meta["ok"] = True
+    meta["n_avec_debit"] = n_avec_debit
+    meta["latest_measure_utc"] = latest.isoformat() if latest else None
+
+    print(f"  {len(out)} stations reçues, {n_avec_debit} avec un débit publié")
+    if latest:
+        age_h = (datetime.now(timezone.utc) - latest).total_seconds() / 3600.0
+        print(f"  Mesure la plus récente : {latest.isoformat()} "
+              f"(il y a {age_h:.1f} h)")
+    return out, meta
 
 
 def categoriser(pression_pct):
@@ -168,7 +322,7 @@ def load_intervenants_detail() -> dict:
 
 def load_previous_state() -> dict:
     """
-    Charge le dernier JSON publié pour éviter qu'une panne CEHQ remplace
+    Charge le dernier JSON publié pour éviter qu'une panne API remplace
     l'état actuel par des valeurs inconnues.
     """
     if not OUTPUT_PATH.exists():
@@ -221,6 +375,7 @@ def compute_state(
     details: dict,
     mois_courant: int,
     previous: dict | None = None,
+    fetch_status: dict | None = None,
 ) -> dict:
     """
     Combine données statiques (12 mensuels) avec débits live et le mois courant.
@@ -239,7 +394,7 @@ def compute_state(
         live_data = live.get(code, {})
         previous_data = previous.get(code, {})
 
-        # Débit observé : live, CSV, puis dernier état connu si CEHQ est muet.
+        # Débit observé : live, CSV, puis dernier état connu si l'API est muette.
         debit_obs = safe_num(live_data.get("debit_obs_m3s"))
         source_debit_obs = "live" if debit_obs is not None else None
         if debit_obs is not None:
@@ -348,8 +503,35 @@ def compute_state(
     print(f"  {n_localises} stations localisées sur la carte")
     print(f"  {n_critiques} en état critique en étiage, {n_eleves} en élevé")
 
+    # --- Statut de fraîcheur ------------------------------------------------
+    fetch_status = fetch_status or {}
+    latest_iso = fetch_status.get("latest_measure_utc")
+    latest_dt = _parse_utc(latest_iso)
+    age_hours = None
+    if latest_dt is not None:
+        age_hours = (datetime.now(timezone.utc) - latest_dt).total_seconds() / 3600.0
+
+    # data_stale si : le fetch a échoué, OU aucune station live,
+    # OU la mesure la plus récente dépasse le seuil de péremption.
+    data_stale = (
+        not fetch_status.get("ok", False)
+        or n_updated == 0
+        or (age_hours is not None and age_hours > STALE_AFTER_HOURS)
+    )
+    if data_stale:
+        raison = (
+            fetch_status.get("error")
+            or ("aucune station avec débit live" if n_updated == 0 else None)
+            or (f"source périmée : dernière mesure il y a {age_hours:.1f} h "
+                f"(seuil {STALE_AFTER_HOURS} h)" if age_hours is not None else "cause inconnue")
+        )
+        print(f"  🔴 DONNÉES NON À JOUR — {raison}")
+    else:
+        age_txt = f"{age_hours:.1f} h" if age_hours is not None else "inconnu"
+        print(f"  🟢 Données à jour (dernière mesure il y a {age_txt})")
+
     return {
-        "version": "2.0",
+        "version": "2.1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mois_courant": mois_courant,
         "mois_courant_nom": NOMS_MOIS[mois_courant],
@@ -360,6 +542,12 @@ def compute_state(
         "n_stations_sans_debit_observe": n_no_debit_obs,
         "n_critiques_etiage": n_critiques,
         "n_eleves_etiage": n_eleves,
+        # --- Nouveau : visibilité sur la fraîcheur de la donnée live ---------
+        "data_stale": bool(data_stale),
+        "latest_live_measure_utc": latest_iso,
+        "latest_live_measure_age_hours": round(age_hours, 1) if age_hours is not None else None,
+        "stale_threshold_hours": STALE_AFTER_HOURS,
+        "fetch_status": fetch_status,
         "stations": stations_out,
     }
 
@@ -385,14 +573,12 @@ def main():
     details = load_intervenants_detail()
     previous = load_previous_state()
 
-    try:
-        live = fetch_stations()
-    except Exception as e:
-        print(f"  ⚠️  Échec API CEHQ : {e}")
-        print(f"     On continue avec le CSV et le dernier état connu.")
-        live = {}
+    live, fetch_status = fetch_stations()
+    if not fetch_status.get("ok"):
+        print(f"  ⚠️  API indisponible : {fetch_status.get('error')}")
+        print(f"     On continue avec le dernier état connu (mode dégradé).")
 
-    state = compute_state(static, live, details, mois_courant, previous)
+    state = compute_state(static, live, details, mois_courant, previous, fetch_status)
     state = _clean_for_json(state)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -403,6 +589,7 @@ def main():
     print(f"\n✅ {OUTPUT_PATH.relative_to(ROOT.parent)} ({size_kb:.1f} KB)")
     print(f"   Mois utilisé : {NOMS_MOIS[mois_courant]}")
     print(f"   Généré à {state['generated_at']}")
+    print(f"   data_stale = {state['data_stale']}")
 
 
 if __name__ == "__main__":
