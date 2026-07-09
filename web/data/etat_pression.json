@@ -1,6 +1,6 @@
 {
   "version": "2.1",
-  "generated_at": "2026-07-09T23:36:39.934572+00:00",
+  "generated_at": "2026-07-09T23:46:24.602381+00:00",
   "mois_courant": 7,
   "mois_courant_nom": "juillet",
   "n_stations": 137,
@@ -16,12 +16,12 @@
   "stale_threshold_hours": 6.0,
   "fetch_status": {
     "ok": false,
-    "error": "ChallengeDetected: réponse HTML/challenge (Content-Type=text/html; charset=utf-8). Le serveur bloque probablement le client (User-Agent ou IP). | BrowserFallback: browser fetch encore bloqué par HTML/challenge (Content-Type=text/html; charset=utf-8)",
+    "error": "ChallengeDetected: réponse HTML/challenge (Content-Type=text/html; charset=utf-8). Le serveur bloque probablement le client (User-Agent ou IP). | BrowserFallback: Playwright non installé: No module named 'playwright'",
     "n_features": 0,
     "n_avec_debit": 0,
     "latest_measure_utc": null,
     "source": "geoegl.msp.gouv.qc.ca/mapserver-vigilance",
-    "fetched_at": "2026-07-09T23:36:22.238489+00:00"
+    "fetched_at": "2026-07-09T23:46:17.653917+00:00"
   },
   "stations": [
     {
