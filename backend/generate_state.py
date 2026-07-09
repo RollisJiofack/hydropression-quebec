@@ -78,6 +78,18 @@ API_URL = (
     "&typename=stations_igo2_public&outputformat=geojson"
 )
 
+STATIONS_PAGE_URL = (
+    "https://vigilance.geo.msp.gouv.qc.ca/stations"
+    "?sort=a_etat_max.desc.nullslast,e_plan_deau"
+    "&numberPerPage=10"
+    "&a_etat_max=&b_label=&c_mun=&d_regadmin=&e_plan_deau="
+    "&f_mrc=&g_bassin_versant=&trend_pct=&prev=false&page=1"
+)
+
+USE_BROWSER_FALLBACK = os.environ.get("HP_USE_BROWSER_FALLBACK", "1") != "0"
+BROWSER_TIMEOUT_MS = int(os.environ.get("HP_BROWSER_TIMEOUT_MS", "90000"))
+BROWSER_WAIT_MS = int(os.environ.get("HP_BROWSER_WAIT_MS", "8000"))
+
 # En-têtes de navigateur : un User-Agent applicatif custom déclenche le
 # challenge anti-bot du serveur MSP. On se présente comme un navigateur réel.
 BROWSER_HEADERS = {
@@ -150,6 +162,94 @@ def _parse_utc(value):
             continue
     return None
 
+def fetch_geojson_with_browser():
+    """
+    Repli navigateur pour contourner le challenge JavaScript de Vigilance/MSP.
+
+    Le navigateur charge d'abord la page officielle des stations, ce qui permet
+    au site d'établir sa session/cookies. Ensuite, l'appel GeoJSON est relancé
+    depuis le même contexte navigateur.
+    """
+    if not USE_BROWSER_FALLBACK:
+        return None, "fallback navigateur désactivé par HP_USE_BROWSER_FALLBACK=0"
+
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as e:
+        return None, f"Playwright non installé: {e}"
+
+    print("  🌐 Repli navigateur Playwright vers la page Vigilance/MSP...")
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True,
+                args=[
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-blink-features=AutomationControlled",
+                ],
+            )
+
+            context = browser.new_context(
+                user_agent=BROWSER_HEADERS["User-Agent"],
+                locale="fr-CA",
+                timezone_id="America/Toronto",
+                viewport={"width": 1366, "height": 900},
+                extra_http_headers={
+                    "Accept-Language": "fr-CA,fr;q=0.9,en;q=0.8",
+                },
+            )
+
+            page = context.new_page()
+
+            page.goto(
+                STATIONS_PAGE_URL,
+                wait_until="domcontentloaded",
+                timeout=BROWSER_TIMEOUT_MS,
+            )
+
+            # Laisser le JS/challenge/session se stabiliser.
+            page.wait_for_timeout(BROWSER_WAIT_MS)
+
+            # Relancer l'appel GeoJSON depuis le navigateur, pas depuis requests.
+            result = page.evaluate(
+                """
+                async (url) => {
+                  const r = await fetch(url, {
+                    method: "GET",
+                    credentials: "include",
+                    headers: {
+                      "Accept": "application/json, application/geo+json, text/plain, */*"
+                    }
+                  });
+                  return {
+                    ok: r.ok,
+                    status: r.status,
+                    contentType: r.headers.get("content-type") || "",
+                    text: await r.text()
+                  };
+                }
+                """,
+                API_URL,
+            )
+
+            browser.close()
+
+        ctype = (result.get("contentType") or "").lower()
+        body = result.get("text") or ""
+
+        if not result.get("ok"):
+            return None, f"browser fetch HTTP {result.get('status')}"
+
+        if "html" in ctype or _looks_like_html(body):
+            return None, f"browser fetch encore bloqué par HTML/challenge (Content-Type={ctype})"
+
+        return json.loads(body), None
+
+    except Exception as e:
+        return None, f"{type(e).__name__}: {e}"
+
 
 def fetch_stations() -> tuple[dict, dict]:
     """
@@ -208,8 +308,19 @@ def fetch_stations() -> tuple[dict, dict]:
             time.sleep(attente)
 
     if data is None:
-        meta["error"] = f"{type(last_exc).__name__}: {last_exc}"
+    meta["error"] = f"{type(last_exc).__name__}: {last_exc}"
+
+    # Repli navigateur : nécessaire depuis que Vigilance/MSP renvoie un challenge
+    # JavaScript aux clients automatisés simples.
+    browser_data, browser_error = fetch_geojson_with_browser()
+
+    if browser_data is None:
+        meta["error"] = f"{meta['error']} | BrowserFallback: {browser_error}"
         return {}, meta
+
+    data = browser_data
+    meta["error"] = None
+    print("  ✅ Données GeoJSON récupérées via le repli navigateur Playwright")
 
     features = data.get("features", [])
     meta["n_features"] = len(features)
