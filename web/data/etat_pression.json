@@ -1,6 +1,6 @@
 {
   "version": "2.1",
-  "generated_at": "2026-07-09T19:35:02.078339+00:00",
+  "generated_at": "2026-07-09T19:53:49.149022+00:00",
   "mois_courant": 7,
   "mois_courant_nom": "juillet",
   "n_stations": 137,
@@ -16,12 +16,12 @@
   "stale_threshold_hours": 6.0,
   "fetch_status": {
     "ok": false,
-    "error": "ChallengeDetected: réponse HTML/challenge (Content-Type=text/html; charset=utf-8). Le serveur bloque probablement le client (User-Agent ou IP).",
+    "error": "ChallengeDetected: réponse HTML/challenge (Content-Type=text/html; charset=utf-8). Le serveur bloque probablement le client (User-Agent ou IP). | BrowserFallback: Error: Page.evaluate: TypeError: Failed to fetch\n    at https://vigilance.geo.msp.gouv.qc.ca/polyfills.de3054c5f0225d95.js:1:161763\n    at H.I.<computed> (https://vigilance.geo.msp.gouv.qc.ca/polyfills.de3054c5f0225d95.js:1:154997)\n    at eval (eval at evaluate (:303:30), <anonymous>:2:35)\n    at UtilityScript.evaluate (<anonymous>:310:18)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
     "n_features": 0,
     "n_avec_debit": 0,
     "latest_measure_utc": null,
     "source": "geoegl.msp.gouv.qc.ca/mapserver-vigilance",
-    "fetched_at": "2026-07-09T19:34:55.028461+00:00"
+    "fetched_at": "2026-07-09T19:53:31.698169+00:00"
   },
   "stations": [
     {
