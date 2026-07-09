@@ -37,6 +37,11 @@ import requests
 import pandas as pd
 from pyproj import Transformer
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 # --- Configuration ---------------------------------------------------------
 
 ROOT = Path(__file__).resolve().parent
@@ -68,15 +73,22 @@ def normalize_code(code) -> str:
 def fetch_stations() -> dict:
     print(f"[{datetime.now():%H:%M:%S}] Appel API CEHQ...")
     t0 = time.time()
-    r = requests.get(API_URL, timeout=60)
+    r = requests.get(
+        API_URL,
+        timeout=60,
+        headers={"User-Agent": "HydroPression-Quebec/2.0"},
+    )
     r.raise_for_status()
     data = r.json()
-    print(f"  {len(data['features'])} stations reçues en {time.time()-t0:.1f}s")
+    features = data.get("features", [])
+    print(f"  {len(features)} stations reçues en {time.time()-t0:.1f}s")
+    if not features:
+        raise RuntimeError("API CEHQ sans station exploitable")
 
     transformer = Transformer.from_crs("EPSG:32198", "EPSG:4326", always_xy=True)
 
     out = {}
-    for f in data["features"]:
+    for f in features:
         p = f["properties"]
         code = normalize_code(p.get("station"))
         if not code:
@@ -119,6 +131,14 @@ def safe_num(v):
         return None
 
 
+def first_num(*values):
+    for value in values:
+        n = safe_num(value)
+        if n is not None:
+            return n
+    return None
+
+
 def load_static_results() -> pd.DataFrame:
     if not CSV_PATH.exists():
         print(f"❌ {CSV_PATH} introuvable.")
@@ -146,6 +166,30 @@ def load_intervenants_detail() -> dict:
     return out
 
 
+def load_previous_state() -> dict:
+    """
+    Charge le dernier JSON publié pour éviter qu'une panne CEHQ remplace
+    l'état actuel par des valeurs inconnues.
+    """
+    if not OUTPUT_PATH.exists():
+        return {}
+    try:
+        with open(OUTPUT_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        print(f"  ⚠️  Ancien état illisible ({OUTPUT_PATH.name}) : {e}")
+        return {}
+
+    previous = {}
+    for station in data.get("stations", []):
+        code = normalize_code(station.get("code"))
+        if code:
+            previous[code] = station
+    if previous:
+        print(f"  Dernier état chargé pour {len(previous)} stations")
+    return previous
+
+
 def determiner_mois_courant(forcer_mois=None) -> int:
     """Mois courant en fuseau America/Toronto, ou mois forcé pour debug."""
     if forcer_mois:
@@ -171,27 +215,48 @@ def _clean_for_json(x):
 
 # --- Calcul de l'état -----------------------------------------------------
 
-def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant: int) -> dict:
+def compute_state(
+    static: pd.DataFrame,
+    live: dict,
+    details: dict,
+    mois_courant: int,
+    previous: dict | None = None,
+) -> dict:
     """
     Combine données statiques (12 mensuels) avec débits live et le mois courant.
     """
     stations_out = []
     n_updated = 0
-    n_no_live = 0
+    n_csv_fallback = 0
+    n_previous_fallback = 0
+    n_no_debit_obs = 0
+    previous = previous or {}
 
     col_mois = f"debit_preleve_mois_{mois_courant:02d}_m3s"
 
     for _, row in static.iterrows():
         code = row["station_norm"]
         live_data = live.get(code, {})
+        previous_data = previous.get(code, {})
 
-        # Débit observé (live ou fallback CSV)
-        debit_obs = live_data.get("debit_obs_m3s")
-        if debit_obs is None or pd.isna(debit_obs):
-            debit_obs = row.get("debit_obs_m3s")
-            n_no_live += 1
-        else:
+        # Débit observé : live, CSV, puis dernier état connu si CEHQ est muet.
+        debit_obs = safe_num(live_data.get("debit_obs_m3s"))
+        source_debit_obs = "live" if debit_obs is not None else None
+        if debit_obs is not None:
             n_updated += 1
+        else:
+            debit_obs = safe_num(row.get("debit_obs_m3s"))
+            if debit_obs is not None:
+                source_debit_obs = "csv"
+                n_csv_fallback += 1
+            else:
+                debit_obs = safe_num(previous_data.get("debit_obs_m3s"))
+                if debit_obs is not None:
+                    source_debit_obs = "previous"
+                    n_previous_fallback += 1
+                else:
+                    source_debit_obs = "none"
+                    n_no_debit_obs += 1
 
         # Débit consommé du mois courant
         debit_preleve_mois = safe_num(row.get(col_mois)) or 0.0
@@ -250,11 +315,12 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
             "n_sites_amont": int(row["n_sites_amont"]) if pd.notna(row["n_sites_amont"]) else 0,
             "n_sites_etiage": int(row["n_sites_etiage"]) if pd.notna(row.get("n_sites_etiage")) else 0,
             "n_sites_inactifs_mois": n_zero,
-            "lon": safe_num(live_data.get("lon") or row.get("lon")),
-            "lat": safe_num(live_data.get("lat") or row.get("lat")),
-            "date_mesure": live_data.get("date_mesure"),
-            "etat_cehq": live_data.get("etat"),
-            "url_cehq": live_data.get("url_cehq"),
+            "lon": first_num(live_data.get("lon"), row.get("lon"), previous_data.get("lon")),
+            "lat": first_num(live_data.get("lat"), row.get("lat"), previous_data.get("lat")),
+            "date_mesure": live_data.get("date_mesure") or previous_data.get("date_mesure"),
+            "etat_cehq": live_data.get("etat") or previous_data.get("etat_cehq"),
+            "url_cehq": live_data.get("url_cehq") or previous_data.get("url_cehq"),
+            "source_debit_observe": source_debit_obs,
             "debit_obs_m3s": safe_num(debit_obs),
             "debit_preleve_m3s": safe_num(debit_preleve_mois),
             "debit_naturel_m3s": safe_num(debit_naturel),
@@ -273,7 +339,12 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
     n_eleves = sum(1 for s in stations_out if s["categorie_etiage"] == "eleve")
     n_localises = sum(1 for s in stations_out if s["lat"] is not None)
 
-    print(f"  {n_updated} stations avec débit live, {n_no_live} avec valeur CSV")
+    print(
+        f"  {n_updated} stations avec débit live, "
+        f"{n_csv_fallback} avec valeur CSV, "
+        f"{n_previous_fallback} avec dernier débit connu, "
+        f"{n_no_debit_obs} sans débit observé"
+    )
     print(f"  {n_localises} stations localisées sur la carte")
     print(f"  {n_critiques} en état critique en étiage, {n_eleves} en élevé")
 
@@ -283,6 +354,10 @@ def compute_state(static: pd.DataFrame, live: dict, details: dict, mois_courant:
         "mois_courant": mois_courant,
         "mois_courant_nom": NOMS_MOIS[mois_courant],
         "n_stations": len(stations_out),
+        "n_stations_debit_live": n_updated,
+        "n_stations_debit_csv": n_csv_fallback,
+        "n_stations_debit_precedent": n_previous_fallback,
+        "n_stations_sans_debit_observe": n_no_debit_obs,
         "n_critiques_etiage": n_critiques,
         "n_eleves_etiage": n_eleves,
         "stations": stations_out,
@@ -308,15 +383,16 @@ def main():
 
     static = load_static_results()
     details = load_intervenants_detail()
+    previous = load_previous_state()
 
     try:
         live = fetch_stations()
     except Exception as e:
         print(f"  ⚠️  Échec API CEHQ : {e}")
-        print(f"     On continue avec les valeurs du CSV.")
+        print(f"     On continue avec le CSV et le dernier état connu.")
         live = {}
 
-    state = compute_state(static, live, details, mois_courant)
+    state = compute_state(static, live, details, mois_courant, previous)
     state = _clean_for_json(state)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
