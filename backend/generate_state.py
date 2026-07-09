@@ -52,7 +52,7 @@ import math
 import os
 import sys
 import time
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -308,19 +308,19 @@ def fetch_stations() -> tuple[dict, dict]:
             time.sleep(attente)
 
     if data is None:
-    meta["error"] = f"{type(last_exc).__name__}: {last_exc}"
+        meta["error"] = f"{type(last_exc).__name__}: {last_exc}"
 
-    # Repli navigateur : nécessaire depuis que Vigilance/MSP renvoie un challenge
-    # JavaScript aux clients automatisés simples.
-    browser_data, browser_error = fetch_geojson_with_browser()
+        # Repli navigateur : nécessaire depuis que Vigilance/MSP renvoie un challenge
+        # JavaScript aux clients automatisés simples.
+        browser_data, browser_error = fetch_geojson_with_browser()
 
-    if browser_data is None:
-        meta["error"] = f"{meta['error']} | BrowserFallback: {browser_error}"
-        return {}, meta
+        if browser_data is None:
+            meta["error"] = f"{meta['error']} | BrowserFallback: {browser_error}"
+            return {}, meta
 
-    data = browser_data
-    meta["error"] = None
-    print("  ✅ Données GeoJSON récupérées via le repli navigateur Playwright")
+        data = browser_data
+        meta["error"] = None
+        print("  ✅ Données GeoJSON récupérées via le repli navigateur Playwright")
 
     features = data.get("features", [])
     meta["n_features"] = len(features)
