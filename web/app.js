@@ -56,10 +56,39 @@ async function init() {
     return;
   }
 
+  renderFreshnessBanner();
   initKPI();
   initMap();
   renderAll();
   initInteractions();
+}
+
+/* ---- Bandeau de fraîcheur des données ---- */
+function renderFreshnessBanner() {
+  const d = STATE.data;
+  const existing = document.getElementById("freshness-banner");
+  if (existing) existing.remove();
+  // Rétrocompatible : rien si le champ est absent (ancien JSON) ou faux.
+  if (!d || d.data_stale !== true) return;
+
+  const header = document.querySelector("header.topbar");
+  if (!header) return;
+
+  const measure = d.latest_live_measure_utc
+    ? fmt.date(d.latest_live_measure_utc)
+    : (d.generated_at ? fmt.date(d.generated_at) : null);
+  const detail = measure
+    ? `Les débits affichés datent du ${measure} et ne reflètent pas la situation en temps réel.`
+    : `La source de débits en temps réel est momentanément indisponible.`;
+
+  const banner = document.createElement("div");
+  banner.id = "freshness-banner";
+  banner.className = "freshness-banner";
+  banner.setAttribute("role", "alert");
+  banner.innerHTML =
+    `<span class="freshness-banner__dot" aria-hidden="true"></span>` +
+    `<span><strong>Données non à jour.</strong> ${detail}</span>`;
+  header.insertAdjacentElement("afterend", banner);
 }
 
 /* ---- KPI ---- */
@@ -69,7 +98,8 @@ function initKPI() {
   document.getElementById("kpi-critique").textContent = d.n_critiques_etiage;
   document.getElementById("kpi-eleve").textContent = d.n_eleves_etiage;
   const generated = fmt.date(d.generated_at);
-  document.getElementById("kpi-meta").textContent = `Dernière mise à jour : ${generated}`;
+  const staleTag = d.data_stale ? " — ⚠️ non à jour" : "";
+  document.getElementById("kpi-meta").textContent = `Dernière mise à jour : ${generated}${staleTag}`;
   document.getElementById("foot-updated").textContent = `Données générées le ${generated}`;
 }
 
