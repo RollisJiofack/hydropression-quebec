@@ -1,6 +1,6 @@
 {
   "version": "2.1",
-  "generated_at": "2026-07-09T18:26:15.066164+00:00",
+  "generated_at": "2026-07-09T18:32:09.548381+00:00",
   "mois_courant": 7,
   "mois_courant_nom": "juillet",
   "n_stations": 137,
@@ -21,7 +21,7 @@
     "n_avec_debit": 0,
     "latest_measure_utc": null,
     "source": "geoegl.msp.gouv.qc.ca/mapserver-vigilance",
-    "fetched_at": "2026-07-09T18:25:58.355988+00:00"
+    "fetched_at": "2026-07-09T18:32:01.824488+00:00"
   },
   "stations": [
     {
