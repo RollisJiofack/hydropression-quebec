@@ -212,27 +212,24 @@ def fetch_geojson_with_browser():
             # Laisser le JS/challenge/session se stabiliser.
             page.wait_for_timeout(BROWSER_WAIT_MS)
 
-            # Relancer l'appel GeoJSON depuis le navigateur, pas depuis requests.
-            result = page.evaluate(
-                """
-                async (url) => {
-                  const r = await fetch(url, {
-                    method: "GET",
-                    credentials: "include",
-                    headers: {
-                      "Accept": "application/json, application/geo+json, text/plain, */*"
-                    }
-                  });
-                  return {
-                    ok: r.ok,
-                    status: r.status,
-                    contentType: r.headers.get("content-type") || "",
-                    text: await r.text()
-                  };
-                }
-                """,
+            # Relancer l'appel GeoJSON avec l'API réseau Playwright.
+            # Cette méthode partage le contexte navigateur, mais n'est pas soumise
+            # aux restrictions CORS d'un fetch JavaScript exécuté dans la page.
+            response = context.request.get(
                 API_URL,
+                headers={
+                    "Accept": "application/json, application/geo+json, text/plain, */*",
+                    "Referer": STATIONS_PAGE_URL,
+                },
+                timeout=BROWSER_TIMEOUT_MS,
             )
+
+            result = {
+                "ok": response.ok,
+                "status": response.status,
+                "contentType": response.headers.get("content-type", ""),
+                "text": response.text(),
+            }
 
             browser.close()
 
