@@ -1,6 +1,6 @@
 {
-  "version": "2.0",
-  "generated_at": "2026-07-09T18:24:46.244996+00:00",
+  "version": "2.1",
+  "generated_at": "2026-07-09T18:26:15.066164+00:00",
   "mois_courant": 7,
   "mois_courant_nom": "juillet",
   "n_stations": 137,
@@ -10,6 +10,19 @@
   "n_stations_sans_debit_observe": 41,
   "n_critiques_etiage": 11,
   "n_eleves_etiage": 7,
+  "data_stale": true,
+  "latest_live_measure_utc": null,
+  "latest_live_measure_age_hours": null,
+  "stale_threshold_hours": 6.0,
+  "fetch_status": {
+    "ok": false,
+    "error": "ChallengeDetected: réponse HTML/challenge (Content-Type=text/html; charset=utf-8). Le serveur bloque probablement le client (User-Agent ou IP).",
+    "n_features": 0,
+    "n_avec_debit": 0,
+    "latest_measure_utc": null,
+    "source": "geoegl.msp.gouv.qc.ca/mapserver-vigilance",
+    "fetched_at": "2026-07-09T18:25:58.355988+00:00"
+  },
   "stations": [
     {
       "code": "010101",
