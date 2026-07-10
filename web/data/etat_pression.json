@@ -1,6 +1,6 @@
 {
   "version": "3.0-cehq-suivihydro",
-  "generated_at": "2026-07-10T07:50:28.268740+00:00",
+  "generated_at": "2026-07-10T07:53:49.489628+00:00",
   "mois_courant": 7,
   "mois_courant_nom": "juillet",
   "n_stations": 137,
@@ -22,7 +22,7 @@
     "n_avec_debit": 112,
     "latest_measure_utc": "2026-07-10T07:15:00+00:00",
     "source": "cehq.gouv.qc.ca/suivihydro (fichier_donnees.asp)",
-    "fetched_at": "2026-07-10T07:48:16.984836+00:00",
+    "fetched_at": "2026-07-10T07:51:53.253912+00:00",
     "n_stations_interrogees": 137,
     "n_introuvables": 25,
     "n_erreurs": 0,
