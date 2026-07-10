@@ -1,8 +1,14 @@
 name: Update HydroPression state
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - "web/**"
+      - ".github/workflows/update.yml"
   schedule:
-    - cron: "13 * * * *"     # toutes les heures, à h:05 UTC
+    - cron: "13 * * * *"     # toutes les heures, à h:13 UTC
   workflow_dispatch:
 
 permissions:

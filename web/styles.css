@@ -703,3 +703,25 @@ body {
   filter: none !important;
   stroke-width: 2 !important;
 }
+
+/* ---- Bandeau "données non à jour" (data_stale) ---- */
+.freshness-banner{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  padding:.7rem 1.15rem;
+  background:#fff4e5;
+  color:#7a3b00;
+  border-bottom:1px solid #f0c27a;
+  font-size:.92rem;
+  line-height:1.35;
+}
+.freshness-banner strong{ font-weight:700; }
+.freshness-banner__dot{
+  width:.62rem;
+  height:.62rem;
+  border-radius:50%;
+  background:#e07a00;
+  flex:0 0 auto;
+  box-shadow:0 0 0 3px rgba(224,122,0,.18);
+}
