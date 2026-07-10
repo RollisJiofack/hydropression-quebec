@@ -1,7 +1,7 @@
 {
   "version": "2.2-clean-wfs",
   "generator": "HYDROPRESSURE_CLEAN_WFS_2026_07_10",
-  "generated_at": "2026-07-10T00:15:51.584815+00:00",
+  "generated_at": "2026-07-10T00:17:16.184378+00:00",
   "mois_courant": 7,
   "mois_courant_nom": "juillet",
   "n_stations": 137,
@@ -26,7 +26,7 @@
     "n_avec_debit": 0,
     "latest_measure_utc": null,
     "source": "donneesquebec-wfs-stations_igo2_public-csv",
-    "fetched_at": "2026-07-10T00:15:51.567763+00:00",
+    "fetched_at": "2026-07-10T00:17:16.160031+00:00",
     "geojson_error": "ChallengeDetected: réponse HTML/challenge (Content-Type=text/html; charset=utf-8)"
   },
   "stations": [
