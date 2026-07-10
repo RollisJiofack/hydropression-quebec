@@ -1,6 +1,7 @@
 {
-  "version": "2.1",
-  "generated_at": "2026-07-10T00:07:03.766596+00:00",
+  "version": "2.2-clean-wfs",
+  "generator": "HYDROPRESSURE_CLEAN_WFS_2026_07_10",
+  "generated_at": "2026-07-10T00:15:51.584815+00:00",
   "mois_courant": 7,
   "mois_courant_nom": "juillet",
   "n_stations": 137,
@@ -16,12 +17,17 @@
   "stale_threshold_hours": 6.0,
   "fetch_status": {
     "ok": false,
-    "error": "ChallengeDetected: réponse HTML/challenge (Content-Type=text/html; charset=utf-8). Le serveur bloque probablement le client (User-Agent ou IP). | BrowserFallback: Playwright non installé: No module named 'playwright'",
+    "error": "ChallengeDetected: réponse HTML/challenge (Content-Type=text/html; charset=utf-8)",
+    "status_code": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "url": "https://geoegl.msp.gouv.qc.ca/apis/mapserver-vigilance/ws/vigilance.fcgi?service=wfs&version=1.1.0&request=getfeature&typename=stations_igo2_public&epsg%3A4326=&outputformat=csv",
+    "format": "csv",
     "n_features": 0,
     "n_avec_debit": 0,
     "latest_measure_utc": null,
-    "source": "geoegl.msp.gouv.qc.ca/mapserver-vigilance",
-    "fetched_at": "2026-07-10T00:06:56.940308+00:00"
+    "source": "donneesquebec-wfs-stations_igo2_public-csv",
+    "fetched_at": "2026-07-10T00:15:51.567763+00:00",
+    "geojson_error": "ChallengeDetected: réponse HTML/challenge (Content-Type=text/html; charset=utf-8)"
   },
   "stations": [
     {
