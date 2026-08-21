@@ -1,6 +1,6 @@
 {
   "version": "3.1-cehq-176stations",
-  "generated_at": "2026-08-20T23:42:51.676816+00:00",
+  "generated_at": "2026-08-21T01:59:15.294450+00:00",
   "mois_courant": 8,
   "mois_courant_nom": "août",
   "n_stations": 176,
@@ -12,8 +12,8 @@
   "n_eleves_etiage": 7,
   "data_stale": false,
   "latest_live_measure_utc": "2026-08-20T20:45:00+00:00",
-  "latest_live_measure_age_hours": 3.0,
-  "median_live_measure_age_hours": 3.2,
+  "latest_live_measure_age_hours": 5.2,
+  "median_live_measure_age_hours": 5.5,
   "stale_threshold_hours": 6.0,
   "fetch_status": {
     "ok": true,
@@ -22,7 +22,7 @@
     "n_avec_debit": 126,
     "latest_measure_utc": "2026-08-20T20:45:00+00:00",
     "source": "cehq.gouv.qc.ca/suivihydro (fichier_donnees.asp)",
-    "fetched_at": "2026-08-20T23:40:21.831130+00:00",
+    "fetched_at": "2026-08-21T01:57:05.130428+00:00",
     "n_stations_interrogees": 176,
     "n_introuvables": 49,
     "n_erreurs": 0,
