@@ -5,6 +5,7 @@ const test = require("node:test");
 const vm = require("node:vm");
 
 const source = fs.readFileSync(path.join(__dirname, "../app.js"), "utf8");
+const page = fs.readFileSync(path.join(__dirname, "../index.html"), "utf8");
 
 function createMap(stations = []) {
   const tiles = [];
@@ -51,6 +52,7 @@ function createMap(stations = []) {
 }
 
 test("map uses one standard HTTPS OpenStreetMap layer with visible attribution", () => {
+  assert.match(page, /<script src="app\.js\?v=[^"]+"><\/script>/);
   const { map, tiles } = createMap();
   assert.equal(tiles.length, 1);
   assert.equal(tiles[0].url, "https://tile.openstreetmap.org/{z}/{x}/{y}.png");
