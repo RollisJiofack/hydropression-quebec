@@ -33,6 +33,15 @@ jobs:
       - name: Install Python dependencies
         run: pip install requests pandas tzdata
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Test freshness safeguards
+        run: |
+          python -m unittest discover -s backend/tests -v
+          node --test web/tests/*.test.cjs
+
       - name: Generate state (source CEHQ suivihydro)
         run: cd backend && python generate_state.py
 
@@ -66,5 +75,6 @@ jobs:
               print("::error::Source CEHQ injoignable :", fs.get("error"))
               sys.exit(1)
           if d.get("data_stale"):
-              print("::warning::Données publiées mais périmées (voir bandeau du site).")
+              print("::error::Données publiées mais périmées; la pression actuelle exclut les mesures anciennes.")
+              sys.exit(1)
           PY

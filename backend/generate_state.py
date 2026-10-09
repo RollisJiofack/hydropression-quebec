@@ -299,7 +299,7 @@ def fetch_stations() -> tuple[dict, dict]:
             if record["debit_obs_m3s"] is not None:
                 meta["n_avec_debit"] += 1
             dt = record.pop("dt_utc", None)
-            if dt is not None:
+            if dt is not None and safe_num(record["debit_obs_m3s"]) is not None:
                 tous_dts.append(dt)
                 if latest is None or dt > latest:
                     latest = dt
@@ -358,7 +358,7 @@ def safe_num(v):
         return None
     try:
         f = float(v)
-        if pd.isna(f):
+        if not math.isfinite(f):
             return None
         return f
     except (TypeError, ValueError):
@@ -371,6 +371,21 @@ def first_num(*values):
         if n is not None:
             return n
     return None
+
+
+def debit_freshness(debit, date_mesure, now):
+    """Qualifier le debit avec son propre horodatage, jamais celui du niveau."""
+    if debit is None:
+        return "indisponible", None
+    if debit < 0:
+        return "invalide", None
+    measured_at = _parse_utc(date_mesure)
+    if measured_at is None:
+        return "non_date", None
+    age = (now - measured_at).total_seconds() / 3600.0
+    if age < 0:
+        return "date_future", age
+    return ("recent" if age <= STALE_AFTER_HOURS else "perime"), age
 
 
 def load_static_results() -> pd.DataFrame:
@@ -402,8 +417,7 @@ def load_intervenants_detail() -> dict:
 
 def load_previous_state() -> dict:
     """
-    Charge le dernier JSON publié pour éviter qu'une panne API remplace
-    l'état actuel par des valeurs inconnues.
+    Charge les dernieres valeurs connues, sans les assimiler a des mesures recentes.
     """
     if not OUTPUT_PATH.exists():
         return {}
@@ -456,6 +470,7 @@ def compute_state(
     mois_courant: int,
     previous: dict | None = None,
     fetch_status: dict | None = None,
+    now: datetime | None = None,
 ) -> dict:
     """
     Combine données statiques (12 mensuels) avec débits live et le mois courant.
@@ -466,6 +481,7 @@ def compute_state(
     n_previous_fallback = 0
     n_no_debit_obs = 0
     previous = previous or {}
+    now = now or datetime.now(timezone.utc)
 
     col_mois = f"debit_preleve_mois_{mois_courant:02d}_m3s"
 
@@ -483,6 +499,7 @@ def compute_state(
 
         # Débit observé : live, CSV, puis dernier état connu si l'API est muette.
         debit_obs = safe_num(live_data.get("debit_obs_m3s"))
+        date_mesure = live_data.get("date_mesure") if debit_obs is not None else None
         source_debit_obs = "live" if debit_obs is not None else None
         if debit_obs is not None:
             n_updated += 1
@@ -490,19 +507,30 @@ def compute_state(
             debit_obs = safe_num(row.get("debit_obs_m3s"))
             if debit_obs is not None:
                 source_debit_obs = "csv"
+                date_mesure = row.get("date_mesure")
                 n_csv_fallback += 1
             else:
-                debit_obs = safe_num(previous_data.get("debit_obs_m3s"))
+                debit_obs = first_num(
+                    previous_data.get("debit_obs_dernier_connu_m3s"),
+                    previous_data.get("debit_obs_m3s"),
+                )
                 if debit_obs is not None:
                     source_debit_obs = "previous"
+                    date_mesure = previous_data.get("date_mesure")
                     n_previous_fallback += 1
                 else:
                     source_debit_obs = "none"
                     n_no_debit_obs += 1
 
+        # Garder la valeur historique, mais exclure un debit perime du calcul actuel.
+        dernier_debit = debit_obs
+        statut_debit, age_mesure = debit_freshness(debit_obs, date_mesure, now)
+        if statut_debit != "recent":
+            debit_obs = None
+
         # Débit consommé du mois courant (None si prélèvements non caractérisés)
         if prelevements_caracterises:
-            debit_preleve_mois = safe_num(row.get(col_mois)) or 0.0
+            debit_preleve_mois = safe_num(row.get(col_mois))
         else:
             debit_preleve_mois = None
 
@@ -562,11 +590,14 @@ def compute_state(
             "n_sites_inactifs_mois": n_zero,
             "lon": first_num(live_data.get("lon"), row.get("lon"), previous_data.get("lon")),
             "lat": first_num(live_data.get("lat"), row.get("lat"), previous_data.get("lat")),
-            "date_mesure": live_data.get("date_mesure") or previous_data.get("date_mesure"),
+            "date_mesure": date_mesure,
             "etat_cehq": live_data.get("etat") or previous_data.get("etat_cehq"),
             "url_cehq": live_data.get("url_cehq") or previous_data.get("url_cehq"),
             "prelevements_caracterises": prelevements_caracterises,
             "source_debit_observe": source_debit_obs,
+            "statut_debit_observe": statut_debit,
+            "age_mesure_heures": round(age_mesure, 3) if age_mesure is not None else None,
+            "debit_obs_dernier_connu_m3s": dernier_debit,
             "debit_obs_m3s": safe_num(debit_obs),
             "debit_preleve_m3s": safe_num(debit_preleve_mois),
             "debit_naturel_m3s": safe_num(debit_naturel),
@@ -584,6 +615,8 @@ def compute_state(
     n_critiques = sum(1 for s in stations_out if s["categorie_etiage"] == "critique")
     n_eleves = sum(1 for s in stations_out if s["categorie_etiage"] == "eleve")
     n_localises = sum(1 for s in stations_out if s["lat"] is not None)
+    n_recent = sum(s["statut_debit_observe"] == "recent" for s in stations_out)
+    n_perime = sum(s["statut_debit_observe"] == "perime" for s in stations_out)
 
     print(
         f"  {n_updated} stations avec débit live, "
@@ -600,7 +633,7 @@ def compute_state(
     latest_dt = _parse_utc(latest_iso)
     age_hours = None
     if latest_dt is not None:
-        age_hours = max(0.0, (datetime.now(timezone.utc) - latest_dt).total_seconds() / 3600.0)
+        age_hours = max(0.0, (now - latest_dt).total_seconds() / 3600.0)
 
     # La péremption est jugée sur la MÉDIANE des horodatages : une poignée de
     # stations encore vivantes ne doit pas masquer un gel généralisé.
@@ -608,7 +641,7 @@ def compute_state(
     median_dt = _parse_utc(median_iso)
     age_median_hours = None
     if median_dt is not None:
-        age_median_hours = max(0.0, (datetime.now(timezone.utc) - median_dt).total_seconds() / 3600.0)
+        age_median_hours = max(0.0, (now - median_dt).total_seconds() / 3600.0)
 
     # data_stale si : le fetch a échoué, OU aucune station live,
     # OU la mesure la plus récente dépasse le seuil de péremption.
@@ -616,12 +649,14 @@ def compute_state(
     data_stale = (
         not fetch_status.get("ok", False)
         or n_updated == 0
+        or n_recent == 0
         or (age_ref is not None and age_ref > STALE_AFTER_HOURS)
     )
     if data_stale:
         raison = (
             fetch_status.get("error")
             or ("aucune station avec débit live" if n_updated == 0 else None)
+            or ("aucun debit recent et date" if n_recent == 0 else None)
             or (f"source périmée : âge médian des mesures {age_ref:.1f} h "
                 f"(seuil {STALE_AFTER_HOURS} h)" if age_ref is not None else "cause inconnue")
         )
@@ -631,20 +666,26 @@ def compute_state(
         print(f"  🟢 Données à jour (dernière mesure il y a {age_txt})")
 
     return {
-        "version": "3.1-cehq-176stations",
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "version": "3.2-cehq-freshness",
+        "generated_at": now.isoformat(),
         "mois_courant": mois_courant,
         "mois_courant_nom": NOMS_MOIS[mois_courant],
         "n_stations": len(stations_out),
         "n_stations_debit_live": n_updated,
         "n_stations_debit_csv": n_csv_fallback,
         "n_stations_debit_precedent": n_previous_fallback,
-        "n_stations_sans_debit_observe": n_no_debit_obs,
+        "n_stations_sans_debit_observe": len(stations_out) - n_recent,
+        "n_stations_debit_recent": n_recent,
+        "n_stations_debit_perime": n_perime,
+        "n_stations_pression_actuelle_calculable": sum(
+            s["pression_observe_pct"] is not None for s in stations_out
+        ),
         "n_critiques_etiage": n_critiques,
         "n_eleves_etiage": n_eleves,
         # --- Nouveau : visibilité sur la fraîcheur de la donnée live ---------
         "data_stale": bool(data_stale),
         "latest_live_measure_utc": latest_iso,
+        "median_live_measure_utc": median_iso,
         "latest_live_measure_age_hours": round(age_hours, 1) if age_hours is not None else None,
         "median_live_measure_age_hours": round(age_median_hours, 1) if age_median_hours is not None else None,
         "stale_threshold_hours": STALE_AFTER_HOURS,

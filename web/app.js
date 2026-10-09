@@ -4,6 +4,8 @@
 
 const STATE = {
   data: null,
+  sourceData: null,
+  refreshing: false,
   mode: "actuelle", // "actuelle" | "etiage"
   map: null,
   markers: new Map(),
@@ -49,7 +51,8 @@ async function init() {
   try {
     const res = await fetch("data/etat_pression.json", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    STATE.data = await res.json();
+    STATE.sourceData = await res.json();
+    STATE.data = HydroFreshness.derive(STATE.sourceData);
   } catch (e) {
     console.error(e);
     document.getElementById("kpi-meta").textContent = "Données indisponibles. Lancer generate_state.py.";
@@ -61,6 +64,48 @@ async function init() {
   initMap();
   renderAll();
   initInteractions();
+  setInterval(refreshView, 60 * 1000);
+  setInterval(refreshData, 5 * 60 * 1000);
+}
+
+function refreshView() {
+  const previous = STATE.data;
+  STATE.data = HydroFreshness.derive(STATE.sourceData);
+  renderFreshnessBanner();
+  initKPI();
+  if (previous.generated_at === STATE.data.generated_at &&
+      previous.n_stations_debit_recent === STATE.data.n_stations_debit_recent) return;
+  const selectedCode = STATE.selected?.code;
+  const technicalVisible = !document.getElementById("detail-tech").hidden;
+  refreshMarkers();
+  renderAll();
+  if (selectedCode) {
+    const selected = STATE.data.stations.find(station => station.code === selectedCode);
+    if (selected) {
+      openDetail(selected);
+      if (technicalVisible) {
+        document.getElementById("detail-tech").hidden = false;
+        document.getElementById("toggle-tech").textContent = "− Masquer la vue technique";
+      }
+    } else closeDetail();
+  }
+}
+
+async function refreshData() {
+  if (STATE.refreshing) return;
+  STATE.refreshing = true;
+  try {
+    const response = await fetch("data/etat_pression.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data.stations)) throw new Error("Liste de stations absente");
+    STATE.sourceData = data;
+  } catch (error) {
+    console.error("Actualisation HydroPression :", error);
+  } finally {
+    STATE.refreshing = false;
+    refreshView();
+  }
 }
 
 /* ---- Bandeau de fraîcheur des données ---- */
@@ -68,7 +113,6 @@ function renderFreshnessBanner() {
   const d = STATE.data;
   const existing = document.getElementById("freshness-banner");
   if (existing) existing.remove();
-  // Rétrocompatible : rien si le champ est absent (ancien JSON) ou faux.
   if (!d || d.data_stale !== true) return;
 
   const header = document.querySelector("header.topbar");
@@ -76,10 +120,10 @@ function renderFreshnessBanner() {
 
   const measure = d.latest_live_measure_utc
     ? fmt.date(d.latest_live_measure_utc)
-    : (d.generated_at ? fmt.date(d.generated_at) : null);
+    : null;
   const detail = measure
-    ? `Les débits affichés datent du ${measure} et ne reflètent pas la situation en temps réel.`
-    : `La source de débits en temps réel est momentanément indisponible.`;
+    ? `Dernière mesure reçue : ${measure}. Les mesures de plus de ${d.stale_threshold_hours || 6} h sont exclues de la pression actuelle; le risque d'étiage reste disponible.`
+    : `Aucun débit récent et daté disponible. Le risque d'étiage reste disponible.`;
 
   const banner = document.createElement("div");
   banner.id = "freshness-banner";
@@ -99,7 +143,7 @@ function initKPI() {
   document.getElementById("kpi-eleve").textContent = d.n_eleves_etiage;
   const generated = fmt.date(d.generated_at);
   const staleTag = d.data_stale ? " — ⚠️ non à jour" : "";
-  document.getElementById("kpi-meta").textContent = `Dernière mise à jour : ${generated}${staleTag}`;
+  document.getElementById("kpi-meta").textContent = `Collecte publiée : ${generated} · Débits récents : ${d.n_stations_debit_recent}/${d.n_stations}${staleTag}`;
   document.getElementById("foot-updated").textContent = `Données générées le ${generated}`;
 }
 
@@ -227,6 +271,9 @@ function openDetail(s) {
     `Station ${s.code}`,
     s.nom && s.nom !== s.plan_deau ? s.nom : null,
     s.date_mesure ? `Mesure : ${fmt.date(s.date_mesure)}` : null,
+    s.debit_obs_m3s === null && s.debit_obs_dernier_connu_m3s != null
+      ? `Dernier débit connu : ${fmt.m3s(s.debit_obs_dernier_connu_m3s)} m³/s — exclu du calcul actuel`
+      : null,
   ].filter(Boolean);
   document.getElementById("detail-sub").textContent = subParts.join(" · ");
 
