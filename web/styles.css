@@ -717,6 +717,17 @@ body {
   line-height:1.35;
 }
 .freshness-banner strong{ font-weight:700; }
+.station-warning{
+  margin:.5rem 0;
+  padding:.45rem .6rem;
+  border-left:3px solid #e07a00;
+  background:#fff4e5;
+  color:#7a3b00;
+  font-size:13px;
+  line-height:1.4;
+  overflow-wrap:anywhere;
+}
+.station-warning[hidden]{ display:none; }
 .freshness-banner__dot{
   width:.62rem;
   height:.62rem;

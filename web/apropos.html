@@ -318,8 +318,20 @@
     Concrètement&nbsp;: pour le mois de mai par exemple, on prend les déclarations de
     mai des 5 années où le préleveur a effectivement déclaré, on détermine le volume
     consommé selon la méthode hybride à quatre niveaux décrite plus haut, on divise
-    chaque volume mensuel par le nombre de jours actifs déclarés ce mois-là, puis on
+    la somme des volumes d'un même site, d'une même année et d'un même mois par le
+    maximum des jours actifs déclarés parmi ces lignes, puis on
     fait la moyenne arithmétique des débits journaliers obtenus.
+  </p>
+  <p>
+    <strong>Correction d'agrégation du 13 octobre 2026 :</strong> les lignes d'un
+    même site et d'un même mois (notamment plusieurs codes SCIAN) sont additionnées
+    avant division. Le maximum juillet-août du profil moyen, les coefficients et
+    le filtre d'association BV_PRIM + SUPERFI restent inchangés.
+  </p>
+  <p>
+    <strong>Rattachements à confirmer :</strong> les stations 050119, 050135 et
+    050144_16 portent la mention « Rattachement contesté : pression à confirmer ».
+    Cette mention ne retire aucun lien et ne change ni catégories ni comptes.
   </p>
   <p>
     Cette approche capture la <em>saisonnalité</em> de chaque préleveur. Un agriculteur
@@ -342,6 +354,13 @@
     <strong>maximum</strong> entre son débit consommé moyen de juillet et son débit
     consommé moyen d'août. L'idée&nbsp;: capturer la consommation que ce préleveur
     impose au moment où la rivière est typiquement au plus bas.
+  </p>
+  <p>
+    Pour une station, les maximums juillet-août des profils moyens de chaque site
+    sont <strong>additionnés</strong>. Ce n'est pas le maximum du profil mensuel de
+    la station : les sites peuvent atteindre leur maximum lors de mois différents.
+    Cette règle prudente était déjà appliquée avant la correction du 13 octobre 2026
+    et reste inchangée.
   </p>
   <p>
     Le choix du maximum entre les deux mois (plutôt qu'un seul) reflète le fait que les

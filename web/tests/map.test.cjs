@@ -20,6 +20,7 @@ function createMap(stations = []) {
   };
   const context = vm.createContext({
     window: {},
+    HydroStationFlags: require("../station-flags.js"),
     document: { addEventListener() {} },
     L: {
       map(id, options) {
@@ -61,6 +62,17 @@ test("map uses one standard HTTPS OpenStreetMap layer with visible attribution",
   assert.equal(tiles[0].map, map);
   assert.equal(map.options.attributionControl, true);
   assert.equal(tiles[0].options.detectRetina, undefined);
+});
+
+test("flagged map popup contains warning without changing marker colour", () => {
+  const { markers } = createMap([{
+    code: "050119", plan_deau: "Matawin", lat: 47, lon: -72,
+    categorie_observe: "modere", categorie_etiage: "modere",
+    pression_observe_pct: 16, pression_etiage_pct: 18,
+    signalement_motif: "Rattachement contest\u00e9 : pression \u00e0 confirmer",
+  }]);
+  assert.match(markers[0].popup, /Rattachement contest/);
+  assert.equal(markers[0].options.fillColor, "#e6c14a");
 });
 
 test("basemap change preserves Quebec framing and interactive station markers", () => {

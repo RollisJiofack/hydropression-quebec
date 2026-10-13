@@ -471,6 +471,7 @@ def compute_state(
     previous: dict | None = None,
     fetch_status: dict | None = None,
     now: datetime | None = None,
+    station_flags: dict | None = None,
 ) -> dict:
     """
     Combine données statiques (12 mensuels) avec débits live et le mois courant.
@@ -482,6 +483,12 @@ def compute_state(
     n_no_debit_obs = 0
     previous = previous or {}
     now = now or datetime.now(timezone.utc)
+    if station_flags is None:
+        if __package__:
+            from .station_flags import load_station_flags
+        else:
+            from station_flags import load_station_flags
+        station_flags = load_station_flags()
 
     col_mois = f"debit_preleve_mois_{mois_courant:02d}_m3s"
 
@@ -610,6 +617,9 @@ def compute_state(
             "debits_mensuels_m3s": debits_mensuels,
             "intervenants": intervenants_mois,
         }
+        warning = station_flags.get(station_data["code"], {})
+        station_data["signalement_motif"] = warning.get("signalement_motif")
+        station_data["signalement_date"] = warning.get("signalement_date")
         stations_out.append(station_data)
 
     n_critiques = sum(1 for s in stations_out if s["categorie_etiage"] == "critique")

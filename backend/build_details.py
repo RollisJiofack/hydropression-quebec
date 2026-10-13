@@ -31,6 +31,8 @@ Méthode d'association préleveurs <-> stations :
   de la station). Approche pragmatique, documentée comme une approximation.
 
 Profil mensuel sur 5 ans (2020-2024) :
+  Les lignes d'un même site, d'une même année et d'un même mois sont additionnées
+  avant division par le maximum des jours déclarés (correction du 2026-10-13).
   Pour chaque mois (1-12) et chaque site : moyenne arithmétique du débit
   journalier consommé sur les années où le site a déclaré ce mois-là.
 
@@ -54,6 +56,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import geopandas as gpd
+
+if __package__:
+    from . import evolution
+else:
+    import evolution
 
 
 # ============================================================
@@ -310,18 +317,17 @@ def calculer_profil_mensuel(df_decl):
     print("ÉTAPE 2 — Profil mensuel de consommation par site (moyenne 5 ans)")
     print("=" * 68)
 
-    par_an = df_decl.groupby(
-        ["Numéro du prélèvement", "Mois", "Année"]
-    )["debit_consomme_jour_m3s"].mean().reset_index()
+    # D1/D2 (2026-10-13): sum rows before division, then average declared years.
+    par_an = evolution.agreger_mois(df_decl, ANNEE_MIN, ANNEE_MAX)
 
     profil = par_an.groupby(
-        ["Numéro du prélèvement", "Mois"]
-    )["debit_consomme_jour_m3s"].mean().reset_index()
+        ["num_site", "mois"]
+    )["conso_nette_m3s"].mean().reset_index()
 
     pivot = profil.pivot(
-        index="Numéro du prélèvement",
-        columns="Mois",
-        values="debit_consomme_jour_m3s"
+        index="num_site",
+        columns="mois",
+        values="conso_nette_m3s"
     )
 
     for mois in range(1, 13):
@@ -356,7 +362,10 @@ def calculer_profil_mensuel(df_decl):
     vol_moyen = df_vol_an.groupby("Numéro du prélèvement")["vol_consomme_L"].mean()
     meta["volume_annuel_moyen_Mm3"] = vol_moyen / 1e9
 
-    sites = meta.join(pivot).reset_index()
+    meta = meta.reset_index()
+    meta["num_site"] = evolution._site_ids(meta["Numéro du prélèvement"])
+    sites = meta.merge(pivot.reset_index(), on="num_site", how="left",
+                       validate="one_to_one").drop(columns="num_site")
 
     cols_mois = [f"debit_mois_{m:02d}_m3s" for m in range(1, 13)]
     a_des_donnees = (sites[cols_mois].sum(axis=1) > 0)

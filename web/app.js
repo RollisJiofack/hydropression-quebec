@@ -47,11 +47,17 @@ const fmt = {
 };
 
 /* ---- Init ---- */
+async function loadSourceData() {
+  const res = await fetch("data/etat_pression.json", { cache: "no-store" });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  if (!Array.isArray(data.stations)) throw new Error("Liste de stations absente");
+  return data;
+}
+
 async function init() {
   try {
-    const res = await fetch("data/etat_pression.json", { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    STATE.sourceData = await res.json();
+    STATE.sourceData = await loadSourceData();
     STATE.data = HydroFreshness.derive(STATE.sourceData);
   } catch (e) {
     console.error(e);
@@ -74,7 +80,8 @@ function refreshView() {
   renderFreshnessBanner();
   initKPI();
   if (previous.generated_at === STATE.data.generated_at &&
-      previous.n_stations_debit_recent === STATE.data.n_stations_debit_recent) return;
+      previous.n_stations_debit_recent === STATE.data.n_stations_debit_recent &&
+      previous.stations.every((s, i) => s.signalement_motif === STATE.data.stations[i]?.signalement_motif)) return;
   const selectedCode = STATE.selected?.code;
   const technicalVisible = !document.getElementById("detail-tech").hidden;
   refreshMarkers();
@@ -95,11 +102,7 @@ async function refreshData() {
   if (STATE.refreshing) return;
   STATE.refreshing = true;
   try {
-    const response = await fetch("data/etat_pression.json", { cache: "no-store" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    if (!Array.isArray(data.stations)) throw new Error("Liste de stations absente");
-    STATE.sourceData = data;
+    STATE.sourceData = await loadSourceData();
   } catch (error) {
     console.error("Actualisation HydroPression :", error);
   } finally {
@@ -199,6 +202,7 @@ function buildPopup(s, mode) {
   return `
     <div class="popup-name">${s.plan_deau ?? s.nom}</div>
     <div class="popup-sub">Station ${s.code}</div>
+    ${HydroStationFlags.warningHtml(s)}
     <div class="popup-stat"><span>Pression en ${moisNom}</span><span>${pctActuelle}</span></div>
     <div class="popup-stat"><span>Pression en étiage</span><span>${pctEtiage}</span></div>
     <div class="popup-cta" onclick="openDetailByCode('${s.code}')">→ Voir le détail</div>
@@ -243,6 +247,7 @@ function renderTop() {
       <span>
         <div class="top-name">${s.plan_deau ?? s.nom}</div>
         <div class="top-name-sub">Station ${s.code}</div>
+        ${HydroStationFlags.warningHtml(s)}
       </span>
       <span class="top-pct top-pct--${cat}">${fmt.pct(s[key])}</span>
     `;
@@ -270,6 +275,9 @@ function openDetail(s) {
       : null,
   ].filter(Boolean);
   document.getElementById("detail-sub").textContent = subParts.join(" · ");
+  const warning = document.getElementById("detail-warning");
+  warning.textContent = HydroStationFlags.warningText(s);
+  warning.hidden = !warning.textContent;
 
   // Métriques principales
   const setMetric = (valId, footId, pct, footMsg) => {
