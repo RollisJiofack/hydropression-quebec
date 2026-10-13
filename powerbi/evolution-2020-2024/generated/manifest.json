@@ -1,0 +1,13 @@
+{
+  "tables": [
+    "FactSiteAnnee",
+    "DimSite",
+    "CorrespondanceSiteStation",
+    "DimAnnee",
+    "Grandeur"
+  ],
+  "relationships": 3,
+  "measures": 13,
+  "validation": "structural only; no DAX/M engine execution",
+  "deploy_sha256": "6d37e881ddde887ded5922abac224c465064cc56337586e5212bbeeca317c6fb"
+}

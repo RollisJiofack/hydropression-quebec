@@ -1,0 +1,1440 @@
+﻿num_site,nom_intervenant,municipalite,secteur_scian,code_scian,premiere_annee,derniere_annee,nb_annees_declarees,panel_2020_2024,idtronc,bv_prim
+43732,Fruit d'Or inc.,Villeroy,"Préservation (sauf congélation), fruit & légume",311420,2022,2024,3,False,,
+43740,EMBALLAGES KRUGER S.E.C.,Montréal,Usines de carton,322130,2020,2024,5,True,,
+43762,CARRIÈRES P.C.M. INC.,Saint-Wenceslas,Extraction de grès,212317,2021,2022,2,False,SLSO00783,0240 -Rivière Bécancour
+43773,Ferme Daniel Coutu inc.,Sorel-Tracy,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,5,True,MONT00502,0304 -Rivière Richelieu
+43778,PF RÉSOLU CANADA INC.,Baie-Comeau,"Usines de pâte à papier, de papier & de carton",3221,2020,2023,3,False,,
+43786,Waterville TG inc.,Waterville,Fab. d'autres produits en caoutchouc,326290,2020,2024,5,True,SLSO02154,0302 -Rivière Saint-François
+43789,CLUB DE GOLF LE PORTAGE INC.,L'Assomption,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00566,0522 -Rivière L'Assomption
+43799,PF RÉSOLU CANADA INC.,Pointe-aux-Outardes,Scieries & préservation du bois,32111,2020,2024,5,True,,
+43808,RIO TINTO ALCAN INC.,Saguenay,Fab. d'autres produits chimiques,3259,2020,2024,5,True,SAGU00288,0610 -Rivière Chicoutimi
+43816,SOCIÉTÉ EN COMMANDITE MANOIR RICHELIEU,La Malbaie,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+43829,CASCADES CANADA ULC,Kingsey Falls,Usines de papier (sauf papier journal),322121,2020,2024,5,True,SLSO01093,0301 -Rivière Nicolet
+43830,LACTALIS CANADA INC.,Victoriaville,Fab. de produits laitiers,3115,2020,2024,5,True,SLSO00969,0301 -Rivière Nicolet
+43847,NEXKEMIA PÉTROCHIMIE INC.,Potton,Fab. de résines & de caoutchouc synthétique,32521,2020,2024,5,True,MONT00717,0304 -Rivière Richelieu
+43853,FORTRESS SPECIALTY CELLULOSE INC.,Thurso,Usines de pâte chimique,322112,2020,2024,5,True,OUTV00599,0430 -Rivière des Outaouais
+43870,CIMENT QUÉBEC INC.,Saint-Basile,Extraction de calcaire,212315,2020,2023,4,False,SLNO03350,0507 -Rivière Portneuf
+43898,CARRIÈRES QUÉBEC INC.,Québec,Extraction de calcaire,212315,2020,2024,5,True,SLNO00295,0510 -Rivière Montmorency
+43919,PF RÉSOLU CANADA INC.,Clermont,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,SLNO00097,0515 -Rivière Malbaie
+43932,CRUSTACÉS BAIE-TRINITÉ INC.,Baie-Trinité,Préparation & cond. de poissons & fruits de mer,3117,2020,2024,4,False,CNDB00891,0715 -Rivière de la Trinité
+43938,COMPAGNIE MINIÈRE IOC INC.,Sept-Îles,Extraction de minerais de fer,212210,2020,2021,2,False,,
+43939,Société ferroviaire et portuaire de Pointe-Noire s.e.c.,Sept-Îles,"Transport ferrov. de march., courte distance",482112,2020,2024,5,True,CNDB00970,0792 -Rivière Hall
+43941,Rio Tinto Fer et Titane inc.,Havre-Saint-Pierre,Extraction de minerais de fer,212210,2020,2024,5,True,,
+43985,GRAYMONT (QC) INC.,Dudswell,Extraction de calcaire,212315,2020,2023,4,False,SLSO01596,0302 -Rivière Saint-François
+44023,Les entreprises Rolland inc.,Lévis,Usines de pâte chimique,322112,2020,2024,5,True,SLSO00017,0234 -Rivière Chaudière
+44031,COMPAGNIE DE GESTION ALCOA-LAURALCO,Deschambault-Grondines,Production primaire d'alumine & d'aluminium,331313,2020,2024,5,True,,
+44042,KRUGER TROIS-RIVIÈRES S.E.C.,Trois-Rivières,Usines de carton,322130,2020,2024,5,True,SLSO00918,0284 -Rivière Godefroy
+44043,OLYMEL S.E.C.,Vallée-Jonction,Abattage d'animaux (sauf les volailles),311611,2020,2023,4,False,SLSO00063,0234 -Rivière Chaudière
+44051,1455695 B.C. LTD.,Sherbrooke,Fab. d'autres produits en caoutchouc,326290,2022,2023,2,False,SLSO02327,0302 -Rivière Saint-François
+44052,PRODUITS AMERICAN BILTRITE (CANADA) LTÉE,Sherbrooke,Fab. d'autres produits en caoutchouc,32629,2020,2024,5,True,SLSO01366,0302 -Rivière Saint-François
+44067,AGROPUR COOPÉRATIVE,Notre-Dame-du-Bon-Conseil,Fab. de produits laitiers,3115,2020,2024,5,True,SLSO01075,0301 -Rivière Nicolet
+44069,CONCORBEC INC.,Vallée-Jonction,Extraction de sable & de gravier,212323,2020,2024,5,True,SLSO00063,0234 -Rivière Chaudière
+44088,IPL North America inc.,Saint-Damien-de-Buckland,Fab. de tous les autres produits en plastique,326198,2020,2024,5,True,SLSO02407,0233 -Rivière Etchemin
+44093,Amrize Canada Inc.,Saint-Eustache,Extraction de pierre,21231,2023,2024,2,False,OUTV03405,0466 -Rivière du Chicot
+44103,SOCIÉTÉ EN COMMANDITE STADACONA WB,Québec,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,SLNO00004,0509 -Rivière Saint-Charles
+44104,LA CIE MATERIAUX DE CONSTRUCTION BP CANADA,Pont-Rouge,Usines de panneaux de particules & de fibres,321216,2020,2024,5,True,SLNO00348,0508 -Rivière Jacques-Cartier
+44106,"MPI MOULIN À PAPIER DE PORTNEUF, INC.",Portneuf,Usines de papier (sauf papier journal),322121,2020,2024,5,True,SLNO03347,0507 -Rivière Portneuf
+44107,"GRAPHIC PACKAGING INTERNATIONAL CANADA, ULC",East Angus,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,SLSO01583,0302 -Rivière Saint-François
+44109,PF RÉSOLU CANADA INC.,Dolbeau-Mistassini,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,SAGU01124,0621 -Rivière Mistassini
+44113,SOCIÉTÉ EN COMMANDITE FF SOUCY WB,Rivière-du-Loup,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,GASP03802,0225 -Rivière du Loup
+44114,CASCADES CANADA ULC,Témiscouata-sur-le-Lac,Usines de carton,322130,2020,2024,5,True,GASP00635,01EX -Rivière Saint-Jean
+44115,ENTREPRISES SAPPI CANADA INC.,Matane,Usines de pâte mécanique,322111,2020,2024,5,True,GASP02848,0216 -Rivière Matane
+44121,"Rayonier A.M. Canada, Société en nom collectif ",Témiscaming,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,OUTM02022,0486 -Ruisseau Gordon
+44122,PF RÉSOLU CANADA INC.,Amos,"Usines de pâte à papier, de papier & de carton",3221,2020,2020,1,False,ABIT01483,0801 -Rivière Harricana
+44123,INDUSTRIES NORBORD INC.,La Sarre,Usines de panneaux de copeaux,321217,2020,2024,5,True,LABI00204,08A1 -River Moose
+44129,GLENCORE CANADA CORPORATION,Rouyn-Noranda,Fond. métaux non ferr. sauf moulage sous press.,331529,2020,2024,5,True,OUTM00697,0430 -Rivière Kinojévis
+44132,Les entreprises Rolland inc.,Saint-Jérôme,Usines de papier,32212,2020,2024,5,True,OUTV03263,0401 -Rivière du Nord
+44136,PRODUITS KRUGER S.E.C.,Crabtree,Usines de papier (sauf papier journal),322121,2020,2024,5,True,SLNO00690,0522 -Rivière L'Assomption
+44139,COMPAGNIE WESTROCK DU CANADA CORP.,La Tuque,Usines de carton,32213,2021,2023,2,False,,
+44141,Kruger Wayagamack s.e.c.,Trois-Rivières,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,SLNO00930,0501 -Rivière Saint-Maurice
+44162,PRODUITS KRUGER S.E.C.,Sherbrooke,Usines de papier (sauf papier journal),322121,2020,2024,5,True,SLSO02077,0302 -Rivière Saint-François
+44163,DOMTAR INC.,Windsor,Usines de papier (sauf papier journal),322121,2020,2024,5,True,SLSO01336,0302 -Rivière Saint-François
+44168,MINES AGNICO EAGLE LIMITÉE,Preissac,Extraction de minerais métalliques,2122,2020,2024,5,True,,
+44188,Le club de Golf de Cap-Rouge inc.,Québec,Terrains de golf & country clubs,713910,2020,2020,1,False,,
+44190,La Compagnie Bon Sable ltée,Saint-Joseph-du-Lac,Extraction de sable & de gravier,212323,2020,2021,2,False,OUTV03411,0489 -Ruisseau Périer
+44193,CLUB DE GOLF DE MURRAY-BAY INC.,La Malbaie,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00090,0515 -Rivière Malbaie
+44195,CLUB DE GOLF PONT-ROUGE INC.,Pont-Rouge,Terrains de golf & country clubs,713910,2020,2024,5,True,SLNO00469,0508 -Rivière Jacques-Cartier
+44196,CLUB DE GOLF ALPIN INC.,Sainte-Brigitte-de-Laval,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00336,0510 -Rivière Montmorency
+44197,CLUB DE GOLF ORLEANS INC.,Sainte-Pétronille,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+44198,Club de golf Le Montmorency inc.,Boischatel,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00295,0510 -Rivière Montmorency
+44200,LE CLUB DE GOLF ROYAL QUÉBEC,Boischatel,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00337,0510 -Rivière Montmorency
+44202,CLUB DE GOLF L'ALBATROS DE STE-FOY INC.,Québec,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00039,0509 -Rivière Saint-Charles
+44218,CASCADES CANADA ULC,Candiac,Usines de papier (sauf papier journal),322121,2020,2024,5,True,MONT01305,0307 -Rivière de la Tortue
+44221,CHIMIE PARACHEM S.E.C.,Montréal-Est,Fab. de produits pétrochimiques,325110,2020,2024,5,True,,
+44254,"SKI BROMONT.COM, SOCIÉTÉ EN COMMANDITE",Bromont,Centres de ski,713920,2020,2024,5,True,MONT00304,0303 -Rivière Yamaska
+44266,LE CLUB DE GOLF BELOEIL,Beloeil,Terrains de golf & country clubs,71391,2020,2023,4,False,MONT00529,0304 -Rivière Richelieu
+44271,CLUB DE GOLF DE LA RIVE SUD INC.,Saint-Basile-le-Grand,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT00534,0304 -Rivière Richelieu
+44276,LE CLUB DE GOLF LES PATRIOTES INC.,Saint-Ours,Terrains de golf & country clubs,71391,2020,2024,3,False,MONT00502,0304 -Rivière Richelieu
+44283,LE CLUB DE GOLF DE ST-HYACINTHE LIMITEE,Saint-Hyacinthe,Terrains de golf & country clubs,713910,2020,2023,4,False,MONT00048,0303 -Rivière Yamaska
+44286,CLUB DE GOLF DE LA MADELEINE INC.,Sainte-Marie-Madeleine,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT01276,0304 -Rivière Richelieu
+44288,PÉPINIÈRE L'AVENIR INC.,Racine,Culture en pépinière & arboriculture,111421,2020,2023,4,False,SLSO02357,0302 -Rivière Saint-François
+44289,LES ENTREPRISES SPORTIVES JEAN MORIN INC.,Saint-Alexandre,Terrains de golf & country clubs,713910,2022,2024,2,False,,
+44293,GOLF WATERLOO.COM INC.,Shefford,Terrains de golf & country clubs,713910,2020,2024,5,True,MONT00255,0303 -Rivière Yamaska
+44298,9509-8042 Québec inc.,Sorel-Tracy,Terrains de golf & country clubs,71391,2020,2020,1,False,MONT00502,0304 -Rivière Richelieu
+44301,LE CLUB DE GOLF DE LA VALLÉE DU RICHELIEU INC.,Sainte-Julie,Toutes les autres cultures agricoles,11199,2020,2024,5,True,,
+44302,COMPLEXE SPORTIF LA CLINIQUE DU SPORT INC.,Saint-Césaire,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00470,0303 -Rivière Yamaska
+44308,Golf Granby Saint-Paul.ca inc.,Granby,Terrains de golf & country clubs,713910,2020,2024,5,True,MONT00214,0303 -Rivière Yamaska
+44315,CLUB DE GOLF RIVIERE ROUGE INC.,Coteau-du-Lac,Terrains de golf & country clubs,713910,2020,2024,5,True,VAUD00201,0460 -Rivière Rouge
+44317,9210-8877 QUÉBEC INC.,Carignan,Terrains de golf & country clubs,713910,2020,2020,1,False,MONT00534,0304 -Rivière Richelieu
+44321,LE ROYAL BROMONT INC.,Bromont,Autres services de divertissement & loisirs,7139,2020,2024,5,True,MONT00287,0303 -Rivière Yamaska
+44324,9155-4253 Québec inc.,Rimouski,Terrains de golf & country clubs,713910,2020,2024,5,True,GASP03565,0220 -Rivière Rimouski
+44325,9038-7655 QUÉBEC INC.,Notre-Dame-de-l'Île-Perrot,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+44335,CLUB DE GOLF HERIOT INC.,Drummondville,Terrains de golf & country clubs,71391,2020,2024,5,True,SLSO01226,0302 -Rivière Saint-François
+44336,CLUB DE GOLF TRIANGLE D'OR INC.,Saint-Rémi,Terrains de golf & country clubs,713910,2020,2024,5,True,,
+44340,CLUB DE GOLF KNOWLTON,Lac-Brome,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT00356,0303 -Rivière Yamaska
+44352,LE DOMAINE DE ROUVILLE INC.,Saint-Jean-Baptiste,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT01273,0304 -Rivière Richelieu
+44353,CHÂTEAU BROMONT INC.,Bromont,Terrains de golf & country clubs,71391,2020,2023,4,False,MONT00304,0303 -Rivière Yamaska
+44362,CLUB DE GOLF DE COWANSVILLE INC.,Cowansville,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT00468,0303 -Rivière Yamaska
+44365,CLUB DE GOLF DE FARNHAM INC.,Farnham,Terrains de golf & country clubs,71391,2020,2023,4,False,MONT00928,0304 -Rivière Richelieu
+44393,Club de golf St-Pacôme inc.,Saint-Pacôme,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO02791,0227 -Rivière Ouelle
+44395,9410-0930 Québec inc.,Orford,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO01533,0302 -Rivière Saint-François
+44396,CANADA PIPE COMPANY ULC,Sainte-Croix,Fonderies de fer,331511,2020,2024,5,True,,
+44398,CARRIÈRE D'ACTON VALE LTÉE,Acton Vale,Extraction de pierre,21231,2020,2024,5,True,MONT00071,0303 -Rivière Yamaska
+44421,GRAYMONT (QC) INC.,Dudswell,Extraction de calcaire,212315,2020,2023,4,False,SLSO01598,0302 -Rivière Saint-François
+44437,Club de golf St-Georges 1964,Saint-Georges,Terrains de golf & country clubs,71391,2021,2024,4,False,SLSO00164,0234 -Rivière Chaudière
+44438,GOLF DE L'AUBERIVIÈRE INC.,Lévis,Terrains de golf & country clubs,71391,2020,2024,5,True,SLSO02523,0232 -Rivière à la Scie
+44446,Les Produits Forestiers D&G Ltée,Sainte-Aurélie,Scieries & préservation du bois,3211,2022,2022,1,False,GASP00436,01EX -Rivière Saint-Jean
+44447,Club de Golf Sainte-Marie,Sainte-Marie,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO00031,0234 -Rivière Chaudière
+44460,VILLE DE DRUMMONDVILLE,Drummondville,Centres de ski,713920,2021,2024,4,False,SLSO01227,0302 -Rivière Saint-François
+44470,ÉNERGIE VALERO INC.,Lévis,Raffineries de pétrole,324110,2020,2024,5,True,SLSO02515,0232 -Rivière à la Scie
+44472,Les Produits Forestiers D&G Ltée,Sainte-Aurélie,Scieries & préservation du bois,3211,2020,2024,5,True,GASP00436,01EX -Rivière Saint-Jean
+44476,Club de Golf Montcalm inc.,Saint-Liguori,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00694,0522 -Rivière L'Assomption
+44479,CLUB DE GOLF TERREBONNE INC.,Terrebonne,Terrains de golf & country clubs,71391,2020,2024,3,False,OUTV03394,0464 -Rivière Mascouche
+44480,CLUB DE GOLF TERREBONNE INC.,Terrebonne,Terrains de golf & country clubs,71391,2020,2024,3,False,OUTV03394,0464 -Rivière Mascouche
+44481,CLUB DE GOLF TERREBONNE INC.,Terrebonne,Terrains de golf & country clubs,71391,2022,2024,3,False,,
+44484,SOCIÉTÉ EN COMMANDITE PAPIER MASSON WB,Gatineau,Usines de papier,32212,2020,2024,5,True,OUTV00648,0406 -Rivière du Lièvre
+44499,Pépinière Villeneuve inc.,L'Assomption,"Culture en serre, en pépinière & floriculture",1114,2022,2022,1,False,SLNO00566,0522 -Rivière L'Assomption
+44500,Pépinière Villeneuve inc.,L'Assomption,"Culture en serre, en pépinière & floriculture",1114,2022,2024,3,False,SLNO00566,0522 -Rivière L'Assomption
+44501,Pépinière Villeneuve inc.,L'Assomption,"Culture en serre, en pépinière & floriculture",1114,2022,2022,1,False,SLNO00566,0522 -Rivière L'Assomption
+44516,Club de Golf coopératif de Lac Etchemin,Lac-Etchemin,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO02472,0233 -Rivière Etchemin
+44542,CLUB DE GOLF CONTINENTAL INC.,Sainte-Victoire-de-Sorel,Terrains de golf & country clubs,713910,2020,2024,5,True,MONT00502,0304 -Rivière Richelieu
+44549,CLUB DE GOLF DE FARNHAM INC.,Farnham,Terrains de golf & country clubs,71391,2020,2023,4,False,MONT00469,0303 -Rivière Yamaska
+44562,CLUB DE GOLF DE LA MADELEINE INC.,Saint-Charles-sur-Richelieu,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT00525,0304 -Rivière Richelieu
+44578,Club de golf Le Montmorency inc.,Québec,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00295,0510 -Rivière Montmorency
+44589,Club de golf Stoneham inc.,Stoneham-et-Tewkesbury,Terrains de golf & country clubs,713910,2020,2024,5,True,SLNO00032,0509 -Rivière Saint-Charles
+44590,CLUB DE GOLF ACTON VALE INC.,Acton Vale,Terrains de golf & country clubs,713910,2020,2024,5,True,MONT00070,0303 -Rivière Yamaska
+44601,9516-0198 Québec inc.,Lac-Beauport,Centres de ski,71392,2020,2024,5,True,SLNO00034,0509 -Rivière Saint-Charles
+44602,Club de golf Stoneham inc.,Stoneham-et-Tewkesbury,Terrains de golf & country clubs,713910,2021,2023,3,False,,
+44606,ENTREPRISE INDORAMA PTA MONTRÉAL S.E.C.,Montréal-Est,Fab. d'autres produits chim. organiques de base,325190,2020,2024,5,True,,
+44614,4058771 CANADA INC.,Lac-Sainte-Marie,Centres de ski,71392,2020,2024,5,True,OUTV01265,0408 -Rivière Gatineau
+44633,GRAYMONT (QC) INC.,Dudswell,Extraction de calcaire,212315,2020,2023,4,False,SLSO01596,0302 -Rivière Saint-François
+44635,Corporation Ski & Golf Mont-Orford,Orford,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO01525,0302 -Rivière Saint-François
+44636,Corporation Ski & Golf Mont-Orford,Orford,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO01525,0302 -Rivière Saint-François
+44674,LE CLUB DE GOLF DE LARRIMAC,Chelsea,Terrains de golf & country clubs,71391,2020,2022,3,False,OUTV01195,0408 -Rivière Gatineau
+44677,Nouveau club de golf Lac Ste-Marie inc.,Lac-Sainte-Marie,Terrains de golf & country clubs,71391,2020,2023,4,False,OUTV01265,0408 -Rivière Gatineau
+44726,Ministère des ressources naturelles et des Forêts,Sainte-Geneviève-de-Berthier,Pép. forest. & récolte de produits forestiers,1132,2021,2024,4,False,SLNO00821,0523 -Rivière la Chaloupe
+44742,Amrize Canada Inc.,Gatineau,Extraction de pierre,21231,2020,2024,5,True,,
+44744,Louisiana-Pacific Canada ltd.,Bois-Franc,Usines de panneaux de copeaux,321217,2020,2024,5,True,OUTV01301,0408 -Rivière Gatineau
+44745,General Dynamics produits de défense et systèmes tactiques-Canada inc.,Repentigny,Fab. d'autres produits métalliques,3329,2020,2024,5,True,SLNO00563,0522 -Rivière L'Assomption
+44748,ArcelorMittal Produits longs Canada s.e.n.c.,Contrecoeur,Sidérurgie,3311,2020,2024,5,True,,
+44749,ArcelorMittal Produits longs Canada s.e.n.c.,Contrecoeur,Sidérurgie,3311,2020,2024,5,True,,
+44756,ZINC ÉLECTROLYTIQUE DU CANADA LIMITÉE,Salaberry-de-Valleyfield,Fonte & affinage métaux non ferreux (sauf Al),331410,2020,2024,5,True,,
+44757,GENERAL DYNAMICS PRODUITS DE DÉFENSE ET SYSTÈMES TACTIQUES- CANADA VALLEYFIELD INC.,Salaberry-de-Valleyfield,Fab. d'explosifs,325920,2020,2024,5,True,,
+44759,"KRONOS CANADA, INC.",Varennes,Fab. tous les autres prod. chim. inorg. de base,325189,2020,2024,5,True,,
+44768,ContiTech Canada inc.,Saint-Alphonse-de-Granby,Fab. tuyaux & courroies de caoutchouc & plast.,326220,2020,2024,5,True,MONT00273,0303 -Rivière Yamaska
+44788,CARRIÈRES P.C.M. INC.,Saint-Germain-de-Grantham,Extraction de grès,212317,2022,2023,2,False,,
+44843,"POSÉIDON ""LES POISSONS ET CRUSTACÉS"" INC.",Longue-Pointe-de-Mingan,Préparation & cond. de poissons & fruits de mer,3117,2020,2024,5,True,,
+44949,CLUB DE GOLF DU MOULIN (2013) INC.,Trois-Rivières,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00931,0501 -Rivière Saint-Maurice
+44985,"PRODUITS SUNCOR ÉNERGIE, S.E.N.C.",Montréal,Raffineries de pétrole,32411,2020,2024,5,True,,
+44998,Omya Canada inc.,Pike River,Extraction de minerais non métalliques,2123,2020,2024,5,True,,
+45003,"Rayonier A.M. Canada, Société en nom collectif ",La Sarre,Scieries sauf usines de bard. & bard. de fente,321111,2020,2023,4,False,LABI00143,08A1 -River Moose
+45004,CLUB DE GOLF LOTBINIÈRE INC.,Saint-Gilles,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO00590,0234 -Rivière Chaudière
+45005,Glendyne inc.,Saint-Marc-du-Lac-Long,"Extract. schiste, argile & minerai réfractaire",212326,2020,2024,5,True,,
+45009,CARRIÈRES P.C.M. INC.,Wickham,Extraction de minerais non métalliques,2123,2021,2022,2,False,SLSO01216,0302 -Rivière Saint-François
+45015,Gestion Le Boyer inc.,Saint-Michel-de-Bellechasse,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO02542,0230 -Rivière Boyer
+45030,PF RÉSOLU CANADA INC.,Girardville,Scieries & préservation du bois,32111,2020,2024,5,True,SAGU01406,0621 -Rivière Mistassini
+45038,LES FORGES DE SOREL CIE,Saint-Joseph-de-Sorel,Forgeage,332113,2020,2024,5,True,MONT00502,0304 -Rivière Richelieu
+45071,CLUB DE GOLF DE PLESSISVILLE (1990) INC.,Plessisville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,SLSO00885,0240 -Rivière Bécancour
+45088,Club de golf Le Royal Chaudière inc.,Lévis,Terrains de golf & country clubs,71391,2020,2024,5,True,SLSO00017,0234 -Rivière Chaudière
+45120,SOCIÉTÉ EN COMMANDITE MANOIR RICHELIEU,La Malbaie,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+45134,LE CLUB DE GOLF DE L'ÉPIPHANIE INC.,L'Épiphanie,Terrains de golf & country clubs,713910,2022,2024,3,False,SLNO00569,0522 -Rivière L'Assomption
+45135,PRODUITS KRUGER S.E.C.,Crabtree,Usines de papier (sauf papier journal),322121,2020,2024,5,True,SLNO00690,0522 -Rivière L'Assomption
+45136,PRODUITS KRUGER S.E.C.,Saint-Paul,Usines de papier (sauf papier journal),322121,2020,2024,5,True,SLNO00689,0522 -Rivière L'Assomption
+45155,TEXTILES MONTEREY (1996) INC.,Drummondville,"Finissage de textiles, tissus & revêt. tissus",3133,2020,2024,5,True,SLSO01227,0302 -Rivière Saint-François
+45183,MASKIMO CONSTRUCTION INC.,L'Épiphanie,Extraction de calcaire,212315,2020,2020,1,False,SLNO00791,0522 -Rivière L'Assomption
+45186,2973-9711 Québec inc.,Saint-Benoît-Labre,Terrains de golf & country clubs,71391,2020,2024,5,True,SLSO00564,0234 -Rivière Chaudière
+45199,CARRIÈRES QUÉBEC INC.,Québec,Extraction de calcaire,212315,2020,2024,5,True,SLNO00011,0509 -Rivière Saint-Charles
+45208,Wesdome Gold Mines Ltd.,Val-d'Or,Extraction de minerais d'or & d'argent,212220,2021,2024,4,False,,
+45220,AGROPUR COOPÉRATIVE,Notre-Dame-du-Bon-Conseil,Fab. de produits laitiers,3115,2020,2024,5,True,SLSO01075,0301 -Rivière Nicolet
+45223,LE GOLF DU GRAND PORTNEUF INC.,Saint-Basile,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO03355,0507 -Rivière Portneuf
+45239,E.GAGNON ET FILS LTÉE,Sainte-Thérèse-de-Gaspé,Préparation & cond. de poissons & fruits de mer,3117.0,2024,2024,1,False,,
+45293,Fruit d'Or inc.,Villeroy,"Préservation (sauf congélation), fruit & légume",311420,2022,2024,3,False,,
+45295,PF RÉSOLU CANADA INC.,Gatineau,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,OUTV01188,0430 -Rivière des Outaouais
+45309,CENTRE DE VILLÉGIATURE ET DE CONGRÈS LANAUDIÈRE INC.,Saint-Jean-de-Matha,Tous les autres services de divert. & loisirs,71399,2020,2024,5,True,SLNO00603,0522 -Rivière L'Assomption
+45313,LA RÉSERVE MANAGEMENT INC.,Saint-Donat,Centres de ski,71392,2022,2023,2,False,SLNO00746,0522 -Rivière L'Assomption
+45359,MINERAI DE FER QUÉBEC INC.,Fermont,Extraction de minerais de fer,212210,2020,2024,5,True,,
+45399,HÔTEL & GOLF DE LA FAUNE INC.,Québec,Terrains de golf & country clubs,71391,2020,2021,2,False,SLNO00012,0509 -Rivière Saint-Charles
+45450,104048 CANADA LIMITEE,Lac-Simon,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00464,0404 -Rivière de la Petite Nation
+45454,Gestion G. Desloges inc.,Princeville,Terrains de golf & country clubs,71391,2020,2020,1,False,SLSO00895,0240 -Rivière Bécancour
+45455,11250299 CANADA INC.,Drummondville,Terrains de golf & country clubs,71391,2020,2023,4,False,SLSO01213,0302 -Rivière Saint-François
+45456,DOMAINE DU SKI MONT BRUNO INC.,Saint-Bruno-de-Montarville,Centres de ski,71392,2020,2024,5,True,MONT00535,0304 -Rivière Richelieu
+45461,Le club de golf Saguenay Arvida inc.,Saguenay,Terrains de golf & country clubs,713910,2020,2024,5,True,SAGU00426,0646 -Rivière aux Vases
+45470,PRODUITS KRUGER S.E.C.,Gatineau,Usines de papier (sauf papier journal),322121,2020,2024,5,True,OUTV02349,0430 -Rivière des Outaouais
+45476,CLUB DE GOLF LAC SERGENT INC.,Saint-Raymond,Terrains de golf & country clubs,713910,2020,2024,5,True,SLNO03360,0507 -Rivière Portneuf
+45491,AGROPUR COOPÉRATIVE,Beauceville,Fab. de produits laitiers,3115,2020,2024,5,True,SLSO00139,0234 -Rivière Chaudière
+45497,STATION MONT-SAINTE-ANNE INC.,Beaupré,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00289,0512 -Rivière Sainte-Anne
+45566,COMPAGNIE MINIÈRE IOC INC.,Rivière-Nipissis,Extraction de minerais de fer,212210,2020,2021,2,False,CNDC00708,0723 -Rivière Moisie
+45613,CORPORATION DU PARC RÉGIONAL DU MONT GRAND FONDS INC.,La Malbaie,Centres de ski,71392,2021,2024,4,False,SLNO00092,0515 -Rivière Malbaie
+45764,Relance Fort-Prével,Percé,Terrains de golf & country clubs,713910,2020,2022,3,False,,
+45807,CLUBLINK CORPORATION ULC,Laval,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+45818,Sacopan inc.,Sacré-Coeur,Usines de panneaux de particules & de fibres,321216,2020,2024,5,True,SAGU02135,0628 -Rivière Sainte-Marguerite
+45858,PF RÉSOLU CANADA INC.,Saguenay,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,SAGU00599,0667 -Rivière aux Sables
+45861,PF RÉSOLU CANADA INC.,Alma,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,,
+45862,9027-6346 QUÉBEC INC.,Amherst,Terrains de golf & country clubs,71391,2020,2024,4,False,OUTV00055,0402 -Rivière Rouge
+45863,VILLE DE  GASPÉ,Gaspé,"Tous les autres services, transport pipeline",48699,2020,2024,5,True,GASP00038,0205 -Rivière au Renard
+45931,SOCIÉTÉ DU PARC INDUSTRIEL ET PORTUAIRE DE BÉCANCOUR,Bécancour,Réseaux d'aqueduc & d'égout & autres,2213,2020,2024,5,True,,
+45963,GROUPE ROUSSEL INC.,Saint-Donat,Centres de ski,71392,2023,2024,2,False,,
+45969,Ministère des ressources naturelles et des Forêts,Sainte-Luce,Pép. forest. & récolte de produits forestiers,113210,2021,2024,4,False,,
+45975,CORPORATION DE GESTION DU PARC DU MONT-ST-MATHIEU,Saint-Mathieu-de-Rioux,Centres de ski,713920,2022,2024,3,False,,
+46001,DÉVELOPPEMENT DE SKI BELLE NEIGE INC.,Val-Morin,Centres de ski,713920,2020,2024,5,True,OUTV03326,0401 -Rivière du Nord
+46016,Centre de plein-air du Mont Kanasuta inc.,Rouyn-Noranda,Centres de ski,71392,2021,2024,4,False,LABI00080,08A1 -River Moose
+46039,FIBREK S.E.N.C.,Saint-Félicien,Usines de pâte chimique,322112,2020,2024,5,True,SAGU00823,0619 -Rivière Ashuapmushuan
+46040,MONT BLANC SOCIÉTE EN COMMANDITE,Mont-Blanc,Centres de ski,71392,2020,2024,5,True,OUTV00235,0402 -Rivière Rouge
+46092,COOPÉRATIVE DE SOLIDARITÉ RÉCRÉOTOURISTIQUE DU MONT ADSTOCK,Adstock,Centres de ski,713920,2020,2024,5,True,SLSO01879,0302 -Rivière Saint-François
+46099,9169-2087 QUÉBEC INC.,Notre-Dame-Auxiliatrice-de-Buckland,Centres de ski,71392,2020,2024,5,True,SLSO02648,0231 -Rivière du Sud
+46106,"MONT-ORIGNAL, COOPÉRATIVE DE SOLIDARITÉ",Lac-Etchemin,Centres de ski,71392,2023,2023,1,False,SLSO02456,0233 -Rivière Etchemin
+46107,VILLE DE SAINT-GEORGES,Saint-Georges,Centres de ski,71392,2020,2024,5,True,SLSO00159,0234 -Rivière Chaudière
+46113,MINES AGNICO EAGLE LIMITÉE,Val-d'Or,Extraction de minerais métalliques,2122,2020,2024,5,True,ABIT01563,0801 -Rivière Harricana
+46137,Destination Owl's Head inc.,Potton,Autres services de divertissement & loisirs,7139,2020,2024,5,True,SLSO01390,0302 -Rivière Saint-François
+46162,Rio Tinto Fer et Titane inc.,Saint-Joseph-de-Sorel,Sidérurgie,331110,2020,2024,5,True,MONT00502,0304 -Rivière Richelieu
+46167,Corporation Ski & Golf Mont-Orford,Orford,Centres de ski,71392,2020,2024,5,True,SLSO01526,0302 -Rivière Saint-François
+46173,CANADIAN ROYALTIES INC.,Rivière-Koksoak,Extraction de minerais de nickel-cuivre,212232,2020,2024,5,True,,
+46176,STATION MONT-SAINTE-ANNE INC.,Beaupré,Centres de ski,71392,2020,2024,5,True,SLNO00243,0512 -Rivière Sainte-Anne
+46177,Village vacances Valcartier inc.,Saint-Gabriel-de-Valcartier,Parc d'attraction & salle de jeux électroniques,7131,2020,2024,5,True,SLNO00375,0508 -Rivière Jacques-Cartier
+46182,GLENCORE CANADA CORPORATION,Rivière-Koksoak,Extraction de minerais de nickel-cuivre,212232,2020,2024,5,True,,
+46190,Omya Canada inc.,Pike River,Extraction de minerais non métalliques,2123,2022,2022,1,False,,
+46195,PAVAGES ABENAKIS LTEE,Saint-Léon-de-Standon,Extraction de pierre,21231,2020,2024,5,True,SLSO02444,0233 -Rivière Etchemin
+46218,LES ENTREPRISES DE STONEHAM INC.,Stoneham-et-Tewkesbury,Centres de ski,713920,2020,2024,5,True,SLNO00032,0509 -Rivière Saint-Charles
+46222,LES SOMMETS DE LA VALLÉE INC.,Piedmont,Centres de ski,71392,2020,2024,5,True,OUTV03268,0401 -Rivière du Nord
+46230,EXCAVATION MC. B. M. INC.,Saint-Edmond-de-Grantham,Extraction de sable & de gravier,212323,2020,2024,5,True,MONT00030,0303 -Rivière Yamaska
+46244,NOURYON PÂTE ET PERFORMANCE CANADA INC.,Magog,Fab. tous les autres prod. chim. inorg. de base,325189,2020,2024,5,True,SLSO01376,0302 -Rivière Saint-François
+46328,Club de golf Rivermead,Gatineau,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV02349,0430 -Rivière des Outaouais
+46366,Club de golf North Hatley inc.,Hatley,Terrains de golf & country clubs,71391,2020,2024,5,True,SLSO02087,0302 -Rivière Saint-François
+46396,CLUB DE GOLF LE RICOCHET (CHICOUTIMI) INC.,Saguenay,Terrains de golf & country clubs,71391,2020,2024,5,True,SAGU00279,0609 -Rivière du Moulin
+46451,CONSTRUCTION DJL INC.,Sainte-Clotilde,Extraction de pierre,21231,2020,2024,5,True,MONT01472,0309 -Rivière Châteauguay
+46459,Club de golf Montmagny inc.,Montmagny,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO02665,0231 -Rivière du Sud
+46527,Cusimer (1991) inc.,TNO aquatique de la MRC de La Haute-Gaspésie,Préparation & cond. de poissons & fruits de mer,311710,2020,2024,5,True,GASP02585,0209 -Rivière de Mont-Louis
+46540,CLUB DE GOLF ST-JEAN LTÉE,Saint-Sébastien,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT01262,0304 -Rivière Richelieu
+46679,Club de golf Le Royal Chaudière inc.,Lévis,Terrains de golf & country clubs,71391,2020,2024,5,True,SLSO00581,0234 -Rivière Chaudière
+46756,LE CLUB DE GOLF ROYAL OTTAWA,Gatineau,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV02349,0430 -Rivière des Outaouais
+46788,CLUB DE GOLF LE MARTHELINOIS INC.,Trois-Rivières,Terrains de golf & country clubs,71391,2020,2023,4,False,,
+46807,Gestion Le Boyer inc.,Saint-Michel-de-Bellechasse,Terrains de golf & country clubs,713910,2020,2024,5,True,,
+46826,VILLE DE SAGUENAY,Saguenay,Centres de ski,71392,2020,2024,5,True,SAGU00151,0606 -Rivière Ha! Ha!
+46839,REBOISEMENT MAURICIE INC.,Saint-Étienne-des-Grès,Pép. forest. & récolte de produits forestiers,11321,2023,2024,2,False,,
+46956,Gestion Multi-Média Inter inc.,Grenville-sur-la-Rouge,Terrains de golf & country clubs,713910,2020,2023,4,False,OUTV03236,0401 -Rivière du Nord
+46998,LES ENTREPRISES ROBERT ROUSSEAU INC.,Louiseville,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00929,0528 -Rivière du Loup
+47034,E.GAGNON ET FILS LTÉE,Shigawake,Préparation & cond. de poissons & fruits de mer,3117.0,2024,2024,1,False,,
+47070,LA BRASSERIE LABATT LIMITÉE,Montréal,Brasseries,312120,2020,2024,5,True,,
+47132,Les Terrains de Golf du Mont-Sainte-Anne inc.,Saint-Ferréol-les-Neiges,Terrains de golf & country clubs,71391,2020,2020,1,False,SLNO00289,0512 -Rivière Sainte-Anne
+47133,MINISTÈRE DE LA DÉFENSE NATIONALE,Saint-Gabriel-de-Valcartier,Terrains de golf & country clubs,713910,2020,2024,5,True,SLNO00021,0509 -Rivière Saint-Charles
+47150,LE CLUB DE GOLF DE L'ÉPIPHANIE INC.,L'Épiphanie,Terrains de golf & country clubs,713910,2021,2024,4,False,SLNO00569,0522 -Rivière L'Assomption
+47223,CLUB DE GOLF KI-8-EB LIMITÉE,Trois-Rivières,Autres services de divertissement & loisirs,7139,2020,2024,5,True,SLNO00931,0501 -Rivière Saint-Maurice
+47228,Le Country Club de Montréal Inc.,Saint-Lambert,Terrains de golf & country clubs,713910,2020,2024,5,True,,
+47236,GRAYMONT (QC) INC.,Dudswell,Extraction de calcaire,212315,2020,2023,4,False,SLSO01596,0302 -Rivière Saint-François
+47244,FERME ALAIN BRISSETTE INC.,Lavaltrie,Culture mixte de fruits & de légumes,111993,2020,2024,5,True,,
+47262,9083-5679 QUÉBEC INC.,Sainte-Geneviève-de-Berthier,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+47264,Bois Hunting inc.,Waterville,Scieries sauf usines de bard. & bard. de fente,321111,2020,2024,5,True,SLSO02304,0302 -Rivière Saint-François
+47271,CENTRE DE GOLF DE LANAUDIERE INC.,L'Assomption,Terrains de golf & country clubs,71391,2022,2024,3,False,SLNO00563,0522 -Rivière L'Assomption
+47326,GESTION D'HÔTEL MILLENNIUM GOLDEN JIACHEN LTÉE,Montebello,Terrains de golf & country clubs,71391,2020,2020,1,False,OUTV00433,0498 -Ruisseau Papineau
+47338,CLUB DE GOLF DE L'ÎLE DE MONTRÉAL (2004) INC.,Montréal,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+47388,9074-5126 Québec inc.,Plessisville,Culture en pépinière & floriculture,11142,2020,2020,1,False,SLSO00887,0240 -Rivière Bécancour
+47392,CLUBLINK CORPORATION ULC,Mont-Tremblant,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV00246,0402 -Rivière Rouge
+47429,Placements Paul Brouillard inc.,Magog,Terrains de golf & country clubs,71391,2020,2024,5,True,SLSO01375,0302 -Rivière Saint-François
+47457,LA PÉPINIÈRE DE MESSINES INC.,Messines,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+47487,GROUPE COLAS QUÉBEC INC.,Drummondville,Extraction de pierre,21231,2020,2022,3,False,SLSO01188,0301 -Rivière Nicolet
+47510,STATION MONT TREMBLANT SOCIÉTÉ EN COMMANDITE,Mont-Tremblant,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV00246,0402 -Rivière Rouge
+47533,CLUB DE GOLF ORMSTOWN INC.,Hemmingford,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT00563,0304 -Rivière Richelieu
+47546,LANTIC INC.,Montréal,Fab. de sucre,311310,2020,2024,5,True,,
+47570,PAVAGES ABENAKIS LTEE,Saint-Georges,Extraction de pierre,21231,2020,2024,5,True,SLSO00240,0234 -Rivière Chaudière
+47589,La Crevette du Nord Atlantique inc.,Gaspé,Préparation & cond. de poissons & fruits de mer,3117,2020,2021,2,False,GASP02400,0262 -Rivière de l'Anse au Griffon
+47601,CIMENT QUÉBEC INC.,Saint-Raphaël,Extraction de sable & de gravier,212323,2020,2023,4,False,SLSO02596,0231 -Rivière du Sud
+47621,CLUB DE GOLF MÉTABÉROUTIN 2002 INC.,Trois-Rivières,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00930,0501 -Rivière Saint-Maurice
+47647,CLUB DE GOLF VALLÉE DE LA LIÈVRE INC.,Lac-des-Écorces,Terrains de golf & country clubs,71391,2021,2024,3,False,OUTV00956,0406 -Rivière du Lièvre
+47681,La société de développement de L'Anse St-Jean inc.,L'Anse-Saint-Jean,Centres de ski,71392,2020,2024,5,True,SAGU00113,0602 -Rivière Saint-Jean
+47707,CLUB DE GOLF DE RAWDON INC.,Rawdon,Terrains de golf & country clubs,713910,2020,2023,4,False,SLNO00704,0522 -Rivière L'Assomption
+47779,CLUB DE GOLF GODEFROY INC.,Bécancour,Terrains de golf & country clubs,71391,2020,2022,3,False,SLSO00918,0284 -Rivière Godefroy
+47806,Nouveau club de golf Lac Ste-Marie inc.,Lac-Sainte-Marie,Terrains de golf & country clubs,71391,2020,2023,4,False,OUTV01265,0408 -Rivière Gatineau
+47825,CLUBLINK CORPORATION ULC,Gatineau,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV02309,0408 -Rivière Gatineau
+47842,COOPÉRATIVE DE SOLIDARITÉ DU CLUB DE GOLF DU LAC MÉGANTIC,Frontenac,Terrains de golf & country clubs,71391,2020,2024,4,False,SLSO00345,0234 -Rivière Chaudière
+47855,UNIPÊCHE M.D.M. LTÉE,Paspébiac,Préparation & cond. de poissons & fruits de mer,31171,2020,2024,5,True,,
+47871,SKI SUTTON INC.,Sutton,Centres de ski,71392,2020,2024,5,True,MONT00672,0304 -Rivière Richelieu
+47900,CLUB DE GOLF DU MOULIN (2013) INC.,Trois-Rivières,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00931,0501 -Rivière Saint-Maurice
+47928,AB MAURI (CANADA) LIMITÉE,Montréal,Fab. de tous les autres aliments,311990,2020,2024,5,True,,
+47982,LE CLUB DE GOLF DE JOLIETTE INC.,Saint-Charles-Borromée,Terrains de golf & country clubs,71391,2020,2024,5,True,SLNO00588,0522 -Rivière L'Assomption
+48137,CLUB DE GOLF TECUMSEH (2015) INC.,Gatineau,Terrains de golf & country clubs,713910,2020,2024,5,True,OUTV01188,0430 -Rivière des Outaouais
+48168,E.GAGNON ET FILS LTÉE,Sainte-Thérèse-de-Gaspé,Préparation & cond. de poissons & fruits de mer,3117,2020,2024,5,True,,
+48234,GOLF SAINT-PRIME SUR LE LAC,Saint-Prime,Terrains de golf & country clubs,71391,2020,2024,5,True,SAGU00818,0641 -Rivière aux Iroquois
+48250,MUNICIPALITÉ D'OKA,Oka,Terrains de golf & country clubs,713910,2020,2023,4,False,OUTV00004,0430 -Rivière des Outaouais
+48265,CLUB DE GOLF DE BUCKINGHAM INC.,L'Ange-Gardien,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV00648,0406 -Rivière du Lièvre
+48272,Destination Owl's Head inc.,Potton,Terrains de golf & country clubs,713910,2021,2024,4,False,MONT00793,0304 -Rivière Richelieu
+48327,CLUBLINK CORPORATION ULC,Gatineau,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV02309,0408 -Rivière Gatineau
+48335,CLUB DE GOLF ORMSTOWN INC.,Hemmingford,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT00562,0304 -Rivière Richelieu
+48336,CLUB DE GOLF ORMSTOWN INC.,Hemmingford,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT00562,0304 -Rivière Richelieu
+48364,CORPORATION DU PARC RÉGIONAL DU MONT GRAND FONDS INC.,La Malbaie,Centres de ski,71392,2021,2022,2,False,SLNO00092,0515 -Rivière Malbaie
+48365,CORPORATION DU PARC RÉGIONAL DU MONT GRAND FONDS INC.,La Malbaie,Centres de ski,71392,2021,2022,2,False,SLNO00092,0515 -Rivière Malbaie
+48391,Matériaux Blanchet inc.,Saint-Pamphile,Scieries & préservation du bois,32111,2020,2024,5,True,GASP00231,01EX -Rivière Saint-Jean
+48397,CLUB DE GOLF WHITLOCK,Hudson,Terrains de golf & country clubs,71391,2020,2020,1,False,OUTV03385,0476 -Rivière Viviry
+48421,ORICA CANADA INC.,Saint-Joseph-de-Coleraine,Fab. d'explosifs,325920,2020,2023,4,False,SLSO00850,0240 -Rivière Bécancour
+48432,PRODUITS AMERICAN BILTRITE (CANADA) LTÉE,Sherbrooke,Fab. d'autres produits en caoutchouc,32629,2020,2024,5,True,SLSO01366,0302 -Rivière Saint-François
+48465,LE PARCOURS DU VIEUX VILLAGE INC.,Bromont,Terrains de golf & country clubs,713910,2020,2024,5,True,MONT00377,0303 -Rivière Yamaska
+48467,CLUB DE GOLF LAURIER INC.,Princeville,Terrains de golf & country clubs,71391,2020,2024,5,True,SLSO00969,0301 -Rivière Nicolet
+48480,LE CLUB DE GOLF LES PATRIOTES INC.,Saint-Ours,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT00502,0304 -Rivière Richelieu
+48485,"SKI BROMONT.COM, SOCIÉTÉ EN COMMANDITE",Bromont,Centres de ski,713920,2020,2024,5,True,MONT00304,0303 -Rivière Yamaska
+48486,"SKI BROMONT.COM, SOCIÉTÉ EN COMMANDITE",Bromont,Centres de ski,713920,2020,2024,5,True,MONT00373,0303 -Rivière Yamaska
+48491,9210-8877 QUÉBEC INC.,Carignan,Terrains de golf & country clubs,713910,2020,2020,1,False,,
+48530,E.GAGNON ET FILS LTÉE,Shigawake,Préparation & cond. de poissons & fruits de mer,3117.0,2024,2024,1,False,,
+48544,VILLE DE SUTTON,Sutton,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,MONT00672,0304 -Rivière Richelieu
+48581,La Crevette du Nord Atlantique inc.,Gaspé,Préparation & cond. de poissons & fruits de mer,3117,2020,2024,5,True,GASP02400,0262 -Rivière de l'Anse au Griffon
+48591,MONT-BRUNO C.C. INC.,Saint-Bruno-de-Montarville,Terrains de golf & country clubs,71391,2020,2024,5,True,MONT00534,0304 -Rivière Richelieu
+48598,BASE DE PLEIN-AIR VALLÉE DES FORTS INC.,Henryville,Terrains de golf & country clubs,71391,2020,2021,2,False,MONT01260,0304 -Rivière Richelieu
+48601,COOPÉRATIVE DE SOLIDARITÉ RÉCRÉOTOURISTIQUE DU MONT ADSTOCK,Adstock,Centres de ski,713920,2020,2024,5,True,SLSO01887,0302 -Rivière Saint-François
+48624,9378-7463 Québec inc.,Saint-Sébastien,Fab. de tous les autres prod. miné. non métall.,327990,2020,2020,1,False,,
+48836,VILLE DE BEAUCEVILLE,Beauceville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00140,0234 -Rivière Chaudière
+48837,VILLE DE LÉVIS,Lévis,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00013,0234 -Rivière Chaudière
+48839,VILLE DE MONTMAGNY,Cap-Saint-Ignace,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02728,0231 -Rivière du Sud
+48840,MUNICIPALITÉ DE SAINT-ANSELME,Saint-Anselme,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02391,0233 -Rivière Etchemin
+48841,VILLE DE SAINT-GEORGES,Saint-Georges,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00246,0234 -Rivière Chaudière
+48842,VILLE DE LÉVIS,Lévis,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02381,0233 -Rivière Etchemin
+48895,Municipalité de la paroisse de La Durantaye,La Durantaye,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+48899,MUNICIPALITÉ DE SAINT- FRANÇOIS-DE-LA-RIVIÈRE-DU-SUD,Saint-François-de-la-Rivière-du-Sud,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02657,0231 -Rivière du Sud
+48930,VILLE DE SAINT-JEAN-SUR-RICHELIEU,Saint-Jean-sur-Richelieu,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00579,0304 -Rivière Richelieu
+48934,Régie d'aqueduc intermunicipale des Moulins,Terrebonne,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+48968,VILLE DE COTEAU-DU-LAC,Coteau-du-Lac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,VAUD00181,0460 -Rivière Rouge
+48971,MUNICIPALITÉ DE LACOLLE,Lacolle,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00599,0304 -Rivière Richelieu
+48973,MUNICIPALITÉ LES COTEAUX,Les Coteaux,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2022,3,False,,
+49021,CANTON D'AMHERST,Amherst,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00047,0402 -Rivière Rouge
+49100,VILLE D'ALMA,Alma,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+49104,VILLE DE SAGUENAY,Saguenay,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU00599,0667 -Rivière aux Sables
+49167,MUNICIPALITÉ DE VILLEROY,Villeroy,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+49169,VILLE DE BÉCANCOUR,Bécancour,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00918,0284 -Rivière Godefroy
+49170,VILLE DE DRUMMONDVILLE,Drummondville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01227,0302 -Rivière Saint-François
+49239,VILLE DE NICOLET,Nicolet,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00941,0301 -Rivière Nicolet
+49240,RÉGIE INTERMUNICIPALE D'ALIMENTATION EN EAU POTABLE DU BAS-SAINT-FRANÇOIS,Pierreville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01196,0302 -Rivière Saint-François
+49241,VILLE DE PLESSISVILLE,Notre-Dame-de-Lourdes,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00812,0240 -Rivière Bécancour
+49242,VILLE DE TROIS-RIVIÈRES,Trois-Rivières,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00931,0501 -Rivière Saint-Maurice
+49243,VILLE DE VICTORIAVILLE,Victoriaville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00969,0301 -Rivière Nicolet
+49353,VILLE DE MAGOG,Magog,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01383,0302 -Rivière Saint-François
+49363,CANTON DE POTTON,Potton,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01390,0302 -Rivière Saint-François
+49400,VILLE DE SHERBROOKE,Magog,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01383,0302 -Rivière Saint-François
+49517,LE DOMAINE DU LAC LOUISE INC.,Saint-Sylvère,Réseaux d'aqueduc & systèmes d'irrigation,22131,2022,2024,3,False,,
+49555,VILLE DE LA POCATIÈRE,Sainte-Anne-de-la-Pocatière,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02789,0254 -Rivière Saint-Jean
+49611,CLUB DE GOLF INTERNATIONAL 2000 INC.,Saint-Bernard-de-Lacolle,Terrains de golf & country clubs,713910,2020,2024,5,True,MONT00598,0304 -Rivière Richelieu
+49762,LES SOMMETS DE LA VALLÉE INC.,Piedmont,Centres de ski,71392,2020,2024,5,True,OUTV03267,0401 -Rivière du Nord
+49764,LES SOMMETS DE LA VALLÉE INC.,Sainte-Adèle,Centres de ski,71392,2020,2024,5,True,OUTV03269,0401 -Rivière du Nord
+49767,VILLE DE WATERVILLE,Hatley,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02151,0302 -Rivière Saint-François
+49899,Ville de Sainte-Catherine-de-la-Jacques-Cartier,Sainte-Catherine-de-la-Jacques-Cartier,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00356,0508 -Rivière Jacques-Cartier
+49907,Ville de Dolbeau-Mistassini,Dolbeau-Mistassini,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU01125,0621 -Rivière Mistassini
+49908,Municipalité de Péribonka,Péribonka,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU02019,0618 -Petite rivière Péribonka
+49922,VILLE DE SAGUENAY,Saguenay,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU00288,0610 -Rivière Chicoutimi
+49923,Ville de Dolbeau-Mistassini,Dolbeau-Mistassini,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU01329,0621 -Rivière Mistassini
+49925,VILLE DE SAGUENAY,Saguenay,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU00288,0610 -Rivière Chicoutimi
+49926,VILLE DE ROBERVAL,Roberval,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU00802,0617 -Rivière Ouiatchouaniche
+49955,LES CARAVANIERS NOMADES DE MONTRÉAL INC.,Rawdon,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,SLNO00719,0522 -Rivière L'Assomption
+49968,MUNICIPALITÉ DU VILLAGE DE FORT-COULONGE,Mansfield-et-Pontefract,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV02655,0413 -Rivière Coulonge
+49972,Municipalité de Montebello,Notre-Dame-de-Bonsecours,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00396,0403 -Rivière Saumon
+49973,MUNICIPALITÉ DE PONTIAC,Pontiac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV02384,0440 -Ruisseau à Knight
+49981,Municipalité de Saint-Ferdinand,Irlande,Réseaux d'aqueduc & systèmes d'irrigation,22131.0,2024,2024,1,False,SLSO00842,0240 -Rivière Bécancour
+49996,MUNICIPALITÉ DE SAINTE-FÉLICITÉ,Sainte-Félicité,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50037,Club de golf St-Pacôme inc.,Saint-Pacôme,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO02791,0227 -Rivière Ouelle
+50051,Ville de Carignan,Carignan,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00567,0304 -Rivière Richelieu
+50101,VILLE DE BEAUPRÉ,Beaupré,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00242,0512 -Rivière Sainte-Anne
+50165,VILLE DE MACAMIC,Macamic,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,LABI00187,08A1 -River Moose
+50166,Municipalité de Laverlochère-Angliers,Angliers,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTM00570,0430 -Rivière des Outaouais
+50167,Gouvernement régional d'Eeyou Istchee Baie-James,Eeyou Istchee Baie-James,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,,
+50168,VILLE DE CHIBOUGAMAU,Chibougamau,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50169,MUNICIPALITÉ DES CANTONS UNIS DE LATULIPE-ET-GABOURY,Latulipe-et-Gaboury,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50177,Municipalité de Saint-Irénée,Saint-Irénée,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00045,0514 -Rivière Jean-Noël
+50228,Ville de Lebel-sur-Quévillon,Lebel-sur-Quévillon,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50229,VILLE DE MATAGAMI,Matagami,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,ABIT00018,0807 -Rivière Nottaway
+50233,VILLE DE BAIE-COMEAU,Baie-Comeau,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,CNDB00006,0711 -Rivière Manicouagan
+50236,Municipalité du village de Chute-aux-Outardes,Ragueneau,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,CNDA00096,0710 -Rivière aux Outardes
+50316,VILLE DE SCHEFFERVILLE,Schefferville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,,
+50317,VILLE DE SEPT-ÎLES,Sept-Îles,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,CNDB00972,0722 -Rivière des Rapides
+50318,VILLAGE DE TADOUSSAC,Tadoussac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50322,MUNICIPALITÉ DES ESCOUMINS,Les Escoumins,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,CNDA00018,0702 -Rivière des Escoumins
+50324,VILLE DE PORT-CARTIER,Port-Cartier,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,CNDB00906,0719 -Rivière aux Rochers
+50325,RÉGIE INTERMUNICIPALE DE L'EAU DE LA VALLÉE DU RICHELIEU,Otterburn Park,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00532,0304 -Rivière Richelieu
+50326,Société d'Exploitation de la Centrale de Traitement d'Eau Chambly-Marieville-Richelieu,Carignan,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00575,0304 -Rivière Richelieu
+50336,VILLE DE LONGUEUIL,Montréal,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50338,STATION MONT TREMBLANT SOCIÉTÉ EN COMMANDITE,Mont-Tremblant,Centres de ski,71392,2020,2024,5,True,OUTV00246,0402 -Rivière Rouge
+50347,LE DOMAINE DE ROUVILLE INC.,Saint-Jean-Baptiste,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT01273,0304 -Rivière Richelieu
+50401,VILLE DE QUÉBEC,Québec,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50402,VILLE DE QUÉBEC,Québec,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00297,0510 -Rivière Montmorency
+50421,VILLE DE GRACEFIELD,Gracefield,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50502,MUNICIPALITÉ DE L'ISLE-AUX-COUDRES,L'Isle-aux-Coudres,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50503,VILLE DE SAINT-JEAN-SUR-RICHELIEU,Saint-Jean-sur-Richelieu,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00579,0304 -Rivière Richelieu
+50507,VILLE DE DANVILLE,Danville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01149,0301 -Rivière Nicolet
+50538,STATION MONT TREMBLANT SOCIÉTÉ EN COMMANDITE,Mont-Tremblant,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV00245,0402 -Rivière Rouge
+50551,Municipalité de Saint-Jean-Port-Joli,Saint-Aubert,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02769,0229 -Rivière Trois Saumons
+50554,VILLE DE BEAUHARNOIS,Beauharnois,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT01552,0311 -Rivière Saint-Louis
+50555,LA VILLE DE BEDFORD,Saint-Armand,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50556,VILLE DE BROMONT,Bromont,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00283,0303 -Rivière Yamaska
+50557,VILLE DE CANDIAC,Candiac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT01305,0307 -Rivière de la Tortue
+50558,VILLE DE CONTRECOEUR,Contrecoeur,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50560,VILLE DE COWANSVILLE,Cowansville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00413,0303 -Rivière Yamaska
+50562,VILLE DE HUNTINGDON,Huntingdon,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT01362,0309 -Rivière Châteauguay
+50600,MUNICIPALITÉ DE SAINT-CASIMIR,Saint-Casimir,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50639,VILLE DE L'ÎLE-PERROT,TNO aquatique de la MRC de Vaudreuil-Soulanges,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50643,Régie intermunicipale de l'eau Tracy-Saint-Joseph-Saint-Roch,Sorel-Tracy,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00502,0304 -Rivière Richelieu
+50644,"Régie intermunicipale de l'eau potable Varennes, Sainte-Julie, Saint-Amable",Varennes,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT01287,0305 -Rivière Saint-Charles
+50645,VILLE DE VAUDREUIL-DORION,Vaudreuil-Dorion,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50646,MUNICIPALITÉ DE VERCHÈRES,Verchères,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50648,VILLE DE SALABERRY-DE-VALLEYFIELD,Salaberry-de-Valleyfield,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50649,VILLE DE SOREL-TRACY,Sorel-Tracy,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00502,0304 -Rivière Richelieu
+50650,VILLE DE SUTTON,Sutton,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,MONT00672,0304 -Rivière Richelieu
+50659,Municipalité de Crabtree,Crabtree,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00690,0522 -Rivière L'Assomption
+50660,VILLE DE MONTRÉAL,Dorval,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50661,VILLE DE JOLIETTE,Joliette,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00587,0522 -Rivière L'Assomption
+50720,HYDRO-QUÉBEC,Eeyou Istchee Baie-James,Product. transport & distribution d'électricité,2211,2020,2020,1,False,,
+50721,HYDRO-QUÉBEC,Eeyou Istchee Baie-James,Product. transport & distribution d'électricité,2211,2020,2020,1,False,,
+50723,VILLE DE MONTRÉAL,Montréal,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50724,VILLE DE L'ASSOMPTION,L'Assomption,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00566,0522 -Rivière L'Assomption
+50726,VILLE DE MONTRÉAL,Montréal,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50727,VILLE DE MONTRÉAL,TNO aquatique de la MRC de Roussillon,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50728,VILLE DE MONTRÉAL,Pointe-Claire,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50730,VILLE DE MONTRÉAL,Montréal,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50734,Municipalité de Saint-Cuthbert,Saint-Cuthbert,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00842,0525 -Rivière Chicot
+50735,VILLE DE DEUX-MONTAGNES,Deux-Montagnes,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50736,VILLE DE LAVAL,Laval,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50737,VILLE DE LAVAL,Laval,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50738,VILLE DE LAVAL,Laval,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV03387,0465 -Rivière aux Chiens
+50739,VILLE DE ROSEMÈRE,Rosemère,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,OUTV03387,0465 -Rivière aux Chiens
+50741,VILLE DE SAINT-JÉRÔME,Saint-Jérôme,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV03263,0401 -Rivière du Nord
+50743,Ville de  Sainte-Thérèse ,Rosemère,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+50745,MUNICIPALITÉ D'OKA,Oka,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,OUTV00004,0430 -Rivière des Outaouais
+50816,MUNICIPALITÉ DE LABELLE,Labelle,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00092,0402 -Rivière Rouge
+50904,VILLE DE GATINEAU,Gatineau,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV02349,0430 -Rivière des Outaouais
+50905,VILLE DE GATINEAU,Gatineau,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00648,0406 -Rivière du Lièvre
+50906,VILLE DE GATINEAU,Gatineau,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV01188,0430 -Rivière des Outaouais
+50907,VILLE DE GATINEAU,Gatineau,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV02349,0430 -Rivière des Outaouais
+50919,Ville de Saint-Charles-Borromée,Saint-Charles-Borromée,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,SLNO00590,0522 -Rivière L'Assomption
+50986,VILLE DE MONT-LAURIER,Mont-Laurier,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00733,0406 -Rivière du Lièvre
+51125,Scierie Clifton inc.,Saint-Isidore-de-Clifton,Scieries & préservation du bois,3211,2022,2022,1,False,,
+51208,Régie intermunicipale d'approvisionnement en eau potable Henryville-Venise,Henryville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,MONT01266,0304 -Rivière Richelieu
+51274,MUNICIPALITÉ DE LAC-ETCHEMIN,Lac-Etchemin,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02475,0233 -Rivière Etchemin
+51361,Municipalité de Boischatel,Boischatel,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00337,0510 -Rivière Montmorency
+51364,VILLE DE CHÂTEAU-RICHER,Château-Richer,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00293,0542 -Rivière du Sault à la Puce
+51376,VILLE DE QUÉBEC,Québec,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00296,0510 -Rivière Montmorency
+51377,VILLE DE QUÉBEC,Québec,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+51379,VILLE DE DONNACONA,Donnacona,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00347,0508 -Rivière Jacques-Cartier
+51380,VILLE DE QUÉBEC,Québec,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00017,0509 -Rivière Saint-Charles
+51381,VILLE DE QUÉBEC,Québec,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00344,0539 -Rivière du Cap Rouge
+51387,LES ENTREPRISES SPORTIVES JEAN MORIN INC.,Saint-Alexandre,Terrains de golf & country clubs,713910,2020,2024,5,True,,
+51427,MUNICIPALITÉ LES BERGERONNES,Les Bergeronnes,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,CNDA00017,0772 -Rivière des Grandes Bergeronnes
+51436,MUNICIPALITÉ DE SAINT-CASIMIR,Saint-Thuribe,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+51438,VILLE DE SHAWINIGAN,Shawinigan,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+51441,VILLE DE LA TUQUE,La Tuque,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO02815,0501 -Rivière Saint-Maurice
+51442,VILLE DE LA TUQUE,La Tuque,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV01681,0408 -Rivière Gatineau
+51451,MUNICIPALITÉ DE SAINT-PIERRE- LES-BECQUETS,Sainte-Sophie-de-Lévrard,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00724,0238 -Rivière aux Orignaux
+51498,VILLE DE SHAWINIGAN,Shawinigan,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+51505,MUNICIPALITÉ DE LA PAROISSE DE LAC-AUX-SABLES,Lac-aux-Sables,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO03138,0503 -Rivière Batiscan
+51518,MUNICIPALITÉ DE SAINT-DAVID-DE-FALARDEAU,Saint-David-de-Falardeau,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU00275,0627 -Rivière Valin
+51568,VILLE DE FARNHAM,Farnham,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00224,0303 -Rivière Yamaska
+51577,Municipalité de Saint-Nazaire,Saint-Nazaire,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU02025,0645 -Ruisseau Gervais
+51581,VILLAGE DE SAINTE-JEANNE-D'ARC,Sainte-Jeanne-d'Arc,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU01960,0618 -Petite rivière Péribonka
+51585,MUNICIPALITÉ D'ALBANEL,Albanel,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU01123,0620 -Rivière Ticouapé
+51607,MUNICIPALITE DE SAINT-PIERRE-DE-BROUGHTON,Saint-Pierre-de-Broughton,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,SLSO00823,0240 -Rivière Bécancour
+51609,VILLE D'ACTON VALE,Acton Vale,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00088,0303 -Rivière Yamaska
+51731,Municipalité de Port-Daniel-Gascons,Port-Daniel--Gascons,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+51733,VILLE DE GRANDE-RIVIÈRE,Grande-Rivière,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP01980,0101 -La Grande Rivière
+51734,MUNICIPALITÉ DES GROSSES-ROCHES,Grosses-Roches,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+51735,MUNICIPALITÉ DE LA RÉDEMPTION,La Rédemption,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+51736,MUNICIPALITÉ DE LAC-AU-SAUMON,Lac-au-Saumon,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2022,3,False,GASP00984,0116 -Rivière Ristigouche
+51757,Ville de Daveluyville,Daveluyville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00792,0240 -Rivière Bécancour
+51770,VILLE DE LONGUEUIL,Longueuil,"Tous les autres services, transport pipeline",48699,2020,2024,5,True,,
+51807,Municipalité de la paroisse de Saint-Alexandre-des-Lacs,Saint-Alexandre-des-Lacs,Réseaux d'aqueduc & systèmes d'irrigation,22131.0,2024,2024,1,False,GASP00986,0116 -Rivière Ristigouche
+51810,MUNICIPALITÉ DE LA PAROISSE DE SAINT-DONAT,Saint-Donat,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2022,3,False,GASP03132,0219 -Rivière Mitis
+51816,Municipalité de Saint-Ulric,Saint-Ulric,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP03025,0217 -Rivière Blanche
+51820,VILLE DE RIVIÈRE-DU-LOUP,Rivière-du-Loup,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP03802,0225 -Rivière du Loup
+51823,COMPAGNIE MINIÈRE IOC INC.,Rivière-Nipissis,Extraction de minerais de fer,212210,2020,2021,2,False,,
+51854,CIMENT QUÉBEC INC.,Saint-Raphaël,Extraction de sable & de gravier,212323,2020,2020,1,False,SLSO02596,0231 -Rivière du Sud
+51886,VILLE DE SAGUENAY,Saint-Honoré,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU02047,0626 -Rivière Caribou
+51910,VILLE DE LA PRAIRIE,La Prairie,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT01296,0306 -Rivière Saint-Jacques
+51916,VILLE DE VALCOURT,Orford,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02351,0302 -Rivière Saint-François
+51920,VILLE DE SAINT-ZOTIQUE,Saint-Zotique,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+51935,VILLE DE REPENTIGNY,Repentigny,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00563,0522 -Rivière L'Assomption
+51962,VILLE DE L'ÉPIPHANIE,L'Épiphanie,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00790,0522 -Rivière L'Assomption
+51963,MUNICIPALITÉ DE FERME-NEUVE,Ferme-Neuve,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00741,0406 -Rivière du Lièvre
+52005,VILLE DE BAIE-SAINT-PAUL,Baie-Saint-Paul,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2020,1,False,,
+52101,LES SOMMETS DE LA VALLÉE INC.,Morin-Heights,Centres de ski,71392,2020,2024,5,True,OUTV03270,0401 -Rivière du Nord
+52107,MUNICIPALITÉ D'EASTMAN,Eastman,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00742,0304 -Rivière Richelieu
+52165,CENTRE DE SKI VALLEE BLEUE INC.,Val-David,Centres de ski,71392,2020,2024,5,True,OUTV03290,0401 -Rivière du Nord
+52307,VILLE DE SAINT-PASCAL,Saint-Pascal,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP03908,0226 -Rivière Kamouraska
+52313,VILLE DE MIRABEL,Mirabel,Réseaux d'aqueduc & systèmes d'irrigation,22131.0,2024,2024,1,False,OUTV03410,0467 -Rivière du Chêne
+52321,Le Club Laval-sur-le-Lac,Laval,Autres services de divertissement & loisirs,7139,2020,2024,5,True,,
+52381,MUNICIPALITÉ DE SAINT-HENRI,Saint-Henri,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02389,0233 -Rivière Etchemin
+52521,CANTON D'AMHERST,Amherst,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,OUTV00047,0402 -Rivière Rouge
+52538,MUNICIPALITÉ DE SAINTE-SOPHIE,Sainte-Sophie,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00803,0522 -Rivière L'Assomption
+52539,VILLE DE BROWNSBURG-CHATHAM,Brownsburg-Chatham,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV03232,0401 -Rivière du Nord
+52936,4094468 CANADA INC.,Cantley,Parcs d'attractions & jardins thématiques,71311,2020,2024,5,True,,
+52937,4094468 CANADA INC.,Cantley,Parcs d'attractions & jardins thématiques,71311,2020,2024,5,True,,
+53110,VILLE DE LA PRAIRIE,La Prairie,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2022,2,False,MONT01296,0306 -Rivière Saint-Jacques
+53111,VILLE DE CANDIAC,Candiac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT01305,0307 -Rivière de la Tortue
+53190,VILLE DE LA POCATIÈRE,Saint-Onésime-d'Ixworth,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02790,0254 -Rivière Saint-Jean
+53200,Municipalité de Cap-Saint-Ignace,Cap-Saint-Ignace,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02728,0231 -Rivière du Sud
+53239,Municipalité de Lac-Bouchette,Lac-Bouchette,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,SAGU00773,0616 -Rivière Ouiatchouan
+53261,Le Massif s.e.c.,Petite-Rivière-Saint-François,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+53524,1455695 B.C. LTD.,Sherbrooke,Fab. d'autres produits en caoutchouc,326290,2022,2023,2,False,SLSO02327,0302 -Rivière Saint-François
+53525,1455695 B.C. LTD.,Sherbrooke,Fab. d'autres produits en caoutchouc,326290,2022,2023,2,False,SLSO02327,0302 -Rivière Saint-François
+53722,MUNICIPALITÉ DE L'ISLET,L'Islet,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02676,0231 -Rivière du Sud
+53859,VILLE DE SOREL-TRACY,Sorel-Tracy,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00502,0304 -Rivière Richelieu
+53861,VILLE DE SAINT-HYACINTHE,Saint-Hyacinthe,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00048,0303 -Rivière Yamaska
+53870,"Régie intermunicipale de l'eau potable Varennes, Sainte-Julie, Saint-Amable",Varennes,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT01287,0305 -Rivière Saint-Charles
+54156,Régie intermunicipale d'aqueduc du Bas-Richelieu,Saint-Denis-sur-Richelieu,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2022,2,False,MONT00507,0304 -Rivière Richelieu
+54700,Corporation internationale Masonite,Lac-Mégantic,Usines de placages & contreplaqués de feuillus,321211,2020,2024,5,True,SLSO00342,0234 -Rivière Chaudière
+54712,CENTRE DE CONSERVATION DE LA BIODIVERSITÉ BORÉALE (CCBB) INC.,Saint-Félicien,Parcs d'attractions & jardins thématiques,71311,2020,2024,5,True,SAGU01090,0619 -Rivière Ashuapmushuan
+54720,INTER-CITÉ USINAGE INC.,Québec,Extraction de granite,212314,2020,2024,5,True,SLNO00019,0509 -Rivière Saint-Charles
+54733,HYDRO-QUÉBEC,Bécancour,Production d'électricité d'origine nucléaire,221113,2020,2024,5,True,SLSO00738,0239 -Rivière Gentilly
+54785,SKI MONTCALM LTÉE,Rawdon,Centres de ski,71392,2020,2024,5,True,SLNO00719,0522 -Rivière L'Assomption
+54787,VILLE DE GRANBY,Granby,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00233,0303 -Rivière Yamaska
+54788,VILLE DE GRANBY,Shefford,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00265,0303 -Rivière Yamaska
+54797,122914 Canada inc.,Messines,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+54800,LES SOMMETS DE LA VALLÉE INC.,La Pêche,Centres de ski,71392,2020,2024,5,True,,
+54821,9482-7060 Québec inc.,La Pêche,Centres de ski,713920,2020,2024,5,True,OUTV01199,0408 -Rivière Gatineau
+54829,CONSTRUCTION DJL INC.,Saint-Bruno-de-Montarville,Extraction de pierre,21231,2020,2024,5,True,MONT00535,0304 -Rivière Richelieu
+54849,SANIMAX LOM INC.,Montréal,Fonte graisse animale & transf. de viande carc.,311614,2020,2024,5,True,,
+54876,"MINISTÈRE DES FORÊTS, DE LA FAUNE ET DES PARCS",Lac-des-Écorces,Aquaculture animale,112510,2020,2022,3,False,OUTV00952,0406 -Rivière du Lièvre
+54877,"MINISTÈRE DES FORÊTS, DE LA FAUNE ET DES PARCS",Mont-Laurier,Aquaculture animale,112510,2020,2022,3,False,OUTV00952,0406 -Rivière du Lièvre
+54878,"MINISTÈRE DES FORÊTS, DE LA FAUNE ET DES PARCS",Tadoussac,Aquaculture animale,112510,2020,2024,5,True,,
+54879,"MINISTÈRE DES FORÊTS, DE LA FAUNE ET DES PARCS",Tadoussac,Aquaculture animale,112510,2020,2024,5,True,,
+54882,Ministère des ressources naturelles et des Forêts,Grandes-Piles,Pép. forest. & récolte de produits forestiers,1132,2021,2024,4,False,,
+54883,"MINISTÈRE DES FORÊTS, DE LA FAUNE ET DES PARCS",Coaticook,Aquaculture animale,112510,2020,2024,5,True,SLSO02136,0302 -Rivière Saint-François
+54884,Ministère des ressources naturelles et des Forêts,Normandin,Pép. forest. & récolte de produits forestiers,1132,2021,2022,2,False,,
+54886,Ministère des ressources naturelles et des Forêts,Normandin,Pép. forest. & récolte de produits forestiers,1132,2021,2022,2,False,SAGU00823,0619 -Rivière Ashuapmushuan
+54887,Ministère des ressources naturelles et des Forêts,Trécesson,Pép. forest. & récolte de produits forestiers,1132,2021,2024,4,False,,
+54888,CENTRE DE CONSERVATION DE LA BIODIVERSITÉ BORÉALE (CCBB) INC.,Saint-Félicien,Parcs d'attractions & jardins thématiques,71311,2020,2024,5,True,SAGU01090,0619 -Rivière Ashuapmushuan
+54901,VILLE DE ROSEMÈRE,Rosemère,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,OUTV03387,0465 -Rivière aux Chiens
+54914,SOCIÉTÉ DU PARC JEAN-DRAPEAU,Montréal,Services de soutien d'installations,5612,2020,2022,3,False,,
+55008,CARRIÈRES TROIS-RIVIÈRES INC.,Trois-Rivières,Extraction de calcaire,212315,2020,2024,5,True,SLNO00482,0502 -Rivière Champlain
+55040,CARRIÈRES TROIS-RIVIÈRES INC.,Trois-Rivières,Extraction de calcaire,212315,2020,2024,5,True,SLNO00482,0502 -Rivière Champlain
+55184,2735-3861 Québec inc.,Rigaud,Centres de ski,71392,2020,2024,5,True,OUTV03365,0462 -Rivière Rigaud
+55216,NIOBEC INC.,Saguenay,Extraction d'autres minerais métalliques,21229,2020,2024,5,True,SAGU00288,0610 -Rivière Chicoutimi
+55230,CASCADES CANADA ULC,Lachute,Usines de papier (sauf papier journal),322121,2020,2024,5,True,OUTV03218,0401 -Rivière du Nord
+55255,Club de Golf Hillsdale S.E.N.C.,Mirabel,Terrains de golf & country clubs,71391,2021,2021,1,False,OUTV03387,0465 -Rivière aux Chiens
+55292,Kruger Brompton S.E.C.,Sherbrooke,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,SLSO01342,0302 -Rivière Saint-François
+55307,CARRIÈRES UNI-JAC INC.,Mirabel,Extraction de minerais non métalliques,2123,2020,2024,5,True,SLNO00820,0522 -Rivière L'Assomption
+55334,RIO TINTO ALCAN INC.,Beauharnois,"Laminage, étirage, extrusion & alliage de l'Al",331317,2020,2022,2,False,MONT01551,0311 -Rivière Saint-Louis
+55335,RIO TINTO ALCAN INC.,Alma,Production & transformation d'alumine & d'Al,3313,2020,2020,1,False,,
+55342,GRAYMONT (PORTNEUF) INC.,Saint-Marc-des-Carrières,Extraction de pierre,21231,2020,2024,5,True,,
+55343,GRAYMONT (PORTNEUF) INC.,Saint-Marc-des-Carrières,Extraction de pierre,21231,2020,2024,5,True,,
+55344,GRAYMONT (PORTNEUF) INC.,Saint-Marc-des-Carrières,Extraction de pierre,21231,2020,2024,5,True,,
+55345,CONSTRUCTION ET PAVAGE PORTNEUF INC.,Neuville,Extraction de calcaire,212315.0,2024,2024,1,False,,
+55350,CLUBLINK CORPORATION ULC,Sainte-Sophie,Terrains de golf & country clubs,71391,2020,2020,1,False,SLNO00819,0522 -Rivière L'Assomption
+55352,CLUBLINK CORPORATION ULC,Mont-Tremblant,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV00246,0402 -Rivière Rouge
+55357,SKI GARCEAU INC.,Saint-Donat,Centres de ski,71392,2020,2024,5,True,SLNO00747,0522 -Rivière L'Assomption
+55376,GROUPE COLAS QUÉBEC INC.,Hatley,Extraction de pierre,21231,2020,2024,5,True,SLSO01558,0302 -Rivière Saint-François
+55384,Corporation Ski & Golf Mont-Orford,Orford,Centres de ski,71392,2020,2023,4,False,SLSO01540,0302 -Rivière Saint-François
+55390,CIMENT QUÉBEC INC.,Deschambault-Grondines,Extraction de calcaire,212315,2020,2023,4,False,,
+55395,"ARBEC, BOIS D'OEUVRE INC.",L'Ascension-de-Notre-Seigneur,Scieries sauf usines de bard. & bard. de fente,321111,2020,2024,5,True,,
+55396,"ARBEC, BOIS D'OEUVRE INC.",L'Ascension-de-Notre-Seigneur,Scieries sauf usines de bard. & bard. de fente,321111,2020,2024,5,True,,
+55404,IAMGOLD CORPORATION,Rouyn-Noranda,Extraction de minerais d'or & d'argent,212220,2020,2024,5,True,,
+55407,GESTION D'HÔTEL MILLENNIUM GOLDEN JIACHEN LTÉE,Montebello,Terrains de golf & country clubs,71391,2020,2020,1,False,OUTV00433,0498 -Ruisseau Papineau
+55411,Golf St-François ltée,Laval,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+55420,MUNICIPALITÉ D'HÉBERTVILLE,Hébertville,Centres de ski,71392,2020,2023,4,False,SAGU00633,0613 -La Belle Rivière
+55421,CONSTRUCTION DJL INC.,Laval,Extraction de pierre,21231,2020,2024,5,True,,
+55422,CONSTRUCTION DJL INC.,Laval,Extraction de pierre,21231,2020,2024,5,True,,
+55423,CONSTRUCTION DJL INC.,Laval,Extraction de pierre,21231,2020,2024,5,True,,
+55429,Le Club de Golf Saint-Jérôme inc.,Saint-Jérôme,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV03263,0401 -Rivière du Nord
+55434,CLUB DE GOLF ET DE SKI DE FOND DE PIEDMONT INC.,Piedmont,Terrains de golf & country clubs,71391,2020,2024,5,True,OUTV03268,0401 -Rivière du Nord
+55441,ENTREPRISES LD NORD S.E.C.,Sainte-Adèle,Centres de ski,71392,2020,2023,4,False,OUTV03342,0401 -Rivière du Nord
+55458,LES CARRIÈRES JOLIETTE INC.,Notre-Dame-des-Prairies,Extraction de calcaire,212315,2020,2024,5,True,,
+55468,Amrize Canada Inc.,Saint-Constant,Fab. de ciment,327310,2020,2024,5,True,MONT01307,0307 -Rivière de la Tortue
+55469,Amrize Canada Inc.,Saint-Constant,Extraction de pierre,21231,2020,2024,5,True,MONT01307,0307 -Rivière de la Tortue
+55479,VILLE DE SAINT-FÉLICIEN,Saint-Félicien,Centres de ski,713920,2020,2024,5,True,SAGU00821,0619 -Rivière Ashuapmushuan
+55480,9233326 Canada Inc.,Sainte-Adèle,Terrains de golf & country clubs,713910,2020,2020,1,False,OUTV03342,0401 -Rivière du Nord
+55481,GRAYMONT (QC) INC.,Stanbridge Station,Fab. de chaux,32741,2020,2024,5,True,MONT00973,0304 -Rivière Richelieu
+55492,GLENCORE CANADA CORPORATION,Matagami,Extraction de minerais métalliques,2122,2020,2022,3,False,ABIT00018,0807 -Rivière Nottaway
+55496,GLENCORE CANADA CORPORATION,Montréal-Est,Fonte & affinage métaux non ferreux (sauf Al),331410,2020,2024,5,True,,
+57207,STATION MONT TREMBLANT SOCIÉTÉ EN COMMANDITE,Lac-Supérieur,Centres de ski,71392,2020,2024,5,True,OUTV00261,0402 -Rivière Rouge
+57223,HYDRO-QUÉBEC,Eeyou Istchee Baie-James,Product. transport & distribution d'électricité,2211,2020,2021,2,False,,
+57226,LALLEMAND INC.,Montréal,Fab. de tous les autres aliments,311990,2020,2024,5,True,,
+57227,CENTRE DE CONSERVATION DE LA BIODIVERSITÉ BORÉALE (CCBB) INC.,Saint-Félicien,Parcs d'attractions & jardins thématiques,71311,2020,2024,5,True,SAGU01090,0619 -Rivière Ashuapmushuan
+57228,CENTRE DE CONSERVATION DE LA BIODIVERSITÉ BORÉALE (CCBB) INC.,Saint-Félicien,Parcs d'attractions & jardins thématiques,71311,2020,2024,5,True,SAGU01090,0619 -Rivière Ashuapmushuan
+57229,CENTRE DE CONSERVATION DE LA BIODIVERSITÉ BORÉALE (CCBB) INC.,Saint-Félicien,Parcs d'attractions & jardins thématiques,71311,2020,2024,5,True,SAGU01090,0619 -Rivière Ashuapmushuan
+57316,CONSTRUCTION DJL INC.,Sherbrooke,Extraction de pierre,21231,2020,2024,5,True,SLSO01558,0302 -Rivière Saint-François
+57371,Amrize Canada Inc.,Gatineau,Extraction de calcaire,212315,2020,2024,5,True,,
+57375,CLUB DE GOLF CHANTECLER STE-ADÈLE LTÉE,Sainte-Adèle,Terrains de golf & country clubs,71391,2020,2020,1,False,OUTV03342,0401 -Rivière du Nord
+57457,"ARBEC, BOIS D'OEUVRE INC.",La Tuque,Scieries sauf usines de bard. & bard. de fente,321111.0,2024,2024,1,False,,
+57461,A. LACROIX & FILS GRANIT LTÉE,Rivière-à-Pierre,Extraction de granite,212314,2020,2020,1,False,SLNO03126,0503 -Rivière Batiscan
+57464,GRAYMONT (QC) INC.,Saint-Pierre,Extraction de calcaire,212315,2020,2023,4,False,,
+57465,Imerys Graphite & Carbon Canada inc.,Saint-Aimé-du-Lac-des-Îles,"Extraction de tous les autres minerais, n.c.a.",212398,2020,2024,5,True,OUTV00712,0406 -Rivière du Lièvre
+57469,POISSONNERIE DU HAVRE LTÉE,Havre-Saint-Pierre,Préparation & cond. de poissons & fruits de mer,31171,2021,2023,3,False,,
+57513,9175-2527 QUÉBEC INC.,Boucherville,Terrains de golf & country clubs,71391,2020,2023,4,False,,
+57520,Amrize Canada Inc.,Vaudreuil-Dorion,Fab. de béton préparé,327320,2023,2023,1,False,,
+57526,A. LACROIX & FILS GRANIT LTÉE,Rivière-à-Pierre,Extraction de granite,212314,2020,2020,1,False,SLNO03127,0503 -Rivière Batiscan
+57552,CLUB DE GOLF REVERMONT (1984) INC.,Amqui,Terrains de golf & country clubs,713910,2020,2024,5,True,GASP00987,0116 -Rivière Ristigouche
+57590,Société des loteries du Québec,Gatineau,Casinos (sauf hôtels-casinos),713210,2020,2024,5,True,OUTV01190,0408 -Rivière Gatineau
+57802,CLUB SPORTS BELVÉDÈRE INC.,Val-d'Or,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2021,2,False,,
+57845,Station du Mont Gleason inc.,Tingwick,Centres de ski,71392,2020,2024,5,True,SLSO01042,0301 -Rivière Nicolet
+57876,GROUPE COLAS QUÉBEC INC.,Saint-Elzéar-de-Témiscouata,Extraction de pierre,21231,2020,2020,1,False,,
+57882,GROUPE COLAS QUÉBEC INC.,Saint-Flavien,Extraction de pierre,21231.0,2024,2024,1,False,SLSO00671,0235 -Ruisseau Beaudet
+58163,3133591 MANITOBA LTÉE,Chelsea,Centres de ski,713920,2020,2024,5,True,OUTV02311,0408 -Rivière Gatineau
+58188,CLUB DE GOLF MIRABEL INC.,Mirabel,Terrains de golf & country clubs,713910,2020,2024,5,True,,
+58194,Information personnelle,Lac-Brome,Terrains de golf & country clubs,713910,2020,2023,4,False,MONT00462,0303 -Rivière Yamaska
+58403,Pisciculture Ferme-Neuve,Ferme-Neuve,Aquaculture animale,112510,2020,2023,4,False,,
+58418,9404-1753 Québec inc.,Lachute,Terrains de golf & country clubs,713910,2021,2024,4,False,OUTV03247,0401 -Rivière du Nord
+58532,LE PRIVÉ INC.,Morin-Heights,Autres services de divertissement & loisirs,7139,2020,2024,5,True,OUTV03277,0401 -Rivière du Nord
+58572,GROUPE MAXDEV INC.,Val-Morin,Terrains de golf & country clubs,713910,2020,2024,4,False,OUTV03289,0401 -Rivière du Nord
+58575,3090-9626 QUÉBEC INC.,Mont-Tremblant,Terrains de golf & country clubs,71391,2020,2020,1,False,OUTV00326,0402 -Rivière Rouge
+58615,Club de golf nominingue inc.,Nominingue,Terrains de golf & country clubs,713910,2020,2024,5,True,OUTV00140,0402 -Rivière Rouge
+58678,3090-9626 QUÉBEC INC.,Mont-Tremblant,Terrains de golf & country clubs,713910,2020,2024,5,True,OUTV00240,0402 -Rivière Rouge
+58771,GROUPE COLAS QUÉBEC INC.,Saint-Jacques,Extraction de pierre,21231,2023,2024,2,False,,
+58830,Plombco inc.,Salaberry-de-Valleyfield,"Fonderies, métaux non ferr. moulage sous press.",331523,2020,2021,2,False,,
+58834,LA COMPAGNIE COMMONWEALTH PLYWOOD LTÉE,Sainte-Thérèse,Usines de placages & contreplaqués de feuillus,321211,2020,2024,5,True,OUTV03387,0465 -Rivière aux Chiens
+58940,CONSTRUCTION DJL INC.,Saint-Philippe,Extraction de pierre,21231,2020,2024,5,True,MONT01303,0306 -Rivière Saint-Jacques
+58982,INTER-CITÉ CONSTRUCTION LTÉE,Chambord,Extraction de minerais non métalliques,2123,2021,2024,4,False,,
+58988,TIDAN INC.,Sainte-Adèle,Terrains de golf & country clubs,713910,2020,2023,4,False,OUTV03269,0401 -Rivière du Nord
+59082,9711287 Canada inc.,Cantley,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV01198,0408 -Rivière Gatineau
+59105,Information personnelle,Val-David,Terrains de golf & country clubs,713910,2020,2024,5,True,OUTV03325,0401 -Rivière du Nord
+59162,COUILLARD CONSTRUCTION LIMITÉE,Coaticook,Extraction de sable & de gravier,212323,2020,2024,5,True,SLSO02174,0302 -Rivière Saint-François
+59198,9155-4253 Québec inc.,Rimouski,Terrains de golf & country clubs,713910,2020,2024,5,True,GASP03565,0220 -Rivière Rimouski
+59367,VILLE DE COTEAU-DU-LAC,Coteau-du-Lac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,VAUD00181,0460 -Rivière Rouge
+59430,MUNICIPALITÉ DE SAINT-POLYCARPE,Sainte-Justine-de-Newton,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,VAUD00182,0461 -Rivière Delisle
+59562,Ville de Saint-Pie,Saint-Pie,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00051,0303 -Rivière Yamaska
+59606,VILLE DE TROIS-PISTOLES,Notre-Dame-des-Neiges,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,GASP03654,0223 -Rivière des Trois Pistoles
+59638,Golf Lac-Simon inc.,Bowman,Réseaux d'aqueduc & systèmes d'irrigation,22131,2022,2024,3,False,,
+59799,MUNICIPALITÉ DE SAINT-DAMASE,Saint-Damase,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00218,0303 -Rivière Yamaska
+59888,VILLE DE BELLETERRE,Belleterre,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,OUTM01949,0426 -Rivière Kipawa
+59932,MUNICIPALITÉ DE BRYSON,TNO aquatique de la MRC de Pontiac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV02944,0430 -Rivière des Outaouais
+60036,9027-6346 QUÉBEC INC.,Amherst,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,3,False,OUTV00055,0402 -Rivière Rouge
+60038,Ville de Saint-Pie,Saint-Paul-d'Abbotsford,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00216,0303 -Rivière Yamaska
+60064,MUNICIPALITÉ LES BERGERONNES,Les Bergeronnes,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2020,1,False,CNDA00017,0772 -Rivière des Grandes Bergeronnes
+60101,MUNICIPALITÉ DE BLANC-SABLON,Blanc-Sablon,Réseaux d'aqueduc & systèmes d'irrigation,22131,2023,2023,1,False,,
+60187,RÉGIE DE L'EAU DE L'ÎLE PERROT,Notre-Dame-de-l'Île-Perrot,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+60219,VILLE DE BERTHIERVILLE,Berthierville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00821,0523 -Rivière la Chaloupe
+60230,Municipalité de Saint-Denis-de-Brompton,Saint-Denis-de-Brompton,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02341,0302 -Rivière Saint-François
+60241,MUNICIPALITÉ DE BAIE-JOHAN-BEETZ,Baie-Johan-Beetz,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,CNDD01220,0741 -Rivière Piashti
+60248,VILLE DE SAINT-HYACINTHE,Saint-Hyacinthe,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,MONT00048,0303 -Rivière Yamaska
+60290,VILLE DE LAVALTRIE,Lavaltrie,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+60292,VILLE DE SAINT-EUSTACHE,Saint-Eustache,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV03406,0467 -Rivière du Chêne
+60326,VILLE DE MONT-TREMBLANT,Mont-Tremblant,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00240,0402 -Rivière Rouge
+60358,VILLE DE THURSO,Lochaber,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00604,0405 -Rivière Blanche
+60432,VILLE DE PORT-CARTIER,Port-Cartier,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,CNDB01112,0718 -Rivière Riverin
+60568,MUNICIPALITÉ DE BLANC-SABLON,Blanc-Sablon,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+60666,VILLE DE FARNHAM,Farnham,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2021,2,False,,
+60725,CANTON DE CLORIDORME,Cloridorme,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+60727,VILLE DE MONT-JOLI,Saint-Joseph-de-Lepage,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP03111,0219 -Rivière Mitis
+60754,VILLE DE CHANDLER,Chandler,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP01933,0104 -Rivière du Grand Pabos Ouest
+60755,VILLE DE TÉMISCOUATA-SUR-LE-LAC,Témiscouata-sur-le-Lac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2020,1,False,,
+60757,Municipalité de la paroisse de Saint-Fabien,Saint-Fabien,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP03604,0221 -Rivière du Bic
+60908,VILLE DE VAL-DES-SOURCES,Val-des-Sources,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01106,0301 -Rivière Nicolet
+61000,VILLE DE  GASPÉ,Gaspé,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP02393,0206 -Rivière Dartmouth
+61011,VILLE DE MONT-TREMBLANT,Mont-Tremblant,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV00246,0402 -Rivière Rouge
+61140,MUNICIPALITÉ DE SAINT-ADOLPHE- D'HOWARD,Saint-Adolphe-d'Howard,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,,
+61195,Municipalité de Saint-Benoît-du-Lac,Saint-Benoît-du-Lac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+62094,CLUB DE GOLF LAC SERGENT INC.,Saint-Raymond,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO03360,0507 -Rivière Portneuf
+62444,Ministère des ressources naturelles et des Forêts,Saint-Modeste,Pép. forest. & récolte de produits forestiers,1132,2021,2024,4,False,GASP03777,0224 -Rivière Verte
+62445,Ministère des ressources naturelles et des Forêts,Saint-Modeste,Pép. forest. & récolte de produits forestiers,1132,2021,2024,4,False,GASP03777,0224 -Rivière Verte
+62452,BÉTON PROVINCIAL LTÉE,Notre-Dame-des-Prairies,Fab. de ciment,327310.0,2024,2024,1,False,SLNO00588,0522 -Rivière L'Assomption
+62453,BÉTON PROVINCIAL LTÉE,Notre-Dame-des-Prairies,Fab. de ciment,327310.0,2024,2024,1,False,,
+62459,BAILLARGEON MATÉRIAUX INC.,Saint-Jean-sur-Richelieu,Extraction de calcaire,212315,2021,2024,4,False,,
+62463,MUNICIPALITÉ DE MONT-CARMEL,Mont-Carmel,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02885,0226 -Rivière Kamouraska
+62466,VILLE DÉGELIS,Dégelis,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP00470,01EX -Rivière Saint-Jean
+62477,VILLE DE TÉMISCOUATA-SUR-LE-LAC,Témiscouata-sur-le-Lac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP00623,01EX -Rivière Saint-Jean
+62501,PF RÉSOLU CANADA INC.,Eeyou Istchee Baie-James,Scieries & préservation du bois,32111,2020,2024,5,True,ABIT00105,0807 -Rivière Nottaway
+62529,MUNICIPALITÉ DE LES MÉCHINS,Les Méchins,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,GASP02818,0246 -Rivière des Grands Méchins
+62530,VILLE DE SAINT-FÉLICIEN,Saint-Félicien,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU00821,0619 -Rivière Ashuapmushuan
+62545,14621263 Canada inc.,Terrebonne,Terrains de golf & country clubs,71391,2020,2021,2,False,OUTV03394,0464 -Rivière Mascouche
+62559,VILLE DE LONGUEUIL,Montréal,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+62575,Club de golf Le Blainvillier inc.,Blainville,Terrains de golf & country clubs,713910,2020,2023,4,False,OUTV03399,0464 -Rivière Mascouche
+62614,Ville de  Sainte-Thérèse ,Rosemère,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,,
+62645,MUNICIPALITÉ DE LAC-SAINTE-MARIE,Lac-Sainte-Marie,Réseaux d'aqueduc & systèmes d'irrigation,22131,2022,2024,3,False,,
+62780,Golf Lac St-Jean,Saint-Gédéon,Terrains de golf & country clubs,71391,2020,2024,5,True,SAGU00613,0612 -Rivière Bédard
+62786,GROUPE COLAS QUÉBEC INC.,Saint-Antonin,"Extraction de sable, gravier, argile, etc.",21232,2020,2020,1,False,GASP03865,0225 -Rivière du Loup
+62789,GROUPE COLAS QUÉBEC INC.,Hatley,Extraction de pierre,21231,2020,2024,5,True,SLSO01557,0302 -Rivière Saint-François
+62939,GOLF STE-ROSE INC.,Laval,Terrains de golf & country clubs,713910,2021,2024,4,False,,
+62978,Métallurgie Castech inc.,Thetford Mines,Fonderies d'acier,331514,2022,2022,1,False,,
+63022,LES LAINAGES VICTOR LTÉE,Saint-Victor,Finissage de textiles & de tissus,313310,2020,2024,5,True,SLSO00107,0234 -Rivière Chaudière
+63052,SANIMAX ACI INC.,Lévis,Fonte graisse animale & transf. de viande carc.,311614,2020,2024,5,True,SLSO00648,0234 -Rivière Chaudière
+63053,VILLE DE SAINTE-AGATHE-DES-MONTS,Sainte-Agathe-des-Monts,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV03322,0401 -Rivière du Nord
+63071,MINERAI DE FER QUÉBEC INC.,Fermont,Extraction de minerais de fer,212210,2020,2024,5,True,,
+63140,MUNICIPALITÉ DE LAC-SUPÉRIEUR,Lac-Supérieur,Réseaux d'aqueduc & systèmes d'irrigation,22131.0,2024,2024,1,False,OUTV00309,0402 -Rivière Rouge
+63148,CONSTRUCTION DJL INC.,Sainte-Justine-de-Newton,Extraction de pierre,21231,2020,2024,5,True,,
+63154,CONSTRUCTION DJL INC.,Saint-Bruno-de-Montarville,Extraction de pierre,21231,2020,2024,5,True,MONT00535,0304 -Rivière Richelieu
+63156,9404-1753 Québec inc.,Lachute,Terrains de golf & country clubs,713910,2021,2024,4,False,OUTV03247,0401 -Rivière du Nord
+63160,Darling International Canada inc.,Sainte-Catherine,Fonte graisse animale & transf. de viande carc.,311614,2020,2024,5,True,MONT01317,0308 -Rivière Saint-Régis
+63173,Municipalité de la Côte-Nord-du-Golfe-du-Saint-Laurent,Côte-Nord-du-Golfe-du-Saint-Laurent,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2021,2,False,,
+63179,CARRIÈRE UNION LTÉE,Québec,Extraction de calcaire,212315,2021,2024,3,False,SLNO00009,0509 -Rivière Saint-Charles
+63194,GROUPE COLAS QUÉBEC INC.,Lévis,Extraction de pierre,21231,2023,2024,2,False,SLSO00649,0234 -Rivière Chaudière
+63239,ABATTOIR ST-GERMAIN INC.,Saint-Germain-de-Grantham,Abattage d'animaux (sauf les volailles),311611,2020,2020,1,False,,
+63243,9711287 Canada inc.,Cantley,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV01198,0408 -Rivière Gatineau
+63279,BÉTON PROVINCIAL LTÉE,Joliette,Fab. de ciment,327310.0,2024,2024,1,False,SLNO00587,0522 -Rivière L'Assomption
+63339,"Rayonier A.M. Canada, Société en nom collectif ",Témiscaming,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,OUTM00393,0430 -Rivière des Outaouais
+63377,CIMENT QUÉBEC INC.,Saint-Basile,Extraction de calcaire,212315,2020,2023,4,False,SLNO03350,0507 -Rivière Portneuf
+63383,Amrize Canada Inc.,Montréal-Est,Extraction de pierre,21231,2020,2024,5,True,,
+63404,Ministère des ressources naturelles et des Forêts,Normandin,Pép. forest. & récolte de produits forestiers,1132,2021,2022,2,False,SAGU00823,0619 -Rivière Ashuapmushuan
+63422,9175-2527 QUÉBEC INC.,Boucherville,Terrains de golf & country clubs,71391,2020,2023,4,False,,
+63439,VILLE DE SALABERRY-DE-VALLEYFIELD,Salaberry-de-Valleyfield,"Tous les autres services, transport pipeline",48699,2023,2024,2,False,MONT01555,0311 -Rivière Saint-Louis
+63462,VILLE DE SAINTE-MARIE,Sainte-Marie,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO00043,0234 -Rivière Chaudière
+63480,CANNEBERGES ATOKA INC.,Saint-Louis-de-Blandford,Préservation & congélation de fruits & légumes,3114,2020,2024,5,True,SLSO00811,0240 -Rivière Bécancour
+63520,Wesdome Gold Mines Ltd.,Val-d'Or,Extraction de minerais d'or & d'argent,212220,2020,2024,5,True,,
+63534,GROUPE COLAS QUÉBEC INC.,Kirkland,Autres activités de soutien à extract. minière,213119,2023,2024,2,False,,
+63535,CARRIÈRE-SABLIÈRE DAGENAIS INC.,L'Ange-Gardien,Extraction de pierre,21231,2020,2024,5,True,OUTV01141,0436 -Petite rivière Blanche
+63538,MUNICIPALITÉ DE SAINTE-BARBE,Sainte-Barbe,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,4,False,MONT01559,0311 -Rivière Saint-Louis
+63540,GROUPE COLAS QUÉBEC INC.,Coteau-du-Lac,Extraction de pierre,21231,2020,2020,1,False,VAUD00181,0460 -Rivière Rouge
+63550,HYDRO-QUÉBEC,Beauharnois,"Tous les autres services, transport pipeline",48699,2020,2024,5,True,MONT01551,0311 -Rivière Saint-Louis
+64888,9008-9129 Québec inc.,Notre-Dame-des-Bois,Aquaculture animale,112510,2020,2024,5,True,,
+64928,Information personnelle,Wotton,Aquaculture animale,1125,2020,2022,2,False,,
+64932,Aurèle Bélisle & Fils S.E.N.C.,Saint-Eustache,Culture de noix & de fruits (sauf les agrumes),11133,2020,2023,4,False,OUTV03405,0466 -Rivière du Chicot
+64933,Pisciculture Tardif et fils inc.,Saint-Côme,Aquaculture animale,1125,2020,2024,5,True,,
+64942,LES FERMES M.V.G. INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2022,2,False,SLNO00562,0536 -Rivière Saint-Jean
+64943,LES FERMES M.V.G. INC.,Sainte-Mélanie,Culture de pommes de terre,111211,2020,2022,3,False,,
+64944,LES FERMES M.V.G. INC.,Sainte-Mélanie,Culture de pommes de terre,111211,2020,2022,3,False,,
+64947,LES FERMES M.V.G. INC.,Saint-Thomas,Culture de pommes de terre,111211,2020,2020,1,False,SLNO00824,0523 -Rivière la Chaloupe
+64948,LES FERMES M.V.G. INC.,Saint-Thomas,Culture de pommes de terre,111211,2020,2020,1,False,SLNO00824,0523 -Rivière la Chaloupe
+64949,LES FERMES M.V.G. INC.,Notre-Dame-de-Lourdes,Culture de pommes de terre,111211,2021,2022,2,False,SLNO00591,0522 -Rivière L'Assomption
+64950,LES FERMES M.V.G. INC.,Lanoraie,Culture de pommes de terre,111211,2020,2020,1,False,,
+64952,LES FERMES M.V.G. INC.,Joliette,Culture de pommes de terre,111211,2021,2022,2,False,SLNO00585,0522 -Rivière L'Assomption
+64956,LES FERMES M.V.G. INC.,Saint-Thomas,Culture de pommes de terre,111211,2020,2024,3,False,SLNO00824,0523 -Rivière la Chaloupe
+64957,LES FERMES M.V.G. INC.,Saint-Paul,Culture de pommes de terre,111211,2020,2022,3,False,SLNO00584,0522 -Rivière L'Assomption
+64964,PISCICULTURE MONT-TREMBLANT INC.,Mont-Tremblant,Aquaculture animale,112510,2020,2024,5,True,,
+64973,SFP 2024 Inc.,Joliette,Culture de pommes de terre,111211,2021,2023,3,False,SLNO00584,0522 -Rivière L'Assomption
+64976,FERME MARIO KAY & FILS INC.,L'Assomption,Culture de pommes de terre,111211,2021,2022,2,False,SLNO00564,0522 -Rivière L'Assomption
+64984,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2020,1,False,,
+64985,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+64988,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+64990,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+64991,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+64992,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+64995,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+64996,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,SLNO00822,0523 -Rivière la Chaloupe
+64997,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de pommes de terre,111211,2021,2022,2,False,SLNO00824,0523 -Rivière la Chaloupe
+64998,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2020,1,False,SLNO00824,0523 -Rivière la Chaloupe
+64999,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+65000,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de pommes de terre,111211,2021,2021,1,False,SLNO00824,0523 -Rivière la Chaloupe
+65004,Production Lareault inc.,Lavaltrie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+65005,Production Lareault inc.,Lavaltrie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+65006,GAZONNIÈRE BASTIEN ET FILS INC.,Terrebonne,Culture en pépinière & floriculture,11142,2020,2023,4,False,OUTV03394,0464 -Rivière Mascouche
+65007,GAZONNIÈRE BASTIEN ET FILS INC.,Terrebonne,Culture en pépinière & floriculture,11142,2020,2023,4,False,OUTV03394,0464 -Rivière Mascouche
+65008,GAZONNIÈRE BASTIEN ET FILS INC.,Terrebonne,Culture en pépinière & floriculture,11142,2020,2023,4,False,OUTV03394,0464 -Rivière Mascouche
+65009,GAZONNIÈRE BASTIEN ET FILS INC.,Terrebonne,Culture en pépinière & floriculture,11142,2020,2023,4,False,OUTV03394,0464 -Rivière Mascouche
+65010,GAZONNIÈRE BASTIEN ET FILS INC.,Sainte-Anne-des-Plaines,Culture en pépinière & floriculture,11142,2020,2023,4,False,OUTV03396,0464 -Rivière Mascouche
+65020,Excavation & terrassement A. Castonguay inc.,Newport,Aquaculture animale,1125,2020,2024,5,True,,
+66344,9140-1661 QUÉBEC INC.,Lingwick,Aquaculture animale,1125,2020,2024,5,True,,
+66346,9371-1711 Québec inc.,Notre-Dame-des-Bois,Aquaculture animale,1125.0,2024,2024,1,False,,
+66507,9033-4681 QUÉBEC INC.,Hampden,Aquaculture animale,1125,2020,2021,2,False,,
+66594,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2022,3,False,,
+66596,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2023,2023,1,False,,
+66598,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2022,2022,1,False,,
+66603,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2024,5,True,,
+66645,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2024,5,True,,
+66648,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2024,5,True,,
+66650,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2024,5,True,,
+66656,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2021,2022,2,False,,
+66657,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2024,4,False,,
+66658,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2023,3,False,,
+66662,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2021,2021,1,False,,
+66664,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2023,3,False,,
+66665,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2024,4,False,OUTV03388,0464 -Rivière Mascouche
+66667,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2020,1,False,OUTV03388,0464 -Rivière Mascouche
+66690,CANADIAN MALARTIC GP,Malartic,Extraction de minerais d'or & d'argent,212220,2020,2024,5,True,,
+66691,CANADIAN MALARTIC GP,Malartic,Extraction de minerais d'or & d'argent,212220,2020,2024,5,True,,
+66704,LE MARAÎCHER A. BARBEAU & FILS INC.,Saint-Rémi,Culture de légumes & de melons,11121,2020,2023,4,False,,
+66705,LE MARAÎCHER A. BARBEAU & FILS INC.,Saint-Michel,Culture de légumes & de melons,11121,2020,2023,3,False,MONT01473,0309 -Rivière Châteauguay
+66706,LE MARAÎCHER A. BARBEAU & FILS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2020,2023,4,False,MONT01473,0309 -Rivière Châteauguay
+66707,LE MARAÎCHER A. BARBEAU & FILS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2020,2023,4,False,MONT01473,0309 -Rivière Châteauguay
+66708,LE MARAÎCHER A. BARBEAU & FILS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2020,2020,1,False,MONT01473,0309 -Rivière Châteauguay
+66719,MUNICIPALITÉ DE RAWDON,Rawdon,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO00717,0522 -Rivière L'Assomption
+66747,122914 Canada inc.,Messines,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+66751,PISCICULTURE VAL DES BOIS (QUÉBEC) INC.,Val-des-Bois,Aquaculture animale,1125,2020,2024,5,True,,
+66752,CIMENT QUÉBEC INC.,Québec,Extraction de calcaire,212315,2020,2023,4,False,,
+66764,LES CARRIERES DE SAINT-DOMINIQUE LTÉE,Saint-Dominique,Extraction de pierre,21231,2020,2024,5,True,,
+66765,LES CARRIERES DE SAINT-DOMINIQUE LTÉE,Saint-Dominique,Extraction de pierre,21231,2020,2024,5,True,,
+66766,LES CARRIERES DE SAINT-DOMINIQUE LTÉE,Saint-Dominique,Extraction de pierre,21231,2020,2024,5,True,,
+66783,LISE ET MICHEL LEGAULT INC.,Sainte-Clotilde,Culture de légumes & de melons,1112,2021,2021,1,False,MONT01489,0309 -Rivière Châteauguay
+66841,LE POTAGER MONT-ROUGE S.E.N.C.,Rougemont,Culture mixte de fruits & de légumes,111993,2021,2024,4,False,MONT00219,0303 -Rivière Yamaska
+66842,LE POTAGER MONT-ROUGE S.E.N.C.,Rougemont,Culture mixte de fruits & de légumes,111993,2021,2021,1,False,,
+66843,LE POTAGER MONT-ROUGE S.E.N.C.,Rougemont,Culture mixte de fruits & de légumes,111993,2021,2024,2,False,,
+66859,POMMES DE TERRE LAURENTIENNES INC.,Notre-Dame-de-la-Paix,Culture de plantes oléagineuses & de céréales,1111,2020,2023,4,False,OUTV00584,0404 -Rivière de la Petite Nation
+66861,POMMES DE TERRE LAURENTIENNES INC.,Notre-Dame-de-la-Paix,Culture de plantes oléagineuses & de céréales,1111,2020,2023,4,False,OUTV00559,0404 -Rivière de la Petite Nation
+66866,POMMES DE TERRE LAURENTIENNES INC.,Notre-Dame-de-la-Paix,Culture de plantes oléagineuses & de céréales,1111,2020,2023,4,False,OUTV00584,0404 -Rivière de la Petite Nation
+66867,POMMES DE TERRE LAURENTIENNES INC.,Notre-Dame-de-la-Paix,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,OUTV00566,0404 -Rivière de la Petite Nation
+66875,"KRAFT NORDIC, S.E.C.",Eeyou Istchee Baie-James,Usines de pâte chimique,322112,2020,2024,5,True,,
+66877,CONSTRUCTION DJL INC.,Carignan,Extraction de pierre,21231,2020,2024,5,True,MONT00537,0304 -Rivière Richelieu
+66878,CONSTRUCTION DJL INC.,Carignan,Extraction de pierre,21231,2020,2024,5,True,MONT00537,0304 -Rivière Richelieu
+66879,Les Jardins M.G. S.E.N.C.,Sainte-Marie-Madeleine,Culture de légumes & de melons,1112,2020,2024,5,True,,
+66918,MUNICIPALITÉ DE SAINT-HUBERT-DE- RIVIÈRE-DU-LOUP,Saint-Hubert-de-Rivière-du-Loup,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2020,1,False,,
+67003,CLUB DE GOLF SUMMERLEA INC.,Pointe-des-Cascades,Autres services de divertissement & loisirs,7139,2020,2024,5,True,VAUD00199,0474 -Rivière à la Graisse
+67004,CLUB DE GOLF DE BELLE VUE (1984) INC.,Léry,Terrains de golf & country clubs,71391,2020,2024,5,True,,
+67025,Diageo Canada Inc.,Salaberry-de-Valleyfield,Distilleries,312140,2020,2024,5,True,,
+67056,CLUB DE GOLF LOTBINIÈRE INC.,Saint-Gilles,Terrains de golf & country clubs,713910,2020,2024,5,True,SLSO00590,0234 -Rivière Chaudière
+67057,GRAYMONT (QC) INC.,Dudswell,Fab. de chaux,32741,2020,2024,5,True,SLSO01596,0302 -Rivière Saint-François
+67059,GRAYMONT (QC) INC.,Dudswell,Fab. de chaux,32741,2020,2021,2,False,,
+67081,CLUB BEATTIE INC.,La Sarre,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,3,False,LABI00204,08A1 -River Moose
+67091,Information personnelle,Lac-Brome,Terrains de golf & country clubs,713910,2020,2023,4,False,MONT00462,0303 -Rivière Yamaska
+67102,CONSTRUCTION DJL INC.,Beauharnois,Extraction de pierre,21231,2020,2024,5,True,,
+67109,VILLAGE DE POINTE-LEBEL,Pointe-Lebel,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,CNDB00006,0711 -Rivière Manicouagan
+67251,CARRIÈRES P.C.M. INC.,Princeville,Extraction de pierre,21231,2020,2023,4,False,,
+67265,VILLE DE TÉMISCAMING,Témiscaming,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTM02023,0486 -Ruisseau Gordon
+67311,Goldcorp Canada LTD.,Eeyou Istchee Baie-James,Extraction de minerais d'or & d'argent,212220,2020,2020,1,False,,
+67328,LE DOMAINE DE ROUVILLE INC.,Saint-Jean-Baptiste,Parcs pour véh. de plaisance & camps de loisirs,72121,2020,2024,5,True,MONT01273,0304 -Rivière Richelieu
+67329,Les Fermes horticoles L.M.R. inc.,Saint-Liguori,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,5,True,SLNO00713,0522 -Rivière L'Assomption
+67330,Les Fermes horticoles L.M.R. inc.,Saint-Liguori,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,5,True,SLNO00713,0522 -Rivière L'Assomption
+67360,CIMENT QUÉBEC INC.,Saint-Épiphane,Extraction de sable & de gravier,212323,2021,2023,2,False,GASP03745,0224 -Rivière Verte
+67526,Groupe Ataca inc.,Sainte-Clotilde-de-Horton,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,5,True,SLSO01181,0301 -Rivière Nicolet
+67527,CAMP BNAI BRITH INC.,Sainte-Agathe-des-Monts,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV03300,0401 -Rivière du Nord
+67553,Municipalité de la Côte-Nord-du-Golfe-du-Saint-Laurent,Côte-Nord-du-Golfe-du-Saint-Laurent,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2021,2,False,,
+67554,Municipalité de la Côte-Nord-du-Golfe-du-Saint-Laurent,Côte-Nord-du-Golfe-du-Saint-Laurent,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2021,2,False,,
+67651,Station du Mont Gleason inc.,Warwick,Centres de ski,71392,2020,2024,5,True,SLSO01042,0301 -Rivière Nicolet
+67658,CANADIAN MALARTIC GP,Malartic,Extraction de minerais d'or & d'argent,212220,2020,2024,5,True,,
+67691,"VALLÉE DU PARC, SOCIÉTÉ EN COMMANDITE",Shawinigan,Centres de ski,71392,2023,2024,2,False,SLNO02897,0501 -Rivière Saint-Maurice
+67902,CORPORATION D'AMENAGEMENT DES RIVES ET DU PARC DE SAINTE-CATHERINE,Sainte-Catherine,Parcs pour véh. de plaisance & camps de loisirs,7212,2020,2024,5,True,MONT01317,0308 -Rivière Saint-Régis
+67978,COOPÉRATIVE DE SOLIDARITÉ DU CLUB DE GOLF DU LAC MÉGANTIC,Frontenac,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,3,False,,
+67996,Rio Tinto Fer et Titane inc.,Havre-Saint-Pierre,Extraction de minerais de fer,212210,2020,2024,5,True,,
+67997,Rio Tinto Fer et Titane inc.,Havre-Saint-Pierre,Extraction de minerais de fer,212210,2020,2024,4,False,,
+67998,Rio Tinto Fer et Titane inc.,Havre-Saint-Pierre,Extraction de minerais de fer,212210.0,2024,2024,1,False,,
+68169,VILLE DE BAIE-COMEAU,Baie-Comeau,Centres de ski,713920,2020,2024,5,True,CNDB00825,0712 -Rivière aux Anglais
+68308,"ARBEC, BOIS D'OEUVRE INC.",Port-Cartier,"Tous les autres services, transport pipeline",48699,2020,2024,5,True,CNDB00906,0719 -Rivière aux Rochers
+68543,ORICA CANADA INC.,Brownsburg-Chatham,Fab. d'explosifs,32592,2020,2024,5,True,OUTV03232,0401 -Rivière du Nord
+68666,Station du Mont Gleason inc.,Tingwick,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01047,0301 -Rivière Nicolet
+68723,Municipalité de Sacré-Coeur ,Sacré-Coeur,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SAGU02135,0628 -Rivière Sainte-Marguerite
+68725,Boisaco inc.,Sacré-Coeur,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2020,1,False,SAGU02135,0628 -Rivière Sainte-Marguerite
+68734,VILLE DE BAIE-COMEAU,Baie-Comeau,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2020,1,False,CNDB00006,0711 -Rivière Manicouagan
+68872,Société en commandite Ciment McInnis,Port-Daniel--Gascons,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,2,False,,
+68886,VILLE DE FERMONT,Fermont,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+68890,PRODUCTIONS VEGKISS INC.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2022,2022,1,False,,
+68927,HECLA QUÉBEC INC.,Eeyou Istchee Baie-James,Extraction de minerais d'or & d'argent,21222,2023,2024,2,False,,
+68950,VILLE DE LÉVIS,Lévis,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+68953,VILLE DE TROIS-PISTOLES,Notre-Dame-des-Neiges,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2020,1,False,GASP03654,0223 -Rivière des Trois Pistoles
+68960,VILLE DE MONTRÉAL,Montréal,Autres services de divertissement & loisirs,7139,2020,2024,5,True,,
+68975,ArcelorMittal Infrastructure Canada s.e.n.c.,Port-Cartier,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2023,3,False,,
+68990,BARRETTE-CHAPAIS LTÉE,Eeyou Istchee Baie-James,Scieries sauf usines de bard. & bard. de fente,321111,2020,2022,3,False,,
+69135,Goldcorp Canada LTD.,Eeyou Istchee Baie-James,Extraction de minerais d'or & d'argent,212220,2020,2024,5,True,,
+69136,Goldcorp Canada LTD.,Eeyou Istchee Baie-James,Extraction de minerais d'or & d'argent,212220,2020,2024,5,True,,
+69143,Société saumon de la rivière Romaine,Havre-Saint-Pierre,Aquaculture animale,112510,2020,2024,5,True,,
+69150,VILLE DE THETFORD MINES,Saint-Joseph-de-Coleraine,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01886,0302 -Rivière Saint-François
+69206,Lamarche & Mc Guinty inc.,Bristol,Fab. de tous les autres prod. miné. non métall.,327990,2020,2023,4,False,,
+69250,COMITÉ DE RELANCE DE LA STATION DE SKI GALLIX INC.,Sept-Îles,Centres de ski,71392,2020,2022,3,False,,
+69287,PISCICULTURE DU CASTOR BLANC INC.,Aumond,Aquaculture animale,1125,2020,2024,5,True,,
+69361,Boisaco inc.,Lac-au-Brochet,Maisons de chambres & pensions de famille,721310,2020,2023,4,False,CNDA00771,0707 -Rivière Betsiamites
+69376,MUNICIPALITÉ DE CHELSEA,Chelsea,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,OUTV01193,0408 -Rivière Gatineau
+69510,VILLE DE DRUMMONDVILLE,Drummondville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO02370,0302 -Rivière Saint-François
+69519,Germain Blanchard ltée,Saint-Théodore-d'Acton,Extraction de minerais non métalliques,2123,2020,2024,5,True,MONT00073,0303 -Rivière Yamaska
+69561,Information personnelle,Wotton,Aquaculture animale,1125,2020,2024,5,True,,
+69565,Information personnelle,Sainte-Anne-des-Plaines,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,5,True,OUTV03396,0464 -Rivière Mascouche
+69571,BonTerra Resources inc.,Senneterre,Extraction de minerais d'or & d'argent,212220,2020,2020,1,False,ABIT00495,0807 -Rivière Nottaway
+69572,Sitec Amérique du Nord inc.,Lac-Pikauba,"Extraction de tous les autres minerais, n.c.a.",212398,2020,2024,5,True,,
+69577,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Fermont,Extraction de minerais de fer,212210,2021,2021,1,False,,
+69586,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Fermont,Extraction de minerais de fer,212210,2020,2024,3,False,,
+69591,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Fermont,Extraction de minerais de fer,212210,2020,2020,1,False,,
+69592,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Fermont,Extraction de minerais de fer,212210,2020,2021,2,False,,
+69597,PRO-BIO INC.,Saint-Léonard-d'Aston,Culture de légumes & de melons,11121,2022,2023,2,False,SLSO00957,0301 -Rivière Nicolet
+69602,FERME MICHEL LAFORTUNE INC.,Saint-Thomas,Culture de pommes de terre,111211,2020,2021,2,False,SLNO00584,0522 -Rivière L'Assomption
+69629,"GRAPHIC PACKAGING INTERNATIONAL CANADA, ULC",East Angus,"Usines de pâte à papier, de papier & de carton",3221,2020,2024,5,True,SLSO01583,0302 -Rivière Saint-François
+69634,PISCICULTURE DES ARPENTS VERTS (SENC),Sainte-Edwidge-de-Clifton,Aquaculture animale,1125,2020,2024,5,True,,
+69639,Amrize Canada Inc.,Sainte-Adèle,Extraction de pierre,21231,2020,2021,2,False,OUTV03287,0401 -Rivière du Nord
+69649,Aquaculture Mont-Mégantic inc.,Notre-Dame-des-Bois,Aquaculture animale,1125,2020,2024,5,True,,
+69662,Production Lareault inc.,Lavaltrie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,4,False,SLNO00562,0536 -Rivière Saint-Jean
+69667,MAXI-SOL INC.,Saint-Paul,Culture de pommes de terre,111211,2020,2024,4,False,SLNO00583,0522 -Rivière L'Assomption
+69668,MAXI-SOL INC.,Saint-Paul,Culture de pommes de terre,111211,2020,2024,4,False,SLNO00583,0522 -Rivière L'Assomption
+69669,MAXI-SOL INC.,Saint-Paul,Culture de pommes de terre,111211,2020,2024,3,False,SLNO00583,0522 -Rivière L'Assomption
+69683,VILLE DE SAINTE-ANNE-DE-BEAUPRÉ,Sainte-Anne-de-Beaupré,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,SLNO00290,0511 -Rivière aux Chiens
+69685,9008-2868 Québec inc.,Saint-Sauveur,Centres de ski,71392,2020,2024,5,True,OUTV03352,0401 -Rivière du Nord
+69694,LES DIAMANTS STORNOWAY (CANADA) INC.,Eeyou Istchee Baie-James,Extraction de diamant,212392,2020,2024,5,True,,
+69696,MAXI-SOL INC.,Lanoraie,Culture de pommes de terre,111211,2020,2024,4,False,,
+69697,MAXI-SOL INC.,Saint-Paul,Culture de pommes de terre,111211,2020,2022,3,False,SLNO00583,0522 -Rivière L'Assomption
+69698,MAXI-SOL INC.,Saint-Ambroise-de-Kildare,Culture de pommes de terre,111211,2021,2021,1,False,SLNO00591,0522 -Rivière L'Assomption
+69700,MAXI-SOL INC.,Saint-Paul,Culture de pommes de terre,111211,2020,2021,2,False,SLNO00583,0522 -Rivière L'Assomption
+69701,MAXI-SOL INC.,Saint-Paul,Culture de pommes de terre,111211,2020,2024,4,False,SLNO00583,0522 -Rivière L'Assomption
+69709,LE DOMAINE DU LAC LOUISE INC.,Saint-Louis-de-Blandford,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+69710,LE DOMAINE DU LAC LOUISE INC.,Saint-Louis-de-Blandford,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+69717,Aurèle Bélisle & Fils S.E.N.C.,Boisbriand,Culture de noix & de fruits (sauf les agrumes),11133,2020,2023,4,False,OUTV03387,0465 -Rivière aux Chiens
+69718,Aurèle Bélisle & Fils S.E.N.C.,Saint-Eustache,Culture de noix & de fruits (sauf les agrumes),11133,2020,2023,4,False,OUTV03405,0466 -Rivière du Chicot
+69719,Aurèle Bélisle & Fils S.E.N.C.,Saint-Eustache,Culture de noix & de fruits (sauf les agrumes),11133,2020,2023,4,False,OUTV03405,0466 -Rivière du Chicot
+69720,Aurèle Bélisle & Fils S.E.N.C.,Saint-Eustache,Culture de noix & de fruits (sauf les agrumes),11133,2020,2023,4,False,OUTV03405,0466 -Rivière du Chicot
+69721,Aurèle Bélisle & Fils S.E.N.C.,Saint-Eustache,Culture de noix & de fruits (sauf les agrumes),11133,2020,2023,4,False,OUTV03405,0466 -Rivière du Chicot
+69747,LES DIAMANTS STORNOWAY (CANADA) INC.,Eeyou Istchee Baie-James,Extraction de diamant,212392,2020,2024,5,True,,
+69748,LES DIAMANTS STORNOWAY (CANADA) INC.,Eeyou Istchee Baie-James,Extraction de diamant,212392,2020,2023,4,False,,
+69760,FRAISEBEC INC.,Sainte-Anne-des-Plaines,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,5,True,OUTV03399,0464 -Rivière Mascouche
+69761,FRAISEBEC INC.,Sainte-Anne-des-Plaines,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,5,True,OUTV03399,0464 -Rivière Mascouche
+69824,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais métalliques,2122,2020,2023,4,False,CNDB00369,0711 -Rivière Manicouagan
+69826,A. LACROIX & FILS GRANIT LTÉE,Saguenay,Extraction de granite,212314,2020,2020,1,False,,
+69854,POMMES DE TERRE LAURENTIENNES INC.,Notre-Dame-de-la-Paix,Culture de plantes oléagineuses & de céréales,1111,2020,2021,2,False,OUTV00582,0404 -Rivière de la Petite Nation
+69855,FERME VIANNEY ET MARGUERITE TURCOT INC.,Saint-André-Avellin,Culture de légumes & de melons,1112,2020,2024,5,True,OUTV00460,0404 -Rivière de la Petite Nation
+69856,FERME VIANNEY ET MARGUERITE TURCOT INC.,Saint-André-Avellin,Culture de légumes & de melons,1112,2020,2024,5,True,,
+69858,FERME VIANNEY ET MARGUERITE TURCOT INC.,Saint-André-Avellin,Culture de légumes & de melons,1112,2020,2024,5,True,OUTV00551,0404 -Rivière de la Petite Nation
+69868,GROUPE COLAS QUÉBEC INC.,Saint-Isidore,Extraction de pierre,21231,2020,2022,3,False,MONT01319,0308 -Rivière Saint-Régis
+69875,MINES AGNICO EAGLE LIMITÉE,Preissac,Extraction de minerais métalliques,2122,2020,2024,5,True,OUTM00797,0430 -Rivière Kinojévis
+69884,MUNICIPALITÉ DE ROUGEMONT,Rougemont,Activités de soutien aux cultures agricoles,115110,2020,2021,2,False,MONT00220,0303 -Rivière Yamaska
+69886,MUNICIPALITÉ DE ROUGEMONT,Rougemont,Activités de soutien aux cultures agricoles,115110,2020,2021,2,False,MONT00220,0303 -Rivière Yamaska
+69887,MUNICIPALITÉ DE ROUGEMONT,Rougemont,Activités de soutien aux cultures agricoles,115110,2020,2021,2,False,MONT00220,0303 -Rivière Yamaska
+69888,MUNICIPALITÉ DE ROUGEMONT,Rougemont,Activités de soutien aux cultures agricoles,115110,2020,2021,2,False,MONT00220,0303 -Rivière Yamaska
+69923,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Fermont,Extraction de minerais de fer,212210,2020,2024,5,True,,
+69947,Amrize Canada Inc.,Sainte-Adèle,Extraction de pierre,21231,2020,2020,1,False,OUTV03287,0401 -Rivière du Nord
+69988,"Hydro Extrusion Canada, inc.",Pointe-Claire,"Laminage, étirage, extrusion & alliage de l'Al",331317,2020,2024,5,True,,
+69989,VILLE DE LA PRAIRIE,La Prairie,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2022,3,False,MONT01296,0306 -Rivière Saint-Jacques
+70040,Gidavin inc.,Sainte-Mélanie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,SLNO00596,0522 -Rivière L'Assomption
+70054,FRANK RACZ INC.,Lanoraie,Culture de légumes & de melons,1112,2020,2023,4,False,SLNO00824,0523 -Rivière la Chaloupe
+70055,FRANK RACZ INC.,Saint-Thomas,Culture de légumes & de melons,1112,2020,2022,3,False,,
+70056,FRANK RACZ INC.,Saint-Thomas,Culture de légumes & de melons,1112,2021,2021,1,False,,
+70057,FRANK RACZ INC.,Saint-Thomas,Culture de légumes & de melons,1112,2020,2021,2,False,,
+70058,FRANK RACZ INC.,Saint-Thomas,Culture de légumes & de melons,1112,2020,2022,3,False,,
+70059,FRANK RACZ INC.,Saint-Thomas,Culture de légumes & de melons,1112,2020,2022,3,False,,
+70060,FRANK RACZ INC.,Saint-Thomas,Culture de légumes & de melons,1112,2020,2022,3,False,,
+70132,Société en commandite Ciment McInnis,Port-Daniel--Gascons,Extraction de calcaire,212315,2020,2023,4,False,,
+70207,PISCICULTURE DES ARPENTS VERTS (SENC),Sainte-Edwidge-de-Clifton,Aquaculture animale,1125,2020,2024,5,True,,
+70210,LES PRODUITS CHIMIQUES ALDEX CIE LTÉE,Granby,Fab. de résines & de caoutchouc synthétique,32521,2020,2023,4,False,MONT00231,0303 -Rivière Yamaska
+70212,PIC CONSTRUCTION COMPAGNIE LIMITEE,Saint-Honoré,Extraction de minerais non métalliques,2123,2020,2024,5,True,,
+70218,Pépinière Villeneuve inc.,L'Assomption,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,,
+70219,Pépinière Villeneuve inc.,L'Assomption,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,SLNO00790,0522 -Rivière L'Assomption
+70220,VILLE DE LONGUEUIL,Montréal,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+70221,VILLE DE LONGUEUIL,Longueuil,Réseaux d'aqueduc & systèmes d'irrigation,22131,2022,2022,1,False,,
+70222,Amrize Canada Inc.,Montréal-Est,Extraction de pierre,21231,2020,2024,5,True,,
+70225,Amrize Canada Inc.,Montréal-Est,Extraction de pierre,21231,2020,2024,5,True,,
+70257,GRAYMONT (QC) INC.,Dudswell,Fab. de chaux,32741,2020,2024,5,True,SLSO01596,0302 -Rivière Saint-François
+70259,ÉNERGIE VALERO INC.,Montréal-Est,Services d'assainissement,56291,2020,2022,3,False,,
+70260,ÉNERGIE VALERO INC.,Montréal-Est,Services d'assainissement,56291,2020,2022,3,False,,
+70261,ÉNERGIE VALERO INC.,Montréal-Est,Services d'assainissement,56291,2020,2022,3,False,,
+70263,Goldcorp Canada LTD.,Eeyou Istchee Baie-James,Extraction de minerais d'or & d'argent,212220,2020,2024,5,True,,
+70282,VILLE DE MONTRÉAL,L'Assomption,Pép. forest. & récolte de produits forestiers,1132,2020,2022,3,False,SLNO00563,0522 -Rivière L'Assomption
+70297,CLUB BEATTIE INC.,La Sarre,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,LABI00204,08A1 -River Moose
+70353,CLUB DE GOLF BAIE-COMEAU (1983) INC.,Baie-Comeau,Terrains de golf & country clubs,713910,2020,2024,5,True,CNDB00005,0711 -Rivière Manicouagan
+70361,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2022,2,False,,
+70406,VILLE DE WINDSOR,Windsor,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01290,0302 -Rivière Saint-François
+70417,Information personnelle,Danville,Aquaculture animale,1125,2020,2022,3,False,,
+70419,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Fermont,Extraction de minerais de fer,212210,2020,2021,2,False,,
+70433,GROUPE COLAS QUÉBEC INC.,Coteau-du-Lac,Extraction de pierre,21231,2020,2020,1,False,,
+70438,SERVICES D'ÉNERGIE DE QUARTIER ZIBI SEC,Gatineau,Production de vapeur & conditionnement de l'air,221330,2023,2024,2,False,OUTV02349,0430 -Rivière des Outaouais
+70445,Pisciculture d'Arthabaska inc.,Chesterville,Aquaculture animale,11251,2020,2024,5,True,,
+70455,GRAYMONT (QC) INC.,Crabtree,Extraction de calcaire,212315,2020,2024,5,True,SLNO00691,0522 -Rivière L'Assomption
+70456,GRAYMONT (QC) INC.,Saint-Pierre,Extraction de calcaire,212315,2020,2024,5,True,,
+70464,CANNEBERGES DRUMMOND CRANBERRIES INC.,Saint-Lucien,Culture de fruits & de noix,1113,2020,2020,1,False,,
+70482,GROUPE COLAS QUÉBEC INC.,Saint-Flavien,Extraction de pierre,21231,2023,2023,1,False,SLSO00671,0235 -Ruisseau Beaudet
+70483,GROUPE COLAS QUÉBEC INC.,Saint-Flavien,Extraction de pierre,21231,2023,2023,1,False,SLSO00671,0235 -Ruisseau Beaudet
+70491,GRAYMONT (QC) INC.,Dudswell,Fab. de chaux,32741,2020,2024,5,True,SLSO01596,0302 -Rivière Saint-François
+70547,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2023,3,False,SLNO00562,0536 -Rivière Saint-Jean
+70548,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2023,4,False,,
+70549,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2023,2,False,SLNO00562,0536 -Rivière Saint-Jean
+70550,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+70551,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2023,2,False,SLNO00562,0536 -Rivière Saint-Jean
+70552,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2023,2,False,SLNO00562,0536 -Rivière Saint-Jean
+70553,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2024,3,False,SLNO00562,0536 -Rivière Saint-Jean
+70554,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+70555,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+70556,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2022,2,False,,
+70557,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+70558,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2024,4,False,SLNO00562,0536 -Rivière Saint-Jean
+70559,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+70560,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2024,5,True,,
+70564,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de légumes & de melons,11121,2020,2024,3,False,SLNO00562,0536 -Rivière Saint-Jean
+70565,Mont Atoca inc.,Lavaltrie,Culture de noix & de fruits (sauf les agrumes),111330,2022,2024,3,False,,
+70571,Nordex - Cegerco Centrale S.E.N.C.,Lac-Jérôme,Constr. d'installations de services publics,2371,2022,2022,1,False,CNDD00929,0738 -Rivière Romaine
+70614,Pepiniere St-paul de Joliette inc.,Saint-Paul,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,SLNO00689,0522 -Rivière L'Assomption
+70615,Pepiniere St-paul de Joliette inc.,Saint-Paul,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,SLNO00689,0522 -Rivière L'Assomption
+70616,Pepiniere St-paul de Joliette inc.,Saint-Paul,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,SLNO00689,0522 -Rivière L'Assomption
+70617,Pepiniere St-paul de Joliette inc.,Saint-Paul,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,,
+70690,MARAÎCHERS J.P.L. GUERIN & FILS INC.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,1112,2020,2021,2,False,MONT01476,0309 -Rivière Châteauguay
+70691,MARAÎCHERS J.P.L. GUERIN & FILS INC.,Sainte-Clotilde,Culture de légumes & de melons,1112,2020,2021,2,False,MONT01476,0309 -Rivière Châteauguay
+70692,MARAÎCHERS J.P.L. GUERIN & FILS INC.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,1112,2020,2021,2,False,MONT00556,0304 -Rivière Richelieu
+70693,MARAÎCHERS J.P.L. GUERIN & FILS INC.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,1112,2020,2020,1,False,MONT01476,0309 -Rivière Châteauguay
+70694,MARAÎCHERS J.P.L. GUERIN & FILS INC.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,1112,2020,2020,1,False,,
+70696,MARAÎCHERS J.P.L. GUERIN & FILS INC.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,1112,2021,2021,1,False,MONT01476,0309 -Rivière Châteauguay
+70759,GROUPE COLAS QUÉBEC INC.,Saint-Alphonse-de-Granby,Extraction de pierre,21231,2021,2024,4,False,MONT00272,0303 -Rivière Yamaska
+70760,GROUPE COLAS QUÉBEC INC.,Saint-Alphonse-de-Granby,Extraction de pierre,21231.0,2024,2024,1,False,MONT00272,0303 -Rivière Yamaska
+70761,GROUPE COLAS QUÉBEC INC.,Saint-Alphonse-de-Granby,Extraction de pierre,21231,2021,2022,2,False,MONT00272,0303 -Rivière Yamaska
+70762,GROUPE COLAS QUÉBEC INC.,Saint-Alphonse-de-Granby,Extraction de pierre,21231,2021,2023,3,False,MONT00272,0303 -Rivière Yamaska
+70764,LES FERMES TRI-JARDINS INC.,Saint-Léonard-d'Aston,Culture de pommes de terre,111211,2020,2022,3,False,SLSO00957,0301 -Rivière Nicolet
+70767,FERME O. GIGUERE ET FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+70774,FERME COUBI INC.,Sainte-Élisabeth,Autre culture de légumes (sauf patate) & melons,111219,2020,2022,3,False,SLNO00827,0524 -Rivière Bayonne
+70777,LES SOMMETS DE LA VALLÉE INC.,Saint-Sauveur,Centres de ski,71392,2020,2024,5,True,OUTV03352,0401 -Rivière du Nord
+70810,L'Association de ski Nakkertok,Gatineau,Centres de ski,713920,2020,2022,3,False,OUTV01191,0408 -Rivière Gatineau
+70815,Scierie Clifton inc.,Saint-Isidore-de-Clifton,Scieries & préservation du bois,3211,2020,2024,5,True,SLSO01993,0302 -Rivière Saint-François
+70835,Matériaux Nano One Candiac inc.,Candiac,Fab. tous les autres prod. chim. inorg. de base,325189,2021,2023,3,False,MONT01305,0307 -Rivière de la Tortue
+70847,Amrize Canada Inc.,Sainte-Adèle,Extraction de pierre,21231,2020,2020,1,False,OUTV03287,0401 -Rivière du Nord
+70857,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais métalliques,2122,2020,2024,5,True,CNDB00369,0711 -Rivière Manicouagan
+70858,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais métalliques,2122,2020,2023,4,False,CNDB00369,0711 -Rivière Manicouagan
+70859,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais métalliques,2122,2020,2024,5,True,CNDB00369,0711 -Rivière Manicouagan
+70867,BOMBARDIER PRODUITS RÉCRÉATIFS INC.,Maricourt,Fab. d'autres types de matériel de transport,3369,2020,2024,5,True,MONT00085,0303 -Rivière Yamaska
+70869,GROUPE DEZETECH INC.,Rigaud,Extraction de sable & de gravier,212323,2022,2022,1,False,OUTV03367,0463 -Rivière à la Raquette
+70885,CENTRE DE CONSERVATION DE LA BIODIVERSITÉ BORÉALE (CCBB) INC.,Saint-Félicien,Parcs d'attractions & jardins thématiques,71311,2020,2024,5,True,SAGU01090,0619 -Rivière Ashuapmushuan
+70888,FERME DIANE & DENIS CHAMPAGNE INC.,Lanoraie,Culture de légumes & de melons,11121,2021,2022,2,False,,
+70889,PARADIS DES FRAISES J. AUCLAIR & FILS INC.,Lavaltrie,Culture de fruits & de noix,1113,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+70890,PARADIS DES FRAISES J. AUCLAIR & FILS INC.,Lavaltrie,Culture de fruits & de noix,1113,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+70891,PARADIS DES FRAISES J. AUCLAIR & FILS INC.,L'Assomption,Culture de fruits & de noix,1113,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+70893,FERME LUC LUSSIER INC.,Saint-Pie,Culture de légumes & de melons,1112,2021,2021,1,False,,
+70907,PÉPINIÈRE L'AVENIR INC.,L'Avenir,Culture en pépinière & arboriculture,111421,2020,2023,4,False,SLSO01233,0302 -Rivière Saint-François
+70908,Jardinier Rolland Legault et Fils inc.,Coteau-du-Lac,Culture de légumes & de melons,1112,2021,2022,2,False,,
+70909,Jardinier Rolland Legault et Fils inc.,Les Cèdres,Culture de légumes & de melons,1112,2021,2021,1,False,,
+70911,Ferme Lidom inc.,Saint-Lin--Laurentides,Culture de légumes & de melons,1112,2023,2024,2,False,SLNO00800,0522 -Rivière L'Assomption
+70920,CONSTRUCTION DJL INC.,Sainte-Clotilde,Extraction de pierre,21231,2020,2024,5,True,MONT01472,0309 -Rivière Châteauguay
+70921,CONSTRUCTION DJL INC.,Sainte-Clotilde,Extraction de pierre,21231,2020,2024,5,True,MONT01472,0309 -Rivière Châteauguay
+70922,CONSTRUCTION DJL INC.,Sainte-Clotilde,Extraction de pierre,21231,2020,2023,4,False,MONT01472,0309 -Rivière Châteauguay
+70963,LA COMPAGNIE COMMONWEALTH PLYWOOD LTÉE,Lac-Normand,Usines de placages & contreplaqués de feuillus,321211,2020,2023,4,False,SLNO02699,0501 -Rivière Saint-Maurice
+70966,LES JARDINS A. GUÉRIN ET FILS INC.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,11121,2020,2020,1,False,MONT01476,0309 -Rivière Châteauguay
+70969,FERMES TRUDEAU INC.,Saint-Mathieu-de-Beloeil,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,5,True,MONT00521,0304 -Rivière Richelieu
+70970,FERMES TRUDEAU INC.,Saint-Mathieu-de-Beloeil,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,5,True,MONT00521,0304 -Rivière Richelieu
+70971,FERMES TRUDEAU INC.,Saint-Mathieu-de-Beloeil,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,5,True,MONT00521,0304 -Rivière Richelieu
+70972,FERMES TRUDEAU INC.,Saint-Mathieu-de-Beloeil,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,5,True,MONT00521,0304 -Rivière Richelieu
+70991,LES PRÉS-VERTS M.B. LTÉE,Saint-Aimé,Toutes les autres cultures agricoles,11199,2020,2024,4,False,MONT00036,0303 -Rivière Yamaska
+71016,LES CULTURES DE CHEZ NOUS INC.,Sainte-Brigitte-des-Saults,Culture de légumes & de melons,1112,2020,2020,1,False,SLSO01188,0301 -Rivière Nicolet
+71017,LES CULTURES DE CHEZ NOUS INC.,Sainte-Brigitte-des-Saults,Culture de légumes & de melons,1112,2020,2023,4,False,SLSO01186,0301 -Rivière Nicolet
+71020,FERME MARIO KAY & FILS INC.,L'Assomption,Culture de pommes de terre,111211,2021,2022,2,False,SLNO00564,0522 -Rivière L'Assomption
+71030,Les Fermes horticoles L.M.R. inc.,Saint-Liguori,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,5,True,SLNO00713,0522 -Rivière L'Assomption
+71059,René Brunelle et Fils inc.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219.0,2024,2024,1,False,,
+71068,FERME BONNETERRE INC.,Saint-Paul,Culture de légumes & de melons,11121,2020,2024,4,False,SLNO00583,0522 -Rivière L'Assomption
+71075,PRODUCTIONS VEGKISS INC.,Sainte-Élisabeth,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,5,True,SLNO00823,0523 -Rivière la Chaloupe
+71076,LES FERMES ANDRE BERARD INC.,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2020,2024,4,False,SLNO00593,0522 -Rivière L'Assomption
+71078,LES FERMES ANDRE BERARD INC.,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2022,2024,2,False,SLNO00595,0522 -Rivière L'Assomption
+71080,LES FERMES ANDRE BERARD INC.,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2020,2024,4,False,SLNO00595,0522 -Rivière L'Assomption
+71082,LES FERMES ANDRE BERARD INC.,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2021,2024,3,False,SLNO00591,0522 -Rivière L'Assomption
+71083,LES FERMES ANDRE BERARD INC.,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2020,2024,4,False,SLNO00591,0522 -Rivière L'Assomption
+71084,LES FERMES ANDRE BERARD INC.,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2020,2024,4,False,,
+71091,FERME GAÉTAN CORMIER INC.,L'Assomption,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+71092,"LES FERMES RIVEST, BOURGEOIS INC.",Rawdon,Culture de légumes & de melons,11121,2021,2024,3,False,SLNO00704,0522 -Rivière L'Assomption
+71097,FERME RÉJEAN BEAUPARLANT INC.,Lanoraie,Culture de pommes de terre,111211,2020,2024,3,False,SLNO00562,0536 -Rivière Saint-Jean
+71098,FERME RÉJEAN BEAUPARLANT INC.,Lanoraie,Culture de pommes de terre,111211,2020,2024,3,False,SLNO00562,0536 -Rivière Saint-Jean
+71099,FERME RÉJEAN BEAUPARLANT INC.,Lanoraie,Culture de pommes de terre,111211,2020,2024,5,True,,
+71101,FERME RÉJEAN BEAUPARLANT INC.,Lanoraie,Culture de pommes de terre,111211,2020,2024,4,False,,
+71102,FERME RÉJEAN BEAUPARLANT INC.,Lanoraie,Culture de pommes de terre,111211,2020,2021,2,False,SLNO00562,0536 -Rivière Saint-Jean
+71103,FERME RÉJEAN BEAUPARLANT INC.,Lanoraie,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+71104,FERME RÉJEAN BEAUPARLANT INC.,Lanoraie,Culture de pommes de terre,111211,2020,2024,5,True,,
+71105,FERME RÉJEAN BEAUPARLANT INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,4,False,,
+71106,FERME RÉJEAN BEAUPARLANT INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2021,1,False,,
+71109,Les Potagers G.P.S. Turcot inc.,L'Assomption,Culture de légumes & de melons,1112,2020,2020,1,False,SLNO00579,0522 -Rivière L'Assomption
+71110,Les Potagers G.P.S. Turcot inc.,L'Assomption,Culture de légumes & de melons,1112,2020,2022,3,False,SLNO00579,0522 -Rivière L'Assomption
+71112,LES POMMES DE TERRE CARDINAL INC.,Sainte-Brigitte-des-Saults,Culture de pommes de terre,111211,2020,2024,5,True,SLSO01188,0301 -Rivière Nicolet
+71116,Ferdinand Hervieux inc.,Lanoraie,Culture de légumes & de melons,1112,2020,2024,4,False,SLNO00562,0536 -Rivière Saint-Jean
+71117,Ferdinand Hervieux inc.,Lanoraie,Culture de légumes & de melons,1112,2020,2024,4,False,SLNO00562,0536 -Rivière Saint-Jean
+71118,Ferdinand Hervieux inc.,Lavaltrie,Culture de légumes & de melons,1112,2020,2024,4,False,SLNO00562,0536 -Rivière Saint-Jean
+71120,Ferme C.M.J.I. Robert inc.,Rougemont,Culture de fruits & de noix,1113,2021,2024,4,False,MONT00220,0303 -Rivière Yamaska
+71127,FERME GASTON ROY ET FILS INC.,Saint-Michel,Culture de légumes & de melons,11121,2021,2024,4,False,,
+71128,FERME GASTON ROY ET FILS INC.,Saint-Michel,Culture de légumes & de melons,11121,2021,2024,4,False,,
+71129,FERME GASTON ROY ET FILS INC.,Saint-Michel,Culture de légumes & de melons,11121,2021,2024,4,False,,
+71137,LES JARDINS G & R LTEE,Saint-Lin--Laurentides,Culture de légumes & de melons,1112,2020,2023,3,False,,
+71141,Les Jardiniers Idéals limitée,Saint-Michel,Culture de légumes & de melons,1112,2023,2024,2,False,MONT01473,0309 -Rivière Châteauguay
+71142,Les Jardiniers Idéals limitée,Saint-Michel,Culture de légumes & de melons,1112,2023,2024,2,False,,
+71143,Les Jardiniers Idéals limitée,Hemmingford,Culture de légumes & de melons,1112,2023,2024,2,False,MONT01478,0309 -Rivière Châteauguay
+71147,A.O.L. Jardiniers Maraîchers inc.,Saint-Édouard,Culture de légumes & de melons,1112,2020,2024,5,True,MONT01315,0307 -Rivière de la Tortue
+71148,A.O.L. Jardiniers Maraîchers inc.,Saint-Édouard,Culture de légumes & de melons,1112,2020,2024,5,True,MONT01315,0307 -Rivière de la Tortue
+71154,Les Légumes R. & M. inc.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,1112,2021,2024,4,False,MONT01315,0307 -Rivière de la Tortue
+71155,Les Légumes R. & M. inc.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,1112,2021,2024,4,False,MONT01315,0307 -Rivière de la Tortue
+71156,Les Légumes R. & M. inc.,Saint-Édouard,Culture de légumes & de melons,1112,2021,2024,4,False,MONT01315,0307 -Rivière de la Tortue
+71174,LES TERRES MARAÎCHÈRES BARBEAU INC.,Sainte-Clotilde,Culture de légumes & de melons,1112,2022,2024,3,False,MONT01473,0309 -Rivière Châteauguay
+71190,Ferme Daniel Coutu inc.,Sorel-Tracy,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,5,True,,
+71191,Ferme Daniel Coutu inc.,Sorel-Tracy,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,5,True,MONT00502,0304 -Rivière Richelieu
+71192,Ferme Daniel Coutu inc.,Sorel-Tracy,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,4,False,MONT00502,0304 -Rivière Richelieu
+71193,Ferme Daniel Coutu inc.,Sorel-Tracy,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,5,True,,
+71199,FERME ALAIN BRISSETTE INC.,Lavaltrie,Culture mixte de fruits & de légumes,111993,2020,2024,5,True,,
+71200,FERME ALAIN BRISSETTE INC.,Lavaltrie,Culture mixte de fruits & de légumes,111993,2020,2024,4,False,,
+71201,FERME ALAIN BRISSETTE INC.,Lavaltrie,Culture mixte de fruits & de légumes,111993,2020,2024,5,True,,
+71207,LES FERMES M.V.G. INC.,Lanoraie,Culture de pommes de terre,111211,2020,2020,1,False,,
+71212,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2020,2022,2,False,,
+71214,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2021,2021,1,False,,
+71216,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2021,2021,1,False,,
+71217,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2020,2021,2,False,,
+71218,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2021,2021,1,False,,
+71219,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2021,2022,2,False,,
+71220,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2020,2020,1,False,,
+71229,La Cannebergière Nathaniel (2017) inc.,Sainte-Séraphine,Culture de noix & de fruits (sauf les agrumes),111330,2020,2023,4,False,SLSO01089,0301 -Rivière Nicolet
+71249,LES JARDINS HAMELIN INC.,Saint-Michel,Culture de pommes de terre,111211,2021,2022,2,False,,
+71250,LES JARDINS HAMELIN INC.,Saint-Michel,Culture de pommes de terre,111211,2020,2022,3,False,,
+71255,LES FERMES ANDRE MONCHAMP & FILS LTÉE,Saint-Michel,Culture de légumes & de melons,1112,2020,2024,5,True,,
+71256,LES FERMES ANDRE MONCHAMP & FILS LTÉE,Saint-Michel,Culture de légumes & de melons,1112,2020,2024,5,True,,
+71257,R. PINSONNEAULT & FILS LTÉE,Saint-Michel,Culture de légumes & de melons,1112,2020,2022,3,False,,
+71258,R. PINSONNEAULT & FILS LTÉE,Saint-Michel,Culture de légumes & de melons,1112,2021,2023,3,False,,
+71259,R. PINSONNEAULT & FILS LTÉE,Saint-Michel,Culture de légumes & de melons,1112,2020,2023,4,False,,
+71260,R. PINSONNEAULT & FILS LTÉE,Saint-Michel,Culture de légumes & de melons,1112,2020,2023,4,False,,
+71261,R. PINSONNEAULT & FILS LTÉE,Saint-Michel,Culture de légumes & de melons,1112,2021,2023,3,False,,
+71263,R. PINSONNEAULT & FILS LTÉE,Saint-Édouard,Culture de légumes & de melons,1112,2020,2023,4,False,MONT01315,0307 -Rivière de la Tortue
+71264,R. PINSONNEAULT & FILS LTÉE,Sainte-Clotilde,Culture de légumes & de melons,1112,2021,2022,2,False,,
+71267,FERME GUY CHAMPAGNE INC.,Lanoraie,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,5,True,,
+71268,FERME GUY CHAMPAGNE INC.,Lanoraie,Autre culture de légumes (sauf patate) & melons,111219,2020,2021,2,False,SLNO00562,0536 -Rivière Saint-Jean
+71277,LES FERMES M.V.G. INC.,Saint-Thomas,Culture de pommes de terre,111211,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+71278,LES FERMES M.V.G. INC.,Saint-Thomas,Culture de pommes de terre,111211,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+71288,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2021,2021,1,False,,
+71289,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2021,2021,1,False,,
+71290,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2021,2021,1,False,MONT01473,0309 -Rivière Châteauguay
+71293,LES FERMES LECLAIR & FRÈRES LTÉE,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2021,2022,2,False,MONT01476,0309 -Rivière Châteauguay
+71294,LES FERMES LECLAIR & FRÈRES LTÉE,Sainte-Clotilde,Autre culture de légumes (sauf patate) & melons,111219,2021,2023,3,False,MONT01476,0309 -Rivière Châteauguay
+71297,PRODUCTIONS VEGKISS INC.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2020,2020,1,False,SLNO00823,0523 -Rivière la Chaloupe
+71305,MARAÎCHERS J.P.L. GUERIN & FILS INC.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,11121,2021,2021,1,False,MONT01476,0309 -Rivière Châteauguay
+71310,Productions D. Riendeau inc.,Saint-Rémi,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2021,1,False,,
+71311,Productions D. Riendeau inc.,Saint-Rémi,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2021,2,False,,
+71312,Productions D. Riendeau inc.,Saint-Rémi,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2021,2,False,,
+71314,M. LACOMBE ET FILS INC.,Lavaltrie,Toutes les autres cultures agricoles diverses,111999,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+71322,FERME ALAIN BRISSETTE INC.,Lanoraie,Culture mixte de fruits & de légumes,111993,2021,2023,2,False,,
+71323,FERME ALAIN BRISSETTE INC.,Lanoraie,Culture mixte de fruits & de légumes,111993,2022,2024,2,False,,
+71327,FERME ALAIN BRISSETTE INC.,Lanoraie,Culture mixte de fruits & de légumes,111993,2020,2020,1,False,,
+71338,Les entreprises Quali-Ferme inc.,Saint-Paul,Culture de pommes de terre,111211,2021,2023,3,False,SLNO00580,0522 -Rivière L'Assomption
+71350,Information personnelle,Coteau-du-Lac,Culture du soja,11111,2020,2020,1,False,VAUD00201,0460 -Rivière Rouge
+71356,PRODUCTIONS VEGKISS INC.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2020,2020,1,False,SLNO00823,0523 -Rivière la Chaloupe
+71370,GERARD ASSELIN & FILS LTÉE,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2022,2024,2,False,,
+71371,GERARD ASSELIN & FILS LTÉE,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2022,2024,2,False,SLNO00593,0522 -Rivière L'Assomption
+71372,GERARD ASSELIN & FILS LTÉE,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2022,2024,3,False,,
+71373,GERARD ASSELIN & FILS LTÉE,Notre-Dame-de-Lourdes,Culture de légumes & de melons,1112,2022,2023,2,False,SLNO00595,0522 -Rivière L'Assomption
+71378,Information personnelle,Lavaltrie,Culture de pommes de terre,111211,2020,2020,1,False,SLNO00565,0522 -Rivière L'Assomption
+71382,Roland Janson ltée,L'Assomption,Culture du tabac,111910,2021,2024,3,False,SLNO00565,0522 -Rivière L'Assomption
+71386,M. LACOMBE ET FILS INC.,Lavaltrie,Toutes les autres cultures agricoles diverses,111999,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+71387,M. LACOMBE ET FILS INC.,Lavaltrie,Toutes les autres cultures agricoles diverses,111999,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+71388,M. LACOMBE ET FILS INC.,Lavaltrie,Toutes les autres cultures agricoles diverses,111999,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+71416,Information personnelle,L'Assomption,Culture de pommes de terre,111211,2020,2022,3,False,SLNO00565,0522 -Rivière L'Assomption
+71430,Régie intermunicipale d'aqueduc du Bas-Richelieu,Saint-Denis-sur-Richelieu,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,3,False,MONT00507,0304 -Rivière Richelieu
+71448,"Hamel-CRT, S.E.N.C.",Lac-Jérôme,Constr. d'installations de services publics,2371,2020,2021,2,False,CNDD00929,0738 -Rivière Romaine
+71490,LES CARRIÈRES JOLIETTE INC.,Saint-Thomas,Extraction de calcaire,212315,2020,2024,5,True,,
+71564,FERME FERNAND RONDEAU & FILS INC.,Lanoraie,Culture de légumes & de melons,11121.0,2024,2024,1,False,,
+71565,FERME FERNAND RONDEAU & FILS INC.,Lanoraie,Culture de légumes & de melons,11121.0,2024,2024,1,False,,
+71566,FERME FERNAND RONDEAU & FILS INC.,Lanoraie,Culture de légumes & de melons,11121.0,2024,2024,1,False,,
+71569,FERME FERNAND RONDEAU & FILS INC.,Lanoraie,Culture de légumes & de melons,11121.0,2024,2024,1,False,,
+71570,FERME FERNAND RONDEAU & FILS INC.,Lanoraie,Culture de légumes & de melons,11121.0,2024,2024,1,False,,
+71576,FERME FERNAND RONDEAU & FILS INC.,Lanoraie,Culture de légumes & de melons,11121.0,2024,2024,1,False,,
+71579,FERME FERNAND RONDEAU & FILS INC.,Lanoraie,Culture de légumes & de melons,11121.0,2024,2024,1,False,,
+71580,FERME FERNAND RONDEAU & FILS INC.,Lanoraie,Culture de légumes & de melons,11121.0,2024,2024,1,False,,
+71610,CANNEBERGES DRUMMOND CRANBERRIES INC.,Saint-Lucien,Culture de fruits & de noix,1113,2020,2020,1,False,,
+71624,POMMES DE TERRE LAURENTIENNES INC.,Notre-Dame-de-la-Paix,Culture de plantes oléagineuses & de céréales,1111,2020,2022,3,False,OUTV00584,0404 -Rivière de la Petite Nation
+71626,POMMES DE TERRE LAURENTIENNES INC.,Notre-Dame-de-la-Paix,Culture du soja,111110,2022,2023,2,False,OUTV00584,0404 -Rivière de la Petite Nation
+71627,POMMES DE TERRE LAURENTIENNES INC.,Notre-Dame-de-la-Paix,Culture de plantes oléagineuses & de céréales,1111,2020,2023,4,False,OUTV00557,0404 -Rivière de la Petite Nation
+71630,VILLE DE VAL-DES-SOURCES,Val-des-Sources,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLSO01106,0301 -Rivière Nicolet
+71631,VILLE DE SAINT-TITE,Grandes-Piles,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,SLNO03179,0503 -Rivière Batiscan
+71641,PRODUCTIONS VEGKISS INC.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2020,2021,2,False,SLNO00822,0523 -Rivière la Chaloupe
+71698,Le Massif s.e.c.,TNO aquatique de la MRC de Montmagny,Centres de ski,71392,2022,2024,3,False,,
+71701,Ferme ProTerre inc.,Saint-Félix-de-Valois,Culture de légumes & de melons,1112,2020,2024,3,False,SLNO00830,0524 -Rivière Bayonne
+71702,Ferme ProTerre inc.,Sainte-Élisabeth,Culture de légumes & de melons,1112,2020,2022,3,False,SLNO00829,0524 -Rivière Bayonne
+71723,9190-4805 QUÉBEC INC.,Val-des-Sources,Extraction de pierre,21231,2022,2024,3,False,SLSO01152,0301 -Rivière Nicolet
+71724,Ferme ProTerre inc.,Sainte-Élisabeth,Culture de légumes & de melons,1112,2020,2021,2,False,,
+71728,FERME SAMSON & FILS (1987) S.E.N.C.,Farnham,Culture de légumes & de melons,1112,2020,2024,4,False,MONT00928,0304 -Rivière Richelieu
+71729,FERME SAMSON & FILS (1987) S.E.N.C.,Farnham,Culture de légumes & de melons,1112,2020,2024,4,False,MONT00928,0304 -Rivière Richelieu
+71731,LES FERMES LECLAIR & FRÈRES LTÉE,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2021,2023,3,False,MONT01476,0309 -Rivière Châteauguay
+71732,LES FERMES LECLAIR & FRÈRES LTÉE,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2021,2023,3,False,MONT01476,0309 -Rivière Châteauguay
+71733,LES FERMES LECLAIR & FRÈRES LTÉE,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2021,2022,2,False,MONT01476,0309 -Rivière Châteauguay
+71737,LES JARDINS A. GUÉRIN ET FILS INC.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,11121,2020,2024,5,True,MONT01476,0309 -Rivière Châteauguay
+71738,LES JARDINS A. GUÉRIN ET FILS INC.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,11121,2020,2024,5,True,MONT01473,0309 -Rivière Châteauguay
+71757,FERME COUBI INC.,Sainte-Élisabeth,Autre culture de légumes (sauf patate) & melons,111219,2020,2020,1,False,SLNO00827,0524 -Rivière Bayonne
+71763,Les fermes R.R. & Fils inc.,Saint-Michel,Autre culture de légumes (sauf patate) & melons,111219,2020,2023,2,False,MONT01473,0309 -Rivière Châteauguay
+71767,Les fermes R.R. & Fils inc.,Saint-Michel,Autre culture de légumes (sauf patate) & melons,111219,2020,2020,1,False,MONT01473,0309 -Rivière Châteauguay
+71768,Les fermes R.R. & Fils inc.,Saint-Michel,Autre culture de légumes (sauf patate) & melons,111219,2020,2023,4,False,MONT01473,0309 -Rivière Châteauguay
+71770,Les fermes R.R. & Fils inc.,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2020,2021,2,False,MONT01473,0309 -Rivière Châteauguay
+71771,Les fermes R.R. & Fils inc.,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2020,2023,4,False,MONT01476,0309 -Rivière Châteauguay
+71782,PRODUCTIONS VEGKISS INC.,Sainte-Élisabeth,Autre culture de légumes (sauf patate) & melons,111219,2020,2024,3,False,SLNO00823,0523 -Rivière la Chaloupe
+71791,B.R. CARON INC.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2020,2021,2,False,MONT00953,0304 -Rivière Richelieu
+71792,B.R. CARON INC.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2020,2021,2,False,MONT00952,0304 -Rivière Richelieu
+71793,B.R. CARON INC.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2020,2021,2,False,MONT00953,0304 -Rivière Richelieu
+71794,B.R. CARON INC.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2020,2021,2,False,MONT00953,0304 -Rivière Richelieu
+71799,B.R. CARON INC.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2020,2021,2,False,MONT00954,0304 -Rivière Richelieu
+71800,B.R. CARON INC.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2020,2021,2,False,MONT00952,0304 -Rivière Richelieu
+71808,PRODUCTIONS VEGKISS INC.,Sainte-Élisabeth,Autre culture de légumes (sauf patate) & melons,111219,2020,2020,1,False,SLNO00822,0523 -Rivière la Chaloupe
+71818,Amrize Canada Inc.,Mirabel,Extraction de pierre,21231,2020,2022,3,False,OUTV03410,0467 -Rivière du Chêne
+71827,BÉTON PROVINCIAL LTÉE,Saint-Thomas,Fab. de ciment,327310.0,2024,2024,1,False,,
+71830,Les fermes Belvache inc.,Terrebonne,Culture de légumes & de melons,1112,2020,2023,3,False,OUTV03391,0464 -Rivière Mascouche
+71831,LES FERMES M.V.G. INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2024,3,False,SLNO00562,0536 -Rivière Saint-Jean
+71832,LES FERMES M.V.G. INC.,Notre-Dame-de-Lourdes,Culture de pommes de terre,111211,2020,2022,3,False,SLNO00593,0522 -Rivière L'Assomption
+71833,LES FERMES M.V.G. INC.,Saint-Paul,Culture de pommes de terre,111211,2020,2022,3,False,SLNO00689,0522 -Rivière L'Assomption
+71834,LES FERMES M.V.G. INC.,Joliette,Culture de pommes de terre,111211,2020,2024,3,False,SLNO00585,0522 -Rivière L'Assomption
+71835,LES FERMES M.V.G. INC.,Lanoraie,Culture de pommes de terre,111211,2020,2024,5,True,,
+71862,VILLE DE LAVAL,Laval,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2024,5,True,,
+71868,GROUPE COLAS QUÉBEC INC.,Québec,Extraction de pierre,21231,2023,2024,2,False,,
+71890,Ferme Daniel Coutu inc.,Sorel-Tracy,Culture de noix & de fruits (sauf les agrumes),111330,2021,2024,4,False,,
+71903,LES FERMES M.V.G. INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2023,3,False,SLNO00565,0522 -Rivière L'Assomption
+71904,LES FERMES M.V.G. INC.,Joliette,Culture de pommes de terre,111211,2020,2024,3,False,SLNO00584,0522 -Rivière L'Assomption
+71912,LES FERMES M.V.G. INC.,L'Assomption,Culture de pommes de terre,111211,2020,2023,4,False,SLNO00579,0522 -Rivière L'Assomption
+71920,CANADIAN ROYALTIES INC.,Rivière-Koksoak,Extraction de minerais de nickel-cuivre,212232,2021,2024,3,False,,
+71921,CANADIAN ROYALTIES INC.,Rivière-Koksoak,Extraction de minerais de nickel-cuivre,212232,2021,2021,1,False,,
+71922,CANADIAN ROYALTIES INC.,Rivière-Koksoak,Extraction de minerais de nickel-cuivre,212232,2021,2024,4,False,,
+71923,LE DOMAINE DU LAC LOUISE INC.,Saint-Louis-de-Blandford,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2021,2,False,,
+71924,LE DOMAINE DU LAC LOUISE INC.,Saint-Louis-de-Blandford,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2021,2,False,,
+71929,GLENCORE CANADA CORPORATION,Rivière-Koksoak,"Extract. minerais cuivre, nickel, plomb & zinc",21223,2020,2024,4,False,,
+71941,VILLE DE SAINT-TITE,Grandes-Piles,Réseaux d'aqueduc & systèmes d'irrigation,22131,2022,2023,2,False,SLNO03179,0503 -Rivière Batiscan
+71943,CONCASSAGE METHE INC.,Stanbridge Station,Extraction de calcaire,212315,2020,2020,1,False,,
+71955,HECLA QUÉBEC INC.,Eeyou Istchee Baie-James,Extraction de minerais d'or & d'argent,21222,2020,2024,5,True,ABIT01216,0801 -Rivière Harricana
+71961,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais de fer,212210,2021,2023,3,False,CNDB00369,0711 -Rivière Manicouagan
+71964,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais métalliques,2122,2020,2023,4,False,CNDB00369,0711 -Rivière Manicouagan
+71965,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais de fer,212210,2021,2023,3,False,CNDB00369,0711 -Rivière Manicouagan
+71966,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais métalliques,2122,2020,2023,4,False,CNDB00369,0711 -Rivière Manicouagan
+71969,"GOLF ET LOISIRS FORESTVILLE, COOPÉRATIVE DE SOLIDARITÉ",Forestville,Terrains de golf & country clubs,713910,2020,2024,5,True,CNDA01047,0705 -Rivière du Sault aux Cochons
+71984,Pisciculture du Lac St-François inc.,Saint-Romain,Aquaculture animale,1125,2023,2023,1,False,,
+71998,LES GAZONS STE-JULIE LTEE,Lacolle,Autres cultures agricoles,1119,2020,2021,2,False,MONT00590,0304 -Rivière Richelieu
+71999,LES GAZONS STE-JULIE LTEE,Lacolle,Autres cultures agricoles,1119,2021,2022,2,False,MONT00590,0304 -Rivière Richelieu
+72000,LES GAZONS STE-JULIE LTEE,Lacolle,Autres cultures agricoles,1119,2021,2021,1,False,,
+72002,LES GAZONS STE-JULIE LTEE,Lacolle,Autres cultures agricoles,1119,2021,2021,1,False,,
+72003,LES GAZONS STE-JULIE LTEE,Lacolle,Autres cultures agricoles,1119,2021,2021,1,False,,
+72006,LES GAZONS STE-JULIE LTEE,Saint-Bernard-de-Lacolle,Autres cultures agricoles,1119,2021,2024,3,False,MONT00590,0304 -Rivière Richelieu
+72007,LES GAZONS STE-JULIE LTEE,Les Coteaux,Autres cultures agricoles,1119,2021,2021,1,False,,
+72008,LES GAZONS STE-JULIE LTEE,Coteau-du-Lac,Autres cultures agricoles,1119,2021,2021,1,False,,
+72010,LES GAZONS STE-JULIE LTEE,Coteau-du-Lac,Autres cultures agricoles,1119,2020,2023,4,False,VAUD00181,0460 -Rivière Rouge
+72011,LES GAZONS STE-JULIE LTEE,Les Coteaux,Autres cultures agricoles,1119,2020,2024,5,True,VAUD00181,0460 -Rivière Rouge
+72013,LES GAZONS STE-JULIE LTEE,Maskinongé,Autres cultures agricoles,1119,2021,2021,1,False,,
+72014,LES GAZONS STE-JULIE LTEE,Maskinongé,Autres cultures agricoles,1119,2021,2021,1,False,,
+72015,LES GAZONS STE-JULIE LTEE,Maskinongé,Autres cultures agricoles,1119,2020,2024,5,True,SLNO00496,0526 -Rivière Maskinongé
+72016,LES GAZONS STE-JULIE LTEE,Lacolle,Autres cultures agricoles,1119,2021,2021,1,False,,
+72017,LES GAZONS STE-JULIE LTEE,Victoriaville,Autres cultures agricoles,1119,2021,2023,3,False,SLSO00968,0301 -Rivière Nicolet
+72018,LES GAZONS STE-JULIE LTEE,Victoriaville,Autres cultures agricoles,1119,2021,2021,1,False,,
+72025,FERME BONNETERRE INC.,Saint-Paul,Culture de légumes & de melons,11121,2020,2024,4,False,SLNO00582,0522 -Rivière L'Assomption
+72029,Pépinière Villeneuve inc.,L'Assomption,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,,
+72030,Production Lareault inc.,Lavaltrie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+72031,Production Lareault inc.,Lavaltrie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+72032,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2021,2021,1,False,,
+72033,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2020,2020,1,False,,
+72035,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2021,2022,2,False,,
+72037,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2022,2022,1,False,,
+72038,FLORIAN ROBERT & FILS INC.,Saint-Valentin,Culture de légumes & de melons,1112,2021,2021,1,False,,
+72041,FERME DENIS COULOMBE INC.,Sainte-Mélanie,Culture de légumes & de melons,1112,2020,2024,5,True,SLNO00595,0522 -Rivière L'Assomption
+72042,FERME DENIS COULOMBE INC.,Sainte-Mélanie,Culture de légumes & de melons,1112,2020,2024,5,True,SLNO00594,0522 -Rivière L'Assomption
+72043,FERME DENIS COULOMBE INC.,Sainte-Mélanie,Culture de légumes & de melons,1112,2020,2024,5,True,SLNO00595,0522 -Rivière L'Assomption
+72044,FERME DENIS COULOMBE INC.,Sainte-Mélanie,Culture de légumes & de melons,1112,2020,2024,4,False,SLNO00596,0522 -Rivière L'Assomption
+72045,Gidavin inc.,Sainte-Mélanie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,,
+72046,Gidavin inc.,Sainte-Mélanie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,,
+72047,Gidavin inc.,Sainte-Mélanie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,,
+72049,FERME DENIS COULOMBE INC.,Sainte-Mélanie,Culture de légumes & de melons,1112,2021,2024,3,False,SLNO00593,0522 -Rivière L'Assomption
+72050,Les Potagers G.P.S. Turcot inc.,L'Assomption,Culture de légumes & de melons,1112,2020,2022,3,False,SLNO00580,0522 -Rivière L'Assomption
+72051,Les Potagers G.P.S. Turcot inc.,L'Assomption,Culture de légumes & de melons,1112,2020,2022,3,False,SLNO00580,0522 -Rivière L'Assomption
+72052,CLUB DE GOLF DE VALLEYFIELD LTÉE,Salaberry-de-Valleyfield,Terrains de golf & country clubs,71391,2020,2023,4,False,VAUD00199,0474 -Rivière à la Graisse
+72053,MUNICIPALITÉ DE ROUGEMONT,Rougemont,Activités de soutien aux cultures agricoles,115110,2020,2023,3,False,MONT00220,0303 -Rivière Yamaska
+72054,AGRITABEX INC.,Saint-Thomas,Culture de légumes & de melons,1112,2020,2024,5,True,SLNO00824,0523 -Rivière la Chaloupe
+72055,AGRITABEX INC.,Saint-Thomas,Culture de légumes & de melons,1112,2020,2024,5,True,,
+72056,Productions D. Riendeau inc.,Saint-Rémi,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2022,2,False,,
+72057,Productions D. Riendeau inc.,Saint-Rémi,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,3,False,,
+72058,Productions D. Riendeau inc.,Saint-Rémi,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2023,3,False,,
+72060,Productions D. Riendeau inc.,Saint-Rémi,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2020,1,False,,
+72061,Productions D. Riendeau inc.,Saint-Rémi,Réseaux d'aqueduc & systèmes d'irrigation,22131,2020,2020,1,False,,
+72062,Productions D. Riendeau inc.,Saint-Rémi,Réseaux d'aqueduc & systèmes d'irrigation,22131,2023,2023,1,False,,
+72073,Pépinière Villeneuve inc.,L'Assomption,"Culture en serre, en pépinière & floriculture",1114,2022,2024,3,False,SLNO00563,0522 -Rivière L'Assomption
+72081,LES PRODUCTIONS MARGIRIC INC.,Lanoraie,Culture de légumes & de melons,11121,2022,2022,1,False,,
+72083,LES PRODUCTIONS MARGIRIC INC.,Lanoraie,Culture de légumes & de melons,11121,2020,2024,5,True,,
+72084,LES PRODUCTIONS MARGIRIC INC.,Lanoraie,Culture de légumes & de melons,11121,2020,2024,5,True,,
+72085,LES PRODUCTIONS MARGIRIC INC.,Lanoraie,Culture de légumes & de melons,11121,2020,2024,3,False,,
+72086,LES PRODUCTIONS MARGIRIC INC.,Sainte-Anne-des-Plaines,Culture de légumes & de melons,11121,2020,2024,5,True,,
+72089,LES PRODUCTIONS MARGIRIC INC.,Sainte-Anne-des-Plaines,Culture de légumes & de melons,11121,2021,2022,2,False,OUTV03397,0464 -Rivière Mascouche
+72098,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2020,2024,5,True,,
+72099,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2021,2024,2,False,,
+72100,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2021,2021,1,False,,
+72101,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2021,2024,4,False,OUTV03388,0464 -Rivière Mascouche
+72103,MAXI-SOL INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2020,1,False,,
+72104,MAXI-SOL INC.,Lavaltrie,Culture de pommes de terre,111211,2022,2022,1,False,,
+72105,MAXI-SOL INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2022,2,False,SLNO00562,0536 -Rivière Saint-Jean
+72106,MAXI-SOL INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2022,2,False,SLNO00562,0536 -Rivière Saint-Jean
+72107,MAXI-SOL INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2021,1,False,,
+72108,MAXI-SOL INC.,Saint-Charles-Borromée,Culture de pommes de terre,111211,2022,2022,1,False,SLNO00591,0522 -Rivière L'Assomption
+72110,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2021,2021,1,False,,
+72112,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2021,2021,1,False,,
+72128,Amrize Canada Inc.,Mirabel,Extraction de pierre,21231,2020,2024,5,True,OUTV03410,0467 -Rivière du Chêne
+72129,Amrize Canada Inc.,Saint-Blaise-sur-Richelieu,Extraction de pierre,21231,2020,2024,5,True,,
+72131,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais métalliques,2122,2020,2024,4,False,CNDB00369,0711 -Rivière Manicouagan
+72135,FERME ISABELLE INC.,Coteau-du-Lac,Culture du maïs,111150,2020,2020,1,False,VAUD00201,0460 -Rivière Rouge
+72136,FERME ISABELLE INC.,Coteau-du-Lac,Culture du maïs,111150,2020,2020,1,False,VAUD00201,0460 -Rivière Rouge
+72141,AGRIPEM INC.,Saint-Thomas,Culture de légumes & de melons,11121,2020,2022,3,False,SLNO00824,0523 -Rivière la Chaloupe
+72145,FERME ALAIN BRISSETTE INC.,Lanoraie,Culture mixte de fruits & de légumes,111993,2020,2024,3,False,,
+72146,FERME ALAIN BRISSETTE INC.,Lanoraie,Culture mixte de fruits & de légumes,111993,2020,2024,5,True,,
+72147,FERME ALAIN BRISSETTE INC.,Lanoraie,Culture mixte de fruits & de légumes,111993,2021,2024,2,False,,
+72148,FERME ALAIN BRISSETTE INC.,Lanoraie,Culture mixte de fruits & de légumes,111993,2020,2024,5,True,,
+72151,FERME ALAIN BRISSETTE INC.,Lavaltrie,Culture mixte de fruits & de légumes,111993,2021,2024,4,False,,
+72155,Les fermes Belvache inc.,Sainte-Anne-des-Plaines,Culture de légumes & de melons,1112,2020,2020,1,False,,
+72156,Les fermes Belvache inc.,Terrebonne,Culture de légumes & de melons,1112,2020,2020,1,False,OUTV03391,0464 -Rivière Mascouche
+72157,Les fermes Belvache inc.,Sainte-Anne-des-Plaines,Culture de légumes & de melons,1112,2020,2020,1,False,OUTV03396,0464 -Rivière Mascouche
+72162,Ferme C.M.J.I. Robert inc.,Rougemont,Culture de fruits & de noix,1113,2020,2020,1,False,MONT00220,0303 -Rivière Yamaska
+72163,R.G.R. GUINOIS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2023,2023,1,False,,
+72164,R.G.R. GUINOIS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2020,2023,3,False,MONT01485,0309 -Rivière Châteauguay
+72167,R.G.R. GUINOIS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2021,2023,3,False,MONT01487,0309 -Rivière Châteauguay
+72168,R.G.R. GUINOIS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2020,2023,4,False,MONT01485,0309 -Rivière Châteauguay
+72169,R.G.R. GUINOIS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2020,2023,3,False,MONT01487,0309 -Rivière Châteauguay
+72174,R.G.R. GUINOIS INC.,Hemmingford,Culture de légumes & de melons,11121,2020,2023,3,False,MONT01488,0309 -Rivière Châteauguay
+72177,R.G.R. GUINOIS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2020,2023,2,False,MONT01486,0309 -Rivière Châteauguay
+72178,R.G.R. GUINOIS INC.,Sainte-Clotilde,Culture de légumes & de melons,11121,2021,2023,2,False,MONT01487,0309 -Rivière Châteauguay
+72181,R.G.R. GUINOIS INC.,Saint-Chrysostome,Culture de légumes & de melons,1112,2022,2022,1,False,,
+72182,R.G.R. GUINOIS INC.,Saint-Chrysostome,Culture de légumes & de melons,1112,2021,2023,3,False,MONT01487,0309 -Rivière Châteauguay
+72195,FERME GAÉTAN CORMIER INC.,L'Assomption,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+72196,FERME GAÉTAN CORMIER INC.,L'Assomption,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+72197,FERME GAÉTAN CORMIER INC.,L'Assomption,Culture de pommes de terre,111211,2021,2024,3,False,SLNO00579,0522 -Rivière L'Assomption
+72198,FERME GAÉTAN CORMIER INC.,L'Assomption,Culture de pommes de terre,111211,2022,2022,1,False,SLNO00565,0522 -Rivière L'Assomption
+72199,FERME GAÉTAN CORMIER INC.,L'Assomption,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+72200,FERME GAÉTAN CORMIER INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+72201,FERME GAÉTAN CORMIER INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2022,2,False,SLNO00565,0522 -Rivière L'Assomption
+72203,Club du golfeur de Laprairie 2008 ltée,La Prairie,Terrains de golf & country clubs,713910,2020,2024,5,True,MONT01298,0306 -Rivière Saint-Jacques
+72215,LES FERMES E. NOTARO ET FILS INC.,Saint-Patrice-de-Sherrington,"Culture en serre, en pépinière & floriculture",1114,2020,2021,2,False,MONT01476,0309 -Rivière Châteauguay
+72256,LES FERMES M.V.G. INC.,Lanoraie,Culture de pommes de terre,111211,2020,2022,2,False,,
+72283,CHANTIER DAVIE CANADA INC.,Lévis,Construction & réparation de navires,336611.0,2024,2024,1,False,,
+72284,LES FERMES M.V.G. INC.,Lanoraie,Culture mixte de fruits & de légumes,111993,2020,2024,5,True,,
+72298,Information personnelle,Lavaltrie,Culture de pommes de terre,111211,2020,2024,4,False,SLNO00565,0522 -Rivière L'Assomption
+72299,Information personnelle,Lavaltrie,Culture de pommes de terre,111211,2020,2020,1,False,,
+72312,FERME DIANE & DENIS CHAMPAGNE INC.,Sainte-Geneviève-de-Berthier,Culture de légumes & de melons,11121,2020,2020,1,False,,
+72313,LES CULTURES GEORGES FOREST & FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,,
+72314,LES CULTURES GEORGES FOREST & FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+72315,LES CULTURES GEORGES FOREST & FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+72316,LES CULTURES GEORGES FOREST & FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,,
+72317,LES CULTURES GEORGES FOREST & FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,,
+72318,LES CULTURES GEORGES FOREST & FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,,
+72319,LES CULTURES GEORGES FOREST & FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+72320,LES CULTURES GEORGES FOREST & FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+72321,LES CULTURES GEORGES FOREST & FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2020,2024,5,True,SLNO00565,0522 -Rivière L'Assomption
+72345,PRODUCTIONS VEGKISS INC.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2021,2021,1,False,SLNO00822,0523 -Rivière la Chaloupe
+72364,FERME THIBERT ET FILS INC.,Saint-Édouard,Culture de pommes de terre,111211,2020,2024,5,True,MONT01315,0307 -Rivière de la Tortue
+72365,FERME THIBERT ET FILS INC.,Saint-Édouard,Culture de pommes de terre,111211,2020,2024,5,True,MONT01315,0307 -Rivière de la Tortue
+72366,FERME THIBERT ET FILS INC.,Saint-Édouard,Culture de pommes de terre,111211,2020,2020,1,False,MONT01315,0307 -Rivière de la Tortue
+72367,FERME THIBERT ET FILS INC.,Saint-Édouard,Culture de pommes de terre,111211,2021,2024,4,False,MONT01315,0307 -Rivière de la Tortue
+72377,FERME GUY CHAMPAGNE INC.,Lanoraie,Autre culture de légumes (sauf patate) & melons,111219,2021,2024,4,False,SLNO00562,0536 -Rivière Saint-Jean
+72400,Les fermes R.R. & Fils inc.,Saint-Michel,Autre culture de légumes (sauf patate) & melons,111219,2020,2023,2,False,MONT01473,0309 -Rivière Châteauguay
+72404,Production Lareault inc.,Lavaltrie,"Culture en serre, en pépinière & floriculture",1114,2020,2024,5,True,,
+72405,E.GAGNON ET FILS LTÉE,Sainte-Thérèse-de-Gaspé,Préparation & cond. de poissons & fruits de mer,3117,2020,2024,5,True,,
+72408,Nudura inc.,Granby,Fab. de produits en mousse de polystyrène,326140,2020,2022,3,False,MONT00231,0303 -Rivière Yamaska
+72412,LES FERMES W. CYR & FILS ENRG.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,1112,2020,2022,3,False,MONT01476,0309 -Rivière Châteauguay
+72418,Amrize Canada Inc.,Gatineau,Extraction de calcaire,212315,2020,2024,5,True,,
+72419,Amrize Canada Inc.,Gatineau,Extraction de calcaire,212315,2020,2024,5,True,,
+72427,FERME RÉJEAN BEAUPARLANT INC.,Lanoraie,Culture de pommes de terre,111211,2021,2023,2,False,,
+72431,FRANK RACZ INC.,Lanoraie,Culture de légumes & de melons,1112,2020,2020,1,False,SLNO00562,0536 -Rivière Saint-Jean
+72435,SFP 2024 Inc.,Saint-Thomas,Culture de légumes & de melons,1112,2020,2020,1,False,SLNO00583,0522 -Rivière L'Assomption
+72436,SFP 2024 Inc.,Saint-Thomas,Culture de légumes & de melons,1112,2021,2022,2,False,SLNO00583,0522 -Rivière L'Assomption
+72437,SFP 2024 Inc.,Saint-Thomas,Culture de légumes & de melons,1112,2020,2022,3,False,SLNO00583,0522 -Rivière L'Assomption
+72438,SFP 2024 Inc.,Saint-Paul,Culture de légumes & de melons,1112,2020,2022,3,False,SLNO00583,0522 -Rivière L'Assomption
+72440,CANADIAN ROYALTIES INC.,Rivière-Koksoak,Extraction de minerais de nickel-cuivre,212232.0,2024,2024,1,False,,
+72448,GROUPE COLAS QUÉBEC INC.,Coteau-du-Lac,Extraction de pierre,21231,2020,2023,3,False,VAUD00181,0460 -Rivière Rouge
+72449,GROUPE COLAS QUÉBEC INC.,Coteau-du-Lac,Extraction de pierre,21231,2020,2020,1,False,VAUD00181,0460 -Rivière Rouge
+72450,GROUPE COLAS QUÉBEC INC.,Coteau-du-Lac,Extraction de pierre,21231,2020,2020,1,False,VAUD00181,0460 -Rivière Rouge
+72451,GROUPE COLAS QUÉBEC INC.,Saint-Elzéar-de-Témiscouata,"Extraction de sable, gravier, argile, etc.",21232,2020,2021,2,False,GASP00126,01EX -Rivière Saint-Jean
+72458,VILLE DE LA TUQUE,La Tuque,Autres services de soutien,5619,2020,2024,5,True,SLNO01351,0501 -Rivière Saint-Maurice
+72459,VILLE DE LA TUQUE,La Tuque,Autres services de soutien,5619,2020,2024,5,True,SLNO01344,0501 -Rivière Saint-Maurice
+72460,VILLE DE LA TUQUE,La Tuque,Autres services de soutien,5619,2020,2024,5,True,SLNO02815,0501 -Rivière Saint-Maurice
+72461,VILLE DE LA TUQUE,La Tuque,Autres services de soutien,5619,2020,2024,5,True,SLNO01351,0501 -Rivière Saint-Maurice
+72462,VILLE DE LA TUQUE,La Tuque,Autres services de soutien,5619,2020,2024,5,True,SLNO01351,0501 -Rivière Saint-Maurice
+72463,VILLE DE LA TUQUE,La Tuque,Autres services de soutien,5619,2020,2024,5,True,SLNO02815,0501 -Rivière Saint-Maurice
+72464,VILLE DE LA TUQUE,La Tuque,Autres services de soutien,5619,2020,2024,5,True,SLNO01351,0501 -Rivière Saint-Maurice
+72509,LES JARDINS M. LAVOIE & FILS INC.,Saint-Liguori,Autres cultures agricoles,1119,2021,2024,4,False,SLNO00704,0522 -Rivière L'Assomption
+72512,QC GOLD TECH INC.,Saint-Sulpice,Culture de plantes oléagineuses (sauf le soja),111120,2020,2022,3,False,,
+72529,PRODUCTIONS MARAÎCHÈRES BREIZH INC.,Saint-Michel,Culture de légumes & de melons,1112,2021,2024,4,False,MONT01473,0309 -Rivière Châteauguay
+72539,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2022,2022,1,False,MONT01473,0309 -Rivière Châteauguay
+72540,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2022,2023,2,False,,
+72543,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2023,2023,1,False,,
+72545,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2022,2023,2,False,,
+72546,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2022,2023,2,False,,
+72560,Les entreprises Quali-Ferme inc.,Sainte-Marie-Salomé,Culture de pommes de terre,111211,2021,2022,2,False,SLNO00581,0522 -Rivière L'Assomption
+72572,René Brunelle et Fils inc.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219.0,2024,2024,1,False,,
+72573,René Brunelle et Fils inc.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2022,2024,3,False,SLNO00823,0523 -Rivière la Chaloupe
+72574,René Brunelle et Fils inc.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2022,2024,2,False,,
+72643,CANADIAN ROYALTIES INC.,Rivière-Koksoak,Extraction de minerais de nickel-cuivre,212232.0,2024,2024,1,False,,
+72646,MUNICIPALITÉ DE SAINT-UBALDE,Saint-Ubalde,Réseaux d'aqueduc & systèmes d'irrigation,22131,2022,2022,1,False,SLNO03231,0504 -Rivière Sainte-Anne
+72649,LES FERMES M.V.G. INC.,Sainte-Mélanie,Culture de pommes de terre,111211,2022,2022,1,False,,
+72650,LES FERMES M.V.G. INC.,Saint-Paul,Culture de pommes de terre,111211,2022,2024,2,False,SLNO00584,0522 -Rivière L'Assomption
+72651,LES FERMES M.V.G. INC.,Saint-Thomas,Culture de pommes de terre,111211,2022,2022,1,False,,
+72691,Pépinière Villeneuve inc.,L'Assomption,"Culture en serre, en pépinière & floriculture",1114,2023,2024,2,False,,
+72692,M. LACOMBE ET FILS INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2024,4,False,SLNO00562,0536 -Rivière Saint-Jean
+72694,Verger Caron inc.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2021,2021,1,False,MONT00971,0304 -Rivière Richelieu
+72695,Verger Caron inc.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2021,2021,1,False,MONT00970,0304 -Rivière Richelieu
+72696,Verger Caron inc.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2021,2021,1,False,MONT00970,0304 -Rivière Richelieu
+72697,Verger Caron inc.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2021,2021,1,False,MONT00970,0304 -Rivière Richelieu
+72698,Verger Caron inc.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2021,2021,1,False,MONT00970,0304 -Rivière Richelieu
+72699,Verger Caron inc.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2021,2021,1,False,MONT00970,0304 -Rivière Richelieu
+72700,Verger Caron inc.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2021,2021,1,False,MONT00970,0304 -Rivière Richelieu
+72701,Verger Caron inc.,Frelighsburg,Culture de noix & de fruits (sauf les agrumes),111330,2021,2021,1,False,MONT00970,0304 -Rivière Richelieu
+72702,Vergers Dupuis (1983) inc.,Dunham,Culture de noix & de fruits (sauf les agrumes),111330.0,2024,2024,1,False,MONT00951,0304 -Rivière Richelieu
+72703,Vergers Dupuis (1983) inc.,Dunham,Culture de noix & de fruits (sauf les agrumes),111330.0,2024,2024,1,False,MONT00951,0304 -Rivière Richelieu
+72704,Vergers Dupuis (1983) inc.,Dunham,Culture de noix & de fruits (sauf les agrumes),111330.0,2024,2024,1,False,MONT00951,0304 -Rivière Richelieu
+72705,Vergers Dupuis (1983) inc.,Dunham,Culture de noix & de fruits (sauf les agrumes),111330.0,2024,2024,1,False,MONT00951,0304 -Rivière Richelieu
+72707,FERME ALAIN BRISSETTE INC.,Lanoraie,Culture mixte de fruits & de légumes,111993,2021,2024,3,False,,
+72709,Les fermes Belvache inc.,Sainte-Anne-des-Plaines,Culture de légumes & de melons,1112,2023,2023,1,False,,
+72710,Les fermes Belvache inc.,Terrebonne,Culture de légumes & de melons,1112,2021,2021,1,False,OUTV03391,0464 -Rivière Mascouche
+72712,Les fermes Belvache inc.,Terrebonne,Culture de légumes & de melons,1112,2021,2021,1,False,OUTV03391,0464 -Rivière Mascouche
+72718,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2020,2023,4,False,SLNO00595,0522 -Rivière L'Assomption
+72719,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2021,2021,1,False,,
+72720,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2021,2024,3,False,SLNO00593,0522 -Rivière L'Assomption
+72721,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2021,2022,2,False,SLNO00593,0522 -Rivière L'Assomption
+72722,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2021,2024,3,False,SLNO00593,0522 -Rivière L'Assomption
+72723,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2021,2023,3,False,SLNO00591,0522 -Rivière L'Assomption
+72724,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2021,2023,3,False,,
+72725,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2021,2022,2,False,SLNO00593,0522 -Rivière L'Assomption
+72726,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2021,2021,1,False,,
+72727,9071-1979 Québec inc.,Notre-Dame-de-Lourdes,Culture mixte de fruits & de légumes,111993,2021,2022,2,False,,
+72738,PARADIS DES FRAISES J. AUCLAIR & FILS INC.,Lavaltrie,Culture de fruits & de noix,1113,2020,2024,5,True,SLNO00562,0536 -Rivière Saint-Jean
+72752,PRODUCTIONS VEGKISS INC.,Sainte-Élisabeth,Autre culture de légumes (sauf patate) & melons,111219,2021,2021,1,False,SLNO00822,0523 -Rivière la Chaloupe
+72754,Les fermes R.R. & Fils inc.,Saint-Michel,Autre culture de légumes (sauf patate) & melons,111219,2021,2021,1,False,MONT01473,0309 -Rivière Châteauguay
+72755,Les fermes R.R. & Fils inc.,Saint-Michel,Autre culture de légumes (sauf patate) & melons,111219,2021,2024,2,False,,
+72756,Les fermes R.R. & Fils inc.,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2021,2021,1,False,MONT01476,0309 -Rivière Châteauguay
+72757,Les fermes R.R. & Fils inc.,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2021,2021,1,False,MONT01476,0309 -Rivière Châteauguay
+72758,Les fermes R.R. & Fils inc.,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2021,2024,3,False,MONT00556,0304 -Rivière Richelieu
+72760,LES PRODUCTIONS MARGIRIC INC.,Lanoraie,Culture de légumes & de melons,11121,2021,2021,1,False,,
+72762,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2021,2024,4,False,,
+72764,PATATES ISABELLE INC.,Saint-Rémi,Culture de pommes de terre,111211,2021,2021,1,False,,
+72766,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2021,2021,1,False,,
+72769,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais de fer,212210,2021,2023,3,False,CNDB00369,0711 -Rivière Manicouagan
+72771,FERME MARAÎCHÈRE A. GUINOIS & FILS INC.,Saint-Jacques-le-Mineur,Culture de légumes & de melons,11121,2022,2024,3,False,MONT01303,0306 -Rivière Saint-Jacques
+72772,PATATES ISABELLE INC.,Saint-Rémi,Culture de pommes de terre,111211,2021,2021,1,False,,
+72778,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Fermont,Extraction de minerais de fer,212210,2022,2024,3,False,,
+72779,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Rivière-Mouchalagane,Extraction de minerais de fer,212210,2021,2024,4,False,CNDB00369,0711 -Rivière Manicouagan
+72780,Les Légumes R. & M. inc.,Saint-Patrice-de-Sherrington,Culture de légumes & de melons,1112,2021,2024,4,False,MONT01315,0307 -Rivière de la Tortue
+72781,CANNEBERGES DRUMMOND CRANBERRIES INC.,Saint-Lucien,Culture de noix & de fruits (sauf les agrumes),111330,2021,2024,4,False,,
+72782,COMPAGNIE WESTROCK DU CANADA CORP.,La Tuque,Usines de carton,32213,2022,2024,3,False,SLNO02815,0501 -Rivière Saint-Maurice
+72783,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Fermont,Extraction de minerais de fer,212210,2021,2024,4,False,,
+72784,LITHIUM AMÉRIQUE DU NORD INC.,La Corne,Extract. tous les autres minerais métalliques,212299,2022,2024,3,False,,
+72794,Quatre Comtés inc.,Saint-Louis-de-Blandford,Culture de noix & de fruits (sauf les agrumes),111330,2021,2024,4,False,SLSO00811,0240 -Rivière Bécancour
+72803,FERME RÉJEAN BEAUPARLANT INC.,Notre-Dame-du-Bon-Conseil,Culture de pommes de terre,111211,2021,2021,1,False,SLSO01184,0301 -Rivière Nicolet
+72804,FERME RÉJEAN BEAUPARLANT INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2021,1,False,,
+72805,FERME RÉJEAN BEAUPARLANT INC.,Lavaltrie,Culture de pommes de terre,111211,2021,2021,1,False,,
+72806,FERME RÉJEAN BEAUPARLANT INC.,Lanoraie,Culture de pommes de terre,111211,2021,2022,2,False,,
+72807,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de pommes de terre,111211,2021,2022,2,False,SLNO00824,0523 -Rivière la Chaloupe
+72808,FERME L.M. DRAINVILLE & FILS INC.,Saint-Thomas,Culture de pommes de terre,111211,2021,2022,2,False,SLNO00824,0523 -Rivière la Chaloupe
+72824,LES JARDINS G & R LTEE,L'Épiphanie,Culture de légumes & de melons,1112,2020,2022,3,False,SLNO00791,0522 -Rivière L'Assomption
+72825,LES JARDINS G & R LTEE,Saint-Esprit,Culture de légumes & de melons,1112,2021,2022,2,False,SLNO00572,0522 -Rivière L'Assomption
+72826,LES JARDINS G & R LTEE,L'Épiphanie,Culture de légumes & de melons,1112,2021,2022,2,False,SLNO00569,0522 -Rivière L'Assomption
+72827,LES JARDINS G & R LTEE,Saint-Lin--Laurentides,Culture de légumes & de melons,1112,2022,2023,2,False,,
+72829,LES JARDINS B & B INC.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2020,2020,1,False,,
+72830,LES CULTURES DE CHEZ NOUS INC.,Saint-Cyrille-de-Wendover,Culture de légumes & de melons,1112,2023,2023,1,False,SLSO01186,0301 -Rivière Nicolet
+72838,PISCICULTURE BURY INC.,Bury,Aquaculture animale,1125,2023,2024,2,False,,
+72842,CLUB DE GOLF DE PLESSISVILLE (1990) INC.,Princeville,Réseaux d'aqueduc & systèmes d'irrigation,22131,2021,2024,4,False,SLSO00895,0240 -Rivière Bécancour
+72883,Ministère des Transports,Terrebonne,"Construction de routes, de rues & de ponts",2373,2023,2024,2,False,,
+72887,R. PINSONNEAULT & FILS LTÉE,Saint-Michel,Culture de légumes & de melons,1112,2022,2023,2,False,,
+72888,LES PRODUCTIONS MARGIRIC INC.,Lanoraie,Culture de légumes & de melons,11121.0,2024,2024,1,False,,
+72898,Le Massif s.e.c.,Petite-Rivière-Saint-François,Centres de ski,71392,2021,2024,4,False,,
+72901,Les Jardiniers Idéals limitée,Hemmingford,Culture de légumes & de melons,1112,2023,2024,2,False,MONT01477,0309 -Rivière Châteauguay
+72905,Les Jardiniers Idéals limitée,Hinchinbrooke,Culture de légumes & de melons,1112,2021,2024,2,False,MONT01434,0309 -Rivière Châteauguay
+72909,Les Jardiniers Idéals limitée,Saint-Édouard,Culture de légumes & de melons,1112,2023,2023,1,False,MONT01315,0307 -Rivière de la Tortue
+72933,Les Produits Forino inc.,Sainte-Clotilde,Grossistes de fruits & légumes frais,41315.0,2024,2024,1,False,MONT01472,0309 -Rivière Châteauguay
+72934,Les Produits Forino inc.,Sainte-Clotilde,Autre culture de légumes (sauf patate) & melons,111219,2022,2024,3,False,MONT01472,0309 -Rivière Châteauguay
+72935,Les Produits Forino inc.,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2022,2024,3,False,MONT01473,0309 -Rivière Châteauguay
+72936,Les Produits Forino inc.,Saint-Michel,Autre culture de légumes (sauf patate) & melons,111219,2022,2024,3,False,,
+72943,PAMPEV INC.,Manseau,Culture de noix & de fruits (sauf les agrumes),111330,2021,2024,4,False,,
+72944,PAMPEV INC.,Manseau,Culture de noix & de fruits (sauf les agrumes),111330.0,2024,2024,1,False,,
+72946,FRAISEBEC INC.,Sainte-Anne-des-Plaines,Activités de soutien aux cultures agricoles,11511,2022,2024,3,False,OUTV03399,0464 -Rivière Mascouche
+72947,FRAISEBEC INC.,Sainte-Anne-des-Plaines,Activités de soutien aux cultures agricoles,11511.0,2024,2024,1,False,OUTV03399,0464 -Rivière Mascouche
+72951,PRODUCTIONS VEGKISS INC.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2022,2022,1,False,SLNO00822,0523 -Rivière la Chaloupe
+72952,PRODUCTIONS VEGKISS INC.,Saint-Thomas,Autre culture de légumes (sauf patate) & melons,111219,2022,2024,2,False,SLNO00822,0523 -Rivière la Chaloupe
+72955,LISE ET MICHEL LEGAULT INC.,Saint-Rémi,Culture de légumes & de melons,1112,2021,2024,4,False,,
+72961,CANNEBERGES SCHNEIDER INC.,Lanoraie,Culture de fruits & de noix,1113,2022,2022,1,False,SLNO00562,0536 -Rivière Saint-Jean
+72962,CANNEBERGES SCHNEIDER INC.,Lanoraie,Culture de fruits & de noix,1113,2022,2022,1,False,SLNO00562,0536 -Rivière Saint-Jean
+72963,CANNEBERGES SCHNEIDER INC.,Lanoraie,Culture de fruits & de noix,1113,2022,2022,1,False,SLNO00562,0536 -Rivière Saint-Jean
+72966,Ministère des Transports,Terrebonne,"Construction de routes, de rues & de ponts",2373,2023,2024,2,False,,
+72967,Ministère des Transports,Terrebonne,"Construction de routes, de rues & de ponts",2373,2023,2024,2,False,,
+72968,Ministère des Transports,Terrebonne,"Construction de routes, de rues & de ponts",2373,2023,2024,2,False,,
+72969,Ministère des Transports,Terrebonne,"Construction de routes, de rues & de ponts",2373,2023,2024,2,False,,
+72980,9332-7047 Québec inc.,Saint-Louis-de-Blandford,Culture de noix & de fruits (sauf les agrumes),111330,2020,2024,3,False,,
+72983,Wesdome Gold Mines Ltd.,Val-d'Or,Extraction de minerais d'or & d'argent,212220,2023,2023,1,False,,
+73012,Municipalité de Crabtree,Crabtree,Réseaux d'aqueduc & systèmes d'irrigation,22131.0,2024,2024,1,False,SLNO00690,0522 -Rivière L'Assomption
+73037,MUNICIPALITÉ LES COTEAUX,Les Coteaux,Réseaux d'aqueduc & systèmes d'irrigation,22131,2023,2024,2,False,,
+73041,Nouveau Monde Graphite inc.,Saint-Michel-des-Saints,"Extraction de tous les autres minerais, n.c.a.",212398,2023,2024,2,False,,
+73070,LES FERMES LECLAIR & FRÈRES LTÉE,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2021,2023,3,False,MONT01476,0309 -Rivière Châteauguay
+73074,LES FERMES LECLAIR & FRÈRES LTÉE,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2021,2023,3,False,MONT01473,0309 -Rivière Châteauguay
+73076,LES FERMES LECLAIR & FRÈRES LTÉE,Saint-Patrice-de-Sherrington,Autre culture de légumes (sauf patate) & melons,111219,2023,2023,1,False,,
+73164,LES CARRIERES DE SAINT-DOMINIQUE LTÉE,Saint-Dominique,Extraction de pierre,21231,2023,2024,2,False,,
+73174,PATATES ISABELLE INC.,Saint-Michel,Culture de pommes de terre,111211,2022,2024,2,False,,
+73178,ArcelorMittal Exploitation Minière Canada s.e.n.c.,Fermont,Extraction de minerais de fer,212210,2022,2022,1,False,,
+73179,FERME DIANE & DENIS CHAMPAGNE INC.,Sainte-Geneviève-de-Berthier,Culture de légumes & de melons,11121,2022,2022,1,False,,
+73181,Le Mirage société en commandite,Terrebonne,Terrains de golf & country clubs,71391,2022,2023,2,False,OUTV03394,0464 -Rivière Mascouche
+73188,2433-7529 QUEBEC INC.,Lanoraie,Culture de légumes & de melons,11121,2022,2022,1,False,,
+73189,2433-7529 QUEBEC INC.,Lanoraie,Culture de légumes & de melons,11121,2022,2024,3,False,,
+73190,2433-7529 QUEBEC INC.,Lanoraie,Culture de légumes & de melons,11121,2022,2024,2,False,,
+73191,2433-7529 QUEBEC INC.,Lanoraie,Culture de légumes & de melons,11121,2022,2024,3,False,,
+73195,CHALETS ROYAL LAURENTIEN INC.,Mont-Blanc,Terrains de golf & country clubs,71391,2022,2022,1,False,OUTV03313,0401 -Rivière du Nord
+73201,Les fermes Belvache inc.,Sainte-Anne-des-Plaines,Culture de légumes & de melons,1112,2023,2024,2,False,,
+73202,Les fermes Belvache inc.,Sainte-Anne-des-Plaines,Culture de légumes & de melons,1112,2023,2024,2,False,,
+73206,LES FERMES LECLAIR & FRÈRES LTÉE,Saint-Bernard-de-Lacolle,Autre culture de légumes (sauf patate) & melons,111219,2022,2023,2,False,MONT00591,0304 -Rivière Richelieu
+73207,LES FERMES LECLAIR & FRÈRES LTÉE,Saint-Michel,Autre culture de légumes (sauf patate) & melons,111219,2022,2023,2,False,,
+73238,LES BASSINS ROUGES S.E.N.C.,Sainte-Séraphine,Culture de noix & de fruits (sauf les agrumes),111330,2023,2024,2,False,SLSO01079,0301 -Rivière Nicolet
+73239,GROUPE ROUGE & OR S.E.N.C.,Sainte-Séraphine,Culture de noix & de fruits (sauf les agrumes),111330,2023,2024,2,False,SLSO01078,0301 -Rivière Nicolet
+73314,LE POTAGER RIENDEAU INC.,Saint-Rémi,Culture de légumes & de melons,1112,2023,2024,2,False,,
+73366,STATION MONT TREMBLANT SOCIÉTÉ EN COMMANDITE,Mont-Tremblant,Centres de ski,71392.0,2024,2024,1,False,OUTV00261,0402 -Rivière Rouge
+73373,PISCICULTURE BURY INC.,Bury,Aquaculture animale,1125,2023,2024,2,False,,
+73433,NIOBEC INC.,Saint-Honoré,Extraction d'autres minerais métalliques,21229.0,2024,2024,1,False,SAGU00431,0646 -Rivière aux Vases
+73467,Goldcorp Canada LTD.,Eeyou Istchee Baie-James,Extraction de minerais d'or & d'argent,212220,2023,2024,2,False,,
+73479,MUNICIPALITÉ DE SAINT-DONAT,Saint-Donat,Réseaux d'aqueduc & systèmes d'irrigation,22131.0,2024,2024,1,False,SLNO00747,0522 -Rivière L'Assomption
+73506,FERME MICHEL ROCHON INC.,Terrebonne,Culture de légumes & de melons,11121,2023,2023,1,False,OUTV03391,0464 -Rivière Mascouche
+73564,A.O.L. Jardiniers Maraîchers inc.,Saint-Valentin,Culture de légumes & de melons,1112,2023,2024,2,False,,
+73599,Amrize Canada Inc.,Saint-Constant,Fab. de ciment,327310.0,2024,2024,1,False,MONT01307,0307 -Rivière de la Tortue
+73664,LES FERMES W. CYR & FILS ENRG.,Saint-Patrice-de-Sherrington,Culture vivrière en serre,11141,2023,2024,2,False,MONT01476,0309 -Rivière Châteauguay
+73675,Groupe Nouveau Pont Île-aux-Tourtes inc.,Senneville,"Construction de routes, de rues & de ponts",23731,2023,2024,2,False,,
+73677,LES PRODUCTIONS MARGIRIC INC.,Laval,Culture de légumes & de melons,11121,2023,2024,2,False,,
+73689,9263-1266 Québec inc.,Saint-Valère,Culture mixte de fruits & de légumes,111993,2023,2024,2,False,SLSO00968,0301 -Rivière Nicolet
+73692,CONSTRUCTION ET PAVAGE PORTNEUF INC.,Deschambault-Grondines,Extraction de calcaire,212315.0,2024,2024,1,False,,
+73721,GROUPE COLAS QUÉBEC INC.,Coteau-du-Lac,Extraction de pierre,21231,2023,2023,1,False,VAUD00181,0460 -Rivière Rouge
+73725,GROUPE COLAS QUÉBEC INC.,Saint-Constant,Extraction de pierre,21231,2023,2024,2,False,MONT01319,0308 -Rivière Saint-Régis
+73726,GROUPE COLAS QUÉBEC INC.,Saint-Constant,Extraction de pierre,21231,2023,2024,2,False,MONT01319,0308 -Rivière Saint-Régis
+73728,GROUPE COLAS QUÉBEC INC.,Saint-Flavien,Extraction de pierre,21231,2023,2023,1,False,SLSO00671,0235 -Ruisseau Beaudet
+73732,GROUPE COLAS QUÉBEC INC.,Kirkland,Fab. de tous les autres prod. miné. non métall.,32799,2023,2023,1,False,,
+73733,GROUPE COLAS QUÉBEC INC.,Drummondville,Extraction de pierre,21231,2023,2024,2,False,SLSO01188,0301 -Rivière Nicolet
+73734,GROUPE COLAS QUÉBEC INC.,Sainte-Geneviève-de-Berthier,Extraction de pierre,21231,2023,2023,1,False,SLNO00827,0524 -Rivière Bayonne
+73746,Les Produits Forestiers D&G Ltée,Saint-Côme--Linière,Scieries & préservation du bois,3211,2023,2024,2,False,SLSO00541,0234 -Rivière Chaudière
+73857,CENTRE DE SKI LE RELAIS (2024) INC.,Lac-Beauport,Centres de ski,71392.0,2024,2024,1,False,SLNO00034,0509 -Rivière Saint-Charles

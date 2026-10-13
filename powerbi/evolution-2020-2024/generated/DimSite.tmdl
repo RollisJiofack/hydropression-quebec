@@ -1,0 +1,106 @@
+/// Lot evolution uniquement. Une ligne par site de prelevement; attributs et panel calcules sur la periode de l'export. Panel ne signifie pas douze mois par an.
+table DimSite
+
+	/// Cle texte unique; conserve les zeros initiaux.
+	column num_site
+		dataType: string
+		summarizeBy: none
+		sourceColumn: num_site
+		isKey
+
+	/// Nom de l'intervenant, protocole details_intervenants.csv.
+	column nom_intervenant
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nom_intervenant
+
+	/// Municipalite declaree; texte nullable.
+	column municipalite
+		dataType: string
+		summarizeBy: none
+		sourceColumn: municipalite
+
+	/// Secteur SCIAN; texte nullable.
+	column secteur_scian
+		dataType: string
+		summarizeBy: none
+		sourceColumn: secteur_scian
+
+	/// Code SCIAN en texte; aucun calcul numerique.
+	column code_scian
+		dataType: string
+		summarizeBy: none
+		sourceColumn: code_scian
+
+	/// Premiere annee declaree dans la periode exportee.
+	column premiere_annee
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: premiere_annee
+		formatString: 0
+
+	/// Derniere annee declaree dans la periode exportee.
+	column derniere_annee
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: derniere_annee
+		formatString: 0
+
+	/// Nombre d'annees distinctes ayant au moins un mois declare.
+	column nb_annees_declarees
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: nb_annees_declarees
+		formatString: 0
+
+	/// Vrai si le site declare chaque annee de la periode exportee; au moins un mois suffit, pas 12.
+	column panel_2020_2024
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: panel_2020_2024
+
+	/// Identifiant texte du troncon d'accrochage; aucune modification du rattachement.
+	column idtronc
+		dataType: string
+		summarizeBy: none
+		sourceColumn: idtronc
+
+	/// Bassin primaire du site; texte nullable.
+	column bv_prim
+		dataType: string
+		summarizeBy: none
+		sourceColumn: bv_prim
+
+	partition DimSite = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(
+			        Web.Contents("https://rollisjiofack.github.io/hydropression-quebec/", [RelativePath = "data/sites.csv", Headers = [#"Cache-Control" = "no-cache", Pragma = "no-cache"]]),
+			        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+			    ),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+			    Selected = Table.SelectColumns(Headers, {"num_site", "nom_intervenant", "municipalite", "secteur_scian", "code_scian", "premiere_annee", "derniere_annee", "nb_annees_declarees", "panel_2020_2024", "idtronc", "bv_prim"}, MissingField.Error),
+			    Nulls = Table.ReplaceValue(Selected, "", null, Replacer.ReplaceValue, {"premiere_annee", "derniere_annee", "nb_annees_declarees", "panel_2020_2024"}),
+			    ParseBoolean = (v as any) as nullable logical =>
+			        if v = null then null else
+			        let s = Text.Lower(Text.Trim(Text.From(v, "en-US"))) in
+			            if List.Contains({"true", "1"}, s) then true
+			            else if List.Contains({"false", "0"}, s) then false
+			            else error Error.Record("BooleanContract", "Expected true/false or 1/0", v),
+			    Booleans = Table.TransformColumns(Nulls, {{"panel_2020_2024", ParseBoolean, type logical}}),
+			    Typed = Table.TransformColumnTypes(Booleans, {
+			        {"num_site", type text},
+			        {"nom_intervenant", type text},
+			        {"municipalite", type text},
+			        {"secteur_scian", type text},
+			        {"code_scian", type text},
+			        {"premiere_annee", Int64.Type},
+			        {"derniere_annee", Int64.Type},
+			        {"nb_annees_declarees", Int64.Type},
+			        {"panel_2020_2024", type logical},
+			        {"idtronc", type text},
+			        {"bv_prim", type text}
+			    }, "en-US")
+			in
+			    Typed

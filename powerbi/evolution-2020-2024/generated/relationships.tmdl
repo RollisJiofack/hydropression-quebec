@@ -1,0 +1,23 @@
+relationship 2b42cbe2-ef68-5687-9e1b-f3737caf2e59
+	fromColumn: FactSiteAnnee.num_site
+	toColumn: DimSite.num_site
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+	isActive: true
+
+relationship 85b17715-9426-58da-9e0a-5a41e12835e0
+	fromColumn: FactSiteAnnee.annee
+	toColumn: DimAnnee.annee
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+	isActive: true
+
+relationship f63db5dd-8f3f-5fdb-81fc-6121ee527809
+	fromColumn: CorrespondanceSiteStation.station
+	toColumn: DimStation.code
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+	isActive: true

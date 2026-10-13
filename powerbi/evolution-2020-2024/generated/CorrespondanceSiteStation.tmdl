@@ -1,0 +1,46 @@
+/// Lot evolution uniquement. Une ligne par couple station x site amont, BV_PRIM + SUPERFI existant. Seule DimStation filtre cette table; transfert aux faits explicite par TREATAS dans les mesures, sans relation aux sites/faits.
+table CorrespondanceSiteStation
+
+	/// Code texte identique a DimStation[code], codes composites et zeros initiaux conserves.
+	column station
+		dataType: string
+		summarizeBy: none
+		sourceColumn: station
+
+	/// Site en amont; grain unique station x site, sans plafond de 20 sites.
+	column num_site
+		dataType: string
+		summarizeBy: none
+		sourceColumn: num_site
+
+	/// Indicateur de participation a la pression d'etiage existante; ne filtre pas les series annuelles.
+	column en_etiage
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: en_etiage
+
+	partition CorrespondanceSiteStation = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(
+			        Web.Contents("https://rollisjiofack.github.io/hydropression-quebec/", [RelativePath = "data/correspondance_sites_stations.csv", Headers = [#"Cache-Control" = "no-cache", Pragma = "no-cache"]]),
+			        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+			    ),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+			    Selected = Table.SelectColumns(Headers, {"station", "num_site", "en_etiage"}, MissingField.Error),
+			    Nulls = Table.ReplaceValue(Selected, "", null, Replacer.ReplaceValue, {"en_etiage"}),
+			    ParseBoolean = (v as any) as nullable logical =>
+			        if v = null then null else
+			        let s = Text.Lower(Text.Trim(Text.From(v, "en-US"))) in
+			            if List.Contains({"true", "1"}, s) then true
+			            else if List.Contains({"false", "0"}, s) then false
+			            else error Error.Record("BooleanContract", "Expected true/false or 1/0", v),
+			    Booleans = Table.TransformColumns(Nulls, {{"en_etiage", ParseBoolean, type logical}}),
+			    Typed = Table.TransformColumnTypes(Booleans, {
+			        {"station", type text},
+			        {"num_site", type text},
+			        {"en_etiage", type logical}
+			    }, "en-US")
+			in
+			    Typed

@@ -1,0 +1,33 @@
+/// Lot evolution uniquement. Quatre choix deconnectes. Configurer la selection unique du segment dans le rapport; SELECTEDVALUE utilise index 1 par defaut. Aucun filtre relationnel.
+table Grandeur
+
+	/// 1 brut annuel (defaut), 2 brut juillet/aout, 3 nette annuelle, 4 nette juillet/aout.
+	column index
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: index
+		isKey
+		formatString: 0
+
+	/// Libelle du segment a selection unique, trie par index; table deconnectee.
+	column libelle
+		dataType: string
+		summarizeBy: none
+		sourceColumn: libelle
+		sortByColumn: index
+
+	partition Grandeur = m
+		mode: import
+		source =
+			let
+			    Source = #table(
+			        type table [index = Int64.Type, libelle = text],
+			        {
+			            {1, "Prelevement brut, moyenne annuelle"},
+			            {2, "Prelevement brut, maximum juillet-aout"},
+			            {3, "Consommation nette estimee, moyenne annuelle"},
+			            {4, "Consommation nette estimee, maximum juillet-aout"}
+			        }
+			    )
+			in
+			    Source

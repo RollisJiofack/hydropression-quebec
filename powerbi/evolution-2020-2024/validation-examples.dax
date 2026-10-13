@@ -1,0 +1,60 @@
+// Execute separately after browser deployment AND successful refresh.
+// These queries have not been run against a DAX engine by this generator.
+
+// 1. Four choices and per-year values; multi-year totals must remain BLANK.
+EVALUATE
+SUMMARIZECOLUMNS (
+    Grandeur[index],
+    DimAnnee[annee],
+    "Tous", [Valeur tous les sites],
+    "Panel", [Valeur panel constant],
+    "Sites", [Sites declarants],
+    "Sites panel", [Sites panel constant],
+    "Hors panel", [Contribution hors panel (m3/s)],
+    "Part 100", [Part estimee a 100 %],
+    "Partiels", [Sites annees partielles],
+    "KPI", [Evolution du panel (%)]
+)
+ORDER BY Grandeur[index], DimAnnee[annee]
+
+// 2. KPI invariant even when year slicer AND axis select an interior year.
+// Differences: zero or both blank. Part 100 must be blank for indices 1, 2, 4.
+EVALUATE
+VAR FirstYear = MINX ( ALL ( DimAnnee ), DimAnnee[annee] )
+VAR InteriorYear = FirstYear + 1
+RETURN
+    SUMMARIZECOLUMNS (
+        Grandeur[index],
+        "KPI global", CALCULATE ( [Evolution du panel (%)], REMOVEFILTERS ( DimAnnee ) ),
+        "KPI axe", CALCULATE ( [Evolution du panel (%)], TREATAS ( { InteriorYear }, DimAnnee[annee] ) ),
+        "Part 100", CALCULATE ( [Part estimee a 100 %], TREATAS ( { InteriorYear }, DimAnnee[annee] ) )
+    )
+
+// 3. Empty station (verify code still has no correspondence in current export).
+// Tous, Panel, Sites and KPI: BLANK, not zero. Subtitle: explicit no-site text.
+EVALUATE
+SUMMARIZECOLUMNS (
+    DimAnnee[annee],
+    TREATAS ( { "020802" }, DimStation[code] ),
+    "Tous", [Valeur tous les sites],
+    "Panel", [Valeur panel constant],
+    "Sites", [Sites declarants],
+    "KPI", [Evolution du panel (%)],
+    "Sous-titre", [Sous-titre evolution]
+)
+
+// 4. Invalid correspondence keys: expected empty. Existing DimStation is read-only.
+EVALUATE
+EXCEPT (
+    SELECTCOLUMNS ( VALUES ( CorrespondanceSiteStation[station] ), "code", CorrespondanceSiteStation[station] ),
+    SELECTCOLUMNS ( VALUES ( DimStation[code] ), "code", DimStation[code] )
+)
+
+// 5. Distinct-site union versus naive sum across station counts.
+// Union <= naive; strict inequality if current stations share declaring sites.
+EVALUATE
+SUMMARIZECOLUMNS (
+    DimAnnee[annee],
+    "Union distincte", [Sites declarants],
+    "Somme naive stations", SUMX ( VALUES ( DimStation[code] ), [Sites declarants] )
+)

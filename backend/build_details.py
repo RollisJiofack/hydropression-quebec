@@ -579,6 +579,21 @@ def calculer_pression_et_details(df_stations, df_sites_snapes):
 # MAIN
 # ============================================================
 
+def exporter_evolution(df_decl, df_sites_snapes, df_stations, df_pression, *, ecrire=False):
+    """Hook annuel additif; aucun recalcul ni export des pressions existantes."""
+    if __package__:
+        from . import evolution
+    else:
+        import evolution
+    tables = evolution.construire_exports(
+        df_decl, df_sites_snapes, df_stations, df_pression, ANNEE_MIN, ANNEE_MAX
+    )
+    if ecrire:
+        before = evolution.empreintes_legacy(ROOT.parent)
+        evolution.ecrire_exports(tables, ROOT / "data", ROOT.parent / "web" / "data", before)
+    return tables
+
+
 def main():
     t_start = time.time()
     print("\n🌊 HydroPression Québec — Reconstruction des données")
@@ -602,6 +617,8 @@ def main():
     OUT_PRESSION.parent.mkdir(parents=True, exist_ok=True)
     df_pression.to_csv(OUT_PRESSION, index=False, encoding="utf-8-sig")
     df_details.to_csv(OUT_DETAILS, index=False, encoding="utf-8-sig")
+
+    exporter_evolution(df_decl, df_sites_snapes, df_stations, df_pression, ecrire=True)
 
     print("\n" + "=" * 68)
     print("✅ TERMINÉ")
