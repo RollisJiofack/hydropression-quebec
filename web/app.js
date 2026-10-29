@@ -116,25 +116,26 @@ function renderFreshnessBanner() {
   const d = STATE.data;
   const existing = document.getElementById("freshness-banner");
   if (existing) existing.remove();
-  if (!d || d.data_stale !== true) return;
+  if (!d || (!d.data_stale && !d.freshness_warning)) return;
 
   const header = document.querySelector("header.topbar");
   if (!header) return;
 
-  const measure = d.latest_live_measure_utc
-    ? fmt.date(d.latest_live_measure_utc)
-    : null;
-  const detail = measure
-    ? `Dernière mesure reçue : ${measure}. Les mesures de plus de ${d.stale_threshold_hours || 6} h sont exclues de la pression actuelle; le risque d'étiage reste disponible.`
-    : `Aucun débit récent et daté disponible. Le risque d'étiage reste disponible.`;
+  const situation = fmt.date(d.generated_at_local || d.generated_at);
+  const title = d.data_stale ? "Données non à jour." : "Collecte de plus de 2 h.";
+  const detail = d.generation_expired
+    ? `Situation au ${situation}. Les pressions actuelles sont masquées : la génération a plus de 6 h ou son horodatage est invalide. La situation a pu changer ; le risque d'étiage reste disponible.`
+    : d.data_stale
+      ? `Situation au ${situation}. La collecte ne permettait pas un état actuel à jour. Le risque d'étiage reste disponible.`
+      : `Situation au ${situation}. Une nouvelle collecte est attendue ; les valeurs restent celles de cette génération.`;
 
   const banner = document.createElement("div");
   banner.id = "freshness-banner";
   banner.className = "freshness-banner";
-  banner.setAttribute("role", "alert");
+  banner.setAttribute("role", d.data_stale ? "alert" : "status");
   banner.innerHTML =
     `<span class="freshness-banner__dot" aria-hidden="true"></span>` +
-    `<span><strong>Données non à jour.</strong> ${detail}</span>`;
+    `<span><strong>${title}</strong> ${detail}</span>`;
   header.insertAdjacentElement("afterend", banner);
 }
 
@@ -144,9 +145,9 @@ function initKPI() {
   document.getElementById("kpi-total").textContent = d.n_stations;
   document.getElementById("kpi-critique").textContent = d.n_critiques_etiage;
   document.getElementById("kpi-eleve").textContent = d.n_eleves_etiage;
-  const generated = fmt.date(d.generated_at);
+  const generated = fmt.date(d.generated_at_local || d.generated_at);
   const staleTag = d.data_stale ? " — ⚠️ non à jour" : "";
-  document.getElementById("kpi-meta").textContent = `Collecte publiée : ${generated} · Débits récents : ${d.n_stations_debit_recent}/${d.n_stations}${staleTag}`;
+  document.getElementById("kpi-meta").textContent = `Situation au ${generated} · Débits récents : ${d.n_stations_debit_recent}/${d.n_stations}${staleTag}`;
   document.getElementById("foot-updated").textContent = `Données générées le ${generated}`;
 }
 
@@ -329,7 +330,7 @@ function openDetail(s) {
   const tech = document.getElementById("tech-intervenants");
   const intervenantsActifs = (s.intervenants || []).filter(it => {
     const isAggregate = (it.num_site === null || it.num_site === undefined || it.num_site === "");
-    return !isAggregate;  // les vrais préleveurs
+    return !isAggregate && it.debit_mois_courant_m3s > 0;
   });
   const aggregateRow = (s.intervenants || []).find(it =>
     it.num_site === null || it.num_site === undefined || it.num_site === ""

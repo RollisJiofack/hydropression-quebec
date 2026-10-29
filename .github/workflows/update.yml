@@ -8,7 +8,7 @@ on:
       - "web/**"
       - ".github/workflows/update.yml"
   schedule:
-    - cron: "13 * * * *"     # toutes les heures, à h:13 UTC
+    - cron: "13,43 * * * *"  # deux fois par heure, a h:13 et h:43 UTC
   workflow_dispatch:
 
 permissions:

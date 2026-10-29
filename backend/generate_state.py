@@ -438,6 +438,28 @@ def load_previous_state() -> dict:
     return previous
 
 
+def load_previous_generation():
+    """Read generation metadata before the output file is overwritten."""
+    try:
+        with OUTPUT_PATH.open(encoding="utf-8") as stream:
+            return json.load(stream).get("generated_at")
+    except (OSError, ValueError, AttributeError):
+        return None
+
+
+def generation_gap_hours(now, previous_generated_at):
+    previous = _parse_utc(previous_generated_at)
+    if previous is None or previous > now:
+        return None
+    return (now - previous).total_seconds() / 3600.0
+
+
+def warn_generation_gap(state):
+    gap = state.get("ecart_generation_precedente_h")
+    if gap is not None and gap > 2:
+        print(f"::warning::Ecart entre generations : {gap:.2f} h (plus de 2 h).")
+
+
 def determiner_mois_courant(forcer_mois=None) -> int:
     """Mois courant en fuseau America/Toronto, ou mois forcé pour debug."""
     if forcer_mois:
@@ -472,6 +494,7 @@ def compute_state(
     fetch_status: dict | None = None,
     now: datetime | None = None,
     station_flags: dict | None = None,
+    previous_generated_at: str | None = None,
 ) -> dict:
     """
     Combine données statiques (12 mensuels) avec débits live et le mois courant.
@@ -569,21 +592,24 @@ def compute_state(
         n_zero = 0
         col_mois_int = f"debit_mois_{mois_courant:02d}_m3s"
         for it in intervenants_raw:
-            d = it.get(col_mois_int, 0) or 0
+            d = safe_num(it.get(col_mois_int)) or 0.0
             is_aggregate = (it.get("num_site") is None or pd.isna(it.get("num_site")) or it.get("num_site") == "")
-            if d > 0 or is_aggregate:
-                it_out = dict(it)
-                it_out["debit_mois_courant_m3s"] = float(d) if not pd.isna(d) else 0.0
-                for k, v in list(it_out.items()):
-                    if isinstance(v, float) and pd.isna(v):
-                        it_out[k] = None
-                intervenants_mois.append(it_out)
-            else:
+            if d <= 0 and not is_aggregate:
                 n_zero += 1
+            it_out = dict(it)
+            it_out["debit_mois_courant_m3s"] = float(d)
+            it_out["actif_mois_courant"] = d > 0
+            for k, v in list(it_out.items()):
+                if isinstance(v, float) and pd.isna(v):
+                    it_out[k] = None
+            intervenants_mois.append(it_out)
 
         intervenants_mois.sort(
-            key=lambda x: x.get("debit_mois_courant_m3s", 0) or 0,
-            reverse=True
+            key=lambda x: (
+                not x["actif_mois_courant"],
+                -(x["debit_mois_courant_m3s"] if x["actif_mois_courant"]
+                  else safe_num(x.get("debit_etiage_m3s")) or 0.0),
+            )
         )
 
         station_data = {
@@ -678,6 +704,8 @@ def compute_state(
     return {
         "version": "3.2-cehq-freshness",
         "generated_at": now.isoformat(),
+        "generated_at_local": now.astimezone(ZoneInfo("America/Toronto")).isoformat(),
+        "ecart_generation_precedente_h": generation_gap_hours(now, previous_generated_at),
         "mois_courant": mois_courant,
         "mois_courant_nom": NOMS_MOIS[mois_courant],
         "n_stations": len(stations_out),
@@ -725,14 +753,17 @@ def main():
     static = load_static_results()
     details = load_intervenants_detail()
     previous = load_previous_state()
+    previous_generated_at = load_previous_generation()
 
     live, fetch_status = fetch_stations()
     if not fetch_status.get("ok"):
         print(f"  ⚠️  API indisponible : {fetch_status.get('error')}")
         print(f"     On continue avec le dernier état connu (mode dégradé).")
 
-    state = compute_state(static, live, details, mois_courant, previous, fetch_status)
+    state = compute_state(static, live, details, mois_courant, previous, fetch_status,
+                          previous_generated_at=previous_generated_at)
     state = _clean_for_json(state)
+    warn_generation_gap(state)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
