@@ -1,0 +1,22 @@
+expression HydroPression_Source =
+		let
+		    SourceUrl = "https://rollisjiofack.github.io/hydropression-quebec/data/etat_pression.json",
+		    Source = Json.Document(
+		        Web.Contents(
+		            SourceUrl,
+		            [
+		                Headers = [
+		                    #"Cache-Control" = "no-cache",
+		                    Pragma = "no-cache"
+		                ]
+		            ]
+		        )
+		    )
+		in
+		    Source
+	lineageTag: 3e6167eb-d88a-406e-a867-b2fa3c3c9b20
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Record
+

@@ -1,0 +1,119 @@
+/// Lot evolution uniquement. Une ligne par site de prelevement; attributs et panel calcules sur la periode de l'export. Panel ne signifie pas douze mois par an.
+table DimSite
+	lineageTag: 6f867174-28fc-4b02-aec4-9abf9c1db45c
+
+	/// Cle texte unique; conserve les zeros initiaux.
+	column num_site
+		dataType: string
+		isKey
+		lineageTag: 4ac59163-0ea5-4334-a34e-467c0de2958a
+		summarizeBy: none
+		sourceColumn: num_site
+
+	/// Nom de l'intervenant, protocole details_intervenants.csv.
+	column nom_intervenant
+		dataType: string
+		lineageTag: 07e69ab2-de81-47a1-a7c9-d5c39b97fd53
+		summarizeBy: none
+		sourceColumn: nom_intervenant
+
+	/// Municipalite declaree; texte nullable.
+	column municipalite
+		dataType: string
+		lineageTag: 8d8ec93a-978d-4039-94d4-3cc0f8963e4d
+		summarizeBy: none
+		sourceColumn: municipalite
+
+	/// Secteur SCIAN; texte nullable.
+	column secteur_scian
+		dataType: string
+		lineageTag: ec20a06f-279d-44d4-bfe4-a4c39e082e13
+		summarizeBy: none
+		sourceColumn: secteur_scian
+
+	/// Code SCIAN en texte; aucun calcul numerique.
+	column code_scian
+		dataType: string
+		lineageTag: b15a7474-8cfe-41e6-9849-3376c31037c6
+		summarizeBy: none
+		sourceColumn: code_scian
+
+	/// Premiere annee declaree dans la periode exportee.
+	column premiere_annee
+		dataType: int64
+		formatString: 0
+		lineageTag: cffbec62-ca9f-48d2-a53e-5374ad8fcd2c
+		summarizeBy: none
+		sourceColumn: premiere_annee
+
+	/// Derniere annee declaree dans la periode exportee.
+	column derniere_annee
+		dataType: int64
+		formatString: 0
+		lineageTag: 6935554e-f971-4cfd-810b-762bd11dac6d
+		summarizeBy: none
+		sourceColumn: derniere_annee
+
+	/// Nombre d'annees distinctes ayant au moins un mois declare.
+	column nb_annees_declarees
+		dataType: int64
+		formatString: 0
+		lineageTag: d2934df1-fb98-4905-92df-4e684f1b9185
+		summarizeBy: none
+		sourceColumn: nb_annees_declarees
+
+	/// Vrai si le site declare chaque annee de la periode exportee; au moins un mois suffit, pas 12.
+	column panel_2020_2024
+		dataType: boolean
+		lineageTag: c5b3130b-2ed6-4e31-92d6-0c571878bb09
+		summarizeBy: none
+		sourceColumn: panel_2020_2024
+
+	/// Identifiant texte du troncon d'accrochage; aucune modification du rattachement.
+	column idtronc
+		dataType: string
+		lineageTag: 72011e88-8d5c-4e27-b48e-4659f50e91e8
+		summarizeBy: none
+		sourceColumn: idtronc
+
+	/// Bassin primaire du site; texte nullable.
+	column bv_prim
+		dataType: string
+		lineageTag: 39a2959d-9797-4bc9-a824-46ae36217a2f
+		summarizeBy: none
+		sourceColumn: bv_prim
+
+	partition DimSite = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(
+				        Web.Contents("https://rollisjiofack.github.io/hydropression-quebec/", [RelativePath = "data/sites.csv", Headers = [#"Cache-Control" = "no-cache", Pragma = "no-cache"]]),
+				        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Selected = Table.SelectColumns(Headers, {"num_site", "nom_intervenant", "municipalite", "secteur_scian", "code_scian", "premiere_annee", "derniere_annee", "nb_annees_declarees", "panel_2020_2024", "idtronc", "bv_prim"}, MissingField.Error),
+				    Nulls = Table.ReplaceValue(Selected, "", null, Replacer.ReplaceValue, {"premiere_annee", "derniere_annee", "nb_annees_declarees", "panel_2020_2024"}),
+				    ParseBoolean = (v as any) as nullable logical =>
+				        if v = null then null else
+				        let s = Text.Lower(Text.Trim(Text.From(v, "en-US"))) in
+				            if List.Contains({"true", "1"}, s) then true
+				            else if List.Contains({"false", "0"}, s) then false
+				            else error Error.Record("BooleanContract", "Expected true/false or 1/0", v),
+				    Booleans = Table.TransformColumns(Nulls, {{"panel_2020_2024", ParseBoolean, type logical}}),
+				    Typed = Table.TransformColumnTypes(Booleans, {
+				        {"num_site", type text},
+				        {"nom_intervenant", type text},
+				        {"municipalite", type text},
+				        {"secteur_scian", type text},
+				        {"code_scian", type text},
+				        {"premiere_annee", Int64.Type},
+				        {"derniere_annee", Int64.Type},
+				        {"nb_annees_declarees", Int64.Type},
+				        {"panel_2020_2024", type logical},
+				        {"idtronc", type text},
+				        {"bv_prim", type text}
+				    }, "en-US")
+				in
+				    Typed
+

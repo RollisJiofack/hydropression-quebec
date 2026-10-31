@@ -1,0 +1,105 @@
+table FactDebitMensuel
+	lineageTag: c75e9bfa-9078-4c01-b7d8-f748fb4540a9
+
+	/// Cle technique vers DimStation[code]. Utiliser DimStation[code] dans les visuels.
+	column code
+		dataType: string
+		isHidden
+		displayFolder: 99 - Technique
+		lineageTag: 69114eb9-a5a8-465b-be42-8057272c85c5
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Mois texte pour affichage.
+	column mois_txt
+		dataType: string
+		displayFolder: 01 - Debit mensuel
+		lineageTag: f344dcb6-d26a-4235-83ef-785296bd3376
+		summarizeBy: none
+		sourceColumn: mois_txt
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Debit preleve mensuel m3/s. Somme utile selon le contexte filtre.
+	column debit_preleve_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 01 - Debit mensuel
+		lineageTag: ce5af1ac-76c9-47f3-ac6a-58c2af01ea99
+		summarizeBy: sum
+		sourceColumn: debit_preleve_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Cle technique vers DimMois[mois_num]. Utiliser DimMois dans les visuels.
+	column mois_num
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: 99 - Technique
+		lineageTag: 0d3c0a47-891b-4230-9364-497e2c19cf63
+		summarizeBy: none
+		sourceColumn: mois_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column mois_nom
+		dataType: string
+		displayFolder: 01 - Debit mensuel
+		lineageTag: e640e950-6e13-41a9-9d5c-923a64250ca1
+		summarizeBy: none
+		sourceColumn: mois_nom
+		sortByColumn: mois_num
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactDebitMensuel = m
+		mode: import
+		source =
+				let
+				    Source = HydroPression_Source,
+				    Stations = Table.FromRecords(Source[stations]),
+				    Selected = Table.SelectColumns(Stations, {"code", "debits_mensuels_m3s"}),
+				    Expanded = Table.ExpandRecordColumn(
+				        Selected,
+				        "debits_mensuels_m3s",
+				        {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"},
+				        {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}
+				    ),
+				    Unpivoted = Table.UnpivotOtherColumns(
+				        Expanded,
+				        {"code"},
+				        "mois_txt",
+				        "debit_preleve_m3s"
+				    ),
+				    AddedMoisNum = Table.AddColumn(
+				        Unpivoted,
+				        "mois_num",
+				        each Number.FromText([mois_txt]),
+				        Int64.Type
+				    ),
+				    AddedMoisNom = Table.AddColumn(
+				        AddedMoisNum,
+				        "mois_nom",
+				        each {"janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre"}{[mois_num] - 1},
+				        type text
+				    ),
+				    Typed = Table.TransformColumnTypes(
+				        AddedMoisNom,
+				        {
+				            {"code", type text},
+				            {"mois_txt", type text},
+				            {"debit_preleve_m3s", type number}
+				        }
+				    )
+				in
+				    Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

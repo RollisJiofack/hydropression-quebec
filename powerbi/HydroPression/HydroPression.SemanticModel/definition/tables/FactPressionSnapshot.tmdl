@@ -1,0 +1,1218 @@
+table FactPressionSnapshot
+	lineageTag: 830028b5-3b17-4a87-8ace-9ab231d46df1
+
+	/// Dernier instant UTC disponible dans FactPressionSnapshot.
+	measure 'Dernier instant UTC' =
+			
+			MAX ( FactPressionSnapshot[generated_at_utc] )
+		formatString: yyyy-mm-dd hh:mm:ss
+		displayFolder: 01 - KPI
+		lineageTag: 673bfcdf-92b3-4d84-a457-690814d02a8c
+
+	measure 'Stations suivies' =
+			COALESCE ( (
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        DISTINCTCOUNT ( FactPressionSnapshot[code] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+			), 0 )
+		formatString: 0
+		displayFolder: 01 - KPI
+		lineageTag: 9f16380d-8e4c-4b77-959f-518ae42a6e77
+
+	measure 'Critiques etiage' =
+			COALESCE ( (
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        DISTINCTCOUNT ( FactPressionSnapshot[code] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant,
+			        FactPressionSnapshot[categorie_etiage] = "critique"
+			    )
+			), 0 )
+		formatString: 0
+		displayFolder: 01 - KPI
+		lineageTag: 99c51328-436f-4c90-a906-ae3dcd1ed989
+
+	measure 'Elevees etiage' =
+			COALESCE ( (
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        DISTINCTCOUNT ( FactPressionSnapshot[code] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant,
+			        FactPressionSnapshot[categorie_etiage] = "eleve"
+			    )
+			), 0 )
+		formatString: 0
+		displayFolder: 01 - KPI
+		lineageTag: bab80d47-670f-413b-b140-a8e538161b1c
+
+	measure 'Stations sous tension etiage' =
+			COALESCE ( (
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        DISTINCTCOUNT ( FactPressionSnapshot[code] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant,
+			        FactPressionSnapshot[categorie_etiage] IN { "eleve", "critique" }
+			    )
+			), 0 )
+		formatString: 0
+		displayFolder: 01 - KPI
+		lineageTag: 67d07134-75b5-44a3-a5ee-76e95302d5ce
+
+	/// Categorie d'etiage de la station selectionnee au dernier instant UTC. Mesure texte pour carte de fiche station.
+	measure 'Categorie etiage station' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        SELECTEDVALUE ( FactPressionSnapshot[categorie_etiage], "Plusieurs" ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+		displayFolder: 02 - Detail station
+		lineageTag: 819a93db-7afa-437e-a2f3-c95c0c01603a
+
+	measure 'Categorie actuelle station' =
+			VAR UneStation = HASONEVALUE ( DimStation[code] ) || HASONEVALUE ( FactPressionSnapshot[code] )
+			VAR Pression = [Pression actuelle station pct]
+			RETURN IF ( NOT ( UneStation ), "Plusieurs", SWITCH ( TRUE (), ISBLANK ( Pression ), "inconnu", Pression >= 50, "critique", Pression >= 30, "eleve", Pression >= 15, "modere", Pression >= 5, "faible", "negligeable" ) )
+		displayFolder: 02 - Detail station
+		lineageTag: 7cd5b818-cec5-4bfb-bde3-36ad1a942af2
+
+	/// Pression d'etiage de la station selectionnee au dernier instant UTC, exprimee sur l'echelle 0-100.
+	measure 'Pression etiage station pct' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        MAX ( FactPressionSnapshot[pression_etiage_pct] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+		formatString: 0.00
+		displayFolder: 02 - Detail station
+		lineageTag: 47d7be2a-f98f-483e-af38-78d7e2bffa3a
+
+	measure 'Pression actuelle station pct' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN CALCULATE ( MAX ( FactPressionSnapshot[pression_observe_pct] ), FactPressionSnapshot[generated_at_utc] = DernierInstant, KEEPFILTERS ( FactPressionSnapshot[statut_debit_observe] = "recent" ) )
+		formatString: 0.00
+		displayFolder: 02 - Detail station
+		lineageTag: babf9cc5-b93f-4fea-a8c4-cb19b97df670
+
+	/// Q27 ete m3/s de la station selectionnee au dernier instant UTC.
+	measure 'Q27 ete station m3s' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        MAX ( FactPressionSnapshot[q27_ete_m3s] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+		formatString: 0.00
+		displayFolder: 02 - Detail station
+		lineageTag: 66374741-be99-484f-9137-b6b6e3b243e6
+
+	/// Debit preleve en etiage m3/s de la station selectionnee au dernier instant UTC.
+	measure 'Debit preleve etiage station m3s' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        MAX ( FactPressionSnapshot[debit_preleve_etiage_m3s] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+		formatString: 0.00
+		displayFolder: 02 - Detail station
+		lineageTag: f3444589-63e3-4ed0-9d91-1a3dcbbe8484
+
+	/// Debit preleve courant m3/s de la station selectionnee au dernier instant UTC.
+	measure 'Debit preleve courant station m3s' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        MAX ( FactPressionSnapshot[debit_preleve_m3s] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+		formatString: 0.00
+		displayFolder: 02 - Detail station
+		lineageTag: 12cb3646-0ac2-4e4c-b991-98d2d3d7d48a
+
+	measure 'Debit observe station m3s' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN CALCULATE ( MAX ( FactPressionSnapshot[debit_obs_m3s] ), FactPressionSnapshot[generated_at_utc] = DernierInstant, KEEPFILTERS ( FactPressionSnapshot[statut_debit_observe] = "recent" ) )
+		formatString: 0.00
+		displayFolder: 02 - Detail station
+		lineageTag: 72ca9b0f-c793-4beb-aa0c-52443c743a23
+
+	measure 'Debit naturel station m3s' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN CALCULATE ( MAX ( FactPressionSnapshot[debit_naturel_m3s] ), FactPressionSnapshot[generated_at_utc] = DernierInstant, KEEPFILTERS ( FactPressionSnapshot[statut_debit_observe] = "recent" ) )
+		formatString: 0.00
+		displayFolder: 02 - Detail station
+		lineageTag: 382c5ff4-90b0-4f3a-be0b-46839da8c0bc
+
+	/// Nombre de lignes intervenants reliees a la station selectionnee.
+	measure 'Nombre intervenants station' = COUNTROWS ( FactIntervenants )
+		formatString: 0
+		displayFolder: 02 - Detail station
+		lineageTag: 8cf4e294-09e4-4976-9a81-5d53261f1532
+
+	measure 'Stations avec debit live' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN COALESCE ( CALCULATE ( DISTINCTCOUNT ( FactPressionSnapshot[code] ), FactPressionSnapshot[generated_at_utc] = DernierInstant, KEEPFILTERS ( FactPressionSnapshot[statut_debit_observe] = "recent" ), KEEPFILTERS ( NOT ISBLANK ( FactPressionSnapshot[debit_obs_m3s] ) ) ), 0 )
+		formatString: 0
+		displayFolder: 03 - Analyse
+		lineageTag: f62201dd-bdf9-4064-93b6-66c7141ef326
+
+	measure 'Stations sans pression actuelle' = COALESCE ( SUMX ( FILTER ( VALUES ( DimStation[code] ), NOT ( ISBLANK ( DimStation[code] ) ) ), IF ( ISBLANK ( CALCULATE ( [Pression actuelle station pct] ) ), 1, 0 ) ), 0 )
+		formatString: 0
+		displayFolder: 03 - Analyse
+		lineageTag: 1f28b2bf-2b56-4ae6-8f5e-6e33146c527a
+
+	measure 'Pression actuelle ponderee pct' =
+			VAR DernierInstant = [Dernier instant UTC]
+			VAR LignesRecentes = FILTER ( FactPressionSnapshot, FactPressionSnapshot[generated_at_utc] = DernierInstant && FactPressionSnapshot[statut_debit_observe] = "recent" && NOT ISBLANK ( FactPressionSnapshot[pression_observe_pct] ) )
+			RETURN 100 * DIVIDE ( SUMX ( LignesRecentes, FactPressionSnapshot[debit_preleve_m3s] ), SUMX ( LignesRecentes, FactPressionSnapshot[debit_naturel_m3s] ) )
+		formatString: 0.00
+		displayFolder: 03 - Analyse
+		lineageTag: 48d37c86-7b12-414a-a4ac-633a2b25cb5d
+
+	/// Pression d'etiage ponderee sur le contexte filtre, exprimee sur l'echelle 0-100.
+	measure 'Pression etiage ponderee pct' =
+			VAR DernierInstant = [Dernier instant UTC]
+			VAR DebitPreleveEtiage =
+			    CALCULATE (
+			        SUM ( FactPressionSnapshot[debit_preleve_etiage_m3s] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+			VAR DebitNaturelEtiage =
+			    CALCULATE (
+			        SUM ( FactPressionSnapshot[q27_ete_m3s] ) + SUM ( FactPressionSnapshot[debit_preleve_etiage_m3s] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+			RETURN
+			    100 * DIVIDE ( DebitPreleveEtiage, DebitNaturelEtiage )
+		formatString: 0.00
+		displayFolder: 03 - Analyse
+		lineageTag: 87655d4c-e7d4-495f-a825-5ca5241c0585
+
+	measure 'Debit observe total m3s' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN CALCULATE ( SUM ( FactPressionSnapshot[debit_obs_m3s] ), FactPressionSnapshot[generated_at_utc] = DernierInstant, KEEPFILTERS ( FactPressionSnapshot[statut_debit_observe] = "recent" ) )
+		formatString: 0.00
+		displayFolder: 03 - Analyse
+		lineageTag: 45fdbefc-eee2-466f-aa34-b0546296cd73
+
+	/// Somme du debit preleve courant m3/s sur le contexte filtre au dernier instant UTC.
+	measure 'Debit preleve courant total m3s' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        SUM ( FactPressionSnapshot[debit_preleve_m3s] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+		formatString: 0.00
+		displayFolder: 03 - Analyse
+		lineageTag: 1de47d17-8811-4294-98c2-8e0a4432aeba
+
+	/// Somme du debit preleve en etiage m3/s sur le contexte filtre au dernier instant UTC.
+	measure 'Debit preleve etiage total m3s' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        SUM ( FactPressionSnapshot[debit_preleve_etiage_m3s] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+		formatString: 0.00
+		displayFolder: 03 - Analyse
+		lineageTag: 3a853da1-d6da-423c-9cf6-3fb547ba813d
+
+	/// Rang de la station dans le contexte filtre, selon la pression actuelle observee decroissante.
+	measure 'Rang pression actuelle' =
+			RANKX (
+			    ALLSELECTED ( DimStation[code] ),
+			    [Pression actuelle station pct],
+			    ,
+			    DESC,
+			    DENSE
+			)
+		formatString: 0
+		displayFolder: 03 - Analyse
+		lineageTag: 64b78f85-b85c-477b-bef3-5ba48a655d55
+
+	/// Rang de la station dans le contexte filtre, selon la pression d'etiage decroissante.
+	measure 'Rang pression etiage' =
+			RANKX (
+			    ALLSELECTED ( DimStation[code] ),
+			    [Pression etiage station pct],
+			    ,
+			    DESC,
+			    DENSE
+			)
+		formatString: 0
+		displayFolder: 03 - Analyse
+		lineageTag: 116d6f47-1180-424c-a1e7-1990e5acd54c
+
+	/// Couleur hexadecimale associee a la categorie actuelle de la station selectionnee.
+	measure 'Couleur categorie actuelle' =
+			SWITCH (
+			    [Categorie actuelle station],
+			    "critique", "#a32424",
+			    "eleve", "#d97a4a",
+			    "modere", "#e6c14a",
+			    "faible", "#7eb693",
+			    "negligeable", "#1a4a3a",
+			    "#b8b3a8"
+			)
+		displayFolder: 04 - Couleurs
+		lineageTag: f2fbad9b-00a0-49f9-b75b-0a9547a9ecfb
+
+	/// Couleur hexadecimale associee a la categorie d'etiage de la station selectionnee.
+	measure 'Couleur categorie etiage' =
+			SWITCH (
+			    [Categorie etiage station],
+			    "critique", "#a32424",
+			    "eleve", "#d97a4a",
+			    "modere", "#e6c14a",
+			    "faible", "#7eb693",
+			    "negligeable", "#1a4a3a",
+			    "#b8b3a8"
+			)
+		displayFolder: 04 - Couleurs
+		lineageTag: f42f871d-d510-4a94-99c7-6e0f4f180070
+
+	/// Libelle de la station selectionnee. Mesure texte pour le titre de fiche station.
+	measure 'Station selectionnee' = SELECTEDVALUE ( DimStation[station_label], "Selectionner une station" )
+		displayFolder: 02 - Detail station
+		lineageTag: ecfc6e57-a825-47b9-8178-f830f26d8f5d
+
+	/// Code de la station selectionnee. Mesure texte pour fiche station.
+	measure 'Code station selectionnee' = SELECTEDVALUE ( DimStation[code], BLANK () )
+		displayFolder: 02 - Detail station
+		lineageTag: f5336650-80c5-401a-9a04-54963763b354
+
+	/// Plan d'eau de la station selectionnee. Mesure texte pour fiche station.
+	measure 'Plan eau station' = SELECTEDVALUE ( DimStation[plan_deau], BLANK () )
+		displayFolder: 02 - Detail station
+		lineageTag: 8884aa2c-7910-458a-92d7-afb4386b0c54
+
+	/// Bassin primaire de la station selectionnee. Mesure texte pour fiche station.
+	measure 'Bassin primaire station' = SELECTEDVALUE ( DimStation[bv_prim], BLANK () )
+		displayFolder: 02 - Detail station
+		lineageTag: 5ff1e610-7dab-4d95-9156-49ad7ff64599
+
+	/// Superficie du bassin de la station selectionnee en km2.
+	measure 'Superficie bassin station km2' = SELECTEDVALUE ( DimStation[superficie_km2] )
+		formatString: #,0.0
+		displayFolder: 02 - Detail station
+		lineageTag: 8ef3b5a7-a0cb-4055-ae1a-656d8d7972d8
+
+	/// URL CEHQ de la station selectionnee, si disponible.
+	measure 'URL CEHQ station' = SELECTEDVALUE ( DimStation[url_cehq], BLANK () )
+		displayFolder: 02 - Detail station
+		lineageTag: 8b95ac5c-8352-417a-b468-119b20daac8a
+
+	/// Etat CEHQ de la station selectionnee au dernier instant UTC.
+	measure 'Etat CEHQ station' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        SELECTEDVALUE ( FactPressionSnapshot[etat_cehq], BLANK () ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+		displayFolder: 02 - Detail station
+		lineageTag: ba8453b8-ec21-4cc8-b7c2-ebbeabdd7c93
+
+	/// Date de mesure UTC de la station selectionnee au dernier instant UTC.
+	measure 'Date mesure UTC station' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN
+			    CALCULATE (
+			        MAX ( FactPressionSnapshot[date_mesure_utc] ),
+			        FactPressionSnapshot[generated_at_utc] = DernierInstant
+			    )
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: 02 - Detail station
+		lineageTag: 3a47a848-3225-4786-9b73-e5590e7972a9
+
+	measure 'Critiques actuelle' = COALESCE ( SUMX ( FILTER ( VALUES ( DimStation[code] ), NOT ( ISBLANK ( DimStation[code] ) ) ), VAR Pression = CALCULATE ( [Pression actuelle station pct] ) RETURN IF ( NOT ( ISBLANK ( Pression ) ) && Pression >= 50, 1, 0 ) ), 0 )
+		formatString: 0
+		displayFolder: 01 - KPI
+		lineageTag: 4bc789d7-1d43-4aaf-bc6f-a9f80d56901c
+
+	measure 'Elevees actuelle' = COALESCE ( SUMX ( FILTER ( VALUES ( DimStation[code] ), NOT ( ISBLANK ( DimStation[code] ) ) ), VAR Pression = CALCULATE ( [Pression actuelle station pct] ) RETURN IF ( NOT ( ISBLANK ( Pression ) ) && Pression >= 30 && Pression < 50, 1, 0 ) ), 0 )
+		formatString: 0
+		displayFolder: 01 - KPI
+		lineageTag: d2c280f8-0605-4ab7-a9cc-fa57d6ba5bce
+
+	/// Ecart en points entre la pression projetee en etiage et la pression actuelle de la station.
+	measure 'Amplification étiage (points)' =
+			VAR PressionActuelle = [Pression actuelle station pct]
+			VAR PressionEtiage = [Pression etiage station pct]
+			RETURN
+			    IF (
+			        ISBLANK ( PressionActuelle ) || ISBLANK ( PressionEtiage ),
+			        BLANK (),
+			        PressionEtiage - PressionActuelle
+			    )
+		formatString: 0.0
+		displayFolder: 04 - Priorisation
+		lineageTag: 202d3bc2-4fad-4783-8253-3a360a2efbcb
+
+	/// Part des stations disposant d'une pression actuelle exploitable au dernier instant UTC.
+	measure 'Couverture pression actuelle (%)' =
+			VAR DernierInstant = [Dernier instant UTC]
+			VAR TotalStations = CALCULATE ( DISTINCTCOUNT ( FactPressionSnapshot[code] ), FactPressionSnapshot[generated_at_utc] = DernierInstant )
+			VAR StationsCalculables = CALCULATE ( DISTINCTCOUNT ( FactPressionSnapshot[code] ), FactPressionSnapshot[generated_at_utc] = DernierInstant, KEEPFILTERS ( FactPressionSnapshot[statut_debit_observe] = "recent" ), KEEPFILTERS ( NOT ISBLANK ( FactPressionSnapshot[pression_observe_pct] ) ) )
+			RETURN DIVIDE ( COALESCE ( StationsCalculables, 0 ), TotalStations )
+		formatString: 0.0%
+		displayFolder: 04 - Priorisation
+		lineageTag: d9b3913c-1301-4aba-85c5-b09cff7d8a8a
+
+	/// Part des stations disposant d'un debit observe au dernier instant UTC.
+	measure 'Couverture télémétrie (%)' =
+			VAR DernierInstant = [Dernier instant UTC]
+			VAR TotalStations = CALCULATE ( DISTINCTCOUNT ( FactPressionSnapshot[code] ), FactPressionSnapshot[generated_at_utc] = DernierInstant )
+			RETURN DIVIDE ( [Stations avec debit live], TotalStations )
+		formatString: 0.0%
+		displayFolder: 04 - Priorisation
+		lineageTag: 1ad730a5-8875-403c-861e-69af27315999
+
+	measure 'Niveau de vigilance interne' =
+			VAR Actuel = [Pression actuelle station pct]
+			VAR Etiage = [Pression etiage station pct]
+			VAR Amplification = [Amplification étiage (points)]
+			RETURN SWITCH ( TRUE (), COALESCE ( Actuel, -1 ) >= 50 || COALESCE ( Etiage, -1 ) >= 50, "Priorité 1", COALESCE ( Actuel, -1 ) >= 30 || COALESCE ( Etiage, -1 ) >= 30 || ( NOT ( ISBLANK ( Amplification ) ) && Amplification >= 15 ), "Priorité 2", ISBLANK ( Actuel ) && ISBLANK ( Etiage ), "Données insuffisantes", ISBLANK ( Actuel ), "Actuel non évaluable", ISBLANK ( Etiage ), "Étiage non évaluable", "Suivi courant" )
+		displayFolder: 04 - Priorisation
+		lineageTag: a40eea35-55a8-4885-ba6a-5da19c5d3755
+
+	measure 'Motif de vigilance' =
+			VAR Actuel = [Pression actuelle station pct]
+			VAR Etiage = [Pression etiage station pct]
+			VAR Amplification = [Amplification étiage (points)]
+			VAR Motif = SWITCH ( TRUE (), COALESCE ( Actuel, -1 ) >= 50, "Pression actuelle ≥ 50 %", COALESCE ( Etiage, -1 ) >= 50, "Risque d'étiage ≥ 50 %", COALESCE ( Actuel, -1 ) >= 30, "Pression actuelle ≥ 30 %", COALESCE ( Etiage, -1 ) >= 30, "Risque d'étiage ≥ 30 %", NOT ( ISBLANK ( Amplification ) ) && Amplification >= 15, "Amplification ≥ 15 points", "Suivi courant" )
+			RETURN SWITCH ( TRUE (), ISBLANK ( Actuel ) && ISBLANK ( Etiage ), "Données insuffisantes : actuel et étiage non évaluables", ISBLANK ( Actuel ), IF ( Motif = "Suivi courant", "Actuel non évaluable; étiage sous 30 %", Motif & "; actuel non évaluable" ), ISBLANK ( Etiage ), Motif & "; étiage non évaluable", Motif )
+		displayFolder: 04 - Priorisation
+		lineageTag: ebaa675c-b89b-4053-a070-2940bbb90c57
+
+	/// Nombre de stations en priorite 1 : pression actuelle ou risque en etiage d'au moins 50 %.
+	measure 'Priorité 1 - stations' =
+			VAR StationsEvaluees =
+			    FILTER ( VALUES ( DimStation[code] ), NOT ( ISBLANK ( DimStation[code] ) ) )
+			RETURN
+			    SUMX (
+			        StationsEvaluees,
+			        VAR PressionActuelle = CALCULATE ( [Pression actuelle station pct] )
+			        VAR PressionEtiage = CALCULATE ( [Pression etiage station pct] )
+			        RETURN
+			            IF (
+			                COALESCE ( PressionActuelle, -1 ) >= 50
+			                    || COALESCE ( PressionEtiage, -1 ) >= 50,
+			                1,
+			                0
+			            )
+			    )
+		formatString: 0
+		displayFolder: 04 - Priorisation
+		lineageTag: a8911f04-1300-4d3e-9a3f-880d208f0842
+
+	/// Nombre de stations en priorite 2 : niveau d'au moins 30 % ou amplification d'au moins 15 points, hors priorite 1.
+	measure 'Priorité 2 - stations' =
+			VAR StationsEvaluees =
+			    FILTER ( VALUES ( DimStation[code] ), NOT ( ISBLANK ( DimStation[code] ) ) )
+			RETURN
+			    SUMX (
+			        StationsEvaluees,
+			        VAR PressionActuelle = CALCULATE ( [Pression actuelle station pct] )
+			        VAR PressionEtiage = CALCULATE ( [Pression etiage station pct] )
+			        VAR Amplification =
+			            IF (
+			                ISBLANK ( PressionActuelle ) || ISBLANK ( PressionEtiage ),
+			                BLANK (),
+			                PressionEtiage - PressionActuelle
+			            )
+			        VAR EstPriorite1 =
+			            COALESCE ( PressionActuelle, -1 ) >= 50
+			                || COALESCE ( PressionEtiage, -1 ) >= 50
+			        VAR EstPriorite2 =
+			            NOT ( EstPriorite1 )
+			                && (
+			                    COALESCE ( PressionActuelle, -1 ) >= 30
+			                        || COALESCE ( PressionEtiage, -1 ) >= 30
+			                        || ( NOT ( ISBLANK ( Amplification ) ) && Amplification >= 15 )
+			                )
+			        RETURN IF ( EstPriorite2, 1, 0 )
+			    )
+		formatString: 0
+		displayFolder: 04 - Priorisation
+		lineageTag: 1c755b7a-5aef-4101-a43c-3efbb123e616
+
+	measure 'Derniere mesure CEHQ UTC' = MAX ( FactPressionSnapshot[date_mesure_utc] )
+		formatString: yyyy-MM-dd HH:mm:ss
+		displayFolder: 05 - Fraicheur
+		lineageTag: 9b86600f-9e48-4721-aba3-7a00d2da67b8
+
+	measure 'Collecte CEHQ UTC' = MAX ( FactPressionSnapshot[collected_at_utc] )
+		formatString: yyyy-MM-dd HH:mm:ss
+		displayFolder: 05 - Fraicheur
+		lineageTag: 0ff2d7b3-0af2-4b74-9ea5-07dac02f0bd0
+
+	measure 'Actualisation Power BI UTC' = MAX ( FactPressionSnapshot[refreshed_at_utc] )
+		formatString: yyyy-MM-dd HH:mm:ss
+		displayFolder: 05 - Fraicheur
+		lineageTag: 611dcc0e-d170-41e3-afc2-05d4f8c0862d
+
+	measure 'Age derniere mesure heures' = IF ( NOT ISBLANK ( [Derniere mesure CEHQ UTC] ), MAX ( 0, ( UTCNOW () - [Derniere mesure CEHQ UTC] ) * 24 ) )
+		formatString: 0.0
+		displayFolder: 05 - Fraicheur
+		lineageTag: ae45c102-8574-4611-8831-5adcd0c88a4b
+
+	measure 'Etat fraicheur des debits' = IF ( [Stations avec debit live] = 0, "Aucun debit recent (6 h)", FORMAT ( [Stations avec debit live], "0" ) & " / " & FORMAT ( [Stations suivies], "0" ) & " stations avec un debit recent (6 h)" )
+		displayFolder: 05 - Fraicheur
+		lineageTag: 05d00741-9b07-477c-b438-a705c47dee5b
+
+	measure 'Age generation import heures' =
+			VAR Generation = [Dernier instant UTC]
+			VAR InstantImport = [Actualisation Power BI UTC]
+			RETURN IF ( NOT ISBLANK ( Generation ) && NOT ISBLANK ( InstantImport ), ( InstantImport - Generation ) * 24 )
+		formatString: 0.0
+		displayFolder: 03 - Analyse
+		lineageTag: 34ce2c5f-cdae-41a5-97a2-01ead0c50739
+
+	measure 'Generation locale' =
+			VAR DernierInstant = [Dernier instant UTC]
+			RETURN CALCULATE ( SELECTEDVALUE ( FactPressionSnapshot[generated_at_local] ), FactPressionSnapshot[generated_at_utc] = DernierInstant )
+		displayFolder: 03 - Analyse
+		lineageTag: a5fdeb0d-be7a-4cd5-899f-c9cdc777d5fd
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Catégorie actuelle affichée' = SWITCH ( [Categorie actuelle station], "critique", "Critique", "eleve", "Élevée", "modere", "Modérée", "faible", "Faible", "negligeable", "Négligeable", "inconnu", "Indéterminée", "Sélectionner une station" )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: f756de19-a3ab-4a8c-b67c-33906d6b6dcc
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Catégorie étiage affichée' = SWITCH ( [Categorie etiage station], "critique", "Critique", "eleve", "Élevée", "modere", "Modérée", "faible", "Faible", "negligeable", "Négligeable", "inconnu", "Indéterminée", "Sélectionner une station" )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 64808d19-f70e-43f8-a7d9-225902439c46
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Actuel affiché (%)' =
+			VAR P = [Pression actuelle station pct]
+			RETURN IF ( COUNTROWS ( FactPressionSnapshot ) = 0, BLANK (), IF ( ISBLANK ( P ), "Non éval.", FORMAT ( P, "0.0" ) & " %" ) )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 1e33fa5d-6829-400b-b6df-ba502072fd9d
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Étiage affiché (%)' =
+			VAR P = [Pression etiage station pct]
+			RETURN IF ( COUNTROWS ( FactPressionSnapshot ) = 0, BLANK (), IF ( ISBLANK ( P ), "Non éval.", FORMAT ( P, "0.0" ) & " %" ) )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: b57e6a7c-ffed-4815-9b8d-544295c305ee
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Modérées actuelles' = COALESCE ( SUMX ( VALUES ( DimStation[code] ), VAR P = CALCULATE ( [Pression actuelle station pct] ) RETURN IF ( NOT ISBLANK ( P ) && P >= 15 && P < 30, 1, 0 ) ), 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 33f4890d-91f9-4257-99a4-814c47888d3b
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Modérées étiage' = COALESCE ( CALCULATE ( [Stations suivies], KEEPFILTERS ( FactPressionSnapshot[categorie_etiage] = "modere" ) ), 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: ef3e4262-a54d-4dac-8983-09b69e22b4cb
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Stations caractérisées' = COALESCE ( CALCULATE ( [Stations suivies], KEEPFILTERS ( FactPressionSnapshot[prelevements_caracterises] = TRUE () ) ), 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 0c414e9d-02d4-4f04-893f-a7e28bdc5f37
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Stations non caractérisées' = COALESCE ( CALCULATE ( [Stations suivies], KEEPFILTERS ( FactPressionSnapshot[prelevements_caracterises] = FALSE () ) ), 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 2d8f8c26-4e8c-4a23-aa66-1d00acaac416
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Stations calculables' = COALESCE ( CALCULATE ( [Stations suivies], KEEPFILTERS ( FactPressionSnapshot[statut_debit_observe] = "recent" ), KEEPFILTERS ( NOT ISBLANK ( FactPressionSnapshot[pression_observe_pct] ) ) ), 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 2d0df0ca-5ebd-4ab8-9c9f-1b1da758d5ce
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Stations par catégorie' = [Stations suivies]
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: a24a2469-5b3d-495a-9195-78f00d113af6
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Part de la catégorie' = DIVIDE ( [Stations suivies], CALCULATE ( [Stations suivies], REMOVEFILTERS ( FactPressionSnapshot[categorie_etiage], FactPressionSnapshot[categorie_etiage_libelle], FactPressionSnapshot[categorie_etiage_ordre] ) ) )
+		formatString: 0.0%
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 96dea380-aab4-4bab-a77d-2c1255c1cb80
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Débit mensuel affiché (m3/s)' =
+			VAR UneStation = HASONEVALUE ( DimStation[code] )
+			VAR Caracterisee = SELECTEDVALUE ( FactPressionSnapshot[prelevements_caracterises], FALSE () )
+			RETURN IF ( UneStation && Caracterisee, SUM ( FactDebitMensuel[debit_preleve_m3s] ), BLANK () )
+		formatString: 0.000
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 42280adf-67f5-4cca-98e0-22e76bb1937f
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'État du profil mensuel' =
+			VAR Caracterisee = SELECTEDVALUE ( FactPressionSnapshot[prelevements_caracterises], FALSE () )
+			RETURN IF ( NOT HASONEVALUE ( DimStation[code] ), "Sélectionner une seule station.", IF ( Caracterisee, "Profil moyen des prélèvements caractérisés; zéro déclaré distinct d'une donnée absente.", "Prélèvements non caractérisés : profil mensuel non évaluable, pas de zéro imputé." ) )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: f9c370e5-2114-4585-a1a9-1303fc6f5800
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'État de la station' =
+			VAR Statut = SELECTEDVALUE ( FactPressionSnapshot[statut_debit_observe] )
+			VAR P = [Pression actuelle station pct]
+			RETURN IF ( NOT HASONEVALUE ( DimStation[code] ), "Sélectionner une seule station", IF ( NOT ISBLANK ( P ), "Actuel calculable; débit récent à la génération", IF ( Statut = "recent", "Débit récent; prélèvements non caractérisés", "Actuel non évaluable : débit absent ou périmé à la génération" ) ) )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: dbc1632b-e46d-491f-8486-f4cf6a20bf0f
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Fraîcheur affichée' = "Génération UTC " & FORMAT ( [Dernier instant UTC], "yyyy-MM-dd HH:mm" ) & "  |  Toronto " & SUBSTITUTE ( LEFT ( [Generation locale], 16 ), "T", " " ) & "  |  Import UTC " & FORMAT ( [Actualisation Power BI UTC], "yyyy-MM-dd HH:mm" ) & "  |  Validité des débits évaluée à la génération"
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 6b97bf12-9353-47e4-9877-a7504153bc9d
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Filtre vigilance accepté' =
+			VAR Choix = SELECTEDVALUE ( FiltreVigilance[libelle], "Tout" )
+			RETURN IF ( Choix = "Tout" || [Niveau de vigilance interne] = Choix, 1, 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: a29355fb-aaee-44f0-9811-af7aaa9e8d3d
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Prioritaires sélectionnés' = COALESCE ( SUMX ( VALUES ( DimStation[code] ), VAR Niveau = CALCULATE ( [Niveau de vigilance interne] ) RETURN IF ( Niveau IN { "Priorité 1", "Priorité 2" } && CALCULATE ( [Filtre vigilance accepté] ) = 1, 1, 0 ) ), 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: e85c2f89-6335-4aa4-a9d6-e63588a9955c
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Prioritaires hors nuage' = COALESCE ( SUMX ( VALUES ( DimStation[code] ), VAR Niveau = CALCULATE ( [Niveau de vigilance interne] ) VAR Actuel = CALCULATE ( [Pression actuelle station pct] ) VAR Etiage = CALCULATE ( [Pression etiage station pct] ) RETURN IF ( Niveau IN { "Priorité 1", "Priorité 2" } && CALCULATE ( [Filtre vigilance accepté] ) = 1 && ( ISBLANK ( Actuel ) || ISBLANK ( Etiage ) ), 1, 0 ) ), 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 96949a22-43a7-49bb-aec3-2738549fca91
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Hors nuage affiché' = FORMAT ( [Prioritaires hors nuage], "0" ) & " sur " & FORMAT ( [Prioritaires sélectionnés], "0" )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: ac96585e-083f-4da7-a404-6eb7ad28e504
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'P1 affichées' = COALESCE ( SUMX ( VALUES ( DimStation[code] ), IF ( CALCULATE ( [Niveau de vigilance interne] ) = "Priorité 1" && CALCULATE ( [Filtre vigilance accepté] ) = 1, 1, 0 ) ), 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 1c8bc10c-b279-49be-9491-21e2000ba9b5
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'P2 affichées' = COALESCE ( SUMX ( VALUES ( DimStation[code] ), IF ( CALCULATE ( [Niveau de vigilance interne] ) = "Priorité 2" && CALCULATE ( [Filtre vigilance accepté] ) = 1, 1, 0 ) ), 0 )
+		formatString: 0
+		displayFolder: 06 - Revue visuelle
+		lineageTag: b1e65007-caf6-4619-84e1-6ca422b1c857
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Priorité affichée' = SWITCH ( [Niveau de vigilance interne], "Priorité 1", "P1", "Priorité 2", "P2", [Niveau de vigilance interne] )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 9ef2573e-66d1-4de9-9656-ba1ab0d2e896
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Couleur texte actuelle' = SWITCH ( [Categorie actuelle station], "critique", "#a32424", "eleve", "#9d3d18", "modere", "#735b00", "faible", "#356448", "negligeable", "#1a4a3a", "#696761" )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: c584d236-99b8-4742-a5e4-16b5d6646c19
+
+	/// Presentation de la revue visuelle; regles metier existantes conservees.
+	measure 'Couleur texte étiage' = SWITCH ( [Categorie etiage station], "critique", "#a32424", "eleve", "#9d3d18", "modere", "#735b00", "faible", "#356448", "negligeable", "#1a4a3a", "#696761" )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 60463ea2-29e8-4565-9c6f-f95a291bf49b
+
+	/// Présentation seulement : l'état non évaluable reste dans la colonne Actuel. La mesure métier Motif de vigilance reste inchangée.
+	measure 'Motif affiché' = SUBSTITUTE ( [Motif de vigilance], "; actuel non évaluable", "" )
+		displayFolder: 06 - Revue visuelle
+		lineageTag: 665ce9ce-4f7a-4dd4-942c-3071abe3bdd9
+
+	/// Cle technique vers DimStation[code]. Utiliser DimStation[code] dans les visuels.
+	measure 'MD - Critiques et élevées actuelles' = [Critiques actuelle] + [Elevees actuelle]
+		dataType: int64
+		formatString: 0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: c4aba679-e904-4be3-bc5a-d305a368be45
+
+	measure 'MD - Détail couverture' = FORMAT([Couverture pression actuelle (%)], "0.0%") & " sur " & FORMAT([Stations suivies],"0") & " stations"
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 6be7639d-2575-4de5-a4fa-22d572b5022a
+
+	measure 'MD - Détail non évaluées' = FORMAT([Stations non caractérisées],"0") & " non caract. ; " & FORMAT([Stations sans pression actuelle]-[Stations non caractérisées],"0") & " autres"
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 0b15b3f9-ba65-4cca-bfc7-0bb1e8066f05
+
+	measure 'MD - Détail critiques élevées' = FORMAT([Critiques actuelle],"0") & " critiques ; " & FORMAT([Elevees actuelle],"0") & " élevées"
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 6c7ffc03-c790-45b3-a3e9-4a135fc14568
+
+	measure 'MD - Comparables' = COALESCE(SUMX(VALUES(DimStation[code]), IF(NOT ISBLANK([Pression actuelle station pct]) && NOT ISBLANK([Pression etiage station pct]),1,0)),0)
+		dataType: int64
+		formatString: 0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 13c22345-8e05-427e-b785-93869671c48d
+
+	measure 'MD - Amplification forte' = COALESCE(SUMX(VALUES(DimStation[code]), VAR A=[Amplification étiage (points)] RETURN IF(NOT ISBLANK(A) && A>=15,1,0)),0)
+		dataType: int64
+		formatString: 0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 444844f3-604a-452e-8c89-e3929a0591a0
+
+	measure 'MD - Détail comparables' = "Sur " & FORMAT([MD - Comparables],"0") & " stations comparables"
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 8b5c23aa-1b23-4c70-ac13-0c93e1d700f2
+
+	measure 'MD - Autres stations' = [Stations suivies]-[Priorité 1 - stations]-[Priorité 2 - stations]
+		dataType: int64
+		formatString: 0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 46ff641d-31ed-4a6a-bc70-c98ef3a96e91
+
+	measure 'MD - Détail autres' = "Dont " & FORMAT([Stations non caractérisées],"0") & " non caractérisées"
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: f1d7b328-39b9-4ded-b1b4-2ed26772d157
+
+	measure 'MD - Âge débit à la génération (h)' = VAR T=SELECTEDVALUE(FactPressionSnapshot[date_mesure_utc]) RETURN IF(HASONEVALUE(DimStation[code]) && NOT ISBLANK(T),([Dernier instant UTC]-T)*24)
+		dataType: double
+		formatString: 0.0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 41de6925-22f7-4f0e-8663-74cd8a3367fa
+
+	measure 'MD - Consommation courante (m3/j)' = [Debit preleve courant station m3s]*86400
+		dataType: double
+		formatString: #,0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 122fcdac-03db-4a53-a3de-48e7c31ada68
+
+	measure 'MD - Consommation été (m3/j)' = [Debit preleve etiage station m3s]*86400
+		dataType: double
+		formatString: #,0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: fd875c9e-c80c-40a9-b5b6-5ef85228a3ff
+
+	measure 'MD - Profil mensuel station (m3/j)' = [Débit mensuel affiché (m3/s)]*86400
+		dataType: double
+		formatString: #,0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 7cd16ee3-7c2a-492b-8f1a-bb75f548c160
+
+	measure 'MD - Profil mensuel cumulé (m3/j)' = SUMX(VALUES(DimStation[code]),CALCULATE([Débit mensuel affiché (m3/s)]))*86400
+		dataType: double
+		formatString: #,0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 88a05ef1-7ffa-43cc-8346-0474d15913c2
+
+	measure 'MD - Couleur mois' = VAR M=SELECTEDVALUE(DimMois[mois_num]) VAR Courant=SELECTEDVALUE(FactPressionSnapshot[mois_courant]) RETURN SWITCH(TRUE(),M IN {7,8},"#D97706",M=Courant,"#0F172A","#0284C7")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 5466c589-ef31-498d-98a3-ce45c71e861d
+
+	measure 'MD - Identité station' = IF(HASONEVALUE(DimStation[code]),SELECTEDVALUE(DimStation[code]) & " - " & SELECTEDVALUE(DimStation[plan_deau]) & " | " & SELECTEDVALUE(DimStation[bv_prim]),"Sélectionner une seule station")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 24febfbc-248d-47f5-ab60-baeded2918a2
+
+	measure 'MD - Alerte station' = IF(NOT HASONEVALUE(DimStation[code]),"Sélectionner une seule station",IF(LEN(TRIM(COALESCE([Signalement station],"")))>0,[Signalement station],"Aucun signalement particulier enregistré."))
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: b901ab15-550e-4dd1-9a9c-70a8050dcf64
+
+	measure 'MD - Fond signalement' = IF(LEN(TRIM(COALESCE([Signalement station],"")))>0,"#FEF2F2","#F0FDF4")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 1e8aa0f1-4a58-409e-9fc8-5c3af88a13ed
+
+	measure 'MD - Texte signalement' = IF(LEN(TRIM(COALESCE([Signalement station],"")))>0,"#991B1B","#166534")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: e19cc755-c7f2-43ff-a532-2860c163e52d
+
+	measure 'MD - Alerte nuage étiage' = "Nuage : " & FORMAT([MD - Comparables],"0") & " stations avec les deux pressions. Les stations sans pression actuelle restent dans le tableau ; une valeur absente n’est pas un zéro."
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: c4c1bdaf-9ccf-4447-a4f3-3f1fb659dfe3
+
+	measure 'MD - Alerte nuage priorités' = "Sur " & FORMAT([Prioritaires sélectionnés],"0") & " stations P1/P2, " & FORMAT([Prioritaires hors nuage],"0") & " sont hors nuage, sans pression actuelle. Elles restent dans la liste et dans leur priorité."
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: e1fceb46-f4c9-46f9-a7a0-30b57d324813
+
+	measure 'MD - Ordre vigilance' = SWITCH([Niveau de vigilance interne],"Priorité 1",1,"Priorité 2",2,"Suivi courant",3,"Actuel non évaluable",4,"Étiage non évaluable",4,"Données insuffisantes",5,6)
+		dataType: int64
+		formatString: 0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 6bc49d7e-1218-4403-ad09-66810cfe8b6a
+
+	measure 'MD - Niveau court' = IF(COUNTROWS(FactPressionSnapshot)=0,BLANK(),SWITCH([Niveau de vigilance interne],"Priorité 1","P1","Priorité 2","P2","Suivi courant","Suivi","Actuel non évaluable","Act. n.é.","Étiage non évaluable","Ét. n.é.","Données insuffisantes","Non caract.",[Niveau de vigilance interne]))
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: fc4d4f40-8264-4a81-8557-d47db74cd75c
+
+	measure 'MD - Motif et signalement' = IF(COUNTROWS(FactPressionSnapshot)=0,BLANK(),[Motif de vigilance] & IF(LEN(TRIM(COALESCE([Signalement station],"")))>0," | " & [Signalement station],""))
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: d10e41b7-35f7-4907-a857-b19c9226da77
+
+	measure 'MD - Fond vigilance' = SWITCH([Niveau de vigilance interne],"Priorité 1","#FEE2E2","Priorité 2","#FFEDD5","Suivi courant","#E0F2FE","#F1F5F9")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 7f4a9aec-1e7e-4d83-9266-62c121d355ec
+
+	measure 'MD - Texte vigilance' = SWITCH([Niveau de vigilance interne],"Priorité 1","#991B1B","Priorité 2","#9A3412","Suivi courant","#075985","#475569")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: a6688c9d-4557-43bd-bf90-8f84ccedb1f1
+
+	measure 'MD - Couleur actuelle' = SWITCH([Categorie actuelle station],"critique","#B91C1C","eleve","#EA580C","modere","#D97706","faible","#EAB308","negligeable","#0284C7","#94A3B8")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 7714ca87-2bc5-4a42-bee2-176e50d4f942
+
+	measure 'MD - Couleur étiage' = SWITCH([Categorie etiage station],"critique","#B91C1C","eleve","#EA580C","modere","#D97706","faible","#EAB308","negligeable","#0284C7","#94A3B8")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 88b84343-b468-4f08-a4fe-7543d4fa9ffe
+
+	measure 'MD - Catégorie et signalement' = IF(COUNTROWS(FactPressionSnapshot)=0,BLANK(),[Catégorie actuelle affichée] & IF(LEN(TRIM(COALESCE([Signalement station],"")))>0," · Signalée",""))
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: d017e792-e3a6-457c-94a8-d3b9f0324223
+
+	measure 'MD - Sites amont station' = IF(HASONEVALUE(DimStation[code]),SELECTEDVALUE(FactPressionSnapshot[n_sites_amont]))
+		dataType: int64
+		formatString: 0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: ab30c551-a753-4c92-b680-677aa1bb912c
+
+	measure 'MD - Sites identifiés secteur' = COUNTROWS(FILTER(VALUES(FactIntervenants[num_site]),NOT ISBLANK(FactIntervenants[num_site]) && FactIntervenants[num_site]<>""))
+		dataType: int64
+		formatString: 0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 55b2c00a-c73e-4b46-bfa0-7e2e999d0d11
+
+	measure 'MD - Conso intervenants courante (m3/j)' = SUM(FactIntervenants[debit_mois_courant_m3s])*86400
+		dataType: double
+		formatString: #,0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 9e39ba45-458c-42ac-bcb7-bdf804027bbb
+
+	measure 'MD - Conso intervenants été (m3/j)' = SUM(FactIntervenants[debit_etiage_m3s])*86400
+		dataType: double
+		formatString: #,0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: f17098e0-054a-4997-b243-c6fd99a0d0c9
+
+	measure 'MD - Distance non disponible' = IF(COUNTROWS(FactIntervenants)>0,"n.d.")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 4de6ad39-d8b5-4876-9b52-ba6d47320ef5
+
+	measure 'MD - Sites liés distincts' = DISTINCTCOUNT(CorrespondanceSiteStation[num_site])
+		dataType: int64
+		formatString: 0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 5f3c71b8-b43b-4f7f-91c2-3f2c5eb0e909
+
+	measure 'MD - Amplitude mai octobre' = VAR Mois=FILTER(ALL(DimMois),DimMois[mois_num]>=5 && DimMois[mois_num]<=10) VAR H=MAXX(Mois,[MD - Profil mensuel cumulé (m3/j)]) VAR B=MINX(Mois,[MD - Profil mensuel cumulé (m3/j)]) RETURN DIVIDE(H,B)
+		dataType: double
+		formatString: 0.00
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: d5bef9a4-93c4-48ca-847f-21c7c7fbcdef
+
+	measure 'MD - Horodatages UTC' = "CEHQ " & FORMAT([Derniere mesure CEHQ UTC],"yyyy-MM-dd HH:mm") & " | Collecte " & FORMAT([Collecte CEHQ UTC],"yyyy-MM-dd HH:mm") & " | Génération " & FORMAT([Dernier instant UTC],"yyyy-MM-dd HH:mm") & " | Import Power BI " & FORMAT([Actualisation Power BI UTC],"yyyy-MM-dd HH:mm") & " UTC"
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: c849c3f6-ac36-49a3-9842-16890190a919
+
+	measure 'MD - Horodatage local' = "Génération Toronto " & SUBSTITUTE(LEFT([Generation locale],19),"T"," ") & " | Validité des débits à la génération (≤ 6 h) | Actualisation par import ; collecte et import distincts"
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: e5656bb0-1e52-45f2-810c-927f5f2908ea
+
+	column code
+		dataType: string
+		isHidden
+		displayFolder: 99 - Technique
+		lineageTag: e74f83e7-9b92-41cd-be3d-8fa27e284e01
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Etat CEHQ de la station au dernier instant disponible.
+	column etat_cehq
+		dataType: string
+		displayFolder: 01 - Etat
+		lineageTag: 03bbf883-e7e6-48ff-a94b-ad59dcc6b964
+		summarizeBy: none
+		sourceColumn: etat_cehq
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Nombre de sites amont. Colonne brute station; ne pas utiliser comme carte KPI globale.
+	column n_sites_amont
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: 3758c6f7-0cc2-44dc-aad4-fbfe70fd5ba5
+		summarizeBy: none
+		sourceColumn: n_sites_amont
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Nombre de sites en etiage. Colonne brute station.
+	column n_sites_etiage
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: 6059e347-45f2-4ced-9b52-c00257c7c472
+		summarizeBy: none
+		sourceColumn: n_sites_etiage
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Nombre de sites inactifs pour le mois. Colonne brute station.
+	column n_sites_inactifs_mois
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: 3c2780f9-e967-4646-bd9f-370df257bc1d
+		summarizeBy: none
+		sourceColumn: n_sites_inactifs_mois
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Debit observe m3/s, colonne brute station. Pour une carte station, utiliser [Debit observe station m3s].
+	column debit_obs_m3s
+		dataType: double
+		isHidden
+		formatString: 0.00
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: 77b84ed9-fb08-4784-bf82-27ed89ab6f1d
+		summarizeBy: none
+		sourceColumn: debit_obs_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit preleve courant m3/s, colonne brute station. Pour une carte station, utiliser [Debit preleve courant station m3s].
+	column debit_preleve_m3s
+		dataType: double
+		isHidden
+		formatString: 0.00
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: 4647c622-1303-42b0-a773-e8379f00f6d4
+		summarizeBy: none
+		sourceColumn: debit_preleve_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit naturel m3/s, colonne brute station. Pour une carte station, utiliser [Debit naturel station m3s].
+	column debit_naturel_m3s
+		dataType: double
+		isHidden
+		formatString: 0.00
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: 3b754ca7-bfe6-4b9c-b54a-c31bf8e6750e
+		summarizeBy: none
+		sourceColumn: debit_naturel_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Pression observee actuelle, colonne brute station exprimee sur 0-100. Pour une carte, utiliser [Pression actuelle station pct].
+	column pression_observe_pct
+		dataType: double
+		isHidden
+		formatString: 0.00
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: 479db275-2ea0-41a9-92c3-dd25b4b8d541
+		summarizeBy: none
+		sourceColumn: pression_observe_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Categorie observee actuelle. Pour une carte de detail, utiliser la mesure [Categorie actuelle station].
+	column categorie_observe
+		dataType: string
+		displayFolder: 02 - Categories
+		lineageTag: 69194c26-f660-4f9f-8513-266fc337fe4a
+		summarizeBy: none
+		sourceColumn: categorie_observe
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Q27 ete m3/s, colonne brute station. Pour une carte, utiliser [Q27 ete station m3s].
+	column q27_ete_m3s
+		dataType: double
+		isHidden
+		formatString: 0.00
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: c29feaff-80b3-4c4a-b472-f833f601a6b5
+		summarizeBy: none
+		sourceColumn: q27_ete_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit preleve en etiage m3/s, colonne brute station. Pour une carte, utiliser [Debit preleve etiage station m3s].
+	column debit_preleve_etiage_m3s
+		dataType: double
+		isHidden
+		formatString: 0.00
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: bba6b309-f1b1-4805-b2b5-ce4319332a35
+		summarizeBy: none
+		sourceColumn: debit_preleve_etiage_m3s
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Pression d'etiage, colonne brute station exprimee sur 0-100. Pour une carte, utiliser [Pression etiage station pct].
+	column pression_etiage_pct
+		dataType: double
+		isHidden
+		formatString: 0.00
+		displayFolder: 03 - Indicateurs bruts
+		lineageTag: dc45c1d2-0c3f-4002-ae62-3a5d99fef6a4
+		summarizeBy: none
+		sourceColumn: pression_etiage_pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Categorie d'etiage. Champ utile pour legende et filtres; pour une carte de detail, utiliser [Categorie etiage station].
+	column categorie_etiage
+		dataType: string
+		displayFolder: 02 - Categories
+		lineageTag: 57470b92-2756-4a91-b3b0-2b36216f750a
+		summarizeBy: none
+		sourceColumn: categorie_etiage
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Horodatage technique de generation. Utiliser la mesure [Dernier instant UTC].
+	column generated_at_utc
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		displayFolder: 99 - Technique
+		lineageTag: b71104bb-6de0-4ee3-a380-80c157af41b3
+		summarizeBy: none
+		sourceColumn: generated_at_utc
+
+		variation Variation
+			isDefault
+			relationship: a5898f6d-423f-4ca9-b54c-420793976f87
+			defaultHierarchy: LocalDateTable_c8e7bf44-c2e5-4ed2-ba58-d766265aa5da.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Mois courant technique. Utiliser DimMois si necessaire.
+	column mois_courant
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: 99 - Technique
+		lineageTag: 3c3aa688-b75d-4a7c-b6cf-bd6cdd4a686f
+		summarizeBy: sum
+		sourceColumn: mois_courant
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Nom du mois courant technique.
+	column mois_courant_nom
+		dataType: string
+		isHidden
+		displayFolder: 99 - Technique
+		lineageTag: 0d8c92b0-0c34-409b-b410-fa352cfa850f
+		summarizeBy: none
+		sourceColumn: mois_courant_nom
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Date technique de mesure.
+	column date_mesure_utc
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		displayFolder: 99 - Technique
+		lineageTag: fdc14cb0-9170-40fb-b107-25ff15456748
+		summarizeBy: none
+		sourceColumn: date_mesure_utc
+
+		variation Variation
+			isDefault
+			relationship: a23ce2b4-a4ad-431c-907f-3d1b0f0cdf9a
+			defaultHierarchy: LocalDateTable_fbcde721-444f-42a6-a988-398af42ae54b.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column collected_at_utc
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-MM-dd HH:mm:ss
+		displayFolder: 99 - Technique
+		lineageTag: bbfb8728-7b16-4ac2-9fd4-e90a65f10fc3
+		summarizeBy: none
+		sourceColumn: collected_at_utc
+
+	column refreshed_at_utc
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-MM-dd HH:mm:ss
+		displayFolder: 99 - Technique
+		lineageTag: 37e8025e-ccb4-4007-976f-3e386572f0fa
+		summarizeBy: none
+		sourceColumn: refreshed_at_utc
+
+	column debit_obs_dernier_connu_m3s
+		dataType: double
+		isHidden
+		formatString: 0.00
+		displayFolder: 99 - Technique
+		lineageTag: ac39c536-b3cc-4e45-a666-30c6de179989
+		summarizeBy: none
+		sourceColumn: debit_obs_dernier_connu_m3s
+
+	column statut_debit_observe
+		dataType: string
+		lineageTag: 768c1c0d-3859-4b6b-bc06-3380aed9970a
+		summarizeBy: none
+		sourceColumn: statut_debit_observe
+
+	column generated_at_local
+		dataType: string
+		lineageTag: 06a196aa-b89e-4c95-9381-54c40e5cc860
+		summarizeBy: none
+		sourceColumn: generated_at_local
+
+	column prelevements_caracterises
+		dataType: boolean
+		lineageTag: 2e612f39-8aaa-4baf-9eba-7a8725f78daf
+		summarizeBy: none
+		sourceColumn: prelevements_caracterises
+
+	column categorie_actuelle_libelle
+		dataType: string
+		lineageTag: fe44a5a2-87ad-485f-be0d-2804ec4b3670
+		summarizeBy: none
+		sourceColumn: categorie_actuelle_libelle
+		sortByColumn: categorie_actuelle_ordre
+
+	column categorie_actuelle_ordre
+		dataType: int64
+		isHidden
+		lineageTag: b8ce6356-49a9-4cc1-b55c-d5a11166013b
+		summarizeBy: none
+		sourceColumn: categorie_actuelle_ordre
+
+	column categorie_etiage_libelle
+		dataType: string
+		lineageTag: 6a303a87-4401-4eb3-bb9f-732ebc71f3cb
+		summarizeBy: none
+		sourceColumn: categorie_etiage_libelle
+		sortByColumn: categorie_etiage_ordre
+
+	column categorie_etiage_ordre
+		dataType: int64
+		isHidden
+		lineageTag: dcce65c4-2f43-42e7-be7d-ed6d69a5a96b
+		summarizeBy: none
+		sourceColumn: categorie_etiage_ordre
+
+	hierarchy 'categorie_etiage Hiérarchie'
+		lineageTag: 919298be-f1a5-42ec-9467-b8c51428f800
+
+		level categorie_etiage
+			lineageTag: ed4bc563-ba17-40cd-b632-d2239d211de1
+			column: categorie_etiage
+
+	partition FactPressionSnapshot = m
+		mode: import
+		source =
+				let
+				    Source = HydroPression_Source,
+				    ToUtc = (Value as any) as nullable datetime =>
+				        if Value = null then null else
+				        try DateTimeZone.RemoveZone(DateTimeZone.ToUtc(DateTimeZone.FromText(Text.From(Value)))) otherwise null,
+				    GeneratedAtUtc = ToUtc(Source[generated_at]),
+				    CollectedAtUtc = ToUtc(try Source[fetch_status][fetched_at] otherwise null),
+				    RefreshedAtUtc = DateTimeZone.RemoveZone(DateTimeZone.ToUtc(DateTimeZone.FixedUtcNow())),
+				    MoisCourant = Int64.From(Source[mois_courant]),
+				    MoisCourantNom = Text.From(Source[mois_courant_nom]),
+				    Stations = Table.FromRecords(Source[stations]),
+				    Selected = Table.SelectColumns(
+				        Stations,
+				        {
+				            "code", "date_mesure", "etat_cehq", "statut_debit_observe", "prelevements_caracterises",
+				            "n_sites_amont", "n_sites_etiage", "n_sites_inactifs_mois",
+				            "debit_obs_m3s", "debit_obs_dernier_connu_m3s",
+				            "debit_preleve_m3s", "debit_naturel_m3s",
+				            "pression_observe_pct", "categorie_observe",
+				            "q27_ete_m3s", "debit_preleve_etiage_m3s",
+				            "pression_etiage_pct", "categorie_etiage"
+				        },
+				        MissingField.UseNull
+				    ),
+				    AddedGeneratedAt = Table.AddColumn(Selected, "generated_at_utc", each GeneratedAtUtc, type datetime),
+				    AddedCollectedAt = Table.AddColumn(AddedGeneratedAt, "collected_at_utc", each CollectedAtUtc, type datetime),
+				    AddedRefreshedAt = Table.AddColumn(AddedCollectedAt, "refreshed_at_utc", each RefreshedAtUtc, type datetime),
+				    AddedGeneratedLocal = Table.AddColumn(AddedRefreshedAt, "generated_at_local", each Text.From(Source[generated_at_local]), type text),
+				    AddedMoisCourant = Table.AddColumn(AddedGeneratedLocal, "mois_courant", each MoisCourant, Int64.Type),
+				    AddedMoisCourantNom = Table.AddColumn(AddedMoisCourant, "mois_courant_nom", each MoisCourantNom, type text),
+				    AddedDateMesureUtc = Table.AddColumn(AddedMoisCourantNom, "date_mesure_utc", each ToUtc([date_mesure]), type datetime),
+				    RemovedOriginalDateMesure = Table.RemoveColumns(AddedDateMesureUtc, {"date_mesure"}),
+				    Typed = Table.TransformColumnTypes(
+				        RemovedOriginalDateMesure,
+				        {
+				            {"code", type text}, {"etat_cehq", type text}, {"statut_debit_observe", type text},
+				            {"n_sites_amont", Int64.Type}, {"n_sites_etiage", Int64.Type}, {"n_sites_inactifs_mois", Int64.Type},
+				            {"debit_obs_m3s", type number}, {"debit_obs_dernier_connu_m3s", type number},
+				            {"debit_preleve_m3s", type number}, {"debit_naturel_m3s", type number},
+				            {"pression_observe_pct", type number}, {"categorie_observe", type text},
+				            {"q27_ete_m3s", type number}, {"debit_preleve_etiage_m3s", type number},
+				            {"pression_etiage_pct", type number}, {"categorie_etiage", type text}
+				        }
+				    ),
+				    Caracterises = Table.TransformColumnTypes(Typed, {{"prelevements_caracterises", type logical}}),
+				    Libelle = (c as nullable text) as text => Record.FieldOrDefault([critique="Critique", eleve="Élevée", modere="Modérée", faible="Faible", negligeable="Négligeable"], if c = null then "inconnu" else c, "Indéterminée"),
+				    Ordre = (c as nullable text) as number => Record.FieldOrDefault([critique=1, eleve=2, modere=3, faible=4, negligeable=5], if c = null then "inconnu" else c, 6),
+				    LibelleActuel = Table.AddColumn(Caracterises, "categorie_actuelle_libelle", each Libelle([categorie_observe]), type text),
+				    OrdreActuel = Table.AddColumn(LibelleActuel, "categorie_actuelle_ordre", each Ordre([categorie_observe]), Int64.Type),
+				    LibelleEtiage = Table.AddColumn(OrdreActuel, "categorie_etiage_libelle", each Libelle([categorie_etiage]), type text),
+				    OrdreEtiage = Table.AddColumn(LibelleEtiage, "categorie_etiage_ordre", each Ordre([categorie_etiage]), Int64.Type)
+				in
+				    OrdreEtiage
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

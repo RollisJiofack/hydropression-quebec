@@ -1,0 +1,341 @@
+/// Lot evolution uniquement. Grain site x annee; sommes declarees sans imputation. Source Surface, coordonnees et mois valides; exclusions et cascade de consommation gerees par le backend. Perimetre des mesures: sites distincts en amont d'au moins une station visible, pas un total quebecois. Null reste absent, zero declare reste zero.
+table FactSiteAnnee
+	lineageTag: f194f5bb-56b9-4dac-aec9-bb5e041dd383
+
+	/// m3/s; somme sur sites distincts au grain site x annee, stations visibles et autres filtres conserves. Une seule annee obligatoire. Sans site/valeur: BLANK; aucune conversion en zero. Juillet/aout: somme de maxima par site non necessairement simultanes; annuel: annee civile 365/366 jours, mois non declares non imputes.
+	measure 'Brut annuel (m3/s)' =
+			IF (
+			    HASONEVALUE ( DimAnnee[annee] ),
+			    CALCULATE (
+			        SUM ( FactSiteAnnee[debit_brut_annuel_m3s] ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( CorrespondanceSiteStation[num_site] ), FactSiteAnnee[num_site] ) )
+			    )
+			)
+		formatString: 0.000
+		displayFolder: Evolution 2020-2024
+		lineageTag: 7372336b-a6ac-435a-a1ad-6b19b11672a8
+
+	/// m3/s; somme sur sites distincts au grain site x annee, stations visibles et autres filtres conserves. Une seule annee obligatoire. Sans site/valeur: BLANK; aucune conversion en zero. Juillet/aout: somme de maxima par site non necessairement simultanes; annuel: annee civile 365/366 jours, mois non declares non imputes.
+	measure 'Brut juillet-aout (m3/s)' =
+			IF (
+			    HASONEVALUE ( DimAnnee[annee] ),
+			    CALCULATE (
+			        SUM ( FactSiteAnnee[debit_brut_juilaout_m3s] ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( CorrespondanceSiteStation[num_site] ), FactSiteAnnee[num_site] ) )
+			    )
+			)
+		formatString: 0.000
+		displayFolder: Evolution 2020-2024
+		lineageTag: 9e21cbf1-28cb-4ad3-a909-67504499eaa4
+
+	/// m3/s; somme sur sites distincts au grain site x annee, stations visibles et autres filtres conserves. Une seule annee obligatoire. Sans site/valeur: BLANK; aucune conversion en zero. Juillet/aout: somme de maxima par site non necessairement simultanes; annuel: annee civile 365/366 jours, mois non declares non imputes.
+	measure 'Nette annuelle (m3/s)' =
+			IF (
+			    HASONEVALUE ( DimAnnee[annee] ),
+			    CALCULATE (
+			        SUM ( FactSiteAnnee[conso_nette_annuel_m3s] ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( CorrespondanceSiteStation[num_site] ), FactSiteAnnee[num_site] ) )
+			    )
+			)
+		formatString: 0.000
+		displayFolder: Evolution 2020-2024
+		lineageTag: 809b74c2-4039-4435-8ddd-34ca9c42565a
+
+	/// m3/s; somme sur sites distincts au grain site x annee, stations visibles et autres filtres conserves. Une seule annee obligatoire. Sans site/valeur: BLANK; aucune conversion en zero. Juillet/aout: somme de maxima par site non necessairement simultanes; annuel: annee civile 365/366 jours, mois non declares non imputes.
+	measure 'Nette juillet-aout (m3/s)' =
+			IF (
+			    HASONEVALUE ( DimAnnee[annee] ),
+			    CALCULATE (
+			        SUM ( FactSiteAnnee[conso_nette_juilaout_m3s] ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( CorrespondanceSiteStation[num_site] ), FactSiteAnnee[num_site] ) )
+			    )
+			)
+		formatString: 0.000
+		displayFolder: Evolution 2020-2024
+		lineageTag: 8884874a-0ca7-46e3-803c-9cc8dbe79eaa
+
+	/// m3/s; grandeur choisie (defaut index 1), union distincte des sites amont des stations visibles. BLANK si plusieurs annees ou aucun site/valeur.
+	measure 'Valeur tous les sites' =
+			VAR g = SELECTEDVALUE ( Grandeur[index], 1 )
+			RETURN
+			    IF (
+			        HASONEVALUE ( DimAnnee[annee] ),
+			        SWITCH (
+			            g,
+			            1, [Brut annuel (m3/s)],
+			            2, [Brut juillet-aout (m3/s)],
+			            3, [Nette annuelle (m3/s)],
+			            4, [Nette juillet-aout (m3/s)]
+			        )
+			    )
+		formatString: 0.000
+		displayFolder: Evolution 2020-2024
+		lineageTag: 4247dea8-e6ec-4b11-8cea-9edb04e7b6d0
+
+	/// m3/s; meme mesure limitee au panel declarant chaque annee. Filtres DimSite conserves. Panel absent = BLANK, jamais zero artificiel.
+	measure 'Valeur panel constant' =
+			CALCULATE (
+			    [Valeur tous les sites],
+			    KEEPFILTERS ( DimSite[panel_2020_2024] = TRUE () )
+			)
+		formatString: 0.000
+		displayFolder: Evolution 2020-2024
+		lineageTag: 876715c7-5b6a-44ba-855b-807aaca4ccb0
+
+	/// m3/s; tous moins panel pour la meme annee. Contribution hors panel, pas une decomposition temporelle d'effet de composition. BLANK si une valeur manque.
+	measure 'Contribution hors panel (m3/s)' =
+			VAR t = [Valeur tous les sites]
+			VAR p = [Valeur panel constant]
+			RETURN IF ( NOT ISBLANK ( t ) && NOT ISBLANK ( p ), t - p )
+		formatString: 0.000
+		displayFolder: Evolution 2020-2024
+		lineageTag: 3285b095-3839-48f1-a3cc-f3e305eb86c3
+
+	/// Sites distincts avec au moins un mois declare dans l'annee visible, sans plafond de 20; BLANK si aucun site ou plusieurs annees.
+	measure 'Sites declarants' =
+			IF (
+			    HASONEVALUE ( DimAnnee[annee] ),
+			    CALCULATE (
+			        DISTINCTCOUNT ( FactSiteAnnee[num_site] ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( CorrespondanceSiteStation[num_site] ), FactSiteAnnee[num_site] ) ),
+			        KEEPFILTERS ( FactSiteAnnee[mois_declares] >= 1 )
+			    )
+			)
+		formatString: 0
+		displayFolder: Evolution 2020-2024
+		lineageTag: 5e9f6ddb-37fd-4844-ab60-bb06c5b63825
+
+	/// Nombre de sites distincts du panel rattaches aux stations visibles et filtres DimSite. Effectif constant, independant de l'axe annuel; BLANK si panel absent.
+	measure 'Sites panel constant' =
+			CALCULATE (
+			    DISTINCTCOUNT ( DimSite[num_site] ),
+			    KEEPFILTERS ( DimSite[panel_2020_2024] = TRUE () ),
+			    KEEPFILTERS ( TREATAS ( VALUES ( CorrespondanceSiteStation[num_site] ), DimSite[num_site] ) )
+			)
+		formatString: 0
+		displayFolder: Evolution 2020-2024
+		lineageTag: eab08833-74ab-4646-bc05-39b56f54bb5f
+
+	/// Ratio (derniere - premiere)/premiere du panel aux bornes globales des annees importees. Ignore tout filtre DimAnnee, y compris axe et segment, conserve tous les autres. BLANK si moins de deux annees, borne absente ou depart nul. Pas un test statistique.
+	measure 'Evolution du panel (%)' =
+			VAR a0 = CALCULATE ( MIN ( DimAnnee[annee] ), REMOVEFILTERS ( DimAnnee ) )
+			VAR a1 = CALCULATE ( MAX ( DimAnnee[annee] ), REMOVEFILTERS ( DimAnnee ) )
+			VAR v0 = CALCULATE ( [Valeur panel constant], REMOVEFILTERS ( DimAnnee ), TREATAS ( { a0 }, DimAnnee[annee] ) )
+			VAR v1 = CALCULATE ( [Valeur panel constant], REMOVEFILTERS ( DimAnnee ), TREATAS ( { a1 }, DimAnnee[annee] ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( a0 ) && NOT ISBLANK ( a1 ) && a0 < a1
+			            && NOT ISBLANK ( v0 ) && NOT ISBLANK ( v1 ),
+			        DIVIDE ( v1 - v0, v0 )
+			    )
+		formatString: 0.0%
+		displayFolder: Evolution 2020-2024
+		lineageTag: 9b42547a-9f51-46eb-875e-9d0e7391dc2a
+
+	/// Ratio des sommes sur les memes sites/annee, consommation annuelle seulement (index 3). BLANK pour brut, juillet/aout, plusieurs annees, denominateur nul/absent. Numerateur manquant non impute.
+	measure 'Part estimee a 100 %' =
+			VAR g = SELECTEDVALUE ( Grandeur[index], 1 )
+			VAR num =
+			    CALCULATE (
+			        SUM ( FactSiteAnnee[conso_defaut100_annuel_m3s] ),
+			        KEEPFILTERS ( TREATAS ( VALUES ( CorrespondanceSiteStation[num_site] ), FactSiteAnnee[num_site] ) )
+			    )
+			RETURN
+			    IF ( g = 3 && HASONEVALUE ( DimAnnee[annee] ), DIVIDE ( num, [Nette annuelle (m3/s)] ) )
+		formatString: 0.0%
+		displayFolder: Evolution 2020-2024
+		lineageTag: 5a122d71-5d49-44b0-89b5-ec7bf9aef43a
+
+	/// Nombre de sites distincts avec au moins une annee declaree partielle (1 a 11 mois) dans les annees visibles; absence totale d'annee non assimilee a zero ni a une annee partielle. BLANK si aucun.
+	measure 'Sites annees partielles' =
+			CALCULATE (
+			    DISTINCTCOUNT ( FactSiteAnnee[num_site] ),
+			    KEEPFILTERS ( TREATAS ( VALUES ( CorrespondanceSiteStation[num_site] ), FactSiteAnnee[num_site] ) ),
+			    KEEPFILTERS ( FactSiteAnnee[mois_declares] >= 1 ),
+			    KEEPFILTERS ( FactSiteAnnee[mois_declares] < 12 )
+			)
+		formatString: 0
+		displayFolder: Evolution 2020-2024
+		lineageTag: d02ec941-e39c-48db-bacb-3531a030d507
+
+	/// Texte dynamique, annees globales importees, perimetre union des sites amont et panel. Annuel: avertissement annee civile/absence d'imputation et compte distinct de sites partiels sur toute la periode; juillet/aout: maxima non simultanes. Consommation: avertissement methode. Message explicite sans site.
+	measure 'Sous-titre evolution' =
+			VAR a0 = CALCULATE ( MIN ( DimAnnee[annee] ), REMOVEFILTERS ( DimAnnee ) )
+			VAR a1 = CALCULATE ( MAX ( DimAnnee[annee] ), REMOVEFILTERS ( DimAnnee ) )
+			VAR nSites =
+			    COALESCE (
+			        CALCULATE (
+			            DISTINCTCOUNT ( DimSite[num_site] ),
+			            KEEPFILTERS ( TREATAS ( VALUES ( CorrespondanceSiteStation[num_site] ), DimSite[num_site] ) )
+			        ), 0
+			    )
+			VAR nPanel = COALESCE ( [Sites panel constant], 0 )
+			VAR nPartiels = COALESCE ( CALCULATE ( [Sites annees partielles], REMOVEFILTERS ( DimAnnee ) ), 0 )
+			VAR g = SELECTEDVALUE ( Grandeur[index], 1 )
+			VAR periode = IF ( NOT ISBLANK ( a0 ), FORMAT ( a0, "0" ) & "-" & FORMAT ( a1, "0" ), "aucune annee disponible" )
+			VAR avertissement =
+			    IF (
+			        g = 1 || g = 3,
+			        " | Moyenne sur l'annee civile (365/366 jours), somme des seuls mois declares, sans imputation; "
+			            & FORMAT ( nPartiels, "0" ) & " sites avec au moins une annee partielle",
+			        " | Somme de maxima juillet-aout par site, non necessairement simultanes"
+			    )
+			VAR conso = IF ( g >= 3, " | Consommation estimee: un changement de methode d'estimation peut creer des variations artificielles", "" )
+			RETURN
+			    IF (
+			        nSites = 0,
+			        "Evolution " & periode & " | Aucun site de prelevement rattache a la selection",
+			        "Evolution " & periode & " | " & FORMAT ( nSites, "0" )
+			            & " sites distincts en amont d'au moins une station de la selection (pas un total quebecois)"
+			            & " | Panel constant: " & FORMAT ( nPanel, "0" ) & " sites declarants chaque annee"
+			            & IF ( nPanel = 0, " (panel absent: valeurs vides)", "" )
+			            & avertissement & conso
+			    )
+		displayFolder: Evolution 2020-2024
+		lineageTag: 4a21a2b4-4c4d-4717-b207-a97aa4f18a09
+
+	/// Identifiant texte du site; grain unique site x annee.
+	measure 'MD - Brut annuel lié (Mm3)' = IF(HASONEVALUE(DimAnnee[annee]),CALCULATE(SUM(FactSiteAnnee[volume_brut_m3]),KEEPFILTERS(TREATAS(VALUES(CorrespondanceSiteStation[num_site]),FactSiteAnnee[num_site])))/1000000)
+		dataType: double
+		formatString: 0.0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 63bdad6a-5b39-4cb4-aace-4c24e8938b47
+
+	measure 'MD - Brut annuel panel (Mm3)' = CALCULATE([MD - Brut annuel lié (Mm3)],KEEPFILTERS(DimSite[panel_2020_2024]=TRUE()))
+		dataType: double
+		formatString: 0.0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: d6705a2d-6784-48f4-b2d2-20d0c9bdaa56
+
+	measure 'MD - Brut moyen historique (m3/j)' = DIVIDE(SUMX(VALUES(DimAnnee[annee]),[Brut annuel (m3/s)]),COUNTROWS(VALUES(DimAnnee[annee])))*86400
+		dataType: double
+		formatString: #,0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 7f82803e-11a4-4e49-8d5c-1b831859055d
+
+	measure 'MD - Net moyen historique (m3/j)' = DIVIDE(SUMX(VALUES(DimAnnee[annee]),[Nette annuelle (m3/s)]),COUNTROWS(VALUES(DimAnnee[annee])))*86400
+		dataType: double
+		formatString: #,0
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 383145c1-f8c3-4d05-8053-70ca8d34c102
+
+	measure 'MD - Part nette historique' = DIVIDE([MD - Net moyen historique (m3/j)],[MD - Brut moyen historique (m3/j)])
+		dataType: double
+		formatString: 0.0%
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: ff5f60ac-2456-40d7-b16b-af9297de018e
+
+	measure 'MD - Part nette secteur' = DIVIDE([MD - Net moyen historique (m3/j)],CALCULATE([MD - Net moyen historique (m3/j)],REMOVEFILTERS(DimSite[secteur_scian])))
+		dataType: double
+		formatString: 0.0%
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: cb1b5fdf-d4d5-41b3-af69-828e8c4ade88
+
+	measure 'MD - Évolution brute ensemble' = VAR A=CALCULATE([Brut annuel (m3/s)],REMOVEFILTERS(DimAnnee),DimAnnee[annee]=2020) VAR B=CALCULATE([Brut annuel (m3/s)],REMOVEFILTERS(DimAnnee),DimAnnee[annee]=2024) RETURN IF(NOT ISBLANK(A) && NOT ISBLANK(B),DIVIDE(B-A,A))
+		dataType: double
+		formatString: 0.0%
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 487d04fe-b2f3-44b0-aeba-2e6ec12d26ca
+
+	measure 'MD - Comparaison évolution' = FORMAT([Evolution du panel (%)],"+0.0%;-0.0%;0.0%") & " / " & FORMAT([MD - Évolution brute ensemble],"+0.0%;-0.0%;0.0%")
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		lineageTag: 846ac41a-68ea-42eb-9e97-b65fc34975f3
+
+	column num_site
+		dataType: string
+		lineageTag: c1a0f553-1af0-4dac-8679-05b9b22b1992
+		summarizeBy: none
+		sourceColumn: num_site
+
+	/// Annee civile de declaration; aucune ligne pour une annee sans declaration.
+	column annee
+		dataType: int64
+		formatString: 0
+		lineageTag: b5e7994d-db65-4f69-8e21-a39508aaaf9f
+		summarizeBy: none
+		sourceColumn: annee
+
+	/// Nombre de mois distincts declares, 1 a 12; moins de 12 signale une annee partielle.
+	column mois_declares
+		dataType: int64
+		formatString: 0
+		lineageTag: 955ed484-d485-47a5-8700-3e27503a0d3c
+		summarizeBy: none
+		sourceColumn: mois_declares
+
+	/// m3; somme des volumes des seuls mois declares, sans imputation.
+	column volume_brut_m3
+		dataType: double
+		formatString: 0.000
+		lineageTag: c2735d28-4a8f-4b5a-a294-0dac8ce19458
+		summarizeBy: none
+		sourceColumn: volume_brut_m3
+
+	/// m3/s; volume brut declare / (365 ou 366 jours x 86400); annee civile meme si partielle.
+	column debit_brut_annuel_m3s
+		dataType: double
+		formatString: 0.000
+		lineageTag: 98095cf1-3ac9-4c1b-ada3-df6bd6ba262b
+		summarizeBy: none
+		sourceColumn: debit_brut_annuel_m3s
+
+	/// m3/s; maximum des debits mensuels juillet/aout du site; null si aucun des deux mois declare.
+	column debit_brut_juilaout_m3s
+		dataType: double
+		formatString: 0.000
+		lineageTag: b81743d4-b9b1-4a49-b652-8935c434e82f
+		summarizeBy: none
+		sourceColumn: debit_brut_juilaout_m3s
+
+	/// m3/s; consommation estimee des mois declares / secondes de l'annee civile; sans imputation.
+	column conso_nette_annuel_m3s
+		dataType: double
+		formatString: 0.000
+		lineageTag: 0c9b5003-0dd0-4d58-a7cc-bf3d97784421
+		summarizeBy: none
+		sourceColumn: conso_nette_annuel_m3s
+
+	/// m3/s; maximum juillet/aout de consommation estimee par site; null si aucun mois declare.
+	column conso_nette_juilaout_m3s
+		dataType: double
+		formatString: 0.000
+		lineageTag: a25564f6-5ef7-4648-bc0a-dd0d253ca3e5
+		summarizeBy: none
+		sourceColumn: conso_nette_juilaout_m3s
+
+	/// m3/s; composante annuelle de consommation estimee au niveau 4, hypothese 100 %.
+	column conso_defaut100_annuel_m3s
+		dataType: double
+		formatString: 0.000
+		lineageTag: a3463399-9c60-4ede-a337-4af34888c078
+		summarizeBy: none
+		sourceColumn: conso_defaut100_annuel_m3s
+
+	partition FactSiteAnnee = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(
+				        Web.Contents("https://rollisjiofack.github.io/hydropression-quebec/", [RelativePath = "data/sites_annees.csv", Headers = [#"Cache-Control" = "no-cache", Pragma = "no-cache"]]),
+				        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Selected = Table.SelectColumns(Headers, {"num_site", "annee", "mois_declares", "volume_brut_m3", "debit_brut_annuel_m3s", "debit_brut_juilaout_m3s", "conso_nette_annuel_m3s", "conso_nette_juilaout_m3s", "conso_defaut100_annuel_m3s"}, MissingField.Error),
+				    Nulls = Table.ReplaceValue(Selected, "", null, Replacer.ReplaceValue, {"annee", "mois_declares", "volume_brut_m3", "debit_brut_annuel_m3s", "debit_brut_juilaout_m3s", "conso_nette_annuel_m3s", "conso_nette_juilaout_m3s", "conso_defaut100_annuel_m3s"}),
+				    Typed = Table.TransformColumnTypes(Nulls, {
+				        {"num_site", type text},
+				        {"annee", Int64.Type},
+				        {"mois_declares", Int64.Type},
+				        {"volume_brut_m3", type number},
+				        {"debit_brut_annuel_m3s", type number},
+				        {"debit_brut_juilaout_m3s", type number},
+				        {"conso_nette_annuel_m3s", type number},
+				        {"conso_nette_juilaout_m3s", type number},
+				        {"conso_defaut100_annuel_m3s", type number}
+				    }, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

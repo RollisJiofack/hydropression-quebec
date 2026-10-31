@@ -1,0 +1,146 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "f901617e4c7a0580de2b",
+  "displayName": "Risque d'étiage",
+  "displayOption": "FitToPage",
+  "width": 1280,
+  "height": 720,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F8FAFC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "234b6d85b02e6187b924",
+      "target": "8cf0e0665ff25bfbc593",
+      "type": "DataFilter"
+    },
+    {
+      "source": "234b6d85b02e6187b924",
+      "target": "236bf94957e5082e12c2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "234b6d85b02e6187b924",
+      "target": "tbl_p2_top",
+      "type": "DataFilter"
+    },
+    {
+      "source": "8cf0e0665ff25bfbc593",
+      "target": "234b6d85b02e6187b924",
+      "type": "DataFilter"
+    },
+    {
+      "source": "8cf0e0665ff25bfbc593",
+      "target": "236bf94957e5082e12c2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "8cf0e0665ff25bfbc593",
+      "target": "tbl_p2_top",
+      "type": "DataFilter"
+    },
+    {
+      "source": "236bf94957e5082e12c2",
+      "target": "234b6d85b02e6187b924",
+      "type": "DataFilter"
+    },
+    {
+      "source": "236bf94957e5082e12c2",
+      "target": "8cf0e0665ff25bfbc593",
+      "type": "DataFilter"
+    },
+    {
+      "source": "236bf94957e5082e12c2",
+      "target": "tbl_p2_top",
+      "type": "DataFilter"
+    },
+    {
+      "source": "tbl_p2_top",
+      "target": "234b6d85b02e6187b924",
+      "type": "DataFilter"
+    },
+    {
+      "source": "tbl_p2_top",
+      "target": "8cf0e0665ff25bfbc593",
+      "type": "DataFilter"
+    },
+    {
+      "source": "tbl_p2_top",
+      "target": "236bf94957e5082e12c2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "234b6d85b02e6187b924",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "234b6d85b02e6187b924",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8cf0e0665ff25bfbc593",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8cf0e0665ff25bfbc593",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "warn_p2_110",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "warn_p2_110",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "236bf94957e5082e12c2",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "236bf94957e5082e12c2",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "tbl_p2_top",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "tbl_p2_top",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    }
+  ]
+}

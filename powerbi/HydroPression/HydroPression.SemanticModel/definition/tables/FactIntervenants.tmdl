@@ -1,0 +1,461 @@
+table FactIntervenants
+	lineageTag: e3afec5a-f57c-435a-b317-446e1dbc8537
+
+	/// Cle technique vers DimStation[code]. Utiliser DimStation pour les champs station.
+	column station
+		dataType: string
+		isHidden
+		displayFolder: 99 - Technique
+		lineageTag: 35ca89b5-2c1f-4e29-805e-942e1d8e95fc
+		summarizeBy: none
+		sourceColumn: station
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Plan d'eau associe a la ligne intervenant.
+	column plan_deau
+		dataType: string
+		displayFolder: 01 - Intervenants
+		lineageTag: 7be12f33-6b3b-4d15-8eef-21ffbcaf6813
+		summarizeBy: none
+		sourceColumn: plan_deau
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Bassin primaire de la ligne intervenant.
+	column bv_prim
+		dataType: string
+		displayFolder: 01 - Intervenants
+		lineageTag: 9130e560-6fd0-41aa-bee6-303b8ad44db6
+		summarizeBy: none
+		sourceColumn: bv_prim
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Rang de l'intervenant dans la station. Ne pas sommer.
+	column rang
+		dataType: int64
+		formatString: 0
+		displayFolder: 01 - Intervenants
+		lineageTag: a1daad92-c697-434e-98bc-c4f862426e58
+		summarizeBy: none
+		sourceColumn: rang
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Nom de l'intervenant/preleveur.
+	column nom_intervenant
+		dataType: string
+		displayFolder: 01 - Intervenants
+		lineageTag: d86cf45b-36f5-413d-9515-c8ffb09350c4
+		summarizeBy: none
+		sourceColumn: nom_intervenant
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Numero de site.
+	column num_site
+		dataType: string
+		displayFolder: 01 - Intervenants
+		lineageTag: 115d1ae8-1963-4faa-9aae-dd23a5df4dcf
+		summarizeBy: none
+		sourceColumn: num_site
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Secteur SCIAN.
+	column secteur_scian
+		dataType: string
+		displayFolder: 01 - Intervenants
+		lineageTag: 1baa4137-e144-4e40-9dee-030e66e72c4c
+		summarizeBy: none
+		sourceColumn: secteur_scian
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Municipalite.
+	column municipalite
+		dataType: string
+		displayFolder: 01 - Intervenants
+		lineageTag: 0cb3e478-9674-4538-b8f4-7d978c066860
+		summarizeBy: none
+		sourceColumn: municipalite
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Debit d'etiage m3/s de l'intervenant. Somme utile dans un tableau groupe.
+	column debit_etiage_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants
+		lineageTag: b74e3b01-7a8a-45db-a91e-a10842cd041c
+		summarizeBy: sum
+		sourceColumn: debit_etiage_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Volume annuel moyen en Mm3. Somme utile dans un tableau groupe.
+	column volume_annuel_moyen_Mm3
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants
+		lineageTag: 86e4294f-a51f-4e7e-a9c9-ea4568648de9
+		summarizeBy: sum
+		sourceColumn: volume_annuel_moyen_Mm3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Premiere annee disponible. Ne pas sommer.
+	column premiere_annee
+		dataType: int64
+		formatString: 0
+		displayFolder: 01 - Intervenants
+		lineageTag: f2a45b08-3c63-42f7-a370-6762d84f3941
+		summarizeBy: none
+		sourceColumn: premiere_annee
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Derniere annee disponible. Ne pas sommer.
+	column derniere_annee
+		dataType: int64
+		formatString: 0
+		displayFolder: 01 - Intervenants
+		lineageTag: c381facc-5488-4894-b2c6-f6444431e288
+		summarizeBy: none
+		sourceColumn: derniere_annee
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Debit de janvier m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_01_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: 088aec93-2050-497b-bdb3-ff6841b89ff6
+		summarizeBy: sum
+		sourceColumn: debit_mois_01_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit de fevrier m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_02_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: 62206654-dc4d-4137-8697-a900aa7087e5
+		summarizeBy: sum
+		sourceColumn: debit_mois_02_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit de mars m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_03_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: 6aeaff2f-b602-4a7b-b907-33517be52de5
+		summarizeBy: sum
+		sourceColumn: debit_mois_03_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit d'avril m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_04_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: e8c19cef-a39f-4058-8ea6-bc4ef15aab8c
+		summarizeBy: sum
+		sourceColumn: debit_mois_04_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit de mai m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_05_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: 38f3f215-922f-4275-ad9f-abb0c07a5ab2
+		summarizeBy: sum
+		sourceColumn: debit_mois_05_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit de juin m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_06_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: 180fb77e-48e2-4895-af46-b40c8cc06523
+		summarizeBy: sum
+		sourceColumn: debit_mois_06_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit de juillet m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_07_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: c531130c-917e-43bd-ad9e-bbd73d4f6cc5
+		summarizeBy: sum
+		sourceColumn: debit_mois_07_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit d'aout m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_08_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: a015a49a-2471-410e-820a-5089cdff1a4a
+		summarizeBy: sum
+		sourceColumn: debit_mois_08_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit de septembre m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_09_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: 73523ebc-08cd-46ae-9183-1cf49ce646f6
+		summarizeBy: sum
+		sourceColumn: debit_mois_09_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit d'octobre m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_10_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: f1896504-93b2-4c21-b1d6-9fc4413a838d
+		summarizeBy: sum
+		sourceColumn: debit_mois_10_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit de novembre m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_11_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: 6068daf4-eadc-4d36-a939-11691ed19e93
+		summarizeBy: sum
+		sourceColumn: debit_mois_11_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit de decembre m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_12_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants\Mois
+		lineageTag: c6953fc1-0076-476e-bc88-8df02b47d2f1
+		summarizeBy: sum
+		sourceColumn: debit_mois_12_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Debit du mois courant m3/s. Somme utile dans un tableau groupe.
+	column debit_mois_courant_m3s
+		dataType: double
+		formatString: 0.00
+		displayFolder: 02 - Debits intervenants
+		lineageTag: 4cd96212-19e5-47ae-a305-29b2ead3954d
+		summarizeBy: sum
+		sourceColumn: debit_mois_courant_m3s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Horodatage technique de generation.
+	column generated_at_utc
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		displayFolder: 99 - Technique
+		lineageTag: aebba2d3-6031-4e0a-b650-32e7a480fb9d
+		summarizeBy: none
+		sourceColumn: generated_at_utc
+
+		variation Variation
+			isDefault
+			relationship: f6e00e60-69eb-490f-899c-922fe852a868
+			defaultHierarchy: LocalDateTable_c7177a4f-cb90-4e2b-95f4-71b34ae94d2a.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Mois courant technique.
+	column mois_courant
+		dataType: int64
+		isHidden
+		formatString: 0
+		displayFolder: 99 - Technique
+		lineageTag: 96e9a008-8dfe-4c21-a7bc-d39979689f74
+		summarizeBy: sum
+		sourceColumn: mois_courant
+
+		annotation SummarizationSetBy = Automatic
+
+	column actif_mois_courant
+		dataType: boolean
+		lineageTag: 1e1074c4-e785-498b-99ae-b68a87175513
+		summarizeBy: none
+		sourceColumn: actif_mois_courant
+
+	column activite_mois_libelle
+		dataType: string
+		lineageTag: ffeb2531-ebe1-4ea4-a01e-0e76dc54cfa9
+		summarizeBy: none
+		sourceColumn: activite_mois_libelle
+
+	partition FactIntervenants = m
+		mode: import
+		source =
+				let
+				    Source = HydroPression_Source,
+				    GeneratedAtUtc = DateTimeZone.RemoveZone(DateTimeZone.FromText(Source[generated_at])),
+				    MoisCourant = Int64.From(Source[mois_courant]),
+				    Stations = Table.FromRecords(Source[stations]),
+				    Selected = Table.SelectColumns(Stations, {"code", "plan_deau", "bv_prim", "intervenants"}),
+				    RenamedStation = Table.RenameColumns(Selected, {{"code", "station"}}),
+				    ExpandedList = Table.ExpandListColumn(RenamedStation, "intervenants"),
+				    Filtered = Table.SelectRows(ExpandedList, each [intervenants] <> null),
+				    ExpandedRecords = Table.ExpandRecordColumn(
+				        Filtered,
+				        "intervenants",
+				        {
+				            "rang",
+				            "nom_intervenant",
+				            "num_site",
+				            "secteur_scian",
+				            "municipalite",
+				            "debit_etiage_m3s",
+				            "volume_annuel_moyen_Mm3",
+				            "premiere_annee",
+				            "derniere_annee",
+				            "debit_mois_01_m3s",
+				            "debit_mois_02_m3s",
+				            "debit_mois_03_m3s",
+				            "debit_mois_04_m3s",
+				            "debit_mois_05_m3s",
+				            "debit_mois_06_m3s",
+				            "debit_mois_07_m3s",
+				            "debit_mois_08_m3s",
+				            "debit_mois_09_m3s",
+				            "debit_mois_10_m3s",
+				            "debit_mois_11_m3s",
+				            "debit_mois_12_m3s",
+				            "debit_mois_courant_m3s",
+				            "actif_mois_courant"
+				        },
+				        {
+				            "rang",
+				            "nom_intervenant",
+				            "num_site",
+				            "secteur_scian",
+				            "municipalite",
+				            "debit_etiage_m3s",
+				            "volume_annuel_moyen_Mm3",
+				            "premiere_annee",
+				            "derniere_annee",
+				            "debit_mois_01_m3s",
+				            "debit_mois_02_m3s",
+				            "debit_mois_03_m3s",
+				            "debit_mois_04_m3s",
+				            "debit_mois_05_m3s",
+				            "debit_mois_06_m3s",
+				            "debit_mois_07_m3s",
+				            "debit_mois_08_m3s",
+				            "debit_mois_09_m3s",
+				            "debit_mois_10_m3s",
+				            "debit_mois_11_m3s",
+				            "debit_mois_12_m3s",
+				            "debit_mois_courant_m3s",
+				            "actif_mois_courant"
+				        }
+				    ),
+				    AddedGeneratedAt = Table.AddColumn(
+				        ExpandedRecords,
+				        "generated_at_utc",
+				        each GeneratedAtUtc,
+				        type datetime
+				    ),
+				    AddedMoisCourant = Table.AddColumn(
+				        AddedGeneratedAt,
+				        "mois_courant",
+				        each MoisCourant,
+				        Int64.Type
+				    ),
+				    Typed = Table.TransformColumnTypes(
+				        AddedMoisCourant,
+				        {
+				            {"station", type text},
+				            {"plan_deau", type text},
+				            {"bv_prim", type text},
+				            {"rang", Int64.Type},
+				            {"nom_intervenant", type text},
+				            {"num_site", type text},
+				            {"secteur_scian", type text},
+				            {"municipalite", type text},
+				            {"debit_etiage_m3s", type number},
+				            {"volume_annuel_moyen_Mm3", type number},
+				            {"premiere_annee", Int64.Type},
+				            {"derniere_annee", Int64.Type},
+				            {"debit_mois_01_m3s", type number},
+				            {"debit_mois_02_m3s", type number},
+				            {"debit_mois_03_m3s", type number},
+				            {"debit_mois_04_m3s", type number},
+				            {"debit_mois_05_m3s", type number},
+				            {"debit_mois_06_m3s", type number},
+				            {"debit_mois_07_m3s", type number},
+				            {"debit_mois_08_m3s", type number},
+				            {"debit_mois_09_m3s", type number},
+				            {"debit_mois_10_m3s", type number},
+				            {"debit_mois_11_m3s", type number},
+				            {"debit_mois_12_m3s", type number},
+				            {"debit_mois_courant_m3s", type number},
+				            {"actif_mois_courant", type logical}
+				        }
+				    ),
+				    Identifiants = Table.TransformColumns(Typed, {{"num_site", (v as nullable text) as nullable text => if v = null then null else if Text.EndsWith(v, ".0") and Text.Length(v) > 2 and Text.Select(Text.Start(v, Text.Length(v)-2), {"0".."9"}) = Text.Start(v, Text.Length(v)-2) then Text.Start(v, Text.Length(v)-2) else v, type text}}),
+				    Activite = Table.AddColumn(Identifiants, "activite_mois_libelle", each if [actif_mois_courant] = null then "Non renseigné" else if [actif_mois_courant] then "Oui" else "Non", type text)
+				in
+				    Activite
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

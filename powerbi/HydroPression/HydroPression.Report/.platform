@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "HydroPression"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "91049e90-8ec8-4d65-973f-687e1a5068d7"
+  }
+}

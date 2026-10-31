@@ -1,0 +1,79 @@
+table DimCategorie
+	lineageTag: 335781be-ddff-4986-8f6c-059c691096dc
+
+	/// Code de categorie.
+	column categorie
+		dataType: string
+		displayFolder: 01 - Categorie
+		lineageTag: f70978fc-e33d-43f6-a458-6550dfefedcc
+		summarizeBy: none
+		sourceColumn: categorie
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Libelle de categorie.
+	column libelle
+		dataType: string
+		displayFolder: 01 - Categorie
+		lineageTag: f01f344f-a3fb-4a33-b915-2d85d73f1bcf
+		summarizeBy: none
+		sourceColumn: libelle
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Ordre de tri de la categorie. Ne pas sommer.
+	column ordre
+		dataType: int64
+		formatString: 0
+		displayFolder: 01 - Categorie
+		lineageTag: 23a2d2a5-9d87-42be-84d5-171ac1cd3e7c
+		summarizeBy: none
+		sourceColumn: ordre
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Seuil minimal de la categorie, exprime sur 0-100. Ne pas sommer.
+	column seuil_min_pct
+		dataType: double
+		formatString: 0.00
+		displayFolder: 01 - Categorie
+		lineageTag: d1124115-3914-4739-8d44-d9fe15b62f59
+		summarizeBy: none
+		sourceColumn: seuil_min_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Couleur hexadecimale de la categorie.
+	column couleur_hex
+		dataType: string
+		displayFolder: 01 - Categorie
+		lineageTag: e7dcc5f6-250c-47c0-90af-a75fabc20b11
+		summarizeBy: none
+		sourceColumn: couleur_hex
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCategorie = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        type table [categorie = text, libelle = text, ordre = Int64.Type, seuil_min_pct = number, couleur_hex = text],
+				        {
+				            {"negligeable", "Negligeable", 1, 0, "#1a4a3a"},
+				            {"faible", "Faible", 2, 5, "#7eb693"},
+				            {"modere", "Moderee", 3, 15, "#e6c14a"},
+				            {"eleve", "Elevee", 4, 30, "#d97a4a"},
+				            {"critique", "Critique", 5, 50, "#a32424"},
+				            {"inconnu", "Indeterminee", 6, null, "#b8b3a8"}
+				        }
+				    )
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

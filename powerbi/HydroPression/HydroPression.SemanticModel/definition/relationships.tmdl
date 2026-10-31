@@ -1,0 +1,48 @@
+relationship a5898f6d-423f-4ca9-b54c-420793976f87
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactPressionSnapshot.generated_at_utc
+	toColumn: LocalDateTable_c8e7bf44-c2e5-4ed2-ba58-d766265aa5da.Date
+
+relationship a23ce2b4-a4ad-431c-907f-3d1b0f0cdf9a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactPressionSnapshot.date_mesure_utc
+	toColumn: LocalDateTable_fbcde721-444f-42a6-a988-398af42ae54b.Date
+
+relationship f6e00e60-69eb-490f-899c-922fe852a868
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactIntervenants.generated_at_utc
+	toColumn: LocalDateTable_c7177a4f-cb90-4e2b-95f4-71b34ae94d2a.Date
+
+relationship 47cb3200-6417-0847-96d9-f06a00e4ae95
+	fromColumn: FactPressionSnapshot.code
+	toColumn: DimStation.code
+
+relationship 8b2551a1-2652-7f70-d56d-2d839b7ded08
+	fromColumn: FactDebitMensuel.code
+	toColumn: DimStation.code
+
+relationship 481a364f-d482-f2ce-1334-1c2375252513
+	fromColumn: FactIntervenants.station
+	toColumn: DimStation.code
+
+relationship dd974460-1dca-cad5-a170-62cb52e55a90
+	fromColumn: FactDebitMensuel.mois_num
+	toColumn: DimMois.mois_num
+
+relationship 2b42cbe2-ef68-5687-9e1b-f3737caf2e59
+	fromColumn: FactSiteAnnee.num_site
+	toColumn: DimSite.num_site
+
+relationship 85b17715-9426-58da-9e0a-5a41e12835e0
+	fromColumn: FactSiteAnnee.annee
+	toColumn: DimAnnee.annee
+
+relationship f63db5dd-8f3f-5fdb-81fc-6121ee527809
+	fromColumn: CorrespondanceSiteStation.station
+	toColumn: DimStation.code
+
+relationship 9eaf3e26-e304-4fa2-bfd9-bc2d1140d3e4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimStation.signalement_date
+	toColumn: LocalDateTable_e9aae974-99b2-4ef4-9a21-e4665db3c7a8.Date
+

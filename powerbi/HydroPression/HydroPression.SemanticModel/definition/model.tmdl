@@ -1,0 +1,36 @@
+model Model
+	culture: fr-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-CA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["HydroPression_Source","DimStation","FactPressionSnapshot","FactDebitMensuel","FactIntervenants","DimMois","DimCategorie","FactSiteAnnee","DimSite","CorrespondanceSiteStation","DimAnnee","Grandeur","FiltreVigilance"]
+
+annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode","WebModelingEdit","TMDLView_Desktop","DaxQueryView_Desktop"]
+
+annotation __LastRPTime = 134364057882296467
+
+ref table DimStation
+ref table FactPressionSnapshot
+ref table DateTableTemplate_f1ed9b03-a9cc-4fdf-b7e2-8fbb9aa46476
+ref table LocalDateTable_c8e7bf44-c2e5-4ed2-ba58-d766265aa5da
+ref table LocalDateTable_fbcde721-444f-42a6-a988-398af42ae54b
+ref table FactDebitMensuel
+ref table FactIntervenants
+ref table LocalDateTable_c7177a4f-cb90-4e2b-95f4-71b34ae94d2a
+ref table DimMois
+ref table DimCategorie
+ref table FactSiteAnnee
+ref table DimSite
+ref table CorrespondanceSiteStation
+ref table DimAnnee
+ref table Grandeur
+ref table LocalDateTable_e9aae974-99b2-4ef4-9a21-e4665db3c7a8
+ref table FiltreVigilance
+
+ref cultureInfo fr-CA
+

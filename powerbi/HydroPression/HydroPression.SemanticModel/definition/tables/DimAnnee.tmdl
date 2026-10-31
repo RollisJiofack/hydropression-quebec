@@ -1,0 +1,25 @@
+/// Lot evolution uniquement. Dimension importee par M depuis les annees distinctes des faits. Les KPI utilisent les bornes globales en ignorant les filtres de cette dimension seulement.
+table DimAnnee
+	lineageTag: 63dde64c-d8ff-41a3-9314-ec506557c858
+
+	/// Annees distinctes de FactSiteAnnee via M; pas de calendrier artificiel ni d'annee imputee.
+	column annee
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 42417001-fc7a-4bd4-bb32-28c1e59e9237
+		summarizeBy: none
+		sourceColumn: annee
+
+	partition DimAnnee = m
+		mode: import
+		source =
+				let
+				    Source = FactSiteAnnee,
+				    Selected = Table.SelectColumns(Source, {"annee"}),
+				    Distinct = Table.Distinct(Selected),
+				    Typed = Table.TransformColumnTypes(Distinct, {{"annee", Int64.Type}}, "en-US"),
+				    Sorted = Table.Sort(Typed, {{"annee", Order.Ascending}})
+				in
+				    Sorted
+

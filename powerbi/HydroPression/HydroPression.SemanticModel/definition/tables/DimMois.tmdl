@@ -1,0 +1,72 @@
+table DimMois
+	lineageTag: 033885d6-8532-4cfb-af0f-4623c9980160
+
+	/// Numero de mois. Ne pas sommer.
+	column mois_num
+		dataType: int64
+		formatString: 0
+		displayFolder: 01 - Mois
+		lineageTag: e1a6e3ad-1478-477b-a355-97f7e0e9eaf0
+		summarizeBy: none
+		sourceColumn: mois_num
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Libelle texte du mois.
+	column mois_txt
+		dataType: string
+		displayFolder: 01 - Mois
+		lineageTag: 287dad96-cba5-4ca3-9ad3-f0aee83b8238
+		summarizeBy: none
+		sourceColumn: mois_txt
+
+		annotation SummarizationSetBy = Automatic
+
+	column mois_nom
+		dataType: string
+		displayFolder: 01 - Mois
+		lineageTag: 552a3cf2-265a-4d4c-8773-92f9f483f957
+		summarizeBy: none
+		sourceColumn: mois_nom
+		sortByColumn: mois_num
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Saison associee au mois.
+	column saison
+		dataType: string
+		displayFolder: 01 - Mois
+		lineageTag: 721558fb-a602-43f6-a19b-e9508402e02b
+		summarizeBy: none
+		sourceColumn: saison
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimMois = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        type table [mois_num = Int64.Type, mois_txt = text, mois_nom = text, saison = text],
+				        {
+				            {1, "01", "janvier", "hiver"},
+				            {2, "02", "fevrier", "hiver"},
+				            {3, "03", "mars", "printemps"},
+				            {4, "04", "avril", "printemps"},
+				            {5, "05", "mai", "printemps"},
+				            {6, "06", "juin", "ete"},
+				            {7, "07", "juillet", "ete"},
+				            {8, "08", "aout", "ete"},
+				            {9, "09", "septembre", "automne"},
+				            {10, "10", "octobre", "automne"},
+				            {11, "11", "novembre", "automne"},
+				            {12, "12", "decembre", "hiver"}
+				        }
+				    )
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

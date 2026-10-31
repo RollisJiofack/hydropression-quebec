@@ -1,0 +1,28 @@
+{
+  "name": "HydroPressionRevue.json",
+  "dataColors": [
+    "#B91C1C",
+    "#EA580C",
+    "#D97706",
+    "#EAB308",
+    "#0284C7",
+    "#94A3B8"
+  ],
+  "background": "#F8FAFC",
+  "foreground": "#0F172A",
+  "tableAccent": "#0284C7",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12
+    },
+    "callout": {
+      "fontFace": "Segoe UI",
+      "fontSize": 23
+    }
+  }
+}

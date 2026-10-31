@@ -1,0 +1,209 @@
+table DimStation
+	lineageTag: 1b76cd2b-f12e-4290-a70b-517a46620699
+
+	measure 'Signalement station' =
+			
+			VAR CodeStation = SELECTEDVALUE ( FactPressionSnapshot[code] )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( CodeStation ),
+			        LOOKUPVALUE (
+			            DimStation[signalement_motif],
+			            DimStation[code], CodeStation
+			        ),
+			        BLANK ()
+			    )
+		lineageTag: 4b628771-2536-490a-a011-dde6cbea95ae
+
+	measure 'Stations avec signalement' =
+			
+			COALESCE (
+			    CALCULATE (
+			        DISTINCTCOUNT ( DimStation[code] ),
+			        REMOVEFILTERS (),
+			        FILTER (
+			            ALL ( DimStation ),
+			            LEN ( TRIM ( COALESCE ( DimStation[signalement_motif], "" ) ) ) > 0
+			        )
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 1a979fd1-003d-49ec-8f40-b3b48b469651
+
+	/// Code de station. Champ recommande pour les tableaux, relations et info-bulles.
+	column code
+		dataType: string
+		displayFolder: 01 - Station
+		lineageTag: 2d1ad9e3-dbd7-4aac-a05b-cd9a8f0cb4cf
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Nom de la station.
+	column nom
+		dataType: string
+		displayFolder: 01 - Station
+		lineageTag: 4a6771db-d5f3-4905-bdde-0c9422fa21e3
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Plan d'eau associe a la station.
+	column plan_deau
+		dataType: string
+		displayFolder: 01 - Station
+		lineageTag: 4f424927-8cc3-4dd9-bfe4-32b457d5b44c
+		summarizeBy: none
+		sourceColumn: plan_deau
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Bassin versant primaire. Champ recommande pour le segment bassin primaire.
+	column bv_prim
+		dataType: string
+		displayFolder: 01 - Station
+		lineageTag: 583d2cad-5612-49cc-8735-bb20363a1836
+		summarizeBy: none
+		sourceColumn: bv_prim
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Superficie du bassin de la station en km2. Ne pas sommer dans les cartes KPI.
+	column superficie_km2
+		dataType: double
+		formatString: 0.00
+		displayFolder: 01 - Station
+		lineageTag: d50990b5-0d2c-4c3a-b105-bfb0a3318e0a
+		summarizeBy: sum
+		sourceColumn: superficie_km2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Latitude de la station. Utiliser comme latitude dans les cartes; ne pas sommer.
+	column lat
+		dataType: double
+		formatString: 0.000000
+		displayFolder: 02 - Localisation
+		lineageTag: 85a6335e-ac05-471b-a5ac-8d6b0d8d79b8
+		dataCategory: Latitude
+		summarizeBy: sum
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Longitude de la station. Utiliser comme longitude dans les cartes; ne pas sommer.
+	column lon
+		dataType: double
+		formatString: 0.000000
+		displayFolder: 02 - Localisation
+		lineageTag: ecca639d-cf5a-4523-925a-1461410ef362
+		dataCategory: Longitude
+		summarizeBy: sum
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Lien CEHQ de la station.
+	column url_cehq
+		dataType: string
+		displayFolder: 01 - Station
+		lineageTag: 7dcbb5f6-f8d0-4661-917a-6cb68f8f5a35
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: url_cehq
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Libelle complet code - nom. Champ recommande pour le segment station.
+	column station_label
+		dataType: string
+		displayFolder: 01 - Station
+		lineageTag: da30b01a-972b-4a1b-9856-bc331d64deea
+		summarizeBy: none
+		sourceColumn: station_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column signalement_motif
+		dataType: string
+		lineageTag: 279399ce-9be1-4d28-8796-359fe23773d3
+		summarizeBy: none
+		sourceColumn: signalement_motif
+
+		annotation SummarizationSetBy = Automatic
+
+	column signalement_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 24ae77d0-bf8c-4d0d-ac33-f06928f4dbed
+		summarizeBy: none
+		sourceColumn: signalement_date
+
+		variation Variation
+			isDefault
+			relationship: 9eaf3e26-e304-4fa2-bfd9-bc2d1140d3e4
+			defaultHierarchy: LocalDateTable_e9aae974-99b2-4ef4-9a21-e4665db3c7a8.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition DimStation = m
+		mode: import
+		source =
+				let
+				    Source = HydroPression_Source,
+				    Stations = Table.FromRecords(Source[stations]),
+				    Selected = Table.SelectColumns(
+				        Stations,
+				        {
+				            "code",
+				            "nom",
+				            "plan_deau",
+				            "bv_prim",
+				            "superficie_km2",
+				            "lat",
+				            "lon",
+				            "url_cehq",
+				            "signalement_motif",
+				            "signalement_date"
+				        },
+				        MissingField.UseNull
+				    ),
+				    Typed = Table.TransformColumnTypes(
+				        Selected,
+				        {
+				            {"code", type text},
+				            {"nom", type text},
+				            {"plan_deau", type text},
+				            {"bv_prim", type text},
+				            {"superficie_km2", type number},
+				            {"lat", type number},
+				            {"lon", type number},
+				            {"url_cehq", type text},
+				            {"signalement_motif", type text},
+				            {"signalement_date", type date}
+				        }
+				    ),
+				    AddedStationLabel = Table.AddColumn(
+				        Typed,
+				        "station_label",
+				        each [code] & " - " & (if [plan_deau] = null then [nom] else [plan_deau]),
+				        type text
+				    )
+				in
+				    AddedStationLabel
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

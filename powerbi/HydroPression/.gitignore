@@ -1,0 +1,7 @@
+.pbi/
+**/.pbi/
+*.pbix
+controles/
+prepare-publication.mjs
+check-publication.py
+commit-manifest.json

@@ -1,0 +1,147 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "b9ae026af6082ff87ffd",
+  "displayName": "Fiche station",
+  "displayOption": "FitToWidth",
+  "width": 1280,
+  "height": 1240,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F8FAFC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "type": "Drillthrough",
+  "pageBinding": {
+    "name": "md_station_drill",
+    "type": "Drillthrough",
+    "acceptsFilterContext": "Default",
+    "parameters": [
+      {
+        "name": "station",
+        "boundFilter": "md_station_filter",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimStation"
+              }
+            },
+            "Property": "code"
+          }
+        }
+      }
+    ]
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "md_station_filter",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimStation"
+              }
+            },
+            "Property": "code"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "61cbdc0c7a52a8a52ee7",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "61cbdc0c7a52a8a52ee7",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "0a16b71d795252fc784a",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "0a16b71d795252fc784a",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "94c5199911675544d336",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "94c5199911675544d336",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bar_p3_qcomp",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bar_p3_qcomp",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6bc4295843fb1b9bc7f",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6bc4295843fb1b9bc7f",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f6e49e8a6b2896959dc9",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f6e49e8a6b2896959dc9",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e41c78eb365c6760f2d9",
+      "target": "md_footer_utc",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e41c78eb365c6760f2d9",
+      "target": "md_footer_local",
+      "type": "NoFilter"
+    }
+  ]
+}
