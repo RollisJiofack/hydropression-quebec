@@ -45,7 +45,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Indéterminée : pression non évaluable. Ce n’est ni une pression nulle ni une preuve d’absence de prélèvement.",
+                    "value": "Actuel indéterminé : pression non évaluable. En étiage, « Négligeable » inclut aussi les stations avec Q2,7 mais sans prélèvements caractérisés ; leur pression reste vide.",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "9.5pt",
