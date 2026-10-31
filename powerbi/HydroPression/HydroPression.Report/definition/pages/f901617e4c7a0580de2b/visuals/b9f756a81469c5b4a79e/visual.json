@@ -5,8 +5,8 @@
     "x": 1056,
     "y": 72,
     "z": 300,
-    "width": 208,
     "height": 56,
+    "width": 208,
     "tabOrder": 150
   },
   "visual": {
@@ -23,13 +23,13 @@
                       "Entity": "FactPressionSnapshot"
                     }
                   },
-                  "Property": "categorie_etiage_libelle"
+                  "Property": "categorie_etiage_page2_libelle"
                 }
               },
-              "queryRef": "FactPressionSnapshot.categorie_etiage_libelle",
-              "nativeQueryRef": "categorie_etiage_libelle",
-              "displayName": "categorie_etiage_libelle",
-              "active": true
+              "queryRef": "FactPressionSnapshot.categorie_etiage_page2_libelle",
+              "nativeQueryRef": "Catégorie",
+              "active": true,
+              "displayName": "Catégorie"
             }
           ]
         }

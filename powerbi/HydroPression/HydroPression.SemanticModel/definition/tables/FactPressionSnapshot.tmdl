@@ -491,7 +491,7 @@ table FactPressionSnapshot
 		lineageTag: f756de19-a3ab-4a8c-b67c-33906d6b6dcc
 
 	/// Presentation de la revue visuelle; regles metier existantes conservees.
-	measure 'Catégorie étiage affichée' = SWITCH ( [Categorie etiage station], "critique", "Critique", "eleve", "Élevée", "modere", "Modérée", "faible", "Faible", "negligeable", "Négligeable", "inconnu", IF ( SELECTEDVALUE ( FactPressionSnapshot[prelevements_caracterises], TRUE () ) = FALSE () && NOT ISBLANK ( [Q27 ete station m3s] ) && [Q27 ete station m3s] > 0, "Négligeable", "Indéterminée" ), "Sélectionner une station" )
+	measure 'Catégorie étiage affichée' = SWITCH ( [Categorie etiage station], "critique", "Critique", "eleve", "Élevée", "modere", "Modérée", "faible", "Faible", "negligeable", "Négligeable", "inconnu", "Indéterminée", "Sélectionner une station" )
 		displayFolder: 06 - Revue visuelle
 		lineageTag: 64808d19-f70e-43f8-a7d9-225902439c46
 
@@ -1110,6 +1110,20 @@ table FactPressionSnapshot
 		summarizeBy: none
 		sourceColumn: categorie_etiage_ordre
 
+	/// Libelle de presentation reserve a la page Risque d'etiage.
+	column categorie_etiage_page2_libelle
+		dataType: string
+		displayFolder: 07 - Disposition Markdown
+		summarizeBy: none
+		sourceColumn: categorie_etiage_page2_libelle
+		sortByColumn: categorie_etiage_page2_ordre
+
+	column categorie_etiage_page2_ordre
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: categorie_etiage_page2_ordre
+
 	hierarchy 'categorie_etiage Hiérarchie'
 		lineageTag: 919298be-f1a5-42ec-9467-b8c51428f800
 
@@ -1169,10 +1183,12 @@ table FactPressionSnapshot
 				    Ordre = (c as nullable text) as number => Record.FieldOrDefault([critique=1, eleve=2, modere=3, faible=4, negligeable=5], if c = null then "inconnu" else c, 6),
 				    LibelleActuel = Table.AddColumn(Caracterises, "categorie_actuelle_libelle", each Libelle([categorie_observe]), type text),
 				    OrdreActuel = Table.AddColumn(LibelleActuel, "categorie_actuelle_ordre", each Ordre([categorie_observe]), Int64.Type),
-				    LibelleEtiage = Table.AddColumn(OrdreActuel, "categorie_etiage_libelle", each if [categorie_etiage] = "inconnu" and [prelevements_caracterises] = false and [q27_ete_m3s] <> null and [q27_ete_m3s] > 0 then "Négligeable" else Libelle([categorie_etiage]), type text),
-				    OrdreEtiage = Table.AddColumn(LibelleEtiage, "categorie_etiage_ordre", each if [categorie_etiage_libelle] = "Négligeable" then 5 else Ordre([categorie_etiage]), Int64.Type)
+				    LibelleEtiage = Table.AddColumn(OrdreActuel, "categorie_etiage_libelle", each Libelle([categorie_etiage]), type text),
+				    OrdreEtiage = Table.AddColumn(LibelleEtiage, "categorie_etiage_ordre", each Ordre([categorie_etiage]), Int64.Type),
+				    LibellePageRisque = Table.AddColumn(OrdreEtiage, "categorie_etiage_page2_libelle", each if [categorie_etiage] = "inconnu" and [prelevements_caracterises] = false and [q27_ete_m3s] <> null and [q27_ete_m3s] > 0 then "Négligeable" else [categorie_etiage_libelle], type text),
+				    OrdrePageRisque = Table.AddColumn(LibellePageRisque, "categorie_etiage_page2_ordre", each if [categorie_etiage_page2_libelle] = "Négligeable" then 5 else [categorie_etiage_ordre], Int64.Type)
 				in
-				    OrdreEtiage
+				    OrdrePageRisque
 
 	annotation PBI_NavigationStepName = Navigation
 
