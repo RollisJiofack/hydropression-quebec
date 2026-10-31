@@ -1,12 +1,1 @@
-{
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
-  "pageOrder": [
-    "1bfb15c8538e4c4c90a7",
-    "f901617e4c7a0580de2b",
-    "b9ae026af6082ff87ffd",
-    "d4f8c1a2b3e4678091ab",
-    "459dc383fc651200206e",
-    "849ffa1104094f239e34"
-  ],
-  "activePageName": "1bfb15c8538e4c4c90a7"
-}
+{"$schema":"https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json","pageOrder":["1bfb15c8538e4c4c90a7","f901617e4c7a0580de2b","b9ae026af6082ff87ffd","d4f8c1a2b3e4678091ab","459dc383fc651200206e","849ffa1104094f239e34"],"activePageName":"1bfb15c8538e4c4c90a7"}
