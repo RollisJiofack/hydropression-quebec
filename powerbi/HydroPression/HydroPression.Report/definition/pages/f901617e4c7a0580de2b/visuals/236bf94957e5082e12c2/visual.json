@@ -5,8 +5,8 @@
     "x": 518,
     "y": 188,
     "z": 400,
-    "width": 380,
     "height": 480,
+    "width": 380,
     "tabOrder": 220
   },
   "visual": {
@@ -28,6 +28,7 @@
               },
               "queryRef": "DimStation.code",
               "nativeQueryRef": "Station",
+              "active": true,
               "displayName": "Station"
             }
           ]
@@ -48,44 +49,6 @@
               "queryRef": "FactPressionSnapshot.categorie_etiage_libelle",
               "nativeQueryRef": "Catégorie d'étiage",
               "displayName": "Catégorie d'étiage"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactPressionSnapshot"
-                    }
-                  },
-                  "Property": "Pression actuelle station pct"
-                }
-              },
-              "queryRef": "FactPressionSnapshot.Pression actuelle station pct",
-              "nativeQueryRef": "Actuel (%)",
-              "displayName": "Actuel (%)"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactPressionSnapshot"
-                    }
-                  },
-                  "Property": "Pression etiage station pct"
-                }
-              },
-              "queryRef": "FactPressionSnapshot.Pression etiage station pct",
-              "nativeQueryRef": "Étiage (%)",
-              "displayName": "Étiage (%)"
             }
           ]
         },
@@ -169,6 +132,45 @@
               "queryRef": "DimStation.Signalement station",
               "nativeQueryRef": "Signalement",
               "displayName": "Signalement"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactPressionSnapshot"
+                    }
+                  },
+                  "Property": "Pression actuelle station pct"
+                }
+              },
+              "queryRef": "FactPressionSnapshot.Pression actuelle station pct",
+              "nativeQueryRef": "Actuel (%)",
+              "active": true,
+              "displayName": "Actuel (%)"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactPressionSnapshot"
+                    }
+                  },
+                  "Property": "Pression etiage station pct"
+                }
+              },
+              "queryRef": "FactPressionSnapshot.Pression etiage station pct",
+              "nativeQueryRef": "Étiage (%)",
+              "displayName": "Étiage (%)"
             }
           ]
         }

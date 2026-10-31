@@ -5,8 +5,8 @@
     "x": 16,
     "y": 494,
     "z": 400,
-    "width": 490,
     "height": 174,
+    "width": 490,
     "tabOrder": 210
   },
   "visual": {
@@ -28,6 +28,7 @@
               },
               "queryRef": "FactPressionSnapshot.categorie_etiage_libelle",
               "nativeQueryRef": "Catégorie",
+              "active": true,
               "displayName": "Catégorie"
             }
           ]
@@ -67,8 +68,7 @@
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

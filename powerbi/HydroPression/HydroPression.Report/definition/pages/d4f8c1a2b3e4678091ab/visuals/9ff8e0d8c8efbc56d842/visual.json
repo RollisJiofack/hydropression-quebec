@@ -5,8 +5,8 @@
     "x": 16,
     "y": 514,
     "z": 400,
-    "width": 550,
     "height": 384,
+    "width": 550,
     "tabOrder": 220
   },
   "visual": {
@@ -28,6 +28,7 @@
               },
               "queryRef": "DimMois.mois_nom",
               "nativeQueryRef": "Mois",
+              "active": true,
               "displayName": "Mois"
             }
           ]
@@ -67,8 +68,7 @@
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

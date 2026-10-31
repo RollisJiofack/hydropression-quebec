@@ -5,8 +5,8 @@
     "x": 16,
     "y": 152,
     "z": 400,
-    "width": 616,
     "height": 350,
+    "width": 616,
     "tabOrder": 200
   },
   "visual": {
@@ -28,6 +28,7 @@
               },
               "queryRef": "DimAnnee.annee",
               "nativeQueryRef": "Année",
+              "active": true,
               "displayName": "Année"
             }
           ]
@@ -116,8 +117,7 @@
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

@@ -5,8 +5,8 @@
     "x": 588,
     "y": 558,
     "z": 400,
-    "width": 676,
     "height": 370,
+    "width": 676,
     "tabOrder": 230
   },
   "visual": {
@@ -123,8 +123,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

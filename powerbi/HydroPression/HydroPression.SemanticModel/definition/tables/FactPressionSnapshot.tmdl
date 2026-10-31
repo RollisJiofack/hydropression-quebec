@@ -639,208 +639,170 @@ table FactPressionSnapshot
 
 	/// Cle technique vers DimStation[code]. Utiliser DimStation[code] dans les visuels.
 	measure 'MD - Critiques et élevées actuelles' = [Critiques actuelle] + [Elevees actuelle]
-		dataType: int64
 		formatString: 0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: c4aba679-e904-4be3-bc5a-d305a368be45
 
 	measure 'MD - Détail couverture' = FORMAT([Couverture pression actuelle (%)], "0.0%") & " sur " & FORMAT([Stations suivies],"0") & " stations"
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 6be7639d-2575-4de5-a4fa-22d572b5022a
 
 	measure 'MD - Détail non évaluées' = FORMAT([Stations non caractérisées],"0") & " non caract. ; " & FORMAT([Stations sans pression actuelle]-[Stations non caractérisées],"0") & " autres"
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 0b15b3f9-ba65-4cca-bfc7-0bb1e8066f05
 
 	measure 'MD - Détail critiques élevées' = FORMAT([Critiques actuelle],"0") & " critiques ; " & FORMAT([Elevees actuelle],"0") & " élevées"
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 6c7ffc03-c790-45b3-a3e9-4a135fc14568
 
 	measure 'MD - Comparables' = COALESCE(SUMX(VALUES(DimStation[code]), IF(NOT ISBLANK([Pression actuelle station pct]) && NOT ISBLANK([Pression etiage station pct]),1,0)),0)
-		dataType: int64
 		formatString: 0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 13c22345-8e05-427e-b785-93869671c48d
 
 	measure 'MD - Amplification forte' = COALESCE(SUMX(VALUES(DimStation[code]), VAR A=[Amplification étiage (points)] RETURN IF(NOT ISBLANK(A) && A>=15,1,0)),0)
-		dataType: int64
 		formatString: 0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 444844f3-604a-452e-8c89-e3929a0591a0
 
 	measure 'MD - Détail comparables' = "Sur " & FORMAT([MD - Comparables],"0") & " stations comparables"
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 8b5c23aa-1b23-4c70-ac13-0c93e1d700f2
 
 	measure 'MD - Autres stations' = [Stations suivies]-[Priorité 1 - stations]-[Priorité 2 - stations]
-		dataType: int64
 		formatString: 0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 46ff641d-31ed-4a6a-bc70-c98ef3a96e91
 
 	measure 'MD - Détail autres' = "Dont " & FORMAT([Stations non caractérisées],"0") & " non caractérisées"
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: f1d7b328-39b9-4ded-b1b4-2ed26772d157
 
 	measure 'MD - Âge débit à la génération (h)' = VAR T=SELECTEDVALUE(FactPressionSnapshot[date_mesure_utc]) RETURN IF(HASONEVALUE(DimStation[code]) && NOT ISBLANK(T),([Dernier instant UTC]-T)*24)
-		dataType: double
 		formatString: 0.0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 41de6925-22f7-4f0e-8663-74cd8a3367fa
 
 	measure 'MD - Consommation courante (m3/j)' = [Debit preleve courant station m3s]*86400
-		dataType: double
 		formatString: #,0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 122fcdac-03db-4a53-a3de-48e7c31ada68
 
 	measure 'MD - Consommation été (m3/j)' = [Debit preleve etiage station m3s]*86400
-		dataType: double
 		formatString: #,0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: fd875c9e-c80c-40a9-b5b6-5ef85228a3ff
 
 	measure 'MD - Profil mensuel station (m3/j)' = [Débit mensuel affiché (m3/s)]*86400
-		dataType: double
 		formatString: #,0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 7cd16ee3-7c2a-492b-8f1a-bb75f548c160
 
 	measure 'MD - Profil mensuel cumulé (m3/j)' = SUMX(VALUES(DimStation[code]),CALCULATE([Débit mensuel affiché (m3/s)]))*86400
-		dataType: double
 		formatString: #,0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 88a05ef1-7ffa-43cc-8346-0474d15913c2
 
 	measure 'MD - Couleur mois' = VAR M=SELECTEDVALUE(DimMois[mois_num]) VAR Courant=SELECTEDVALUE(FactPressionSnapshot[mois_courant]) RETURN SWITCH(TRUE(),M IN {7,8},"#D97706",M=Courant,"#0F172A","#0284C7")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 5466c589-ef31-498d-98a3-ce45c71e861d
 
 	measure 'MD - Identité station' = IF(HASONEVALUE(DimStation[code]),SELECTEDVALUE(DimStation[code]) & " - " & SELECTEDVALUE(DimStation[plan_deau]) & " | " & SELECTEDVALUE(DimStation[bv_prim]),"Sélectionner une seule station")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 24febfbc-248d-47f5-ab60-baeded2918a2
 
 	measure 'MD - Alerte station' = IF(NOT HASONEVALUE(DimStation[code]),"Sélectionner une seule station",IF(LEN(TRIM(COALESCE([Signalement station],"")))>0,[Signalement station],"Aucun signalement particulier enregistré."))
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: b901ab15-550e-4dd1-9a9c-70a8050dcf64
 
 	measure 'MD - Fond signalement' = IF(LEN(TRIM(COALESCE([Signalement station],"")))>0,"#FEF2F2","#F0FDF4")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 1e8aa0f1-4a58-409e-9fc8-5c3af88a13ed
 
 	measure 'MD - Texte signalement' = IF(LEN(TRIM(COALESCE([Signalement station],"")))>0,"#991B1B","#166534")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: e19cc755-c7f2-43ff-a532-2860c163e52d
 
 	measure 'MD - Alerte nuage étiage' = "Nuage : " & FORMAT([MD - Comparables],"0") & " stations avec les deux pressions. Les stations sans pression actuelle restent dans le tableau ; une valeur absente n’est pas un zéro."
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: c4c1bdaf-9ccf-4447-a4f3-3f1fb659dfe3
 
 	measure 'MD - Alerte nuage priorités' = "Sur " & FORMAT([Prioritaires sélectionnés],"0") & " stations P1/P2, " & FORMAT([Prioritaires hors nuage],"0") & " sont hors nuage, sans pression actuelle. Elles restent dans la liste et dans leur priorité."
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: e1fceb46-f4c9-46f9-a7a0-30b57d324813
 
 	measure 'MD - Ordre vigilance' = SWITCH([Niveau de vigilance interne],"Priorité 1",1,"Priorité 2",2,"Suivi courant",3,"Actuel non évaluable",4,"Étiage non évaluable",4,"Données insuffisantes",5,6)
-		dataType: int64
 		formatString: 0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 6bc49d7e-1218-4403-ad09-66810cfe8b6a
 
 	measure 'MD - Niveau court' = IF(COUNTROWS(FactPressionSnapshot)=0,BLANK(),SWITCH([Niveau de vigilance interne],"Priorité 1","P1","Priorité 2","P2","Suivi courant","Suivi","Actuel non évaluable","Act. n.é.","Étiage non évaluable","Ét. n.é.","Données insuffisantes","Non caract.",[Niveau de vigilance interne]))
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: fc4d4f40-8264-4a81-8557-d47db74cd75c
 
 	measure 'MD - Motif et signalement' = IF(COUNTROWS(FactPressionSnapshot)=0,BLANK(),[Motif de vigilance] & IF(LEN(TRIM(COALESCE([Signalement station],"")))>0," | " & [Signalement station],""))
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: d10e41b7-35f7-4907-a857-b19c9226da77
 
 	measure 'MD - Fond vigilance' = SWITCH([Niveau de vigilance interne],"Priorité 1","#FEE2E2","Priorité 2","#FFEDD5","Suivi courant","#E0F2FE","#F1F5F9")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 7f4a9aec-1e7e-4d83-9266-62c121d355ec
 
 	measure 'MD - Texte vigilance' = SWITCH([Niveau de vigilance interne],"Priorité 1","#991B1B","Priorité 2","#9A3412","Suivi courant","#075985","#475569")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: a6688c9d-4557-43bd-bf90-8f84ccedb1f1
 
 	measure 'MD - Couleur actuelle' = SWITCH([Categorie actuelle station],"critique","#B91C1C","eleve","#EA580C","modere","#D97706","faible","#EAB308","negligeable","#0284C7","#94A3B8")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 7714ca87-2bc5-4a42-bee2-176e50d4f942
 
 	measure 'MD - Couleur étiage' = SWITCH([Categorie etiage station],"critique","#B91C1C","eleve","#EA580C","modere","#D97706","faible","#EAB308","negligeable","#0284C7","#94A3B8")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 88b84343-b468-4f08-a4fe-7543d4fa9ffe
 
 	measure 'MD - Catégorie et signalement' = IF(COUNTROWS(FactPressionSnapshot)=0,BLANK(),[Catégorie actuelle affichée] & IF(LEN(TRIM(COALESCE([Signalement station],"")))>0," · Signalée",""))
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: d017e792-e3a6-457c-94a8-d3b9f0324223
 
 	measure 'MD - Sites amont station' = IF(HASONEVALUE(DimStation[code]),SELECTEDVALUE(FactPressionSnapshot[n_sites_amont]))
-		dataType: int64
 		formatString: 0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: ab30c551-a753-4c92-b680-677aa1bb912c
 
 	measure 'MD - Sites identifiés secteur' = COUNTROWS(FILTER(VALUES(FactIntervenants[num_site]),NOT ISBLANK(FactIntervenants[num_site]) && FactIntervenants[num_site]<>""))
-		dataType: int64
 		formatString: 0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 55b2c00a-c73e-4b46-bfa0-7e2e999d0d11
 
 	measure 'MD - Conso intervenants courante (m3/j)' = SUM(FactIntervenants[debit_mois_courant_m3s])*86400
-		dataType: double
 		formatString: #,0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 9e39ba45-458c-42ac-bcb7-bdf804027bbb
 
 	measure 'MD - Conso intervenants été (m3/j)' = SUM(FactIntervenants[debit_etiage_m3s])*86400
-		dataType: double
 		formatString: #,0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: f17098e0-054a-4997-b243-c6fd99a0d0c9
 
 	measure 'MD - Distance non disponible' = IF(COUNTROWS(FactIntervenants)>0,"n.d.")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 4de6ad39-d8b5-4876-9b52-ba6d47320ef5
 
 	measure 'MD - Sites liés distincts' = DISTINCTCOUNT(CorrespondanceSiteStation[num_site])
-		dataType: int64
 		formatString: 0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 5f3c71b8-b43b-4f7f-91c2-3f2c5eb0e909
 
 	measure 'MD - Amplitude mai octobre' = VAR Mois=FILTER(ALL(DimMois),DimMois[mois_num]>=5 && DimMois[mois_num]<=10) VAR H=MAXX(Mois,[MD - Profil mensuel cumulé (m3/j)]) VAR B=MINX(Mois,[MD - Profil mensuel cumulé (m3/j)]) RETURN DIVIDE(H,B)
-		dataType: double
 		formatString: 0.00
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: d5bef9a4-93c4-48ca-847f-21c7c7fbcdef
 
 	measure 'MD - Horodatages UTC' = "CEHQ " & FORMAT([Derniere mesure CEHQ UTC],"yyyy-MM-dd HH:mm") & " | Collecte " & FORMAT([Collecte CEHQ UTC],"yyyy-MM-dd HH:mm") & " | Génération " & FORMAT([Dernier instant UTC],"yyyy-MM-dd HH:mm") & " | Import Power BI " & FORMAT([Actualisation Power BI UTC],"yyyy-MM-dd HH:mm") & " UTC"
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: c849c3f6-ac36-49a3-9842-16890190a919
 
 	measure 'MD - Horodatage local' = "Génération Toronto " & SUBSTITUTE(LEFT([Generation locale],19),"T"," ") & " | Validité des débits à la génération (≤ 6 h) | Actualisation par import ; collecte et import distincts"
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: e5656bb0-1e52-45f2-810c-927f5f2908ea
 

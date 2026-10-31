@@ -3,8 +3,47 @@
   "name": "b9ae026af6082ff87ffd",
   "displayName": "Fiche station",
   "displayOption": "FitToWidth",
-  "width": 1280,
   "height": 1240,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "md_station_filter",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimStation"
+              }
+            },
+            "Property": "code"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "md_station_drill",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "station",
+        "boundFilter": "md_station_filter",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimStation"
+              }
+            },
+            "Property": "code"
+          }
+        }
+      }
+    ]
+  },
   "objects": {
     "background": [
       {
@@ -32,46 +71,6 @@
     ]
   },
   "type": "Drillthrough",
-  "pageBinding": {
-    "name": "md_station_drill",
-    "type": "Drillthrough",
-    "acceptsFilterContext": "Default",
-    "parameters": [
-      {
-        "name": "station",
-        "boundFilter": "md_station_filter",
-        "fieldExpr": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimStation"
-              }
-            },
-            "Property": "code"
-          }
-        }
-      }
-    ]
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "md_station_filter",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimStation"
-              }
-            },
-            "Property": "code"
-          }
-        },
-        "type": "Categorical",
-        "howCreated": "Drillthrough"
-      }
-    ]
-  },
   "visualInteractions": [
     {
       "source": "61cbdc0c7a52a8a52ee7",

@@ -5,8 +5,8 @@
     "x": 16,
     "y": 138,
     "z": 400,
-    "width": 550,
     "height": 348,
+    "width": 550,
     "tabOrder": 200
   },
   "visual": {
@@ -28,6 +28,7 @@
               },
               "queryRef": "DimStation.code",
               "nativeQueryRef": "Station",
+              "active": true,
               "displayName": "Station"
             }
           ]
@@ -48,54 +49,6 @@
               "queryRef": "FactPressionSnapshot.categorie_actuelle_libelle",
               "nativeQueryRef": "Catégorie",
               "displayName": "Catégorie"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "DimStation"
-                        }
-                      },
-                      "Property": "lon"
-                    }
-                  },
-                  "Function": 1
-                }
-              },
-              "queryRef": "Avg(DimStation.lon)",
-              "nativeQueryRef": "Longitude",
-              "displayName": "Longitude"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "DimStation"
-                        }
-                      },
-                      "Property": "lat"
-                    }
-                  },
-                  "Function": 1
-                }
-              },
-              "queryRef": "Avg(DimStation.lat)",
-              "nativeQueryRef": "Latitude",
-              "displayName": "Latitude"
             }
           ]
         },
@@ -160,6 +113,54 @@
               "queryRef": "DimStation.Signalement station",
               "nativeQueryRef": "Signalement",
               "displayName": "Signalement"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DimStation"
+                        }
+                      },
+                      "Property": "lon"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(DimStation.lon)",
+              "nativeQueryRef": "Longitude",
+              "displayName": "Longitude"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DimStation"
+                        }
+                      },
+                      "Property": "lat"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(DimStation.lat)",
+              "nativeQueryRef": "Latitude",
+              "displayName": "Latitude"
             }
           ]
         }

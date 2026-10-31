@@ -5,8 +5,8 @@
     "x": 648,
     "y": 152,
     "z": 400,
-    "width": 616,
     "height": 350,
+    "width": 616,
     "tabOrder": 210
   },
   "visual": {
@@ -28,41 +28,8 @@
               },
               "queryRef": "DimStation.bv_prim",
               "nativeQueryRef": "Bassin",
+              "active": true,
               "displayName": "Bassin"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactPressionSnapshot"
-                    }
-                  },
-                  "Property": "Critiques etiage"
-                }
-              },
-              "queryRef": "FactPressionSnapshot.Critiques etiage",
-              "nativeQueryRef": "Critiques",
-              "displayName": "Critiques"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactPressionSnapshot"
-                    }
-                  },
-                  "Property": "Elevees etiage"
-                }
-              },
-              "queryRef": "FactPressionSnapshot.Elevees etiage",
-              "nativeQueryRef": "Élevées",
-              "displayName": "Élevées"
             }
           ]
         },
@@ -99,6 +66,40 @@
               "displayName": "Stations du bassin"
             }
           ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactPressionSnapshot"
+                    }
+                  },
+                  "Property": "Critiques etiage"
+                }
+              },
+              "queryRef": "FactPressionSnapshot.Critiques etiage",
+              "nativeQueryRef": "Critiques",
+              "displayName": "Critiques"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactPressionSnapshot"
+                    }
+                  },
+                  "Property": "Elevees etiage"
+                }
+              },
+              "queryRef": "FactPressionSnapshot.Elevees etiage",
+              "nativeQueryRef": "Élevées",
+              "displayName": "Élevées"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -116,8 +117,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

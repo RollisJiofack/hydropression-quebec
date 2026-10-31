@@ -196,49 +196,41 @@ table FactSiteAnnee
 
 	/// Identifiant texte du site; grain unique site x annee.
 	measure 'MD - Brut annuel lié (Mm3)' = IF(HASONEVALUE(DimAnnee[annee]),CALCULATE(SUM(FactSiteAnnee[volume_brut_m3]),KEEPFILTERS(TREATAS(VALUES(CorrespondanceSiteStation[num_site]),FactSiteAnnee[num_site])))/1000000)
-		dataType: double
 		formatString: 0.0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 63bdad6a-5b39-4cb4-aace-4c24e8938b47
 
 	measure 'MD - Brut annuel panel (Mm3)' = CALCULATE([MD - Brut annuel lié (Mm3)],KEEPFILTERS(DimSite[panel_2020_2024]=TRUE()))
-		dataType: double
 		formatString: 0.0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: d6705a2d-6784-48f4-b2d2-20d0c9bdaa56
 
 	measure 'MD - Brut moyen historique (m3/j)' = DIVIDE(SUMX(VALUES(DimAnnee[annee]),[Brut annuel (m3/s)]),COUNTROWS(VALUES(DimAnnee[annee])))*86400
-		dataType: double
 		formatString: #,0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 7f82803e-11a4-4e49-8d5c-1b831859055d
 
 	measure 'MD - Net moyen historique (m3/j)' = DIVIDE(SUMX(VALUES(DimAnnee[annee]),[Nette annuelle (m3/s)]),COUNTROWS(VALUES(DimAnnee[annee])))*86400
-		dataType: double
 		formatString: #,0
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 383145c1-f8c3-4d05-8053-70ca8d34c102
 
 	measure 'MD - Part nette historique' = DIVIDE([MD - Net moyen historique (m3/j)],[MD - Brut moyen historique (m3/j)])
-		dataType: double
 		formatString: 0.0%
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: ff5f60ac-2456-40d7-b16b-af9297de018e
 
 	measure 'MD - Part nette secteur' = DIVIDE([MD - Net moyen historique (m3/j)],CALCULATE([MD - Net moyen historique (m3/j)],REMOVEFILTERS(DimSite[secteur_scian])))
-		dataType: double
 		formatString: 0.0%
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: cb1b5fdf-d4d5-41b3-af69-828e8c4ade88
 
 	measure 'MD - Évolution brute ensemble' = VAR A=CALCULATE([Brut annuel (m3/s)],REMOVEFILTERS(DimAnnee),DimAnnee[annee]=2020) VAR B=CALCULATE([Brut annuel (m3/s)],REMOVEFILTERS(DimAnnee),DimAnnee[annee]=2024) RETURN IF(NOT ISBLANK(A) && NOT ISBLANK(B),DIVIDE(B-A,A))
-		dataType: double
 		formatString: 0.0%
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 487d04fe-b2f3-44b0-aeba-2e6ec12d26ca
 
 	measure 'MD - Comparaison évolution' = FORMAT([Evolution du panel (%)],"+0.0%;-0.0%;0.0%") & " / " & FORMAT([MD - Évolution brute ensemble],"+0.0%;-0.0%;0.0%")
-		dataType: string
 		displayFolder: 07 - Disposition Markdown
 		lineageTag: 846ac41a-68ea-42eb-9e97-b65fc34975f3
 

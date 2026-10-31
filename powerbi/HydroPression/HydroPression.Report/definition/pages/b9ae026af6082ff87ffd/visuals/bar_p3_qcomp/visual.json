@@ -5,8 +5,8 @@
     "x": 648,
     "y": 236,
     "z": 400,
-    "width": 616,
     "height": 310,
+    "width": 616,
     "tabOrder": 210
   },
   "visual": {
@@ -28,6 +28,7 @@
               },
               "queryRef": "DimStation.plan_deau",
               "nativeQueryRef": "Cours d'eau",
+              "active": true,
               "displayName": "Cours d'eau"
             }
           ]
